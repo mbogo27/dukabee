@@ -1,3 +1,7 @@
 name = "dukabee"
-pages_build_output_dir = "dist"
 compatibility_date = "2026-09-01"
+
+# Cloudflare's Git-connected build runs `npx wrangler deploy` after the build command, which needs
+# an [assets] block (this is the unified Workers static-assets deploy, not classic `wrangler pages`).
+[assets]
+directory = "./dist"
