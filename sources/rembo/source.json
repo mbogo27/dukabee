@@ -1,0 +1,234 @@
+{
+  "demo": "rembo",
+  "importedFrom": "C:/Users/mbogo/OneDrive/Documents/Projects/july/taskbee",
+  "importedAt": "2026-09-18T04:25:14.835Z",
+  "store": {
+    "slug": "rembo",
+    "name": "Rembo",
+    "wordmark": "REMBO",
+    "descriptor": "Beauty / care edit",
+    "eyebrow": "Waresh / beauty edit",
+    "heroTitle": "Small rituals. Big difference.",
+    "heroDescription": "Makeup, skincare, haircare, and body care for everyday routines in Kenya.",
+    "footerCopy": "A calm beauty storefront for products people use every day.",
+    "whatsapp": "254743747496",
+    "heroImages": [
+      "images/bellazuri-10-color-eyeshadow-palette.jpg",
+      "images/m-a-c-retro-matte-liquid-lipcolour-high-drama-5ml.jpg"
+    ],
+    "styleNote": "Soft rose, cream and muted burgundy; Cormorant Garamond display (demo-stores.css)."
+  },
+  "products": [
+    {
+      "slug": "l-ore-al-men-expert-power-age-hyaluronic-acid-serum-30ml",
+      "name": "L'Oréal Men Expert Power Age Hyaluronic Acid Serum - 30ml",
+      "price": 1890,
+      "category": "Skincare",
+      "image": "images/l-ore-al-men-expert-power-age-hyaluronic-acid-serum-30ml.jpg",
+      "description": "Unleash the power of advanced anti-aging with L'Oréal Men Expert Power Age Hyaluronic Acid Serum. This potent men's serum is specifically engineered to intensely hydrate, smooth, and re-plump wrinkles.",
+      "rawDescription": "Unleash the power of advanced anti-aging with L'Oréal Men Expert Power Age Hyaluronic Acid Serum. This potent men's serum is specifically engineered to intensely hydrate, smooth, and re-plump wrinkles.",
+      "rawCategory": "skincare"
+    },
+    {
+      "slug": "garnier-pure-active-3-in-1-anti-blackhead-wash-scrub-mask-50ml",
+      "name": "Garnier Pure Active 3-in-1 Anti Blackhead Wash Scrub Mask - 50ml",
+      "price": 390,
+      "category": "Skincare",
+      "image": "images/garnier-pure-active-3-in-1-anti-blackhead-wash-scrub-mask-50ml.jpg",
+      "description": "The Garnier Pure Active 3-in-1 Anti-Blackhead solution is a comprehensive skincare treatment specifically engineered for oily and acne-prone complexions.",
+      "rawDescription": "The Garnier Pure Active 3-in-1 Anti-Blackhead solution is a comprehensive skincare treatment specifically engineered for oily and acne-prone complexions.",
+      "rawCategory": "skincare"
+    },
+    {
+      "slug": "nivea-men-deep-antibacterial-anti-perspirant-rollon-72h-50-ml-pack-of-2",
+      "name": "NIVEA MEN Deep Antibacterial Anti-Perspirant Rollon, 72h - 50 Ml (Pack Of 2)",
+      "price": 1040,
+      "category": "Bodycare",
+      "image": "images/nivea-men-deep-antibacterial-anti-perspirant-rollon-72h-50-ml-pack-of-2.jpg",
+      "description": "NIVEA MEN DEEP Anti-perspirant protects the skin from sweat and bacteria for a long-lasting dryness and a clean skin feeling just like after the shower.",
+      "rawDescription": "NIVEA MEN DEEP Anti-perspirant protects the skin from sweat and bacteria for a long-lasting dryness and a clean skin feeling just like after the shower.",
+      "rawCategory": "bodycare"
+    },
+    {
+      "slug": "advanced-korean-skin-active-fair-body-oil-glutathione-turmeric-280ml",
+      "name": "Advanced Korean Skin Active Fair Body Oil (Glutathione + Turmeric) - 280ml",
+      "price": 1200,
+      "category": "Skincare",
+      "image": "images/advanced-korean-skin-active-fair-body-oil-glutathione-turmeric-280ml.jpg",
+      "description": "Active Fair Body Oil by Advanced Korean Skin is a lightweight, fast-absorbing brightening body oil formulated to improve skin tone, reduce dark spots, and enhance overall radiance.",
+      "rawDescription": "Active Fair Body Oil by Advanced Korean Skin is a lightweight, fast-absorbing brightening body oil formulated to improve skin tone, reduce dark spots, and enhance overall radiance.",
+      "rawCategory": "skincare"
+    },
+    {
+      "slug": "nivea-uv-sunscreen-face-shine-control-cream-spf-50-40ml-pack-of-2",
+      "name": "NIVEA UV Sunscreen Face Shine Control Cream SPF 50 - 40ml Pack of 2",
+      "price": 1699,
+      "category": "Skincare",
+      "image": "images/nivea-uv-sunscreen-face-shine-control-cream-spf-50-40ml-pack-of-2.jpg",
+      "description": "NIVEA UV Sunscreen Face Shine Control Cream SPF 50 provides highly effective and immediate UVA/UVB protection against sunburn and premature skin aging.",
+      "rawDescription": "NIVEA UV Sunscreen Face Shine Control Cream SPF 50 provides highly effective and immediate UVA/UVB protection against sunburn and premature skin aging.",
+      "rawCategory": "skincare"
+    },
+    {
+      "slug": "maybelline-colossal-bubble-washable-mascara-blackest-black",
+      "name": "Maybelline Colossal Bubble Washable Mascara - Blackest Black",
+      "price": 1650,
+      "category": "Makeup",
+      "image": "images/maybelline-colossal-bubble-washable-mascara-blackest-black.jpg",
+      "description": "Our first lash-inflating formula delivers buildable, dramatic volume while maintaining a sleek, airy finish.",
+      "rawDescription": "Our first lash-inflating formula delivers buildable, dramatic volume while maintaining a sleek, airy finish.",
+      "rawCategory": "makeup"
+    },
+    {
+      "slug": "bellazuri-matte-setting-spray-50ml",
+      "name": "BELLAZURI Matte Setting Spray - 50ml",
+      "price": 1435,
+      "category": "Makeup",
+      "image": "images/bellazuri-matte-setting-spray-50ml.jpg",
+      "description": "Meet our best-selling matte setting spray, the perfect finishing touch to keep your makeup looking fresh all day.",
+      "rawDescription": "Meet our best-selling matte setting spray, the perfect finishing touch to keep your makeup looking fresh all day.",
+      "rawCategory": "makeup"
+    },
+    {
+      "slug": "ruby-kisses-bare-blusher-partying-bare",
+      "name": "Ruby Kisses Bare Blusher - Partying Bare",
+      "price": 1900,
+      "category": "Makeup",
+      "image": "images/ruby-kisses-bare-blusher-partying-bare.jpg",
+      "description": "Blusher palette that are lightly pigmented blushes to provide a soft tint of color and glimmer.",
+      "rawDescription": "Blusher palette that are lightly pigmented blushes to provide a soft tint of color and glimmer.",
+      "rawCategory": "makeup"
+    },
+    {
+      "slug": "bellazuri-10-color-eyeshadow-palette",
+      "name": "BELLAZURI 10-Color Eyeshadow Palette",
+      "price": 6140,
+      "category": "Makeup",
+      "image": "images/bellazuri-10-color-eyeshadow-palette.jpg",
+      "description": "This 10-shade eyeshadow palette is crafted to beautifully complement African skin tones with a mix of vibrant, bold, and soft neutral colors.",
+      "rawDescription": "This 10-shade eyeshadow palette is crafted to beautifully complement African skin tones with a mix of vibrant, bold, and soft neutral colors.",
+      "rawCategory": "makeup"
+    },
+    {
+      "slug": "m-a-c-retro-matte-liquid-lipcolour-high-drama-5ml",
+      "name": "M.A.C Retro Matte Liquid Lipcolour - High Drama - 5ml",
+      "price": 5748,
+      "category": "Makeup",
+      "image": "images/m-a-c-retro-matte-liquid-lipcolour-high-drama-5ml.jpg",
+      "description": "A liquid lipstick that provides a rush of pigment-soaked colour in a velvety, mattest matte finish.",
+      "rawDescription": "A liquid lipstick that provides a rush of pigment-soaked colour in a velvety, mattest matte finish.",
+      "rawCategory": "makeup"
+    },
+    {
+      "slug": "maybelline-hydrating-lifter-gloss-taffy-shade",
+      "name": "Maybelline Hydrating Lifter Gloss Taffy Shade",
+      "price": 1330,
+      "category": "Makeup",
+      "image": "images/maybelline-hydrating-lifter-gloss-taffy-shade.jpg",
+      "description": "Unleash a stunning, sculpted pout with Maybelline Lifter Gloss, infused with Hyaluronic Acid for visibly fuller, hydrated lips.",
+      "rawDescription": "Unleash a stunning, sculpted pout with Maybelline Lifter Gloss, infused with Hyaluronic Acid for visibly fuller, hydrated lips.",
+      "rawCategory": "makeup"
+    },
+    {
+      "slug": "maybelline-fit-me-matte-and-poreless-foundation-356-warm-coconut",
+      "name": "Maybelline Fit Me Matte and Poreless Foundation - 356 Warm Coconut",
+      "price": 1790,
+      "category": "Makeup",
+      "image": "images/maybelline-fit-me-matte-and-poreless-foundation-356-warm-coconut.jpg",
+      "description": "Fit Me Matte & Poreless has been designed for normal to oily skin. Its blurring micro powders refines pores while shine is being absorbed.",
+      "rawDescription": "Fit Me Matte & Poreless has been designed for normal to oily skin. Its blurring micro powders refines pores while shine is being absorbed.",
+      "rawCategory": "makeup"
+    },
+    {
+      "slug": "generic-matte-lipstick-4-colors-available",
+      "name": "Generic Matte Lipstick - 4 Colors Available",
+      "price": 360,
+      "category": "Makeup",
+      "image": "images/generic-matte-lipstick-4-colors-available.jpg",
+      "description": "Matte Lipstick from Princess Series. Benefits: Natural, Moisturizing, Concealing, Long-lasting.",
+      "rawDescription": "Matte Lipstick from Princess Series. Benefits: Natural, Moisturizing, Concealing, Long-lasting.",
+      "rawCategory": "makeup"
+    },
+    {
+      "slug": "generic-6-piece-lip-gloss-set-gift-box",
+      "name": "Generic 6-Piece Lip Gloss Set Gift Box",
+      "price": 807,
+      "category": "Makeup",
+      "image": "images/generic-6-piece-lip-gloss-set-gift-box.jpg",
+      "description": "Mirror Lip Gloss set. Efficacy: Moisturizing, natural, nourishing, long-lasting, not easy to fade.",
+      "rawDescription": "Mirror Lip Gloss set. Efficacy: Moisturizing, natural, nourishing, long-lasting, not easy to fade.",
+      "rawCategory": "makeup"
+    },
+    {
+      "slug": "generic-nail-art-kit-style-1",
+      "name": "Generic Nail Art Kit - Style 1",
+      "price": 135,
+      "category": "Makeup",
+      "image": "images/generic-nail-art-kit-style-1.jpg",
+      "description": "Professional nail extension kit. Perfect choice for your nail fashion. Easy to use, precise, perfect decoration.",
+      "rawDescription": "Professional nail extension kit. Perfect choice for your nail fashion. Easy to use, precise, perfect decoration.",
+      "rawCategory": "makeup"
+    },
+    {
+      "slug": "anashe-nail-polish-21",
+      "name": "Anashe Nail Polish 21",
+      "price": 599,
+      "category": "Makeup",
+      "image": "images/anashe-nail-polish-21.jpg",
+      "description": "Anashe Nail Polish 21. Vibrant color and long-lasting finish for professional results.",
+      "rawDescription": "Anashe Nail Polish 21. Vibrant color and long-lasting finish for professional results.",
+      "rawCategory": "makeup"
+    },
+    {
+      "slug": "generic-barber-stainless-steel-straight-edge-razor",
+      "name": "Generic Barber Stainless Steel Straight Edge Razor",
+      "price": 268,
+      "category": "Haircare",
+      "image": "images/generic-barber-stainless-steel-straight-edge-razor.jpg",
+      "description": "Exceptional top-tier professional shavers manufactured to high-quality standards, made from 100% rust-resistant stainless steel.",
+      "rawDescription": "Exceptional Top-Tier Professional Shavers manufactured to high-quality standards. Made from 100% rust-resistant stainless steel.",
+      "rawCategory": "haircare"
+    },
+    {
+      "slug": "generic-double-head-electric-shaving-kit",
+      "name": "Generic Double-Head Electric Shaving Kit",
+      "price": 348,
+      "category": "Haircare",
+      "image": "images/generic-double-head-electric-shaving-kit.jpg",
+      "description": "Powerful motor, double circular arc design, intelligent electronic display screen, compact and portable.",
+      "rawDescription": "Powerful motor, double circular arc design, intelligent electronic display screen, compact and portable.",
+      "rawCategory": "haircare"
+    },
+    {
+      "slug": "mekis-beard-growth-soothing-kit",
+      "name": "Mekis Beard Growth Soothing Kit",
+      "price": 1038,
+      "category": "Haircare",
+      "image": "images/mekis-beard-growth-soothing-kit.jpg",
+      "description": "A complete beard care system designed to help improve the appearance of beard growth and reduce irritation.",
+      "rawDescription": "A complete beard care system designed to help improve the appearance of beard growth and reduce irritation.",
+      "rawCategory": "haircare"
+    },
+    {
+      "slug": "generic-digital-display-electric-nose-hair-trimmer",
+      "name": "Generic Digital Display Electric Nose Hair Trimmer",
+      "price": 1215,
+      "category": "Haircare",
+      "image": "images/generic-digital-display-electric-nose-hair-trimmer.jpg",
+      "description": "Precision trimming with sharp blades, a digital display, and a rechargeable, compact and portable design.",
+      "rawDescription": "Precision Trimming with sharp blades, digital display & rechargeable design. Compact and portable.",
+      "rawCategory": "haircare"
+    },
+    {
+      "slug": "disaar-hair-removal-spray-foam",
+      "name": "Disaar Hair Removal Spray Foam",
+      "price": 450,
+      "category": "Haircare",
+      "image": "images/disaar-hair-removal-spray-foam.jpg",
+      "description": "A painless, smooth hair removal spray foam for men and women, not intended for permanent hair removal.",
+      "rawDescription": "Disaar 1pc Hair removal spray foam. Features: not permanent body hair removal for men and women.",
+      "rawCategory": "haircare"
+    }
+  ],
+  "missingRaw": []
+}

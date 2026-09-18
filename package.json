@@ -1,0 +1,19 @@
+{
+  "name": "dukabee",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Duka Bee MVP — Kiwanda web-mode composition pipeline and studio for the Kladi, Jikoni and Rembo demo stores.",
+  "scripts": {
+    "import": "node scripts/import-taskbee.mjs",
+    "generate": "node pipeline/cli.mjs",
+    "studio": "node server.mjs",
+    "check": "node scripts/check.mjs",
+    "build": "node scripts/build.mjs",
+    "preview": "node scripts/preview.mjs",
+    "deploy": "node scripts/build.mjs && npx wrangler pages deploy dist --project-name dukabee"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

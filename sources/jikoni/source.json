@@ -1,0 +1,177 @@
+{
+  "demo": "jikoni",
+  "importedFrom": "C:/Users/mbogo/OneDrive/Documents/Projects/july/taskbee",
+  "importedAt": "2026-09-18T04:25:14.956Z",
+  "store": {
+    "slug": "jikoni",
+    "name": "Jikoni",
+    "wordmark": "JIKONI /",
+    "descriptor": "Kitchen goods / made useful",
+    "eyebrow": "Safi / kitchen edit",
+    "heroTitle": "Tools for the meals you make.",
+    "heroDescription": "Useful appliances, cookware, and kitchen helpers for busy Kenyan homes.",
+    "footerCopy": "A practical kitchen storefront with room for the whole catalogue.",
+    "whatsapp": "254743747496",
+    "heroImages": [
+      "images/kitcha-cast-iron-skillet-3-piece-set-heavy-duty-16cm-20cm-26cm-pans-for-frying-saute-cooking-pizza-more.jpg",
+      "images/10-piece-kitchenware-set-stainless-steel-gold-stew-pot-milk-pan-and-soup-pot-cookware-set.jpg",
+      "images/em-air-fryer-healthier-oil-free-fryer-fries-maker-5l-1400w-large-firepower-af01-1yr-wrty.jpg"
+    ],
+    "styleNote": "Olive, warm cream and terracotta; Space Grotesk display (demo-stores.css)."
+  },
+  "products": [
+    {
+      "slug": "em-air-fryer-healthier-oil-free-fryer-fries-maker-5l-1400w-large-firepower-af01-1yr-wrty",
+      "name": "Em Air Fryer Healthier Oil Free Fryer / Fries Maker - 5L - 1400W Large Firepower AF01 (1YR WRTY)",
+      "price": 3999,
+      "category": "Appliances",
+      "image": "images/em-air-fryer-healthier-oil-free-fryer-fries-maker-5l-1400w-large-firepower-af01-1yr-wrty.jpg",
+      "description": "Designed for modern homes, this powerful air fryer combines style, speed, and smart features to deliver crispy, delicious meals using little to no oil.",
+      "rawDescription": "Designed for modern homes, this powerful air fryer combines style, speed, and smart features to deliver crispy, delicious meals using little to no oil.\n\nThe 5-litre capacity makes it perfect for large families or entertaining guests, while the digital touch control panel gives you quick access to multiple cooking presets — fry, roast, bake, grill, or reheat your favorite dishes with ease.\n\nThanks to Rapid Air Circulation Technology, your food cooks evenly and faster, maintaining flavor and crispiness without extra fat. The non-stick, detachable basket ensures effortless cleaning after every use, and the sleek black finish adds a premium touch to your kitchen.\n\n* Large Capacity: 5L\n* Power: 1400W\n* voltage:220V-240V  50/60Hz\n* Colour：Black and silver\n* When the Pan Body is Removed, the Product will Turn off\n* High quality non-stick pan liner.\n* Inner liner material: Non-stick pot coating.\n* Various Cooking Modes, One-click Operation\n* Energy Heat Cycle, Reduce Baking Time\n* Pull Type Split Fried Basket, Easy to Take\n* The hollow basket is not stained and easy to clean thus hygienic for cooking\n* Temperature upto 200°C creating crispy texture\n* Adjustable Time & Temperature\n* Easy to clean.\n* Safe to use.\n* Safe and non-toxic\n* Good heat resistance.\n* User manual for guidance",
+      "rawCategory": "appliances"
+    },
+    {
+      "slug": "cloudoon-mini-handheld-milk-frother-16cm-abs-stainless-steel-green-3-speed-coffee-mixer",
+      "name": "Cloudoon Mini Handheld Milk Frother - 16cm ABS & Stainless Steel, Green, 3-Speed Coffee Mixer",
+      "price": 214,
+      "category": "Appliances",
+      "image": "images/cloudoon-mini-handheld-milk-frother-16cm-abs-stainless-steel-green-3-speed-coffee-mixer.jpg",
+      "description": "A compact 3-speed handheld frother for coffee, matcha, and milkshakes, with a rust-resistant stainless steel head.",
+      "rawDescription": "Product Name: Mini Handheld Milk Frother\n\nMaterial: ABS + 304 Stainless Steel\n\nFeatures: Easy to Operate\n\nSize: 16\\*4.5 CM\n\nType:Kitchen Wireless Stirrer\n\nProduct Features and Benefits\n\nVersatile Kitchen Tool:\n\n* Perfect for creating frothed milk for coffees, lattes, cappuccinos, and hot chocolates.\n* Ideal for blending beverages like milkshakes, matcha tea, cocktails, and even whipping eggs for cooking or baking.\n\nConvenient and Efficient:\n\n* Lightweight and compact design makes it easy to store and use, even in small kitchens.\n* Operates with a high-energy motor, delivering powerful performance with over 1W speed for quick results.\n\n**Durable and Reliable:**\n\n* Equipped with a 304 stainless steel mixing head that resists rust and wear, ensuring long-lasting durability.\n* Powered by two AA batteries (not included), lasting over 1,000 uses for extended functionality.\n\nEasy Maintenance:\n\n* Quick and hassle-free cleaning with a simple 3-second rinse under running water or a quick wipe with a cloth.\n\nSafe and Practical:\n\n* Constructed with ABS and food-grade stainless steel materials, safe for daily use.\n* Provides a cost-effective way to enjoy café-style drinks and desserts at home.\n\nCompact and Portable:\n\n* Perfect for travel, picnics, or outdoor use, making it a versatile companion for both home and on-the-go cooking needs.\n\nEnhance your kitchen experience with this Mini Handheld Milk Frother, a perfect tool for creating delicious beverages and culinary delights effortlessly.\n\n* Perfect for creating frothed milk for coffees, lattes, cappuccinos, and hot chocolates.\n* Ideal for blending beverages like milkshakes, matcha tea, cocktails, and even whipping eggs for cooking or baking.\n* Lightweight and compact design makes it easy to store and use, even in small kitchens.\n* Operates with a high-energy motor, delivering powerful performance with over 1W speed for quick results.\n* Equipped with a 304 stainless steel mixing head that resists rust and wear, ensuring long-lasting durability.\n* Powered by two AA batteries **(not included),** lasting over 1,000 uses for extended functionality.\n* Quick and hassle-free cleaning with a simple 3-second rinse under running water or a quick wipe with a cloth.\n* Constructed with ABS and food-grade stainless steel materials, safe for daily use.\n* Provides a cost-effective way to enjoy café-style drinks and desserts at home.\n* Perfect for travel, picnics, or outdoor use, making it a versatile companion for both home and on-the-go cooking needs.",
+      "rawCategory": "appliances"
+    },
+    {
+      "slug": "portable-dual-cup-usb-juicer-white",
+      "name": "Portable Dual Cup USB Juicer - White",
+      "price": 1010,
+      "category": "Appliances",
+      "image": "images/portable-dual-cup-usb-juicer-white.jpg",
+      "description": "A USB-rechargeable portable juicer with two cups, built for smoothies, juice, and shakes at home or on the go.",
+      "rawDescription": "In the busy pace of life, find a touch of freshness and comfort in our **portable multifunctional juicer** . It is not only a juicer, but also a close companion for your healthy life, with strong power, easily unlocking every bit of nutrition and flavor of ingredients.\n\n* Equipped with a high-performance motor, it instantly reaches 21000 revolutions per minute, sweeping through ingredients like a storm. Whether it's hard fruits and vegetables or delicate complementary foods, they can quickly refine and release the purest and most delicious flavor.\n* Innovative design, one machine body is equipped with two juice cups, which can not only meet the daily juice demand, but also be switched flexibly. You can become a coffee grinder, grain grinder, or even a manufacturer of smoothies and Shaved ice, making your diet choices more diversified.\n* Do you want a homemade hand ground coffee? With simple operation, our juicer can grind coffee beans into delicate powder, bringing you a rich and mellow taste like a coffee shop, immersing you in the rich aroma of coffee every day.\n* In the hot summer, a glass of ice cream or Shaved ice is undoubtedly the best summer companion. With the power of high-speed rotation, fruit and ice are instantly integrated to create cool and delicate smoothies or Shaved ice, so that your taste buds can enjoy cool carnival in summer.\n* Lightweight in size and user-friendly in design, it can be easily carried for both daily home use and outdoor travel, allowing you to enjoy fresh homemade drinks anytime and anywhere, making health and deliciousness always accompany you.\n\nChoose our portable multifunctional juicer and embark on a surprising and healthy journey of food exploration. Every drink is a commitment and pursuit of quality of life, making every day full of vitality and color.\n\n* motor speed\n* multi-function\n* Easy to clean and safe\n* rechargeable\n* Portable",
+      "rawCategory": "appliances"
+    },
+    {
+      "slug": "digital-food-scale-10kg-1g-high-precision-kitchen-scale-for-cooking-baking-meal-prep-accurate-lcd-display-waterproof-abs-design",
+      "name": "Digital Food Scale 10kg/1g, High-Precision Kitchen Scale for Cooking Baking Meal Prep, Accurate LCD Display, Waterproof ABS Design",
+      "price": 536,
+      "category": "Utensils",
+      "image": "images/digital-food-scale-10kg-1g-high-precision-kitchen-scale-for-cooking-baking-meal-prep-accurate-lcd-display-waterproof-abs-design.jpg",
+      "description": "A 10kg-capacity digital kitchen scale accurate to 1g, with a tare function and a waterproof, easy-clean surface.",
+      "rawDescription": "**Product Details​** ​  \nUpgrade your kitchen efficiency with the high-precision digital food scale, designed to simplify cooking, baking, and meal preparation. With a sleek, compact build and advanced sensors, this scale delivers accurate measurements every time—helping you follow recipes perfectly and maintain a healthier lifestyle.\n\n​ **​Key Features & Benefits​** ​\n\n* ​ **​Ultra-Precise Measurements​** ​: Equipped with four sensitive sensors for accuracy within 1g, ensuring perfect results for baking, portion control, and ingredient tracking.\n* ​ **​Durable & Waterproof Design​** ​: Crafted from high-density ABS material, the scale resists spills and slips, offering long-lasting reliability in busy kitchens.\n* ​ **​Smart Space-Saving Build​** ​: Features a convenient hanging hole for easy storage, ideal for compact kitchens or organized countertops.\n* ​ **​Easy-to-Use Interface​** ​: Includes TARE function for net weight measurements and seamless unit conversion between grams and ounces.\n* ​ **​Long-Lasting Power​** ​: Powered by two AAA batteries (included) for wireless convenience and minimal maintenance.\n\n​ **​Ideal for Multiple Uses​** ​\n\n* Weigh ingredients like flour, sugar, and spices for consistent baking and cooking.\n* Track portion sizes for fitness goals or dietary planning.\n* Measure jewelry, crafts, or small items with precision.\n\n​ **​What’s Included​** ​\n\n* 1 x Digital Kitchen Scale\n* 2 x AAA Batteries\n\n​ **​Why Choose This Kitchen Scale?​** ​  \nAchieve culinary excellence with a tool that combines accuracy, durability, and effortless operation. Whether you’re a home cook or health enthusiast, this scale is your partner for flawless meals every time.\n\n* High precision 1g accuracy\n* Waterproof and non-slip design\n* Compact with hanging hole storage\n* Tare function and unit conversion\n* Long-lasting battery operation",
+      "rawCategory": "utensils"
+    },
+    {
+      "slug": "ailyons-1-6l-2-in-1-countertop-blender-grinder-350w-stainless-steel-blades",
+      "name": "AILYONS 1.6L 2-in-1 Countertop Blender & Grinder - 350W, Stainless Steel Blades",
+      "price": 1800,
+      "category": "Appliances",
+      "image": "images/ailyons-ailyons-1-6l-2-in-1-countertop-blender-grinder-350w-stainless-steel-blades.jpg",
+      "description": "A 1.6L countertop blender and grinder with a 350W motor, two speeds, and a pulse switch, built for smoothies, soups, spices, and nuts.",
+      "rawDescription": null,
+      "rawCategory": null
+    },
+    {
+      "slug": "wooden-handled-stainless-steel-sharp-peeler-with-built-in-bottle-opener",
+      "name": "Wooden-Handled Stainless Steel Sharp Peeler with Built-In Bottle Opener",
+      "price": 2250,
+      "category": "Utensils",
+      "image": "images/wooden-handled-stainless-steel-sharp-peeler-with-built-in-bottle-opener-for-fruits-vegetables-ergonomic-non-slip-handle-long-lasting-construction-essential-kitchen-tool.jpg",
+      "description": "A sharp stainless steel peeler with a comfortable wooden handle and a built-in bottle opener, ready for fruit, vegetables, and everyday prep.",
+      "rawDescription": "Wooden-Handled Stainless Steel Sharp Peeler with Built-In Bottle Opener for Fruits & Vegetables Ergonomic Non-Slip Handle Long-Lasting Construction Essential Kitchen Tool Wooden-Handled Stainless Steel Sharp Peeler with Built-In Bottle Opener for Fruits & Vegetables Ergonomic Non-Slip Handle Long-Lasting Construction Essential Kitchen Tool Wooden-Handled Stainless Steel Sharp Peeler with Built-In Bottle Opener for Fruits & Vegetables Ergonomic Non-Slip Handle Long-Lasting Construction Essential Kitchen Tool Wooden-Handled Stainless Steel Sharp Peeler with Built-In Bottle Opener for Fruits & Vegetables Ergonomic Non-Slip Handle Long-Lasting Construction Essential Kitchen Tool Wooden-Handled Stainless Steel Sharp Peeler with Built-In Bottle Opener for Fruits & Vegetables Ergonomic Non-Slip Handle Long-Lasting Construction Essential Kitchen Tool Wooden-Handled Stainless Steel Sharp Peeler with Built-In Bottle Opener for Fruits & Vegetables Ergonomic Non-Slip Handle Long-Lasting Construction Essential Kitchen Tool Wooden-Handled Stainless Steel Sharp Peeler with Built-In Bottle Opener for Fruits & Vegetables Ergonomic Non-Slip Handle Long-Lasting Construction Essential Kitchen Tool Wooden-Handled Stainless Steel Sharp Peeler with Built-In Bottle Opener for Fruits & Vegetables Ergonomic Non-Slip Handle Long-Lasting Construction Essential Kitchen Tool Wooden-Handled Stainless Steel Sharp Peeler with Built-In Bottle Opener for Fruits & Vegetables Ergonomic Non-Slip Handle Long-Lasting Construction Essential Kitchen Tool Wooden-Handled Stainless Steel Sharp Peeler with Built-In Bottle Opener for Fruits & Vegetables Ergonomic Non-Slip Handle Long-Lasting Construction Essential Kitchen Tool\n\nWooden-Handled Stainless Steel Sharp Peeler with Built-In Bottle Opener for Fruits & Vegetables Ergonomic Non-Slip Handle Long-Lasting Construction Essential Kitchen Tool",
+      "rawCategory": "appliances"
+    },
+    {
+      "slug": "kitcha-cast-iron-skillet-3-piece-set-heavy-duty-16cm-20cm-26cm-pans-for-frying-saute-cooking-pizza-more",
+      "name": "KITCHA Cast Iron Skillet 3-Piece Set - Heavy-Duty 16cm 20cm 26cm Pans for Frying, Saute, Cooking, Pizza & More",
+      "price": 2542,
+      "category": "Cookware",
+      "image": "images/kitcha-cast-iron-skillet-3-piece-set-heavy-duty-16cm-20cm-26cm-pans-for-frying-saute-cooking-pizza-more.jpg",
+      "description": "A pre-seasoned 3-piece cast iron skillet set (16cm, 20cm, 26cm) built for high-heat searing, frying, and everyday family cooking.",
+      "rawDescription": "KITCHA is dedicated to making everyday cooking simple and enjoyable.\n\nFrom cookware and food grinders to storage containers and kitchen tools, we design practical products that fit real home needs.  \nWe focus on quality materials, easy cleaning, and user-friendly designs — helping you cook with comfort and confidence every day.  \nFollow and favorite our store [**KITCHA**](https://www.jumia.co.ke/kitcha-cod/) to stay updated with new arrivals and kitchen essentials added regularly.\n\nKITCHA — Made for Everyday Cooking.\n\n详情页 1 带logo\n\nDesigned for **high-heat cooking, durability, and everyday family use** , this **3-piece cast iron skillet set** is ideal for African kitchens and outdoor cooking environments. Built to last, it delivers reliable performance for a wide range of cooking styles.\n\n* Superior Heat Retention & Even Cooking\n  \n    + Made from solid cast iron, these skillets heat evenly and retain heat for longer periods. Perfect for **searing meat, frying, sautéing vegetables, cooking eggs, and traditional dishes** , especially with high flame cooking.\n* Multi-Purpose & Versatile Use\n  \n    + Suitable for **gas stoves, electric stoves, ovens, grills, charcoal fire, and open flame** . Whether cooking at home, during family gatherings, or outdoors, this skillet set handles it all with ease.\n\n详情页 2 2\n\n* Pre-Seasoned & Ready to Use\n  \n    + Pre-seasoned with vegetable oil, the skillets are ready to use straight out of the box. With regular use, the natural non-stick surface improves over time, enhancing food flavor.\n* Heavy-Duty Construction for Long-Term Use\n  \n    + Thick, one-piece cast iron construction resists warping and withstands high temperatures. Ideal for **frequent cooking and large family meals** .\n* Comfortable & Secure Handles\n\nErgonomically designed handles provide a secure grip. Use with oven mitts for safe handling when cooking over high heat or transferring from fire to table.\n\n详情页 3\n\n* Easy Care & Maintenance\n  \n    + After washing, simply dry and apply a light coat of vegetable oil to prevent rust. **Hand wash only** ; not dishwasher safe. Proper care ensures long service life.\n\n* **Excellent Heat Retention** – Solid cast iron heats evenly and stays hot longer, ideal for frying, searing, sautéing, and everyday cooking.\n* **Versatile for Home & Outdoor Use** – Suitable for gas stoves, ovens, grills, charcoal fire, and open flame.\n* **Pre-Seasoned & Ready to Use** – Pre-coated with vegetable oil for better non-stick performance; improves with continued use.\n* **Heavy-Duty & Durable Design** – Thick cast iron construction resists warping and handles high-heat cooking with ease.\n* **Comfortable Handles & Easy Care** – Secure grip handles; hand wash only and lightly oil after use to maintain quality.",
+      "rawCategory": "cookware"
+    },
+    {
+      "slug": "kitcha-19-piece-silicone-cooking-utensils-set-with-knives-scissors-cutting-board-and-storage-rack",
+      "name": "KITCHA 19-Piece Silicone Cooking Utensils Set with Knives, Scissors, Cutting Board and Storage Rack",
+      "price": 1999,
+      "category": "Utensils",
+      "image": "images/kitcha-19-piece-silicone-cooking-utensils-set-with-knives-scissors-cutting-board-and-storage-rack-for-home-kitchen.jpg",
+      "description": "A 19-piece kitchen set with knives, scissors, a cutting board, and food-grade silicone spatulas, ladles, and tongs, plus a rack to keep it all organised.",
+      "rawDescription": "**KITCHA is dedicated to making everyday cooking simple and enjoyable.**\n\nFrom cookware and food grinders to storage containers and kitchen tools, we design practical products that fit real home needs.  \nWe focus on quality materials, easy cleaning, and user-friendly designs — helping you cook with comfort and confidence every day.\n\nFollow and favorite our store [**KITCHA**](https://www.jumia.co.ke/kitcha-cod/) to stay updated with new arrivals and kitchen essentials added regularly.\n\n**KITCHA — Made for Everyday Cooking.**\n\n**19-Piece Kitchen Set for Everyday Cooking**  \nThis 19-piece set includes knives, scissors, cutting board, spatula, soup spoon, pasta spoon, oil brush, whisk, food tongs, and a storage rack—everything needed for daily cooking. Perfect for families, apartments, or rental kitchens.\n\n* **Safe and Durable Silicone**  \n  Made from food-grade, heat-resistant silicone, the tools are flexible, non-toxic, and won’t damage non-stick or stone-coated cookware.\n* **Multi-Functional Tools**  \n  Includes 5 knives, kitchen scissors, and a cutting board for easy chopping, plus spatulas, ladles, tongs, and brushes for frying, boiling, mixing, and serving.\n* **Ergonomic and Easy to Clean**  \n  Comfortable handles make cooking less tiring. Smooth surfaces resist residue and clean easily with water and mild detergent.\n* **Neat Storage**  \n  The included rack keeps tools organized and accessible, reducing countertop clutter—ideal for small kitchens.\n* **Stylish, Unified Design**  \n  Coordinated color and design create a modern, tidy kitchen look, making cooking more enjoyable.\n\nA 2\n\n* 19-Piece  Complete Set – All essential kitchen tools included\n* Food-Grade Silicone – Safe, heat-resistant, and non-toxic\n* Multi-Functional Tools – Perfect for chopping, frying, boiling, mixing, and serving\n* Ergonomic Handles – Comfortable grip for easy\n* Easy to Clean – Smooth surfaces resist residue and wash quickly\n* Compact Rack – Keeps utensils neat and organized\n* Stylish Design – Coordinated colors for a modern, tidy kitchen",
+      "rawCategory": "appliances"
+    },
+    {
+      "slug": "nunix-aluminium-pressure-cooker-explosion-proof-5-litres-silver",
+      "name": "Nunix Aluminium Pressure Cooker - Explosion Proof - 5 Litres - Silver",
+      "price": 2099,
+      "category": "Appliances",
+      "image": "images/nunix-aluminium-pressure-cooker-explosion-proof-5-litres-silver.jpg",
+      "description": "An explosion-proof 5-litre aluminium pressure cooker with a polished finish, cooking meals up to 70% faster.",
+      "rawDescription": "Enjoy quick and easy meals with delicious and tasty food. This **Nunix explosion proof Pressure Cooker** cooks 70 percent faster, ensuring that you spend less time cooking and more quality time relaxing with family and friends. Make entertaining and serving meals a breeze. Order this Pressure Cooker online on Jumia Kenya and have it delivered right at your doorstep.\n\nSave energy\n\nThe shorter cooking time saves energy, as well as more of the nutrients and flavors in the food. The pressurized steam tenderizes meats naturally, leaving them moist and succulent for your enjoyment. Use the energy-efficient aluminum pressure cooker for your next meal and enjoy the enhanced flavors and nutrients of your food as you were meant to taste it.\n\n* Explosion-proof aluminum pressure cooker\n* High-grade polished mirror finishing\n* Capacity: 5L\n* Thickness: 2.5mm\n* Max. working pressure: 55kpa\n* Security pressure: 70-90kpa",
+      "rawCategory": "appliances"
+    },
+    {
+      "slug": "egg-boiler-7eggs-electric-egg-steamer-and-poacher",
+      "name": "Egg Boiler 7Eggs Electric Egg Steamer And Poacher",
+      "price": 988,
+      "category": "Appliances",
+      "image": "images/egg-boiler-7eggs-electric-egg-steamer-and-poacher.jpg",
+      "description": "A 7-egg electric steamer with auto shut-off and a stainless steel heating plate, for quick, evenly boiled eggs.",
+      "rawDescription": "This egg steam makes making of breakfast more as you can add egg protein to  your dish with much more fun. The egg steamer has a seven egg capacity ensuring you serve many guests and family with out worrying about power as this new and improved version is power economic there by saves you the bill mans stress. the poly-carbon is food safe and healthy   . Order this Egg Boiler online in Kenya and Jumia Kenya will deliver it to your home.7 egg capacity, Stainless steel flat heating plate, easy to wash, high build quality and easy and fast operation. Safe automatic power turn-off and over-temperature protection functions, Boiled eggs can be kept fresh, soft and nutritious through boiling. Indicator light shows the unit is working and power will be turned off automatically when all the water is used.It is a good helper for nutrition.\n\nCapacity: 7 Eggs  \nStainless steel flat heating plate, easy to wash  \nhigh build quality and easy and fast operation  \nSafe automatic power turn-off and over-temperature protection functions  \nBoiled eggs can be kept fresh, soft and nutritious through boiling.",
+      "rawCategory": "appliances"
+    },
+    {
+      "slug": "10-piece-kitchenware-set-stainless-steel-gold-stew-pot-milk-pan-and-soup-pot-cookware-set",
+      "name": "10-Piece Kitchenware Set - Stainless Steel Gold Stew Pot, Milk Pan, and Soup Pot Cookware Set",
+      "price": 3149,
+      "category": "Cookware",
+      "image": "images/10-piece-kitchenware-set-stainless-steel-gold-stew-pot-milk-pan-and-soup-pot-cookware-set.jpg",
+      "description": "A 10-piece stainless steel cookware set in gold, with stew pots, a milk pan, and a soup pot sized 16-24cm, heating evenly on any stove.",
+      "rawDescription": "About This Product  \nIdeal Cookware: This cookware set features easy assembly and efficient space-saving storage, making it an indispensable kitchen aid for every household.  \nNon-Stick Performance: Coated with a healthy, food-safe finish, this set is particularly suitable for households with elderly members or children. The non-stick surface ensures effortless food release and makes cleanup a breeze. Note: Please avoid heating the pans while empty (dry burning).  \nComfortable Handles: The handles are sturdy, durable, and ergonomically designed for a comfortable grip. They remain cool to the touch during cooking, ensuring safety and preventing burns.  \nBase Design: Featuring a solid, thick base, the cookware heats evenly—especially on induction cooktops—saving both energy and time! It is compatible with a wide variety of stove types.  \nVersatile Application: This cookware set is perfect for a wide range of culinary occasions—whether for everyday family meals or for hosting gatherings with friends and family during the holidays, it handles every task with ease.\n\nBase Type: Single-Layer Base  \nQuality Grade: First Class  \nMaterial: Stainless Steel  \nStyle: Modern Minimalist  \nFeature: Smokeless Cookware  \nModel: 10-Piece Set  \nWeight: 2.42 kg  \nLid Type: Glass  \nSpecifications: Small Set (16cm / 18cm / 20cm / 22cm / 24cm)",
+      "rawCategory": "cookware"
+    },
+    {
+      "slug": "cyfaza-2-tier-dish-rack-for-kitchen-counter-dish-drying-rack-with-draining-tray-plate-rack-dish-drainer",
+      "name": "CYFAZA 2 Tier Dish Rack for Kitchen Counter, Dish Drying Rack with Draining Tray, Plate Rack & Dish Drainer",
+      "price": 2399,
+      "category": "Storage",
+      "image": "images/cyfaza-2-tier-dish-rack-for-kitchen-counter-dish-drying-rack-with-draining-tray-plate-rack-dish-drainer-utensil-holder-and-cutting-board-holder.jpg",
+      "description": "A 2-tier stainless steel dish rack with removable drip trays, holding up to 35 plates plus utensils and a cutting board.",
+      "rawDescription": "A_1.jpg\n\nStop wasting time drying your dishes by hand. With this 2-tier dish rack with removable trays, you can save time and effort while keeping your kitchenware clean and ready to use. Order now and enjoy a more organized and functional kitchen!\n\n## **Double Capacity**\n\nThis 2-tier dish drying rack can store almost all your kitchen utensils. It can hold up to **35 plates** . On the left side, you can place cutting boards or pot lids, while the right side can hold cutting tools, chopsticks, and more. It dries and drains your dishes efficiently without taking up too much countertop space.\n\n## **Two Removable Drip Trays**\n\nThis 2-tier dish rack comes with two removable drip trays to prevent water from freshly washed dishes from dripping onto the lower tier or countertop. It helps keep the countertop clean and dry while draining dishes, reducing standing water and helping maintain hygiene. The trays are removable for easy cleaning and maintenance.\n\n## **Stable and Secure**\n\nThis dish rack is designed with R-shaped feet to ensure good stability and load-bearing capacity. It does not shake easily, helping prevent dishes from falling while allowing easy access and convenient storage of cutlery.\n\n## **Easy to Assemble and Clean**\n\nThis dish rack is very easy to assemble, allowing you to set it up quickly and smoothly. It is also easy to clean because it is fully detachable. You can take it apart for washing or simply wipe it with a damp cloth.\n\nA_2.jpg\n\n## **Package Includes**\n\n1 × Cutting Tool Holder  \n1 × Cutlery Holder  \n1 × Plate Rack  \n2 × Drip Trays  \n1 × Cutting Board / Pot Lid Holder  \n4 × Adjustable Feet  \n8 × Screws  \n2 × Screwdrivers\n\nA_3.jpg\n\n| |A_6.jpg |A_7.jpg |\n| --- | --- | --- |\n|Permeable and Drainage Rods |Removable Drip Tray |Non-Slip Corner Feet |\n\n* **Large Capacity:** 2-tier design holds up to 35 plates, plus boards, lids, and utensils.\n* **Double Drip Trays:** Removable trays keep countertops clean and dry.\n* **Stable Structure:** R-shaped legs ensure strong support without wobbling.\n* **Easy to Clean:** Fully detachable for quick washing or simple wipe-down.\n* **Space-Saving:** Compact design keeps your kitchen neat and organized.",
+      "rawCategory": "utensils"
+    },
+    {
+      "slug": "stainless-steel-sieve-set-3-professional-colanders-16-5-22-5cm-durable-kitchen-strainers",
+      "name": "Stainless Steel Sieve Set - 3 Professional Colanders, 16.5-22.5cm, Durable Kitchen Strainers",
+      "price": 2300,
+      "category": "Cookware",
+      "image": "images/stainless-steel-sieve-set-3-professional-colanders-16-5-22-5cm-durable-kitchen-strainers.jpg",
+      "description": "A set of 3 fine-mesh stainless steel sieves (16.5-22.5cm) for straining, sifting, and rinsing, nesting together for easy storage.",
+      "rawDescription": "The Pureliving Stainless Sieve Set is a versatile kitchen essential designed for both functionality and style. Crafted from high-quality stainless steel, this set includes three professional-grade mesh colanders in sizes 16.5cm, 19.5cm, and 22.5cm, perfect for all your straining, sifting, and rinsing needs. The durable construction ensures longevity, while the smooth surface prevents food from sticking, making cleanup a breeze. Each colander features a sturdy, mirror-finished wide rim and a firm wire framework that maintains its shape during use. The tiny holes allow for quick drainage while keeping food securely inside, whether you're straining pasta, washing vegetables, or rinsing grains. Designed with convenience in mind, these colanders can rest in pots, sinks, or on countertops, freeing your hands for other tasks. Nest them together for easy storage, and enjoy the ease of dishwasher-safe cleaning. Elevate your cooking experience with the Pureliving Stainless Sieve Set, an essential tool for busy kitchens that helps you prepare meals efficiently and with consistent quality.\n\n* Stainless steel colander is made of durable and attractive stainless steel with a sturdy base and convenient side handles.\n* It allows you to strain spaghetti, rice, vegetables & fruit and use it for washing or storing (e.g. fruit basket), straining and mixing.Our kitchen colander won't let food get stuck after using due to its smooth surface.\n* The strainer comes with handles for easy use and of highest quality stainless steel that makes it long lasting.\n* Tiny holes of the colander prevent Fall-Through, while Still providing quick drainage. They allow water to pass easily but at the same time keeping all food in the colander.\n*",
+      "rawCategory": "cookware"
+    },
+    {
+      "slug": "oraimo-thermogo-750ml-stainless-steel-insulated-thermos",
+      "name": "Oraimo ThermoGo 750ml Stainless Steel Insulated Thermos",
+      "price": 1800,
+      "category": "Storage",
+      "image": "images/oraimo-thermogo-750ml-stainless-steel-insulated-thermos.jpg",
+      "description": "A 750ml double-wall vacuum-insulated thermos with a built-in straw and safety lock lid, keeping drinks hot or cold for hours.",
+      "rawDescription": "### **Product Parameters:**\n\nOH-VIT201N\n\nCapacity: 750ml\n\nInner liner: S316 stainless steel\n\nShell: S304 stainless steel\n\nCup Lid: PP\n\nBottom Pad: Silicone\n\n\\*oraimo Lab test results\n\n### **Product Features:**\n\nInsulated Thermos oraimo ThermoGo OH-VIT201N\n\nInsulated Thermos oraimo ThermoGo OH-VIT201N features\n\n#### **750ml Large Capacity for All-Day Hydration**  \n**More Water, Less Refills**\n\nStay hydrated without the constant need to refill. ThermoGo’s 750ml large capacity replaces single-use plastic bottles, supporting a more sustainable, eco-friendly lifestyle. Ideal for work, workouts, or outdoor adventures—more water, less hassle.\n\nInsulated Thermos oraimo ThermoGo OH-VIT201N 750ml capacity\n\n#### **Advanced Insulation, Perfect Temperature Anywhere**  \n**Lock in Heat or Cold for Longer Enjoyment**\n\nThanks to dual-wall vacuum insulation, ThermoGo maintains your drink's ideal temperature for hours. Whether it's a warm morning coffee or a refreshing iced beverage, enjoy every sip exactly how you like it, wherever your day takes you.\n\nInsulated Thermos oraimo ThermoGo OH-VIT201N advanced insulation\n\n#### **Safety Lock Lid Design**  \n**Lock It Tight, No More Spills**\n\nSafety lock lid with a secure buckle to prevent accidental spills during travel.  \nKeeps the bottle tightly closed, even when jostled or dropped.  \nDesigned with convenience and safety in mind, ideal for active lifestyles.\n\nInsulated Thermos oraimo ThermoGo OH-VIT201N safety lock\n\n#### **Built-In Straw for Flexible Use, One-Handed Drinking**  \n**Sip or Pour, Your Way**\n\nWith a built-in, foldable straw, ThermoGo lets you sip effortlessly with one hand—no tilting, no spills.  \nPerfect for driving, workouts, or focused tasks where you need to stay hydrated.\n\nInsulated Thermos oraimo ThermoGo OH-VIT201N built-in straw\n\n#### **Sleek, Modern, and Made to Fit Your Life**  \n**Effortless Style, Everywhere You Go**\n\nMinimalistic yet eye-catching, ThermoGo blends premium aesthetics with practical design.  \nThe matte metallic finish resists fingerprints and stays fresh throughout your busy day.  \nA perfect match for your dynamic lifestyle.\n\nInsulated Thermos oraimo ThermoGo OH-VIT201N sleek design\n\n#### **Ergonomic Handle for Easy Handle , Comfortable Carry**  \n**Grab and Go, Effortlessly**\n\nDesigned with movement in mind, the sturdy ergonomic handle makes ThermoGo easy to grab and go. Lightweight yet durable, it’s the perfect companion for traveling, commuting, hiking, or simply tackling a busy day.\n\nInsulated Thermos oraimo ThermoGo OH-VIT201N ergonomic handle\n\n* 750ml Large Capacity\n* Double Wall Vacuum Insulation\n* Built-in Straw\n* Portable Handle",
+      "rawCategory": "cookware"
+    },
+    {
+      "slug": "15l-lunch-bag-portable-insulated-cooler-bag-for-travel-hiking-picnic",
+      "name": "15L Lunch Bag Portable Insulated Cooler Bag for Travel Hiking Picnic",
+      "price": 1000,
+      "category": "Storage",
+      "image": "images/15l-lunch-bag-portable-insulated-cooler-bag-for-travel-hiking-picnic.jpg",
+      "description": "A 15L insulated cooler bag with water-resistant fabric and multiple pockets, built for picnics, hikes, and everyday transport.",
+      "rawDescription": "Specifications:  \nColor: Black  \nMaterial: Oxford + EPE Foam + PEVA  \nCapacity: 15 L  \nSize: 23 \\* 31 \\* 19 cm / 9.1 \\* 12.2 \\* 7.5 in  \nWeight: approx. 360 g / 12.7 oz\n\n* Nylon shoulder strap and top handles for convenient use.\n* 15L large capacity with multiple pockets,meets your demands.\n* Good choice for camping, hiking, fishing, picnic, beach, BBQ, party.\n* Heat insulation material keep food warm,and keep cool with some ice cubes.\n* Adopts water-resistant oxford fabric and water-resistant PEVA liner, to use and easy to cleaning.",
+      "rawCategory": "cookware"
+    }
+  ],
+  "missingRaw": [
+    "AILYONS 1.6L 2-in-1 Countertop Blender & Grinder - 350W, Stainless Steel Blades"
+  ]
+}

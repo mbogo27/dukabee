@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Loading store…</title>
+<style>body{margin:0;display:grid;place-items:center;min-height:100vh;font:16px system-ui,sans-serif;color:#555;background:#faf7ef}</style>
+</head>
+<body>
+<p>Building your store…</p>
+<script type="module">
+  // Generated stores are rendered client-side from the URL: name, WhatsApp, catalog and look seed.
+  import { readConfig, renderStorePage } from '/lib/launch/dummy.mjs';
+  const q = new URLSearchParams(location.search);
+  try {
+    const { html } = renderStorePage(readConfig(q), { page: q.get('p') || 'home', slug: q.get('s') });
+    // Swap in the generated document (DOMParser rather than document.write), then re-add its scripts,
+    // which parsed-in <script> elements don't run on their own.
+    const doc = new DOMParser().parseFromString(html, 'text/html');
+    document.replaceChild(document.adoptNode(doc.documentElement), document.documentElement);
+    for (const old of document.querySelectorAll('script[src]')) {
+      const s = document.createElement('script');
+      s.src = old.getAttribute('src');
+      old.replaceWith(s);
+    }
+  } catch (err) {
+    document.body.innerHTML = `<p>Sorry, this store link looks broken. <a href="/">Make a new one</a>.</p>`;
+    console.error(err);
+  }
+</script>
+</body>
+</html>

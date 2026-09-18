@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Duka Bee Studio</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐝</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=DM+Sans:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="/studio/studio.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand"><span class="brand__mark" aria-hidden="true">🐝</span><span class="brand__name">Duka Bee</span><span class="brand__sub">Studio</span></div>
+  <p class="topbar__tag">Kiwanda web mode · vault → home + shop + N product pages, no editor step</p>
+  <button class="btn btn--primary" id="gen-all" type="button">Generate all three</button>
+</header>
+
+<div class="app">
+  <aside class="rail">
+    <section class="rail__block">
+      <h2 class="rail__title">Stores</h2>
+      <div class="stores" id="stores" role="radiogroup" aria-label="Demo store"></div>
+      <button class="btn btn--ink btn--block" id="gen-one" type="button">Generate</button>
+    </section>
+
+    <section class="rail__block">
+      <h2 class="rail__title">Pipeline <span class="rail__meta" id="run-meta"></span></h2>
+      <ol class="steps" id="steps">
+        <li data-stage="inventory"><span class="step__dot"></span><div><b>Inventory</b><small>Taskbee assets, catalog, store copy</small><em></em></div><time></time></li>
+        <li data-stage="brand"><span class="step__dot"></span><div><b>Compress → brand.md</b><small>text · entities · tokens · relations</small><em></em></div><time></time></li>
+        <li data-stage="vault"><span class="step__dot"></span><div><b>Expand → vault</b><small>shop + products, filterable / selectable</small><em></em></div><time></time></li>
+        <li data-stage="compose"><span class="step__dot"></span><div><b>Compose</b><small>atoms → molecules → sections → templates</small><em></em></div><time></time></li>
+        <li data-stage="pages"><span class="step__dot"></span><div><b>Pages</b><small>home, shop, one per product</small><em></em></div><time></time></li>
+      </ol>
+    </section>
+
+    <section class="rail__block rail__block--log">
+      <h2 class="rail__title">Log</h2>
+      <pre class="log" id="log" aria-live="polite"></pre>
+    </section>
+  </aside>
+
+  <main class="stage">
+    <nav class="tabs" role="tablist" aria-label="Output">
+      <button role="tab" data-tab="preview" aria-selected="true">Preview</button>
+      <button role="tab" data-tab="compare" aria-selected="false">Compare all three</button>
+      <button role="tab" data-tab="brand" aria-selected="false">brand.md</button>
+      <button role="tab" data-tab="vault" aria-selected="false">Vault</button>
+      <button role="tab" data-tab="findings" aria-selected="false">Findings <span class="count" id="findings-count"></span></button>
+    </nav>
+
+    <section class="panel" data-panel="preview">
+      <div class="toolbar">
+        <label class="field"><span>Page</span><select id="page-select"></select></label>
+        <div class="seg" role="radiogroup" aria-label="Device" id="device">
+          <button role="radio" aria-checked="true" data-device="desktop">Desktop</button>
+          <button role="radio" aria-checked="false" data-device="tablet">Tablet</button>
+          <button role="radio" aria-checked="false" data-device="mobile">Mobile</button>
+        </div>
+        <span class="toolbar__spacer"></span>
+        <button class="btn btn--ghost" id="reset-cart" type="button" title="Clear this store's cart in the preview">Reset cart</button>
+        <a class="btn btn--ghost" id="open-tab" target="_blank" rel="noopener" title="Open in new tab">Open ↗</a>
+      </div>
+      <div class="viewport" id="viewport">
+        <div class="browser" id="browser">
+          <div class="browser__bar"><span></span><span></span><span></span><code id="browser-url"></code></div>
+          <div class="browser__screen" id="screen"><iframe id="frame" title="Generated site preview"></iframe></div>
+        </div>
+        <div class="empty" id="preview-empty" hidden>
+          <p class="empty__kicker">Not generated yet</p>
+          <h3>Pick a store and press Generate.</h3>
+          <p>The pipeline reads the Taskbee demo data, writes brand.md, expands a vault, and composes the site, with no editor step.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel" data-panel="compare" hidden>
+      <div class="toolbar">
+        <div class="seg" role="radiogroup" aria-label="Page kind" id="compare-kind">
+          <button role="radio" aria-checked="true" data-kind="home">Home</button>
+          <button role="radio" aria-checked="false" data-kind="shop">Shop</button>
+          <button role="radio" aria-checked="false" data-kind="product">Product with choices</button>
+        </div>
+        <p class="toolbar__note">Same templates and generator; only brand.md tokens and vault data differ.</p>
+      </div>
+      <div class="compare" id="compare"></div>
+    </section>
+
+    <section class="panel panel--doc" data-panel="brand" hidden>
+      <div class="swatches" id="swatches"></div>
+      <article class="md" id="brand-md"></article>
+    </section>
+
+    <section class="panel panel--doc" data-panel="vault" hidden>
+      <div class="vault-head" id="vault-head"></div>
+      <div class="legend"><span class="chip chip--f">F</span> filterable <span class="chip chip--s">S</span> selectable (gates Add to Cart) <span class="chip chip--assumed">assumed</span> value not in source, needs seller confirmation</div>
+      <div class="table-wrap"><table class="vault" id="vault-table"></table></div>
+    </section>
+
+    <section class="panel panel--doc" data-panel="findings" hidden>
+      <div id="findings"></div>
+    </section>
+  </main>
+</div>
+<script src="/studio/studio.js" type="module"></script>
+</body>
+</html>

@@ -1,0 +1,230 @@
+{
+  "demo": "kladi",
+  "importedFrom": "C:/Users/mbogo/OneDrive/Documents/Projects/july/taskbee",
+  "importedAt": "2026-09-18T04:25:14.742Z",
+  "store": {
+    "name": "Kladi",
+    "wordmark": "KLADI",
+    "descriptor": "Everyday menswear",
+    "eyebrow": "Luku / product edit",
+    "heroTitle": "Everyday menswear, priced for real life.",
+    "heroDescription": "Jeans, hoodies, shirts, polos, and trousers made for the pace of Nairobi and the rest of Kenya.",
+    "footerCopy": "Everyday menswear, priced for real life. Orders handled on WhatsApp by a real person.",
+    "whatsapp": "254743747496",
+    "excludedLukuProducts": 20,
+    "styleNote": "Cream and restrained dark blue (luku.css / atelier.css)."
+  },
+  "products": [
+    {
+      "slug": "men-s-slim-fit-black-denim-jeans-free-belt-sizes-30-36",
+      "name": "Men's Slim Fit Black Denim Jeans+FREE BELT - Sizes 30-36",
+      "price": 999,
+      "category": "Men Jeans",
+      "image": "images/men-s-slim-fit-black-denim-jeans-free-belt-sizes-30-36.jpg",
+      "description": "A good pair of jeans should be well fitting and good looking without compromising the comfort of the wearer. Explore top quality jeans material, and the slim fit design will give you the perfect polished look. Take your casual wear to the next level with this masterpiece! For casual days, a basic t-shirt and jeans combo works every time.",
+      "rawDescription": "A good pair of jeans should be well fitting and good looking without compromising the comfort of the wearer. Explore top quality jeans material, and the slim fit design will give you the perfect polished look. Take your casual wear to the next level with this masterpiece! For casual days, a basic t-shirt and jeans combo works every time.\n## Specifications\n### Key Features\n* type: jeans\n* Color: Grey\n* category: Casual pant and work pant\n* Zipper closure",
+      "rawCategory": "trousers/jeans"
+    },
+    {
+      "slug": "men-s-slim-fit-denim-jeans-sky-blue-sizes-30-40",
+      "name": "Men's Slim Fit Denim Jeans - Sky Blue - Sizes 30-40",
+      "price": 1610,
+      "category": "Men Jeans",
+      "image": "images/men-s-slim-fit-denim-jeans-sky-blue-sizes-30-40.jpg",
+      "description": "The Sky Blue Slim Fit Denim Jeans are a quintessential addition to any modern man's wardrobe. Crafted from high-quality denim, these jeans offer a perfect blend of comfort and style, making them ideal for casual outings or relaxed weekends.",
+      "rawDescription": "The Sky Blue Slim Fit Denim Jeans are a quintessential addition to any modern man's wardrobe. Crafted from high-quality denim, these jeans offer a perfect blend of comfort and style, making them ideal for casual outings or relaxed weekends.\n## Specifications\n### Key Features\n.Type - jeans\n.Color - sky blue\n.Quality - high quality\n.Sizes - specified\n.Non fade",
+      "rawCategory": "trousers/jeans"
+    },
+    {
+      "slug": "men-s-color-blocked-hooded-sweatshirt-spring-autumn-style-khaki",
+      "name": "Men's color-blocked hooded sweatshirt, spring/autumn style (khaki)",
+      "price": 1675,
+      "category": "Outerwear",
+      "image": "images/men-s-color-blocked-hooded-sweatshirt-spring-autumn-style-khaki.jpg",
+      "description": "A color-blocked hooded sweatshirt in khaki, cut for easy spring and autumn layering.",
+      "rawDescription": "Men's color-blocked hooded sweatshirt, spring/autumn style (khaki)\n## Specifications\n### Key Features\nMain fabric composition: Cotton\nStyle: Pullover\nThickness: Regular",
+      "rawCategory": "hoodies"
+    },
+    {
+      "slug": "men-s-casual-straight-thick-denim-jeans-ash-gray",
+      "name": "Men's Casual Straight Thick Denim Jeans -Ash Gray",
+      "price": 754,
+      "category": "Men Jeans",
+      "image": "images/men-s-casual-straight-thick-denim-jeans-ash-gray.jpg",
+      "description": "Straight-leg jeans in a versatile ash grey wash, comfortable enough for spring through winter.",
+      "rawDescription": "* \n* **Straight-legged jeans**\n* Fashionable, casual, versatile jeans\n* Going with everything\n* This jeans show off your height\n* Fabric material: 72.7% cotton + 23.6% polyester fibre+3.7% Viscose fiber\n* Two side slash pockets for easy storage\n* Appropriate thickness, 5℃-25℃ weather can be worn\n\nKey Features:\n* \n* High quality denim jeans\n* Casual, fashion and going with everything\n* Comfortable fabric for direct skin contact\n* Breathable, Comfortable\n* It's the right thickness for Spring, Autumn, Winter",
+      "rawCategory": "trousers/jeans"
+    },
+    {
+      "slug": "fashion-side-pocket-jeans",
+      "name": "Fashion Side Pocket Jeans",
+      "price": 2700,
+      "category": "Trousers",
+      "image": "images/fashion-side-pocket-jeans.jpg",
+      "description": "Stretch-twill jeans with a side cargo pocket, built for a smart-casual everyday fit.",
+      "rawDescription": "A good pair of jeans should be well fitting and good looking without compromising the comfort of the wearer. Explore top quality jeans material, and the slim fit design will give you the perfect polished look. Take your casual wear to the next level with this masterpiece! For casual days, a basic t-shirt and jeans combo works every time.\n\nThis **trouser** is Stretching and breathable hence easier movement. Men Fashion-plus Offers the **Best Price** for this **Perfect Quality** . you can wear this trouser for casual, business and official **.** Don't miss these high quality pant that you can wear day in and day out.  \nyou can wear with Shirts and T-shirt of all color.\n\nKey Features:\n* category: Casual pant and work pant\n* Zipper closure\n* Men Casual jeans Pants Business Wear\n* Flat Front Twill Cotton Slacks Slim Fit Pants\n* High Quality Stretched Twill denim Fabric.More Comfortable\n* For Outdoor Business Wear Weekend And Normal Day",
+      "rawCategory": "trousers/jeans"
+    },
+    {
+      "slug": "men-s-spring-hooded-casual-jacket-blue",
+      "name": "Men's Spring Hooded Casual Jacket - Blue",
+      "price": 1493,
+      "category": "Outerwear",
+      "image": "images/men-s-spring-hooded-casual-jacket-blue.jpg",
+      "description": "A lightweight slim-fit hooded jacket in blue, built for easy spring layering.",
+      "rawDescription": "\n\nKey Features:\nThickness: Thin  \nMain Fabric Composition: Polyester  \nMaterial Function: Durable  \nFit: Slim Fit  \nHooded: Yes  \nColor: Blue",
+      "rawCategory": "hoodies"
+    },
+    {
+      "slug": "berrykey-men-s-color-block-hoodie-warm-fleece-lined-pullover-sweatshirt-casual-streetwear",
+      "name": "Berrykey Men's Color Block Hoodie Warm Fleece Lined Pullover Sweatshirt Casual Streetwear",
+      "price": 1442,
+      "category": "Outerwear",
+      "image": "images/berrykey-men-s-color-block-hoodie-warm-fleece-lined-pullover-sweatshirt-casual-streetwear.jpg",
+      "description": "A bold three-tone color-block hoodie in olive, black, and tan, with a fleece-lined hood and kangaroo pocket.",
+      "rawDescription": "This stylish men's color-block hoodie features a bold three-tone design in olive green, black, and tan, perfect for casual streetwear or everyday wear. Made from soft, breathable fabric with a cozy fleece-lined hood and front kangaroo pocket, it offers both comfort and modern urban flair. Ideal for layering in fall or winter, this pullover sweatshirt combines fashion-forward aesthetics with practical warmth.\n\n**Sizing Note** : This item uses Asian sizing, which runs one size smaller than standard Western sizes. Please order one size up for your usual fit. For example, if you normally wear M, choose L.\n\n**Q&A** :\n\n* Q: Is the hoodie true to size? A: No, it’s Asian-sized — order one size larger than your usual US/EU size for best fit.\n* Q: Can I machine wash this hoodie? A: Yes, wash cold on gentle cycle; tumble dry low to preserve color and shape.\n* Q: Does it have a drawstring hood? A: Yes, adjustable drawstrings allow you to customize hood tightness for wind protection or style.\n\nmen's color block hoodie # oversized sweatshirt # streetwear pullover # casual long sleeve top # fleece lined hooded jacket # autumn winter fashion # trendy menswear # comfortable daily wear # urban style clothing # unisex casual top\n\nKey Features:\n* Bold color block design\n* Soft fleece lined hood\n* Runs one size small\n* Easy machine wash care\n* Perfect autumn winter wear",
+      "rawCategory": "trousers/jeans"
+    },
+    {
+      "slug": "fashion-boutique-ankara-hoodies",
+      "name": "Fashion Boutique Ankara hoodies",
+      "price": 3500,
+      "category": "Outerwear",
+      "image": "images/fashion-boutique-ankara-hoodies.jpg",
+      "description": "A heavyweight hoodie trimmed in Ankara print, sized from small to 2XL.",
+      "rawDescription": "Heavyweight Ankara themed hoodies. Sizes from Small to 2xl\n\nKey Features:\n* Heavyweight\n* Non fade\n* Variety of sizes",
+      "rawCategory": "trousers/jeans"
+    },
+    {
+      "slug": "men-s-button-shirt-men-casual-print-shirt-long-sleeved-shirts",
+      "name": "Men'S Button Shirt Men Casual Print Shirt Long Sleeved Shirts",
+      "price": 769,
+      "category": "Shirts",
+      "image": "images/men-s-button-shirt-men-casual-print-shirt-long-sleeved-shirts.jpg",
+      "description": "A relaxed long-sleeve print shirt with a button-down collar, easy to dress up or down.",
+      "rawDescription": "Gender:Men  \nProduct Type:Shirts  \nClosure Type:Single Button  \nPattern Type:Print  \nShirts Type:Casual shirts  \nCollar:Button Down Collar  \nSleeve Length(cm):long sleeve  \nMaterial:Polyester  \nFeature:Anti-pilling, Anti-Shrink, Anti-wrinkle, Breathable, Sustainable, QUICK DRY  \nSeason:Summer, Spring Summer Autumn  \nSize:XL-3XL\n\nKey Features:\n* Product Type:Shirts\n* Closure Type:Single Button\n* Pattern Type:Print\n* Shirts Type:Casual shirts\n* Collar:Button Down Collar\n* Sleeve Length(cm):long sleeve\n* Material:Polyester\n* Feature:Anti-pilling, Anti-Shrink, Anti-wrinkle, Breathable, Sustainable, QUICK DRY\n* Season:Summer, Spring Summer Autumn\n* Size:XL-3XL",
+      "rawCategory": "t-shirts"
+    },
+    {
+      "slug": "dou-color-men-s-casual-long-sleeve-checkered-shirt-black",
+      "name": "Dou-color Men's Casual Long Sleeve Checkered Shirt - Black",
+      "price": 520,
+      "category": "Shirts",
+      "image": "images/dou-color-men-s-casual-long-sleeve-checkered-shirt-black.jpg",
+      "description": "A black and white plaid long-sleeve shirt with a relaxed, easy-to-style fit.",
+      "rawDescription": "This **Men's Black and White Plaid Long-Sleeve Shirt** is tailored for African men, combining classic plaid aesthetics with a casual fit, balancing daily commuting, smart casual and street wear, easily creating a neat and stylish look for diverse life scenarios and climate needs.\n\n#### Suitable Scenarios\n\nDaily commuting, smart casual work, street leisure, campus wear, spring/autumn daily layering, air-conditioned room layering, etc. All-season versatile, one shirt for multiple scenarios.\n\n#### Key Features\n\n* Classic black and white plaid design, simple and retro yet versatile, suitable for all ages and styles, aligning with African youth aesthetic\n* Soft and skin-friendly fabric, breathable and comfortable with good drape, warm in spring and autumn, cool-proof in air-conditioned rooms in summer, adapting to Africa's variable climate\n* Loose casual fit, suitable for all body types, easily creating a lazy and casual vibe, can be worn alone or layered\n* Pointed collar + single-breasted design, classic and timeless, suitable for all face shapes, comfortable and versatile for daily wear\n* Reinforced overlock craftsmanship, washable and durable, not easy to deform or fade, maintaining shape quality for long-term wear\n* Black and white plaid basic style, suitable for all skin tones, easy to match with jeans and casual pants, meeting different styling needs\n\n#### User Scene Story\n\nDuring spring and autumn in Lagos, Chidi wore this plaid shirt for a multi-scenario day: in the morning, he paired it with a white T-shirt for commuting, looking neat and casual, and the plaid made basic wear less monotonous; in the afternoon, he met friends at a café, wearing the shirt alone with a full lazy vibe; at night, he wore it as an outer layer in an air-conditioned room, comfortable and warm. One shirt solved all scenarios of commuting, leisure and layering, becoming a versatile must-have in the wardrobe.\n\nKey Features:\n* Classic black and white plaid design, simple and retro yet versatile, suitable for all ages and styles, aligning with African youth aesthetic\n* Soft and skin-friendly fabric, breathable and comfortable with good drape, warm in spring and autumn, cool-proof in air-conditioned rooms in summer, adapting to Africa's variable climate\n* Loose casual fit, suitable for all body types, easily creating a lazy and casual vibe, can be worn alone or layered\n* Pointed collar + single-breasted design, classic and timeless, suitable for all face shapes, comfortable and versatile for daily wear\n* Reinforced overlock craftsmanship, washable and durable, not easy to deform or fade, maintaining shape quality for long-term wear\n* Black and white plaid basic style, suitable for all skin tones, easy to match with jeans and casual pants, meeting different styling needs",
+      "rawCategory": "trousers/jeans"
+    },
+    {
+      "slug": "4-in-1-set-plain-round-neck-t-shirt-plain-tees-pure-cotton",
+      "name": "4 IN 1 SET PLAIN ROUND NECK T-SHIRT PLAIN TEES PURE COTTON",
+      "price": 1498,
+      "category": "T-Shirts",
+      "image": "images/4-in-1-set-plain-round-neck-t-shirt-plain-tees-pure-cotton.jpg",
+      "description": "A 4-piece set of plain round-neck tees in 100% cotton, in black, white, yellow, and light blue.",
+      "rawDescription": "Quality fabric  100% Cotton material gives you comfortable feeling with High Quality, Cool, Charming & FashionableNail the smart and demure look with this, Featuring high round neck, short shirt sleeves , Cotton  fabric ,Get the very best for the very least; expand your wardrobe, not your budget another way to say; 'quality, value & style'! Give your wardrobe a style upgrade with the latest fashion trends from our storeLooking for cool and affordable clothing and accessories for men, from brands that truly define class and style? Jumia has got you all covered, from an array of fabulous collections from the coolest brands, and at the best prices. Enjoy secure and convenient online shopping experience like never before, and straight delivery to your doorsteps. Cool and suitable for that classy casual look.Material: 100% CottonColors: **Black, White, Yellow, Light blue** Size Recommendation：M：45-55 KgL: 55-65KgXL:65-72Kg2XL:72-82Kg3XL:82-92Kg4XL:92-100Kg\n\nKey Features:\nMaterial: 100% CottonColors: **Black, White, Yellow, Light blue** Size Recommendation：",
+      "rawCategory": "t-shirts"
+    },
+    {
+      "slug": "long-sleeved-floral-men-s-slim-fit-shirt",
+      "name": "Long Sleeved Floral Men's Slim Fit Shirt",
+      "price": 1305,
+      "category": "Shirts",
+      "image": "images/long-sleeved-floral-men-s-slim-fit-shirt.jpg",
+      "description": "A slim-fit long-sleeve shirt in a bold gold-tone print, sized M to 3XL.",
+      "rawDescription": "Description\n\n* **Material** : Polyester\n* \n* Enjoy buy 3D printed African ethnic dashiki style casual slim fit **long sleeve** button down shirt.\n* Classic slim fit shape button down dress shirt with dashiki style printed.\n* Five colors and M-3XL sizes for choice, easy to wear. Fashion to match any long pants.\n* Please check the size chart in the pictures above before you buy it. In order to make the shirt fits better for you.\n* Please feel free to contact us if you have any questions about our products. We will try our best to let you have a wonderful shopping experience. Thanks!\n\nimage image image image\n\nKey Features:\n* It is made of high quality materials, durable enough for your daily wearing\n* Stylish and fashion design make you more attractive\n* Comfortable material\n* Suitable for a variety of occasions.",
+      "rawCategory": "trousers/jeans"
+    },
+    {
+      "slug": "heavy-duty-plain-cotton-polo-t-shirt-grey-black-colar",
+      "name": "Heavy-duty Plain Cotton Polo T-shirt- Grey Black Colar",
+      "price": 1200,
+      "category": "T-Shirts",
+      "image": "images/heavy-duty-plain-cotton-polo-t-shirt-grey-black-colar.jpg",
+      "description": "A classic polo shirt with a grey body and black button-spread collar for an instant smart-casual accent.",
+      "rawDescription": "Ultimately sleek and classic, this Polo Shirt **i** s one to have! It lends an instant designer accent to your casual look and is finished with short sleeves and a button-spread collar. Style it up with Jeans, Shorts, Chinos, Sneakers or Loafers. Whatever look you love, you'll love these top shirt designs at the most amazing prices on Jumia.  \n  \nBuy now online this **Polo Shirt** from JUMIA Kenya at the best price and have it delivered right at your doorstep.",
+      "rawCategory": "trousers/jeans"
+    },
+    {
+      "slug": "khaki-tactical-cargo-pants",
+      "name": "Khaki Tactical Cargo Pants",
+      "price": 4495,
+      "category": "Trousers",
+      "image": "images/khaki-tactical-cargo-pants.jpg",
+      "description": "Durable cotton-poly cargo pants with multiple utility pockets, built for hiking, travel, and everyday outdoor wear.",
+      "rawDescription": "Upgrade your outdoor performance with these Tactical Outdoor Cargo Pants designed for comfort, durability, and functionality. Built for active movement and rugged environments, these pants are ideal for hiking, camping, trekking, tactical training, security work, travel, and everyday outdoor wear.\n\nMade from a durable Cotton/Polyester blend, the fabric offers breathability and long-lasting performance while maintaining comfort throughout the day. The cargo pocket design provides convenient storage for essentials when on the move.\n\nKey Features:\n* Durable and breathable Cotton/Polyester fabric\n* Tactical cargo design with multiple utility pockets\n* Comfortable fit for outdoor and active use\n* Reinforced construction for durability\n* Lightweight and easy to wear\n* Suitable for hiking, camping, travel, training, and everyday use\n* Secure button closure with belt loops",
+      "rawCategory": "trousers/jeans"
+    },
+    {
+      "slug": "berrykey-men-s-sweatshirt-color-block-hoodie-casual-pullover-long-sleeve-outdoor-sportswear",
+      "name": "Berrykey Men's Sweatshirt Color Block Hoodie Casual Pullover Long Sleeve Outdoor Sportswear",
+      "price": 1530,
+      "category": "Outerwear",
+      "image": "images/berrykey-men-s-sweatshirt-color-block-hoodie-casual-pullover-long-sleeve-outdoor-sportswear.jpg",
+      "description": "A three-tone black, grey, and white pullover hoodie with a drawstring hood and kangaroo pocket, built for autumn and winter.",
+      "rawDescription": "Stay comfortable and stylish with this Men's Color Block Pullover Hoodie. Featuring a modern three-tone design in black, grey, and white, it offers a bold and contemporary look. Made from a soft and warm fabric blend, it is perfect for autumn and winter. The adjustable drawstring hood and convenient kangaroo pocket add practical functionality, making it ideal for casual wear, sports, or outdoor activities.\n\nPlease note that this hoodie is sized according to **Asian sizing standards** . Asian sizes typically run **one to two sizes smaller** than European or US sizes. For a comfortable fit, we strongly recommend that you consult the size chart and consider ordering one or two sizes up from your usual size.\n\n#### Q&A\n\n* **Q: What is the fit of this hoodie?**  \n  A: It has a regular fit. Please remember it is Asian sizing, so we advise sizing up for a better fit.\n* **Q: Is this hoodie suitable for cold weather?**  \n  A: Yes, the thick knit fabric provides good warmth, making it ideal for autumn and winter seasons.\n* **Q: Does it have a front pocket?**  \n  A: Yes, it features a large kangaroo pocket on the front, perfect for keeping your hands warm or storing small items.\n\nMen's Hoodie # Color Block Sweatshirt # Pullover Hoodie # Casual Wear # Autumn Winter Fashion # Streetwear # Men's Fashion # Sportswear # Warm Hoodie # Kangaroo Pocket\n\nKey Features:\n* Trendy Color Block Design\n* Warm Soft Fabric Blend\n* Adjustable Drawstring Hood\n* Convenient Kangaroo Pocket\n* Perfect For Casual Wear",
+      "rawCategory": "hoodies"
+    },
+    {
+      "slug": "outdoor-hiking-shirt-removable-quick-dry-breathable-tactical-shirt-beige",
+      "name": "Outdoor Hiking Shirt Removable Quick Dry Breathable Tactical Shirt - Beige",
+      "price": 4500,
+      "category": "Shirts",
+      "image": "images/outdoor-hiking-shirt-removable-quick-dry-breathable-tactical-shirt-beige.jpg",
+      "description": "A quick-dry tactical shirt with removable sleeves and breathable fabric, built for hiking, training, and outdoor days.",
+      "rawDescription": "Stay cool, dry, and mission-ready with the **Outdoor Hiking Shirt for Men** . Engineered for performance and adaptability, this tactical shirt combines rugged durability with all-day comfort. Featuring removable sleeves, quick-dry technology, and breathable fabric, it’s built to perform in the toughest outdoor environments — whether you’re hiking, training, camping, or on-duty. Designed for Kenyan terrain and beyond, this shirt keeps you comfortable, protected, and ready for action.\n\nKey Features:\n* Convertible Design: Removable long sleeves easily transform the shirt into a short-sleeve style — perfect for changing weather or activity levels.\n* Quick-Dry Fabric: Advanced moisture-wicking material keeps you dry and comfortable during intense outdoor use.\n* Breathable & Lightweight: Ventilated back panels and mesh underarms ensure optimal airflow in hot or humid conditions.\n* Tactical Functionality: Multiple secure pockets for tools, phones, and essentials — ideal for hiking, patrol, or range work.\n* Durable Construction: Made from rip-stop polyester/cotton blend to resist wear and tear in rugged environments.\n* Comfort Fit: Adjustable cuffs and a relaxed, ergonomic cut for unrestricted movement.\n* All-Terrain Ready: Suited for hiking, trekking, camping, security operations, and everyday tactical wear.",
+      "rawCategory": "trousers/jeans"
+    },
+    {
+      "slug": "gadtom-men-s-hoodie-casual-hooded-sweatshirts-full-zip-jacket-with-pocket",
+      "name": "Gadtom Men's Hoodie Casual Hooded Sweatshirts Full Zip Jacket With Pocket",
+      "price": 1048,
+      "category": "Outerwear",
+      "image": "images/gadtom-men-s-hoodie-casual-hooded-sweatshirts-full-zip-jacket-with-pocket.jpg",
+      "description": "A full-zip hooded sweatshirt in soft stretch cotton, with a front pocket for everyday wear.",
+      "rawDescription": "About this product  \n★ [Warm and comfortable fabric] This men's hoodie is made of high-quality stretch cotton and polyester, keeping you warm and comfortable even in cold weather. The soft, breathable lining keeps you dry and comfortable all day long.\n\n★ [Thoughtful design] This men's hoodie features a zipper closure for windproof warmth. Elastic cuffs provide ample arm room. Its classic quilted design is stylish and sophisticated.\n\n★ [Easy to wear] This men's sport hoodie is simple and easy to match, pairing perfectly with sweaters, shirts, and other tops. Jeans, sweatpants, and overalls are also great companions for this hoodie. A men's sport hoodie is an essential addition to your fall and winter style.\n\n★ [Suitable Occasions] This men's sports hoodie is suitable for many indoor and outdoor activities, including casual wear, streetwear, sports, fitness, school, travel, hunting, fishing, camping, and skiing. It also makes a great gift for family or friends for Halloween or Christmas.\n\nKey Features:\nbest product",
+      "rawCategory": "trousers/jeans"
+    },
+    {
+      "slug": "men-s-stylish-short-sleeve-3-in-1-t-shirt-men-s-casual-short-sleeve-top",
+      "name": "Men's Stylish Short-Sleeve 3-in-1 T-Shirt-Men's Casual Short Sleeve Top",
+      "price": 1270,
+      "category": "T-Shirts",
+      "image": "images/men-s-stylish-short-sleeve-3-in-1-t-shirt-men-s-casual-short-sleeve-top.jpg",
+      "description": "A 3-pack of short-sleeve graphic tees in black, apricot, and green, breathable and easy to style.",
+      "rawDescription": "**Welcome to our store!**\n\n**We offer a rich and diverse selection of trendy fashion items, with new arrivals added constantly—so be sure to stay tuned!**\n\n**Click \"Seller Information\" to enter our shop and browse even more fantastic products.**\n\n**We hope you enjoy your shopping experience! Thank you for your patronage, and we wish you a wonderful life!**\n\n**Product Description:**\n\n♦ This men's short-sleeve T-shirt features a silky-smooth, soft touch that is gentle on the skin and highly breathable. It feels lightweight and unrestrictive when worn, boasting excellent drape and wrinkle resistance. Ideal for daily wear, it keeps you feeling cool and fresh without trapping heat; furthermore, it retains its shape and resists pilling even after repeated washing.\n\n♦ Featuring a classic crew neck design, it contours comfortably to the neck without feeling tight or constricting, making it suitable for various body types. The all-over print showcases a unique letter graffiti pattern that exudes a trendy, cutting-edge vibe. Available in three colors—Black, Apricot, and Green—it is incredibly versatile and easy to style, allowing you to effortlessly create a casual street-style look.\n\n♦ Crafted using a refined printing and dyeing process, the patterns are crisp and vivid. They resist fading and cracking even after extended wear, ensuring the garment maintains its vibrant, high-quality texture over time.\n\n♦ Designed to flatter the figure, this tee suits a wide range of body shapes. It is perfect for any occasion—whether for daily commuting, shopping trips, outdoor excursions, gym workouts, or simply lounging at home. It pairs perfectly with jeans, chinos, or athletic shorts, making it an essential, versatile, and trendy staple for your summer wardrobe.\n\n**Product Features:**\n\n1\\. Premium Fabric: Silky-smooth and skin-friendly; breathable, wrinkle-resistant, and highly durable (resists deformation and pilling).\n\n2\\. Unique Letter Print Design: Trendy graffiti style that catches the eye and stands out from the crowd, delivering maximum street-style appeal.\n\n3\\. Classic Crew Neck Cut: Contours comfortably without constriction; suitable for various body types and easy to put on and take off.\n\n4\\. Refined Printing Process: Patterns are crisp, vivid, and long-lasting—resisting fading and cracking even after repeated washing.\n\n5\\. Versatile & Multi-Occasion: Available in three color options, making it suitable for a wide range of settings—from commuting and casual outings to sports activities and home leisure.\n\n**Product Specifications:**\n\nColors: Black, Apricot, Green\n\nMain Fabric Composition: Polyester Fiber\n\nStyle: Trendy & Fashionable\n\nPattern: Lettering\n\nNeckline: Round Neck\n\n**Package Contents:**  \n1 \\* Black Short-Sleeve T-Shirt with Letter Print  \n1 \\* Gray Short-Sleeve T-Shirt with Letter Print  \n1 \\* Khaki Short-Sleeve T-Shirt with Letter Print\n\nhttps://ke.jumia.is/cms/external/pet/FA113MW6CCH64NAFAMZ/e46a91557ad6915ce5db69d8a3bcdfe5.jpg https://ke.jumia.is/cms/external/pet/FA113MW6CCH64NAFAMZ/4248b45fde187d5ac9de6d3afcd5fed0.jpg https://ke.jumia.is/cms/external/pet/FA113MW6CCH64NAFAMZ/44c78c98f8ef729909ab14a2a7cbc436.jpg https://ke.jumia.is/cms/external/pet/FA113MW6CCH64NAFAMZ/f08483e7a8f7ec59068feb29acbe0936.jpg https://ke.jumia.is/cms/external/pet/FA113MW6CCH64NAFAMZ/2f98fbbf7f8d863e844b0b6ac140abdc.jpg https://ke.jumia.is/cms/external/pet/FA113MW6CCH64NAFAMZ/a478ca4ea94428ae0733f76278cd5eea.jpg https://ke.jumia.is/cms/external/pet/FA113MW6CCH64NAFAMZ/8acdc855143061b82b3a1062c1ecde45.jpg\n\nKey Features:\n* **Product Features:**\n* 1\\. Premium Fabric: Silky-smooth and skin-friendly; breathable, wrinkle-resistant, and highly durable (resists deformation and pilling).\n* 2\\. Unique Letter Print Design: Trendy graffiti style that catches the eye and stands out from the crowd, delivering maximum street-style appeal.\n* 3\\. Classic Crew Neck Cut: Contours comfortably without constriction; suitable for various body types and easy to put on and take off.\n* 4\\. Refined Printing Process: Patterns are crisp, vivid, and long-lasting—resisting fading and cracking even after repeated washing.\n* 5\\. Versatile & Multi-Occasion: Available in three color options, making it suitable for a wide range of settings—from commuting and casual outings to sports activities and home leisure.",
+      "rawCategory": "trousers/jeans"
+    },
+    {
+      "slug": "men-s-black-slim-fit-button-down-shirt-elegant-long-sleeve-design-for-office-events",
+      "name": "Men’s Black Slim Fit Button-Down Shirt – Elegant Long Sleeve Design for Office & Events",
+      "price": 1000,
+      "category": "Shirts",
+      "image": "images/men-s-black-slim-fit-button-down-shirt-elegant-long-sleeve-design-for-office-events.jpg",
+      "description": "A sleek black slim-fit shirt with a crisp finish, built for the office, evening events, or casual outings.",
+      "rawDescription": "Upgrade your wardrobe with this sleek black slim fit shirt that delivers a bold and refined look. Designed to enhance your body shape, it’s perfect for office settings, evening events, and casual outings. The smooth, durable fabric ensures comfort while maintaining a crisp, stylish finish throughout the day.\n\nKey Features:\n* Stylish black color for a bold, classy look\n* Slim fit cut for a modern, tailored feel\n* Long sleeves ideal for work or formal occasions\n* Soft fabric that feels comfortable and durable\n* Suitable for business, parties, and casual wear",
+      "rawCategory": "t-shirts"
+    },
+    {
+      "slug": "dark-grey-t-shirt-essential-logo-soft-cotton-sport-top-for-men",
+      "name": "Dark Grey T-Shirt Essential Logo Soft Cotton Sport Top For Men.",
+      "price": 395,
+      "category": "T-Shirts",
+      "image": "images/dark-grey-t-shirt-essential-logo-soft-cotton-sport-top-for-men.jpg",
+      "description": "A soft cotton essential tee in dark grey with a small chest logo print, easy to wear any day.",
+      "rawDescription": "Simplicity is often the best choice. No need for complexity, just ease. This is precisely such a T-shirt. It's not entirely minimalist, as there's a vivid and eye-catching print on the chest. But it can blend seamlessly into every day of yours, whether you're busy or relaxed, always by your side with its soft cotton fabric, offering you a sense of ease and comfort.\n\nKey Features:\nRegular fit",
+      "rawCategory": "t-shirts"
+    },
+    {
+      "slug": "heavy-duty-plain-cotton-polo-t-shirt-black",
+      "name": "Heavy-duty Plain Cotton Polo T-shirt- Black",
+      "price": 1150,
+      "category": "T-Shirts",
+      "image": "images/heavy-duty-plain-cotton-polo-t-shirt-black.jpg",
+      "description": "A classic black polo shirt finished with short sleeves and a button-spread collar.",
+      "rawDescription": "Ultimately sleek and classic, this Polo Shirt **i** s one to have! It lends an instant designer accent to your casual look and is finished with short sleeves and a button-spread collar. Style it up with Jeans, Shorts, Chinos, Sneakers or Loafers. Whatever look you love, you'll love these top shirt designs at the most amazing prices on Jumia.  \n  \nBuy now online this **Polo Shirt** from JUMIA Kenya at the best price and have it delivered right at your doorstep.",
+      "rawCategory": "trousers/jeans"
+    }
+  ],
+  "missingRaw": []
+}
