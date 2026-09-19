@@ -25,7 +25,7 @@
       draft = draftFromQuery(q);
       linkParams = { name: q.get('name') || '', wa: q.get('wa') || '', cat: q.get('cat') || '', seed: q.get('seed') || '' };
     }
-    const { html } = renderStorePage(draft, { page: q.get('p') || 'home', slug: q.get('s'), linkParams });
+    const { html } = renderStorePage(draft, { page: q.get('p') || 'home', slug: q.get('s'), linkParams, demo: !q.get('draft') });
     // Swap in the generated document, then re-add its scripts (parsed-in <script> elements don't run on their own).
     const doc = new DOMParser().parseFromString(html, 'text/html');
     document.replaceChild(document.adoptNode(doc.documentElement), document.documentElement);

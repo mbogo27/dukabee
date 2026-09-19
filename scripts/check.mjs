@@ -16,8 +16,10 @@ for (const demo of DEMOS) {
     const html = fs.readFileSync(path.join(out, 'site', page.path), 'utf8');
     ok(html.includes('class="kw-header"') && html.includes('class="kw-footer"'), `${page.path}: shared header/footer`);
     ok(html.includes('data-search-form'), `${page.path}: header search`);
+    ok(html.includes('src="/analytics.js"'), `${page.path}: analytics loader`);
+    ok(/class="kw-demobar" href="\/"/.test(html), `${page.path}: floating Built with Duka Bee bar`);
     ok(html.includes('data-cart-open') && html.includes('data-cart ') && html.includes('data-checkout-form'), `${page.path}: cart icon + overlay + checkout form`);
-    for (const src of html.matchAll(/src="([^"]+\.(?:jpg|png|webp|avif))"/g)) ok(fs.existsSync(path.join(out, 'site', path.dirname(page.path), src[1])), `${page.path}: image ${src[1]} exists`);
+    for (const src of html.matchAll(/src="([^"]+\.(?:jpg|png|webp|avif))"/g)) if (!src[1].startsWith('/')) ok(fs.existsSync(path.join(out, 'site', path.dirname(page.path), src[1])), `${page.path}: image ${src[1]} exists`);
   }
   for (const p of products) {
     const html = fs.readFileSync(path.join(out, 'site', 'product', `${p.slug}.html`), 'utf8');

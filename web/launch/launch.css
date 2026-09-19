@@ -140,7 +140,7 @@ fieldset.field{min-width:0}
 
 @media (max-width:900px){
   .preview-grid{grid-template-columns:1fr}
-  .want{position:static;order:-1}
+  .want{position:static}
   .step--preview .frame{height:68vh}
 }
 @media (max-width:640px){
@@ -156,4 +156,55 @@ fieldset.field{min-width:0}
   .pcard__upload{padding:0 14px}
   .wizard__nav{position:sticky;bottom:0;padding:12px 0 calc(12px + env(safe-area-inset-bottom));background:linear-gradient(transparent,var(--bg) 24%)}
   .wizard__nav .btn{flex:1;min-width:0}
+}
+
+/* preview toolbar + claim card */
+.preview-tools{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.preview-tools .device{margin-bottom:0}
+.want__price{margin:10px 0 4px!important;font-size:17px!important;color:var(--ink)!important}
+.want__price b{font:800 26px var(--display);letter-spacing:-.03em}
+.want__addons{margin:12px 0 0!important;padding:8px 12px;border-radius:10px;background:var(--bee-soft);font-size:13px!important;color:var(--ink)!important}
+.want__fine a{color:var(--ink);font-weight:700;text-underline-offset:3px}
+
+/* fullscreen preview: a phone-sized store on phones, a desktop-sized store everywhere else */
+.frame{position:relative}
+.frame__exit{position:absolute;right:14px;bottom:14px;z-index:5;display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 16px;border:1.5px solid var(--ink);border-radius:999px;background:var(--bee);font:700 14px var(--body);cursor:pointer;color:var(--ink);box-shadow:3px 3px 0 var(--ink)}
+.frame__exit[hidden]{display:none}
+body.is-fs{overflow:hidden}
+.step--preview .frame.is-fullscreen{position:fixed;inset:0;z-index:200;width:100vw;max-width:none;height:100vh;height:100dvh;margin:0;border:0;border-radius:0;box-shadow:none}
+.frame.is-fullscreen .frame__bar{display:none}
+.frame.is-fullscreen:fullscreen{width:100%;height:100%}
+
+@media (max-width:640px){
+  .device{display:none}
+  .step--preview .frame.is-mobile{width:100%;border-width:1.5px;border-radius:16px}
+  .preview-tools{width:100%}
+  .preview-tools .btn{flex:1}
+  .frame__exit span{display:none}
+  .frame__exit{padding:0;width:46px;justify-content:center}
+}
+
+/* add-on choices in the request form */
+.addon-pick{margin:0 0 16px;padding:12px 14px;border:1.5px solid var(--line);border-radius:12px;background:var(--surface)}
+.addon-pick legend{padding:0 6px;font-weight:700;font-size:14px}
+.addon-pick legend a{margin-left:6px;font-weight:500;font-size:12px;color:var(--muted);text-underline-offset:3px}
+.addon-pick label{display:flex;align-items:flex-start;gap:10px;padding:7px 0;font-size:14px;font-weight:500;cursor:pointer}
+.addon-pick input{width:20px;height:20px;margin-top:1px;accent-color:var(--ink);flex:none}
+.addon-pick small{display:block;color:var(--muted);font-weight:400}
+
+/* small phones: nothing may be wider than the screen */
+.preview-grid>*{min-width:0}
+@media (max-width:900px){.preview-grid{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:560px){
+  .want{padding:18px}
+  .want h2{font-size:24px}
+  .want .btn{width:100%}
+  .want__edit{gap:6px 14px}
+  .preview-head{gap:0}
+  .preview-tools .btn{min-height:44px}
+  .modal{width:calc(100% - 16px)}
+  .modal form{padding:22px 18px 20px}
+  .modal h2{font-size:26px}
+  .btn--block{white-space:normal}
+  .wizard__nav .btn{padding-inline:12px}
 }

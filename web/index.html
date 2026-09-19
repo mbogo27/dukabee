@@ -7,18 +7,22 @@
 <meta name="description" content="Duka Bee builds a complete online shop (home, shop and product pages, cart and WhatsApp checkout) from a few details about your business.">
 <meta property="og:title" content="Duka Bee — your shop online in a minute">
 <meta property="og:description" content="See your online store live in minutes, with search, filters and WhatsApp checkout.">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐝</text></svg>">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="/brand/favicon-32.png">
+<link rel="apple-touch-icon" href="/brand/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=DM+Sans:wght@400;500;700&display=swap">
 <link rel="stylesheet" href="/landing.css">
+<script src="/analytics.js"></script>
 </head>
 <body>
 <a class="skip" href="#launch">Skip to the launch form</a>
 <header class="nav">
   <div class="wrap nav__inner">
-    <a class="logo" href="/"><span aria-hidden="true">🐝</span> Duka Bee</a>
+    <a class="logo" href="/"><img class="logo__bee" src="/brand/bee-256.png" width="34" height="34" alt=""> Duka Bee</a>
     <nav aria-label="Main">
-      <a href="#examples">Examples</a>
+      <a href="#pricing">Pricing</a>
+      <a href="/addons/">Add-ons</a>
       <a href="#samples">Sample stores</a>
       <a href="#how">How it works</a>
       <a class="btn btn--bee btn--sm" href="/launch/">Launch a store</a>
@@ -38,6 +42,23 @@
           <li>Buyers order on WhatsApp, with size, colour and quantity already filled in</li>
           <li>Prices in KSh, works on any phone</li>
         </ul>
+        <div class="perks">
+          <article class="perk">
+            <img class="perk__icon" src="/brand/icons/preview.png" width="52" height="52" alt="">
+            <h3>Preview before launch</h3>
+            <p>See your store live in about a minute.</p>
+          </article>
+          <article class="perk">
+            <img class="perk__icon" src="/brand/icons/chat-order.png" width="52" height="52" alt="">
+            <h3>WhatsApp checkout</h3>
+            <p>Orders land in your chat, ready to confirm.</p>
+          </article>
+          <article class="perk">
+            <img class="perk__icon" src="/brand/icons/growth.png" width="52" height="52" alt="">
+            <h3>Grow with add-ons</h3>
+            <p>M-Pesa, bulk upload, chatbot and more.</p>
+          </article>
+        </div>
       </div>
 
       <form class="launch" id="launch" action="/launch/" method="get">
@@ -54,8 +75,11 @@
             <span class="field__help">Orders from your store go straight to this number.</span>
           </label>
         </div>
-        <ol class="mini-steps" aria-label="The four steps">
-          <li>Brand</li><li>Details</li><li>Catalog</li><li>Preview</li>
+        <ol class="steps-mini" aria-label="The four steps">
+          <li><span class="steps-mini__n" aria-hidden="true">1</span><b>Brand</b><small>Logo &amp; colours</small></li>
+          <li><span class="steps-mini__n" aria-hidden="true">2</span><b>Details</b><small>Contact &amp; delivery</small></li>
+          <li><span class="steps-mini__n" aria-hidden="true">3</span><b>Catalog</b><small>3 to 5 products</small></li>
+          <li><span class="steps-mini__n" aria-hidden="true">4</span><b>Preview</b><small>See it live</small></li>
         </ol>
         <div class="launch__go">
           <button class="btn btn--ink btn--lg" type="submit">Build my store →</button>
@@ -65,12 +89,43 @@
     </div>
   </section>
 
+  <section class="pricing" id="pricing" aria-labelledby="pricing-title">
+    <div class="wrap">
+      <p class="eyebrow">Simple pricing</p>
+      <h2 id="pricing-title">One price. Your store, live.</h2>
+      <div class="pricing__grid">
+        <div class="price-card">
+          <p class="price-card__label">Store activation</p>
+          <p class="price-card__price" aria-label="KSh 10,000"><span>KSh</span>10,000</p>
+          <p class="price-card__sub">Domain and hosting included</p>
+          <a class="btn btn--bee btn--lg" href="/launch/">Build my store first →</a>
+          <p class="price-card__fine">See it live before you commit. Nothing to pay to preview it.</p>
+        </div>
+        <div class="price-list">
+          <h3>What's included</h3>
+          <ul class="ticks">
+            <li>A complete online store: home page, shop, and a page for every product</li>
+            <li>Search and filters, so buyers find what they want fast</li>
+            <li>A cart with size, colour and quantity, and checkout that lands in your WhatsApp</li>
+            <li>Your brand on every page: logo, colours and style</li>
+            <li>Domain and hosting, included</li>
+            <li>Works on any phone</li>
+          </ul>
+          <div class="price-more">
+            <p><b>Want more?</b> Add M-Pesa payments, bulk product upload, WhatsApp integration, or a designed logo + brand kit.</p>
+            <a class="btn btn--ghost btn--sm" href="/addons/">See add-ons →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section class="samples" id="samples">
     <div class="wrap">
       <p class="eyebrow">Sample stores</p>
       <h2>Browse a store in your niche.</h2>
       <p class="sub">Eight ready-made catalogs, each with search, filters, a cart and WhatsApp checkout. Open one and try it.</p>
-      <div class="chips chips--links" id="sample-links"></div>
+      <div class="store-grid" id="sample-links"></div>
     </div>
   </section>
 
@@ -103,7 +158,7 @@
   </section>
 </main>
 
-<footer class="foot"><div class="wrap foot__inner"><span>© Duka Bee · Built with Kiwanda web mode</span><span>Built by <a href="https://utilityinformatics.co.ke/" target="_blank" rel="noopener">Utility Informatics</a></span></div></footer>
+<footer class="foot"><div class="wrap foot__inner"><span>© Duka Bee · Built with Kiwanda web mode</span><span>Built by <a href="https://utilityinformatics.co.ke/" target="_blank" rel="noopener">Utility Informatics</a></span><span class="foot__credit">Icons by <a href="https://www.flaticon.com/free-icon/browser_2742432" target="_blank" rel="noopener" title="browser icon">Smashicons</a>, <a href="https://www.flaticon.com/free-icon/dealing_3857300" target="_blank" rel="noopener" title="dealing icon">Umeicon</a> and <a href="https://www.flaticon.com/free-icon/growth_2194894" target="_blank" rel="noopener" title="growth icon">Magnific</a> from <a href="https://www.flaticon.com/" target="_blank" rel="noopener" title="Flaticon">Flaticon</a></span></div></footer>
 <script type="module" src="/landing.js"></script>
 </body>
 </html>

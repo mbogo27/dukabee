@@ -40,8 +40,7 @@ body.kw-locked{overflow:hidden}
 .kw-cta-set{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .kw-cta-set .kw-cta{min-height:50px;font-size:15px}
 .kw-card__ctas{display:flex;flex-wrap:wrap;gap:6px;margin-top:auto}
-.kw-card__ctas .kw-cta{margin-top:0!important}
-.kw-card--framed .kw-card__ctas{display:grid;grid-template-columns:1fr 1fr}
+.kw-card__ctas .kw-cta{flex:1 1 auto;margin-top:0!important;white-space:nowrap}
 .kw-card--soft .kw-card__ctas{justify-content:center}
 .kw-cta:hover:not(:disabled){transform:translateY(-1px)}
 .kw-cta:disabled{opacity:.42;cursor:not-allowed}
@@ -78,8 +77,26 @@ body.kw-locked{overflow:hidden}
 .kw-page-title{font-size:clamp(2.4rem,5vw,4rem)}
 
 /* ---------- product grid + card molecule ---------- */
-.kw-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:28px 18px}
-.kw-grid--strip{grid-template-columns:repeat(auto-fill,minmax(180px,1fr))}
+/* Product rows use explicit column counts.
+   Full-width sections (home featured strip): 4 to 5 columns on desktop.
+   Shop beside the filter sidebar: 3 to 4 columns on desktop.
+   Narrower screens step down (3, then 2), and the strip only shows complete rows so no card is left on its own. */
+.kw-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px 18px}
+
+/* featured strip (full width) */
+@media (min-width:640px){.kw-grid--strip{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (min-width:900px){.kw-grid--strip{grid-template-columns:repeat(4,minmax(0,1fr))}}
+@media (min-width:1140px){.kw-grid--strip[data-cols="5"]{grid-template-columns:repeat(5,minmax(0,1fr))}}
+@media (min-width:640px){.kw-grid--strip[data-cols="3"]{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:639px){.kw-grid--strip>.kw-card:nth-child(n+5){display:none}}
+@media (min-width:640px) and (max-width:899px){.kw-grid--strip>.kw-card:nth-child(n+4){display:none}}
+@media (min-width:900px) and (max-width:1139px){.kw-grid--strip[data-cols="5"]>.kw-card:nth-child(n+5){display:none}}
+
+/* shop grid (beside the filter sidebar; full width once the sidebar stacks above at 820px) */
+@media (min-width:900px){.kw-shop-layout .kw-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (min-width:1200px){.kw-shop-layout .kw-grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
+@media (max-width:820px){.kw-shop-layout .kw-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:599px){.kw-shop-layout .kw-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 .kw-density--compact .kw-grid{gap:16px}
 .kw-card{display:flex;flex-direction:column;min-width:0}
 .kw-card__media{display:block;aspect-ratio:4/5;background:#fff;overflow:hidden;border-radius:var(--kw-radius)}
@@ -91,7 +108,7 @@ body.kw-locked{overflow:hidden}
 .kw-card__title a{text-decoration:none}
 .kw-card__title a:hover{text-decoration:underline}
 .kw-card__price{margin:6px 0 12px;font-weight:700;font-size:14px}
-.kw-card .kw-cta{margin-top:auto;min-height:38px;padding:6px 14px;font-size:13px;align-self:flex-start}
+.kw-card .kw-cta{margin-top:auto;min-height:38px;padding:6px 14px;font-size:13px;align-self:flex-start;white-space:nowrap}
 /* card shapes */
 .kw-card--framed .kw-card{border:1px solid var(--kw-ink);background:var(--kw-surface)}
 .kw-card--framed .kw-card__media{border-bottom:1px solid var(--kw-ink)}
@@ -200,8 +217,9 @@ body.kw-locked{overflow:hidden}
 .kw-toast button{border:0;background:none;color:var(--kw-highlight);font-weight:700;text-decoration:underline;cursor:pointer;padding:0}
 
 /* ---------- logo, search, price range, delivery & returns ---------- */
-.kw-logo{display:inline-flex;align-items:center;gap:10px}
-.kw-logo__img{height:36px;width:auto;max-width:96px;object-fit:contain;border-radius:calc(var(--kw-radius)/3)}
+.kw-logo{display:inline-flex;align-items:center;gap:10px;min-width:0;max-width:100%}
+.kw-logo__text{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.kw-logo__img{height:36px;width:auto;max-width:96px;flex:none;object-fit:contain;border-radius:calc(var(--kw-radius)/3)}
 .kw-search{position:relative;display:flex;align-items:center;flex:0 1 240px;min-width:0;margin-left:auto}
 .kw-search svg{position:absolute;left:12px;color:var(--kw-muted);pointer-events:none}
 .kw-search input{width:100%;min-height:40px;padding:0 12px 0 38px;border:1px solid var(--kw-line);border-radius:var(--kw-radius);background:var(--kw-surface);font-size:14px}
@@ -236,6 +254,7 @@ body.kw-locked{overflow:hidden}
   .kw-shop-layout{gap:12px}
 }
 @media (max-width:560px){
+  .kw-logo{font-size:20px;letter-spacing:.03em}
   .kw-header__inner{gap:10px 14px;flex-wrap:wrap;padding:10px 0}
   .kw-search{order:5;flex:1 1 100%;margin-left:0}
   .kw-nav{margin-left:auto}
@@ -250,4 +269,34 @@ body.kw-locked{overflow:hidden}
   .kw-stat__value{font-size:1.25rem}
   .kw-specs div{grid-template-columns:110px 1fr}
 }
+@media (max-width:380px){
+  .kw-wrap{width:calc(100% - 24px)}
+  .kw-grid,.kw-grid--strip{gap:16px 8px}
+  .kw-card--framed .kw-card__body{padding:10px 10px 12px}
+  .kw-card__title{font-size:14px}
+  .kw-card__eyebrow{font-size:10px;letter-spacing:.06em}
+  .kw-card .kw-cta{padding:6px 10px;font-size:12.5px}
+  .kw-cta-set{grid-template-columns:1fr}
+  .kw-drawer__head,.kw-lines,.kw-checkout{padding-left:16px;padding-right:16px}
+  .kw-drawer__foot{padding-left:16px;padding-right:16px}
+}
 @media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+
+/* ---------- demo bar: floating "Built with Duka Bee" (demo stores only) ---------- */
+.kw-demobar{position:fixed;left:50%;bottom:16px;z-index:45;transform:translateX(-50%);display:flex;align-items:center;gap:12px;max-width:calc(100% - 24px);padding:7px 7px 7px 14px;border-radius:999px;background:#16140f;color:#fff;text-decoration:none;font:500 14px/1.2 system-ui,-apple-system,'Segoe UI',sans-serif;white-space:nowrap;box-shadow:0 10px 30px rgb(0 0 0 / .3),inset 0 0 0 1px rgb(255 255 255 / .14)}
+.kw .kw-demobar{color:#fff}
+.kw-demobar__bee{width:26px;height:26px;flex:none;object-fit:contain}
+.kw-demobar b{font-weight:700}
+.kw-demobar__text span{opacity:.68}
+.kw-demobar__go{flex:none;padding:9px 15px;border-radius:999px;background:#ffc905;color:#16140f;font-weight:700;transition:background .15s}
+.kw-demobar:hover .kw-demobar__go,.kw-demobar:focus-visible .kw-demobar__go{background:#ffd633}
+.kw-demobar:focus-visible{outline:3px solid #ffc905;outline-offset:3px}
+.kw-has-demobar .kw-footer{padding-bottom:104px}
+.kw-has-demobar .kw-toast{bottom:84px}
+@media (max-width:560px){
+  .kw-demobar{left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom));max-width:none;transform:none;justify-content:space-between;gap:10px;padding-left:12px}
+  .kw-demobar__text{min-width:0;overflow:hidden;text-overflow:ellipsis}
+  .kw-demobar__text span{display:none}
+  .kw-demobar__bee{width:24px;height:24px}
+  .kw-has-demobar .kw-footer{padding-bottom:96px}
+}

@@ -95,10 +95,10 @@ export function storeUrl(linkParams, extra = {}, path = '/store/') {
   return `${path}?${new URLSearchParams({ ...linkParams, ...extra })}`;
 }
 
-export function renderStorePage(draft, { page = 'home', slug: productSlug, linkParams, assetBase = '/assets/', path = '/store/' } = {}) {
+export function renderStorePage(draft, { page = 'home', slug: productSlug, linkParams, assetBase = '/assets/', path = '/store/', demo = false } = {}) {
   const vault = buildVault(draft);
   if (!vault.products.length) throw new Error('This store has no products yet.');
-  const site = composeSite(vault, { base: SENTINEL, productBase: SENTINEL });
+  const site = composeSite(vault, { base: SENTINEL, productBase: SENTINEL, demo });
   const target = page === 'shop' ? site.pages.find((p) => p.kind === 'shop')
     : page === 'product' ? site.pages.find((p) => p.slug === productSlug) || site.pages.find((p) => p.kind === 'shop')
     : site.pages[0];

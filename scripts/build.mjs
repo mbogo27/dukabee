@@ -19,7 +19,19 @@ cp('web', '.');
 cp('kiwanda/runtime', 'assets');
 for (const f of ['atoms.mjs', 'molecules.mjs', 'sections.mjs', 'templates.mjs', 'pages.mjs']) cp(`kiwanda/${f}`, `lib/kiwanda/${f}`);
 for (const f of ['vault.mjs', 'contrast.mjs']) cp(`pipeline/${f}`, `lib/pipeline/${f}`);
-for (const f of ['config.mjs', 'niches.mjs', 'brand.mjs', 'store.mjs']) cp(`launch/${f}`, `lib/launch/${f}`);
+for (const f of ['config.mjs', 'niches.mjs', 'brand.mjs', 'store.mjs', 'addons.mjs']) cp(`launch/${f}`, `lib/launch/${f}`);
+
+// The landing-page showcase shows products only: no models or people. (Kladi's alphabetical first photo is a
+// couple wearing the Ankara hoodie, so the picks are curated per demo. The big tile is the first pick.)
+const SHOWCASE = {
+  kladi: ['hooded-jacket-blue', 'berrykey-fleece-hoodie', 'quick-dry-hiking-shirt'],
+  jikoni: ['cast-iron-skillet-set', 'gold-cookware-set-10', 'em-air-fryer-5l'],
+  rembo: ['loreal-men-power-age-serum', 'maybelline-fit-me-foundation', 'nivea-uv-face-spf50'],
+};
+const showcasePicks = (demo, products) => {
+  const picks = (SHOWCASE[demo] || []).map((slug) => products.find((p) => p.slug === slug)).filter(Boolean);
+  return picks.length === 3 ? picks : products.slice(0, 3);
+};
 
 const showcase = [];
 for (const demo of DEMOS) {
@@ -31,7 +43,7 @@ for (const demo of DEMOS) {
     id: demo, name: shop.name, vertical: manifest.vertical, tagline: shop.tagline,
     products: manifest.counts.products, pages: manifest.counts.pages,
     colors: ['paper', 'soft', 'accent', 'highlight', 'ink'].map((k) => shop.theme.color[k]),
-    images: products.slice(0, 3).map((p) => `/demos/${demo}/${p.image}`),
+    images: showcasePicks(demo, products).map((p) => `/demos/${demo}/${p.image}`),
   });
   console.log(`  ✓ ${demo}: ${manifest.counts.pages} pages`);
 }

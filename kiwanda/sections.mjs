@@ -37,6 +37,14 @@ const policyList = (policy) => policy ? [
   policy.note ? paragraph({ class: 'kw-policy__note' }, esc(policy.note)) : '',
 ].join('') : '';
 
+// Demo stores only: a floating bar that leads back to Duka Bee. Rendered with Duka Bee's own colours, not the
+// store's, because it belongs to the platform rather than the shop. Real seller stores never get it.
+export const demoBar = ({ href = '/' } = {}) => el('a', { class: 'kw-demobar', href, 'data-track': 'demobar_click', 'aria-label': 'Built with Duka Bee. Make your own store.' }, [
+  '<img class="kw-demobar__bee" src="/brand/bee-256.png" width="26" height="26" alt="" onerror="this.remove()">',
+  '<span class="kw-demobar__text"><b>Built with Duka Bee</b><span> · make your own store</span></span>',
+  '<span class="kw-demobar__go" aria-hidden="true">Get started &rarr;</span>',
+]);
+
 export const footer = ({ shop, base }) => el('footer', { class: 'kw-footer' }, div({ class: 'kw-wrap kw-footer__inner' }, [
   div({}, [logoLink({ shop, href: `${base}index.html` }), paragraph({}, esc(shop.footer))]),
   div({ class: 'kw-footer__contact' }, [
@@ -51,7 +59,7 @@ export const footer = ({ shop, base }) => el('footer', { class: 'kw-footer' }, d
 // Product grid: tiles 1…N cards with responsive reflow. `cap` turns it into the featured strip.
 export const productGrid = ({ products, base, cap, id }) => {
   const items = cap ? products.slice(0, cap) : products;
-  return el('div', { class: `kw-grid${cap ? ' kw-grid--strip' : ''}`, id, 'data-count': items.length },
+  return el('div', { class: `kw-grid${cap ? ' kw-grid--strip' : ''}`, id, 'data-count': items.length, 'data-cols': cap ? Math.min(items.length, 5) : false },
     items.map((p) => productCard({ product: p, href: routes(base).product(p.slug), base })));
 };
 
@@ -80,7 +88,7 @@ export const hero = ({ shop, products, base }) => {
 
 export const featuredStrip = ({ shop, products, base }) => el('section', { class: 'kw-section' }, div({ class: 'kw-wrap' }, [
   div({ class: 'kw-section__head' }, [heading(2, {}, 'Featured'), link({ class: 'kw-textlink', href: routes(base).shop }, `See all ${products.length} →`)]),
-  productGrid({ products, base, cap: Math.min(6, Math.max(4, shop.featuredCount)) }),
+  productGrid({ products, base, cap: Math.min(5, Math.max(4, shop.featuredCount)) }),
 ]));
 
 // Filter control: reads only filterable attributes (facets), with a zero-result empty state.

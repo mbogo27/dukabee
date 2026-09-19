@@ -5,16 +5,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Launch your store · Duka Bee</title>
 <meta name="description" content="Build your online store in four short steps and see it live before you commit to anything.">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐝</text></svg>">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="/brand/favicon-32.png">
+<link rel="apple-touch-icon" href="/brand/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=DM+Sans:wght@400;500;700&display=swap">
 <link rel="stylesheet" href="/landing.css">
 <link rel="stylesheet" href="/launch/launch.css">
+<script src="/analytics.js"></script>
 </head>
 <body class="wiz">
 <header class="nav">
   <div class="wrap nav__inner">
-    <a class="logo" href="/"><span aria-hidden="true">🐝</span> Duka Bee</a>
+    <a class="logo" href="/"><img class="logo__bee" src="/brand/bee-256.png" width="34" height="34" alt=""> Duka Bee</a>
     <nav aria-label="Launch">
       <button class="linkbtn" type="button" id="start-over">Start over</button>
     </nav>
@@ -144,27 +147,32 @@
     <div class="preview-head">
       <div>
         <h1 id="h-preview">Here's your store</h1>
-        <p class="lead" id="look-note">Browse it, search it, filter it, try the cart. It's yours to try.</p>
+        <p class="lead" id="look-note">Browse it, search it, filter it, try the cart. Then scroll down to claim it.</p>
       </div>
       <div class="preview-tools">
         <div class="device" role="radiogroup" aria-label="Preview size" id="device">
           <button type="button" role="radio" aria-checked="true" data-device="desktop">Desktop</button>
           <button type="button" role="radio" aria-checked="false" data-device="mobile">Phone</button>
         </div>
+        <button type="button" class="btn btn--ghost btn--sm" id="fs-btn" aria-label="View your store fullscreen">&#x26F6; Fullscreen</button>
       </div>
     </div>
 
+    <!-- The preview comes first on every screen size; the claim card follows it. -->
     <div class="preview-grid">
       <div class="frame" id="frame-wrap">
         <div class="frame__bar"><span></span><span></span><span></span><code id="frame-url"></code></div>
         <div class="frame__screen" id="screen"><iframe id="preview" title="Your store preview"></iframe></div>
+        <button type="button" class="frame__exit" id="fs-exit" hidden aria-label="Exit fullscreen">&#x2715; <span>Exit fullscreen</span></button>
       </div>
 
-      <aside class="want" aria-labelledby="want-title">
+      <aside class="want" id="claim" aria-labelledby="want-title">
         <h2 id="want-title">Like what you see?</h2>
-        <p>Tell us and we'll get your store live. No payment now.</p>
-        <button type="button" class="btn btn--bee btn--lg" id="want-btn">I want this store</button>
-        <p class="want__fine">Also want a custom domain, more products or product photos? Ask about our add-on bundles when we call.</p>
+        <p class="want__price"><b>KSh 10,000</b> to claim and launch it. Domain and hosting included.</p>
+        <p>No payment now. We confirm the details with you on WhatsApp first.</p>
+        <button type="button" class="btn btn--bee btn--lg" id="want-btn">Claim &amp; launch &middot; KSh 10,000</button>
+        <p class="want__addons" id="want-addons" hidden></p>
+        <p class="want__fine">Need M-Pesa, bulk product upload, WhatsApp integration or a logo + brand kit? <a href="/addons/">See add-ons</a>.</p>
         <div class="want__edit">
           <button type="button" class="linkbtn" data-goto="0">Edit brand</button>
           <button type="button" class="linkbtn" data-goto="1">Edit details</button>
@@ -181,28 +189,32 @@
   </div>
 </main>
 
-<!-- Intent capture: a real submission saved to the leads table. No payment. -->
+<!-- Intent capture: saves a real lead, then opens WhatsApp with a structured, prefilled message to Duka Bee. No payment. -->
 <dialog class="modal" id="lead" aria-labelledby="lead-title">
   <form method="dialog" id="lead-form" novalidate>
-    <button type="button" class="modal__x" id="lead-close" aria-label="Close">×</button>
+    <button type="button" class="modal__x" id="lead-close" aria-label="Close">&times;</button>
     <div id="lead-fields">
-      <h2 id="lead-title">Activate my store</h2>
-      <p class="modal__lead">Leave your details and we'll follow up to get it live.</p>
+      <h2 id="lead-title">Claim &amp; launch my store</h2>
+      <p class="modal__lead">Activation is <b>KSh 10,000</b>, domain and hosting included. No payment now: we save your request and open WhatsApp with your details ready to send.</p>
       <label class="field">Your name <input name="name" autocomplete="name" required></label>
       <label class="field">Phone / WhatsApp <input name="phone" type="tel" inputmode="tel" autocomplete="tel" required></label>
       <label class="field">Store name <small>(change it here if you like)</small> <input name="storeName" maxlength="80"></label>
       <label class="field">Best time to reach you
         <select name="bestTime"><option>Morning</option><option>Afternoon</option><option>Evening</option><option selected>Anytime</option></select>
       </label>
-      <label class="check check--small"><input type="checkbox" name="wantsAddons"><span>Also tell me about add-on bundles</span></label>
+      <fieldset class="addon-pick">
+        <legend>Optional add-ons <a href="/addons/">What are these?</a></legend>
+        <div id="lead-addons"></div>
+      </fieldset>
       <input class="hp" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
       <p class="form-error" id="lead-error" role="alert" hidden></p>
-      <button class="btn btn--ink btn--lg btn--block" type="submit" id="lead-submit">Send my request</button>
+      <button class="btn btn--ink btn--lg btn--block" type="submit" id="lead-submit">Send on WhatsApp &rarr;</button>
     </div>
     <div id="lead-done" hidden>
-      <div class="done__icon" aria-hidden="true">✓</div>
-      <h2>Request received</h2>
+      <div class="done__icon" aria-hidden="true">&#x2713;</div>
+      <h2 id="done-title">Request saved</h2>
       <p id="done-msg"></p>
+      <a class="btn btn--bee btn--lg btn--block" id="wa-open" target="_blank" rel="noopener">Open WhatsApp and send &rarr;</a>
       <button type="button" class="btn btn--ghost btn--block" id="done-close">Back to my store</button>
     </div>
   </form>

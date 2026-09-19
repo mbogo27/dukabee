@@ -2,6 +2,11 @@ import { emptyDraft, seedCatalog, blankProduct, normalisePhone, MAX_PRODUCTS, MI
 import { NICHES, POLICY_PRESETS } from '/lib/launch/niches.mjs';
 import { VIBES, isHex } from '/lib/launch/brand.mjs';
 import { CONTACT_WA, ACTIVATION_FEE } from '/lib/launch/config.mjs';
+import { ADDONS, addonById, addonLine } from '/lib/launch/addons.mjs';
+
+// Analytics (GA4, see /analytics.js). No personal data: never the seller's name, phone or store name.
+const track = (name, params) => window.dukabeeTrack && window.dukabeeTrack(name, params);
+const STEP_NAMES = ['brand', 'details', 'catalog', 'preview'];
 
 const $ = (s, r = document) => r.querySelector(s);
 const $$ = (s, r = document) => [...r.querySelectorAll(s)];
@@ -286,7 +291,8 @@ function go(n) {
   saveNow();
   const h = $(`.step[data-step="${n}"] h1`); h.tabIndex = -1; h.focus({ preventScroll: true });
   window.scrollTo({ top: 0, behavior: 'smooth' });
-  history.replaceState(null, '', `#${['brand', 'details', 'catalog', 'preview'][n]}`);
+  history.replaceState(null, '', `#${STEP_NAMES[n]}`);
+  track('launch_step', { step_name: STEP_NAMES[n], step_number: n + 1 });
 }
 function tryGo(n) {
   if (n <= step) return go(n);
@@ -309,19 +315,43 @@ $('#start-over').addEventListener('click', (e) => {
 });
 
 // ---------- step 4: preview ----------
-let device = 'desktop';
+const frameWrap = $('#frame-wrap');
+const isSmall = () => matchMedia('(max-width: 820px)').matches;
+const isFs = () => frameWrap.classList.contains('is-fullscreen');
+// Open on the size of the device being used: a phone-sized store on phones, a desktop-sized store otherwise.
+let device = isSmall() ? 'mobile' : 'desktop';
+$$('#device [data-device]').forEach((x) => x.setAttribute('aria-checked', String(x.dataset.device === device)));
+
+let previewTracked = false;
+function trackContext() {
+  const products = draft.catalog.products.filter((p) => p.name.trim() && Number(p.price) > 0);
+  return {
+    niche: draft.catalog.niche || 'custom',
+    brand_mode: draft.brand.mode,
+    product_count: products.length,
+    has_own_photos: products.some((p) => !!p.photo),
+    device: isSmall() ? 'mobile' : 'desktop',
+  };
+}
 function renderPreview() {
   saveNow();
+  // One store_preview per visit: re-opening the preview after an edit is the same intent, not a new one.
+  if (!previewTracked) { previewTracked = true; track('store_preview', trackContext()); }
   const url = `/store/?draft=local&t=${Date.now()}`;
   $('#preview').src = url;
   $('#frame-url').textContent = `${(draft.brand.name || 'yourstore').toLowerCase().replace(/[^a-z0-9]+/g, '') || 'yourstore'}.dukabee.co.ke`;
+  renderClaim();
   requestAnimationFrame(fit);
 }
 function fit() {
+  const fs = isFs();
+  // Fullscreen follows the device itself; the Desktop/Phone toggle only applies to the inline preview.
+  const mobile = fs ? isSmall() : device === 'mobile';
+  frameWrap.classList.toggle('is-mobile', mobile && !fs);
   const screen = $('#screen'), f = $('#preview');
   const w = screen.clientWidth, h = screen.clientHeight;
   if (!w) return;
-  const width = device === 'mobile' ? w : Math.max(1200, w);
+  const width = mobile ? w : Math.max(1200, w);
   const scale = Math.min(1, w / width);
   f.style.width = `${width}px`; f.style.height = `${h / scale}px`; f.style.transform = `scale(${scale})`;
 }
@@ -330,17 +360,53 @@ $('#device').addEventListener('click', (e) => {
   const b = e.target.closest('[data-device]'); if (!b) return;
   device = b.dataset.device;
   $$('#device [data-device]').forEach((x) => x.setAttribute('aria-checked', String(x === b)));
-  $('#frame-wrap').classList.toggle('is-mobile', device === 'mobile');
   fit();
 });
 
-// ---------- intent capture ----------
+// Fullscreen: real browser fullscreen where it exists, plus a fixed overlay so it also works on iPhone Safari.
+async function enterFullscreen() {
+  frameWrap.classList.add('is-fullscreen'); document.body.classList.add('is-fs');
+  $('#fs-exit').hidden = false; $('#fs-exit').focus({ preventScroll: true });
+  try { await frameWrap.requestFullscreen?.({ navigationUI: 'hide' }); } catch {}
+  fit(); requestAnimationFrame(fit);
+}
+function exitFullscreen() {
+  if (document.fullscreenElement) document.exitFullscreen().catch(() => {});
+  frameWrap.classList.remove('is-fullscreen'); document.body.classList.remove('is-fs');
+  $('#fs-exit').hidden = true; $('#fs-btn').focus({ preventScroll: true });
+  fit(); requestAnimationFrame(fit);
+}
+$('#fs-btn').addEventListener('click', enterFullscreen);
+$('#fs-exit').addEventListener('click', exitFullscreen);
+document.addEventListener('fullscreenchange', () => { if (!document.fullscreenElement && isFs()) exitFullscreen(); });
+document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && isFs() && !document.fullscreenElement) exitFullscreen(); });
+
+// ---------- add-ons picked on /addons/ (shared through localStorage) ----------
+const ADDON_KEY = 'dukabee:addons';
+const readAddons = () => { try { return (JSON.parse(localStorage.getItem(ADDON_KEY)) || []).filter((id) => addonById(id)); } catch { return []; } };
+const writeAddons = (ids) => { try { localStorage.setItem(ADDON_KEY, JSON.stringify(ids)); } catch {} };
+
+function renderClaim() {
+  const picked = readAddons();
+  const el = $('#want-addons');
+  el.hidden = !picked.length;
+  el.textContent = picked.length ? `Add-ons in your request: ${picked.map((id) => addonById(id).title).join(', ')}` : '';
+}
+function renderLeadAddons() {
+  const picked = readAddons();
+  $('#lead-addons').innerHTML = ADDONS.map((a) => `<label><input type="checkbox" value="${a.id}"${picked.includes(a.id) ? ' checked' : ''}><span>${esc(a.title)}<small>${esc(a.price)}</small></span></label>`).join('');
+}
+$('#lead-addons').addEventListener('change', () => { writeAddons($$('#lead-addons input:checked').map((i) => i.value)); renderClaim(); });
+window.addEventListener('storage', (e) => { if (e.key === ADDON_KEY) { renderClaim(); if ($('#lead').open) renderLeadAddons(); } });
+
+// ---------- intent capture → structured WhatsApp message to Duka Bee ----------
 const dlg = $('#lead'), leadForm = $('#lead-form');
 const leadErr = $('#lead-error');
 $('#want-btn').addEventListener('click', () => {
-  leadForm.name.value = leadForm.name.value || '';
+  track('claim_click', trackContext());
   leadForm.phone.value = leadForm.phone.value || draft.details.phone;
   leadForm.storeName.value = draft.brand.name;
+  renderLeadAddons();
   $('#lead-fields').hidden = false; $('#lead-done').hidden = true; leadErr.hidden = true;
   dlg.showModal(); leadForm.name.focus();
 });
@@ -354,38 +420,89 @@ const draftForLead = () => {
   return s;
 };
 
+// What the team needs to act on a request, in a shape that reads well in WhatsApp (*bold* headings).
+function brandSummary() {
+  const b = draft.brand;
+  const style = b.vibe === 'surprise' ? 'surprise' : (VIBES[b.vibe]?.label || 'clean').toLowerCase();
+  if (b.mode === 'logo') return `own logo, colour ${b.primary}, ${style} style`;
+  if (b.mode === 'kit') return `brand kit, colour ${b.primary}, ${style} style`;
+  return 'Duka Bee house style';
+}
+function buildWhatsAppMessage({ ref, name, phone, storeName, bestTime, addons }) {
+  const d = draft;
+  const niche = NICHES[d.catalog.niche]?.label || 'Custom catalog';
+  const count = d.catalog.products.filter((p) => p.name.trim() && Number(p.price) > 0).length;
+  const delivery = [...d.details.policy, d.details.policyNote.trim()].filter(Boolean).join('; ') || '-';
+  const lines = [
+    'Hi Duka Bee, I want this store.',
+    '',
+    `*STORE REQUEST*${ref ? ` (${ref})` : ''}`,
+    `Store: ${storeName}`,
+    `Catalog: ${niche}, ${count} products`,
+    `Brand: ${brandSummary()}`,
+    `Store WhatsApp: +${normalisePhone(d.details.phone)}`,
+    `Location: ${d.details.location.trim() || '-'}`,
+    `Delivery & returns: ${delivery}`,
+    '',
+    '*ABOUT ME*',
+    `Name: ${name}`,
+    `Phone: +${phone}`,
+    `Best time to reach me: ${bestTime}`,
+    '',
+    '*PACKAGE*',
+    `Activation: ${ACTIVATION_FEE} (domain + hosting included)`,
+    `Add-ons: ${addons.length ? '' : 'none'}`,
+    ...addons.map((id) => `- ${addonLine(id)}`),
+  ];
+  return lines.join('\n').replace(/\nAdd-ons: \n/, '\nAdd-ons:\n');
+}
+const waUrl = (text) => `https://wa.me/${CONTACT_WA}?text=${encodeURIComponent(text)}`;
+
 leadForm.addEventListener('submit', async (e) => {
   e.preventDefault();
   const f = new FormData(leadForm);
-  const name = String(f.get('name') || '').trim(), phone = String(f.get('phone') || '').trim();
+  const name = String(f.get('name') || '').trim(), phoneRaw = String(f.get('phone') || '').trim();
+  const storeName = String(f.get('storeName') || '').trim() || draft.brand.name;
+  const bestTime = String(f.get('bestTime') || 'Anytime');
+  const addons = $$('#lead-addons input:checked').map((i) => i.value);
+  const fail = (msg, field) => { leadErr.textContent = msg; leadErr.hidden = false; if (field) { field.setAttribute('aria-invalid', 'true'); field.focus(); } };
   leadErr.hidden = true;
-  const fail = (msg, field) => { leadErr.innerHTML = esc(msg); leadErr.hidden = false; if (field) { field.setAttribute('aria-invalid', 'true'); field.focus(); } };
   leadForm.name.removeAttribute('aria-invalid'); leadForm.phone.removeAttribute('aria-invalid');
   if (name.length < 2) return fail('Please add your name.', leadForm.name);
-  const p = normalisePhone(phone);
-  if (p.length < 11 || p.length > 15) return fail('Please add a valid phone or WhatsApp number.', leadForm.phone);
+  const phone = normalisePhone(phoneRaw);
+  if (phone.length < 11 || phone.length > 15) return fail('Please add a valid phone or WhatsApp number.', leadForm.phone);
 
-  const btn = $('#lead-submit'); btn.disabled = true; btn.textContent = 'Sending…';
+  // Open the WhatsApp tab now, inside the tap, so phone browsers don't block it; point it at the message once saved.
+  const wa = window.open('', '_blank');
+  if (wa) { try { wa.document.title = 'Opening WhatsApp…'; wa.document.body.textContent = 'Opening WhatsApp…'; } catch {} }
+  const btn = $('#lead-submit'); btn.disabled = true; btn.textContent = 'Saving…';
+
+  let ref = '', saved = false;
   try {
     const res = await fetch('/api/leads', {
       method: 'POST', headers: { 'content-type': 'application/json' },
-      body: JSON.stringify({ name, phone: p, storeName: String(f.get('storeName') || '').trim(), bestTime: f.get('bestTime'), wantsAddons: !!f.get('wantsAddons'), website: f.get('website'), draft: draftForLead() }),
+      body: JSON.stringify({ name, phone, storeName, bestTime, addons, wantsAddons: addons.length > 0, website: f.get('website'), draft: draftForLead() }),
     });
     const data = await res.json().catch(() => ({}));
-    if (!res.ok || !data.ok) { const err = new Error(data.error || 'Something went wrong.'); err.field = data.field; throw err; }
-    const store = String(f.get('storeName') || '').trim() || draft.brand.name;
-    $('#done-msg').textContent = `Thanks ${name.split(' ')[0]}! Your request for "${store}" is in. Activation is ${ACTIVATION_FEE}, with your domain and hosting included. Someone will follow up on ${phone}${f.get('bestTime') !== 'Anytime' ? ` in the ${String(f.get('bestTime')).toLowerCase()}` : ''} to complete it.`;
-    $('#lead-fields').hidden = true; $('#lead-done').hidden = false;
-    $('#lead-done h2').tabIndex = -1; $('#lead-done h2').focus();
-  } catch (err) {
-    const wa = `https://wa.me/${CONTACT_WA}?text=${encodeURIComponent(`Hi Duka Bee, I want to activate my store "${draft.brand.name}". My name is ${name}, ${phone}.`)}`;
-    leadErr.innerHTML = `${esc(err.message || "We couldn't send that.")} You can also <a href="${wa}" target="_blank" rel="noopener">message us on WhatsApp</a>.`;
-    leadErr.hidden = false;
-  } finally { btn.disabled = false; btn.textContent = 'Send my request'; }
+    if (res.ok && data.ok) { saved = true; ref = data.id ? `Ref DB-${data.id}` : ''; }
+    else if (res.status === 400) { if (wa) wa.close(); btn.disabled = false; btn.textContent = 'Send on WhatsApp →'; return fail(data.error || 'Please check your details.', data.field ? leadForm[data.field] : null); }
+  } catch { /* offline or blocked: WhatsApp below still delivers the request */ }
+
+  track('store_enquiry', { ...trackContext(), saved, addon_count: addons.length, addons: addons.join(',') || 'none', best_time: bestTime });
+  const url = waUrl(buildWhatsAppMessage({ ref, name, phone, storeName, bestTime, addons }));
+  if (wa && !wa.closed) wa.location.href = url;
+  $('#wa-open').href = url;
+  $('#done-title').textContent = saved ? 'Request saved' : 'Almost there';
+  $('#done-msg').textContent = saved
+    ? `Thanks ${name.split(' ')[0]}! Your request for "${storeName}" is saved. Activation is ${ACTIVATION_FEE}, with your domain and hosting included. Press send in WhatsApp so we can follow up${bestTime !== 'Anytime' ? ` in the ${bestTime.toLowerCase()}` : ''} and complete it.`
+    : `We couldn't save your request online, but your details are ready in WhatsApp. Press send so we get them.`;
+  $('#lead-fields').hidden = true; $('#lead-done').hidden = false;
+  $('#lead-done h2').tabIndex = -1; $('#lead-done h2').focus();
+  btn.disabled = false; btn.textContent = 'Send on WhatsApp →';
 });
 
 // ---------- start ----------
-const startAt = ({ brand: 0, details: 1, catalog: 2 })[location.hash.slice(1)] ?? 0;
+const startAt = ({ brand: 0, details: 1, catalog: 2, preview: 3 })[location.hash.slice(1)] ?? 0;
 syncBrand(); syncDetails(); syncCatalog();
 go(0);
 if (startAt > 0) tryGo(startAt);

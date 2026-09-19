@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Add-ons · Duka Bee</title>
+<meta name="description" content="Optional extras for your Duka Bee store: bulk product upload, M-Pesa, WhatsApp integration, and a logo + brand kit.">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="/brand/favicon-32.png">
+<link rel="apple-touch-icon" href="/brand/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=DM+Sans:wght@400;500;700&display=swap">
+<link rel="stylesheet" href="/landing.css">
+<link rel="stylesheet" href="/addons/addons.css">
+<script src="/analytics.js"></script>
+</head>
+<body class="addons-page">
+<header class="nav">
+  <div class="wrap nav__inner">
+    <a class="logo" href="/"><img class="logo__bee" src="/brand/bee-256.png" width="34" height="34" alt=""> Duka Bee</a>
+    <nav aria-label="Main">
+      <a href="/#pricing">Pricing</a>
+      <a href="/addons/" aria-current="page">Add-ons</a>
+      <a class="btn btn--bee btn--sm" href="/launch/">Launch a store</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="page-hero">
+    <div class="wrap">
+      <p class="eyebrow">Add-ons</p>
+      <h1>Start simple. <span class="mark">Grow over time.</span></h1>
+      <p class="lede">Launch the essentials first, then add what makes sense for your products, customers and next stage. Every add-on is optional. Pick the ones you're curious about and we'll include them in your request.</p>
+    </div>
+  </section>
+
+  <section class="wrap addon-section" aria-label="Available add-ons">
+    <div class="addon-grid" id="addon-grid"></div>
+    <p class="addon-note">Prices are starting points. Ask us on WhatsApp for a quote for your store. Need something else? <a id="custom-link" target="_blank" rel="noopener">Tell us what you need</a>.</p>
+  </section>
+</main>
+
+<!-- Selection summary: sticks to the bottom so the next step is always one tap away. -->
+<div class="pick-bar" id="pick-bar" role="region" aria-label="Your add-on selection">
+  <div class="wrap pick-bar__inner">
+    <p class="pick-bar__text" id="pick-text">Nothing selected yet.</p>
+    <a class="btn btn--ink" id="pick-go" href="/launch/">Launch your store →</a>
+  </div>
+</div>
+
+<footer class="foot"><div class="wrap foot__inner"><span>© Duka Bee · Built with Kiwanda web mode</span><span>Built by <a href="https://utilityinformatics.co.ke/" target="_blank" rel="noopener">Utility Informatics</a></span></div></footer>
+<script type="module" src="/addons/addons.js"></script>
+</body>
+</html>

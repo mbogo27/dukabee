@@ -1,0 +1,35 @@
+.page-hero{padding:56px 0 24px}
+.page-hero h1{font-size:clamp(2.6rem,6vw,4.6rem);font-weight:800;max-width:14ch}
+.page-hero .lede{max-width:640px}
+.addon-section{padding:24px 0 120px}
+.addon-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+.addon{display:flex;flex-direction:column;gap:12px;padding:24px;border:1.5px solid var(--ink);border-radius:18px;background:var(--surface);transition:box-shadow .15s,background .15s}
+.addon.is-picked{background:#fff;box-shadow:6px 6px 0 var(--ink)}
+.addon__top{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.addon__icon{display:grid;place-items:center;width:48px;height:48px;border-radius:50%;background:var(--bee);border:1.5px solid var(--ink);font-size:22px}
+.addon__tag{padding:2px 10px;border-radius:999px;background:var(--line);font-size:12px;font-weight:700}
+.addon h2{font-size:28px}
+.addon__price{margin:0;font-weight:700;font-size:18px}
+.addon__blurb{margin:0;color:var(--muted)}
+.addon__use{margin:0;font-size:14px}
+.addon__use b{font-weight:700}
+.addon__actions{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:auto;padding-top:6px}
+.addon__actions .btn{flex:1 1 auto}
+.addon__ask{font-size:14px;font-weight:700;text-underline-offset:3px;color:var(--ink)}
+.addon-note{margin:22px 0 0;color:var(--muted);font-size:15px}
+.addon-note a{color:var(--ink);font-weight:700;text-underline-offset:3px}
+
+.pick-bar{position:fixed;left:0;right:0;bottom:0;z-index:20;background:var(--surface);border-top:1.5px solid var(--ink);padding:12px 0 calc(12px + env(safe-area-inset-bottom));transform:translateY(0)}
+.pick-bar__inner{display:flex;align-items:center;justify-content:space-between;gap:14px}
+.pick-bar__text{margin:0;font-weight:700}
+.pick-bar__text small{display:block;font-weight:400;color:var(--muted)}
+.foot{padding-bottom:96px}
+.btn[aria-pressed=true]{background:var(--ink);color:#fff}
+.btn[aria-pressed=false]{background:var(--bee);color:var(--ink);border-color:var(--ink)}
+
+@media (max-width:760px){
+  .addon-grid{grid-template-columns:1fr}
+  .page-hero{padding-top:32px}
+  .pick-bar__inner{flex-direction:column;align-items:stretch;gap:8px}
+  .pick-bar .btn{width:100%}
+}

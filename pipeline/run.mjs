@@ -78,7 +78,7 @@ export async function runPipeline(demo, { onEvent = () => {}, pace = 0 } = {}) {
 
   // 4. Compose via Kiwanda web mode.
   await start('compose', 'Composing atoms → molecules → sections → templates');
-  const site = composeSite({ shop: vault.shop, products: vault.products });
+  const site = composeSite({ shop: vault.shop, products: vault.products }, { demo: true });
   log('compose', `sections: header, footer, hero(${vault.shop.hero.variant}), featured strip, product grid, filter control (${site.facets.map((f) => f.key).join(', ')}), product detail, cart overlay`);
   log('compose', `templates: home, shop, product · ${site.pages.length} pages`);
   done('compose', `${site.facets.length} facets, ${site.pages.length} pages`, { facets: site.facets });

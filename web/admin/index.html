@@ -5,6 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex">
 <title>Leads · Duka Bee</title>
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="/brand/favicon-32.png">
 <style>
   :root{--bg:#faf7ef;--surface:#fffdf8;--ink:#16140f;--muted:#5f5a4f;--line:#e6dfcd;--bee:#ffc905}
   *{box-sizing:border-box}
@@ -63,7 +65,7 @@
         <td>${esc(l.name)}</td>
         <td><a href="https://wa.me/${esc(l.phone)}" target="_blank" rel="noopener">+${esc(l.phone)}</a></td>
         <td>${esc(l.store_name || '')}</td><td>${esc(l.best_time || '')}</td>
-        <td>${l.wants_addons ? '<span class="tag">yes</span>' : ''}</td>
+        <td>${(() => { try { return JSON.parse(l.addons || '[]').map((id) => `<span class="tag">${esc(id)}</span>`).join(' '); } catch { return ''; } })() || (l.wants_addons ? '<span class="tag">yes</span>' : '')}</td>
         <td>${l.draft_size ? `<a href="#" data-id="${l.id}">Open store</a>` : ''}</td></tr>`).join('');
     } catch (e) { $('#err').textContent = e.message; $('#err').hidden = false; $('#wrap').hidden = true; }
   }

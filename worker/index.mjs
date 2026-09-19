@@ -4,6 +4,7 @@
 //   GET  /api/leads/<id>   one lead incl. draft  (Authorization: Bearer <ADMIN_KEY>)
 // Leads live in a SQLite-backed Durable Object, so there is no database to provision by hand.
 import { DurableObject } from 'cloudflare:workers';
+import { ADDON_IDS } from '../launch/addons.mjs';
 
 const BEST_TIMES = ['Morning', 'Afternoon', 'Evening', 'Anytime'];
 const MAX_DRAFT_CHARS = 1_500_000;
@@ -28,6 +29,7 @@ export class Leads extends DurableObject {
       draft TEXT,
       ip TEXT
     )`);
+    try { this.sql.exec('ALTER TABLE leads ADD COLUMN addons TEXT'); } catch { /* column already exists */ }
   }
 
   add(lead) {
@@ -37,18 +39,18 @@ export class Leads extends DurableObject {
       if (n >= MAX_PER_IP_PER_HOUR) return { limited: true };
     }
     const cur = this.sql.exec(
-      'INSERT INTO leads (created_at, name, phone, store_name, best_time, wants_addons, draft, ip) VALUES (?, ?, ?, ?, ?, ?, ?, ?) RETURNING id',
-      new Date().toISOString(), lead.name, lead.phone, lead.storeName, lead.bestTime, lead.wantsAddons ? 1 : 0, lead.draft, lead.ip,
+      'INSERT INTO leads (created_at, name, phone, store_name, best_time, wants_addons, addons, draft, ip) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING id',
+      new Date().toISOString(), lead.name, lead.phone, lead.storeName, lead.bestTime, lead.addons.length ? 1 : 0, JSON.stringify(lead.addons), lead.draft, lead.ip,
     ).one();
     return { id: cur.id };
   }
 
   list() {
-    return this.sql.exec('SELECT id, created_at, name, phone, store_name, best_time, wants_addons, LENGTH(draft) AS draft_size FROM leads ORDER BY id DESC LIMIT 500').toArray();
+    return this.sql.exec('SELECT id, created_at, name, phone, store_name, best_time, wants_addons, addons, LENGTH(draft) AS draft_size FROM leads ORDER BY id DESC LIMIT 500').toArray();
   }
 
   get(id) {
-    return this.sql.exec('SELECT id, created_at, name, phone, store_name, best_time, wants_addons, draft FROM leads WHERE id = ?', id).toArray()[0] || null;
+    return this.sql.exec('SELECT id, created_at, name, phone, store_name, best_time, wants_addons, addons, draft FROM leads WHERE id = ?', id).toArray()[0] || null;
   }
 }
 
@@ -73,6 +75,8 @@ async function createLead(request, env) {
   const phone = normalisePhone(clean(body.phone, 30));
   const storeName = clean(body.storeName, 80);
   const bestTime = BEST_TIMES.includes(body.bestTime) ? body.bestTime : 'Anytime';
+  // Only known add-on ids are kept; anything else is dropped.
+  const addons = Array.isArray(body.addons) ? [...new Set(body.addons.filter((id) => ADDON_IDS.includes(id)))] : [];
   if (name.length < 2) return json({ ok: false, error: 'Please add your name.', field: 'name' }, 400);
   if (phone.length < 11 || phone.length > 15) return json({ ok: false, error: 'Please add a valid phone or WhatsApp number.', field: 'phone' }, 400);
 
@@ -84,7 +88,7 @@ async function createLead(request, env) {
 
   const stub = env.LEADS.get(env.LEADS.idFromName('main'));
   const res = await stub.add({
-    name, phone, storeName, bestTime, wantsAddons: !!body.wantsAddons, draft,
+    name, phone, storeName, bestTime, addons, draft,
     ip: request.headers.get('cf-connecting-ip') || '',
   });
   if (res.limited) return json({ ok: false, error: 'Too many requests from this connection. Please try again later, or message us on WhatsApp.' }, 429);

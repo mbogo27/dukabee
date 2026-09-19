@@ -3,15 +3,15 @@
 import { homeTemplate, shopTemplate, productTemplate } from './templates.mjs';
 import { facetsFor } from '../pipeline/vault.mjs';
 
-export function composeSite({ shop, products }, { base = '', productBase = '../' } = {}) {
+export function composeSite({ shop, products }, { base = '', productBase = '../', demo = false } = {}) {
   if (!products.length) throw new Error(`${shop.name}: vault has no products`);
   const facets = facetsFor(products);
   return {
     facets,
     pages: [
-      { path: 'index.html', kind: 'home', html: homeTemplate({ shop, products, base }) },
-      { path: 'shop.html', kind: 'shop', html: shopTemplate({ shop, products, facets, base }) },
-      ...products.map((product) => ({ path: `product/${product.slug}.html`, kind: 'product', slug: product.slug, html: productTemplate({ shop, product, base: productBase }) })),
+      { path: 'index.html', kind: 'home', html: homeTemplate({ shop, products, base, demo }) },
+      { path: 'shop.html', kind: 'shop', html: shopTemplate({ shop, products, facets, base, demo }) },
+      ...products.map((product) => ({ path: `product/${product.slug}.html`, kind: 'product', slug: product.slug, html: productTemplate({ shop, product, base: productBase, demo }) })),
     ],
   };
 }
