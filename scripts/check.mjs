@@ -15,6 +15,7 @@ for (const demo of DEMOS) {
   for (const page of m.pages) {
     const html = fs.readFileSync(path.join(out, 'site', page.path), 'utf8');
     ok(html.includes('class="kw-header"') && html.includes('class="kw-footer"'), `${page.path}: shared header/footer`);
+    ok(html.includes('data-search-form'), `${page.path}: header search`);
     ok(html.includes('data-cart-open') && html.includes('data-cart ') && html.includes('data-checkout-form'), `${page.path}: cart icon + overlay + checkout form`);
     for (const src of html.matchAll(/src="([^"]+\.(?:jpg|png|webp|avif))"/g)) ok(fs.existsSync(path.join(out, 'site', path.dirname(page.path), src[1])), `${page.path}: image ${src[1]} exists`);
   }
@@ -25,9 +26,11 @@ for (const demo of DEMOS) {
     ok(/data-add-to-cart[^>]*disabled/.test(html) === sel > 0, `${p.slug}: Add to Cart disabled iff selectors present`);
   }
   const shop = fs.readFileSync(path.join(out, 'site', 'shop.html'), 'utf8');
-  const facetKeys = [...shop.matchAll(/data-facet="([^"]+)"/g)].map((x) => x[1]);
+  const facetKeys = [...shop.matchAll(/data-facet="([^"]+)"/g)].map((x) => x[1]).filter((k) => k !== '_price');
   ok(facetKeys.join() === m.filterable.slice().sort((a, b) => (a === 'category' ? -1 : b === 'category' ? 1 : 0)).join(), `facets = filterable attributes (${facetKeys.join(', ')})`);
   ok(shop.includes('data-empty'), 'shop has zero-result empty state');
+  ok(shop.includes('data-price-min') && shop.includes('data-price-max'), 'shop has a price-range filter');
+  ok(shop.includes('data-search-form') && /data-search="[^"]+"/.test(shop), 'shop has search over name + category');
 }
 console.log(failures ? `\n${failures} check(s) failed` : '\nAll checks passed');
 process.exit(failures ? 1 : 0);

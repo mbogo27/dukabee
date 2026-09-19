@@ -6,7 +6,7 @@
 <title>Duka Bee — your shop online in a minute</title>
 <meta name="description" content="Duka Bee builds a complete online shop (home, shop and product pages, cart and WhatsApp checkout) from a few details about your business.">
 <meta property="og:title" content="Duka Bee — your shop online in a minute">
-<meta property="og:description" content="Type your shop name and WhatsApp number. Get a working online store with WhatsApp checkout.">
+<meta property="og:description" content="See your online store live in minutes, with search, filters and WhatsApp checkout.">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐝</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=DM+Sans:wght@400;500;700&display=swap">
@@ -19,8 +19,9 @@
     <a class="logo" href="/"><span aria-hidden="true">🐝</span> Duka Bee</a>
     <nav aria-label="Main">
       <a href="#examples">Examples</a>
+      <a href="#samples">Sample stores</a>
       <a href="#how">How it works</a>
-      <a class="btn btn--bee btn--sm" href="#launch">Launch a store</a>
+      <a class="btn btn--bee btn--sm" href="/launch/">Launch a store</a>
     </nav>
   </div>
 </header>
@@ -31,7 +32,7 @@
       <div class="hero__copy">
         <p class="eyebrow">Online shops for WhatsApp sellers</p>
         <h1>Your shop, online <span class="mark">in a minute.</span></h1>
-        <p class="lede">Duka Bee builds a complete store from a few details: a home page, a shop with filters, a page for every product, a cart, and checkout that lands in your WhatsApp.</p>
+        <p class="lede">Duka Bee builds a complete store from a few details: a home page, a shop with search and filters, a page for every product, a cart, and checkout that lands in your WhatsApp.</p>
         <ul class="ticks">
           <li>No app, no website builder, nothing to learn</li>
           <li>Buyers order on WhatsApp, with size, colour and quantity already filled in</li>
@@ -39,78 +40,37 @@
         </ul>
       </div>
 
-      <form class="launch" id="launch" novalidate>
+      <form class="launch" id="launch" action="/launch/" method="get">
         <div class="launch__head">
-          <h2>Launch a store</h2>
-          <p>Try it now with sample products. Nothing is published until you say so.</p>
+          <h2>Launch your store</h2>
+          <p>Four short steps: brand, details, catalog, preview. You'll see your store live before you commit to anything.</p>
         </div>
-        <div class="modes" role="tablist" aria-label="Where should we get your products?">
-          <button type="button" role="tab" aria-selected="true" data-mode="dummy">Sample products</button>
-          <button type="button" role="tab" aria-selected="false" data-mode="catalog">Catalog <small>soon</small></button>
-          <button type="button" role="tab" aria-selected="false" data-mode="ig">Instagram <small>soon</small></button>
-        </div>
-
-        <div class="mode-panel" data-panel="dummy">
-          <label class="field">Shop name
-            <input name="name" required maxlength="40" autocomplete="organization" placeholder="e.g. Mama Njeri Boutique">
+        <div class="launch__fields">
+          <label class="field">Store name
+            <input name="name" maxlength="40" autocomplete="organization" placeholder="e.g. Mama Njeri Boutique">
           </label>
           <label class="field">WhatsApp number
-            <input name="wa" required inputmode="tel" autocomplete="tel" placeholder="e.g. 0712 345 678">
+            <input name="wa" type="tel" inputmode="tel" autocomplete="tel" placeholder="e.g. 0712 345 678">
             <span class="field__help">Orders from your store go straight to this number.</span>
           </label>
-          <fieldset class="field">
-            <legend>What do you sell?</legend>
-            <div class="chips">
-              <label><input type="radio" name="cat" value="fashion" checked><span>Fashion</span></label>
-              <label><input type="radio" name="cat" value="kitchen"><span>Kitchen &amp; home</span></label>
-              <label><input type="radio" name="cat" value="beauty"><span>Beauty</span></label>
-            </div>
-          </fieldset>
         </div>
-
-        <div class="mode-panel" data-panel="catalog" hidden>
-          <label class="field">Upload your catalog
-            <input type="file" disabled accept=".csv,.xlsx,.zip,image/*" multiple>
-            <span class="field__help">A spreadsheet of products, or a folder of product photos.</span>
-          </label>
-          <p class="soon">Coming soon: upload a spreadsheet or your product photos and we'll build your catalog automatically. For now, try it with sample products.</p>
+        <ol class="mini-steps" aria-label="The four steps">
+          <li>Brand</li><li>Details</li><li>Catalog</li><li>Preview</li>
+        </ol>
+        <div class="launch__go">
+          <button class="btn btn--ink btn--lg" type="submit">Build my store →</button>
+          <p class="launch__fine">No signup. No payment. Start with sample products and change anything.</p>
         </div>
-        <div class="mode-panel" data-panel="ig" hidden>
-          <label class="field">Instagram username
-            <input disabled placeholder="@yourshop">
-          </label>
-          <p class="soon">Coming soon: we'll turn your product posts into a catalog and pick your brand colours from your feed. For now, try it with sample products.</p>
-        </div>
-
-        <p class="form-error" id="form-error" role="alert" hidden></p>
-        <button class="btn btn--ink btn--lg" type="submit" id="generate">Generate my store</button>
       </form>
     </div>
   </section>
 
-  <section class="result" id="result" hidden aria-live="polite">
+  <section class="samples" id="samples">
     <div class="wrap">
-      <div class="result__head">
-        <div>
-          <p class="eyebrow">Your store is ready</p>
-          <h2 id="result-title">Here's your shop</h2>
-          <p class="look" id="look"></p>
-        </div>
-        <div class="result__actions">
-          <button class="btn btn--ghost" type="button" id="reroll">↻ Try another look</button>
-          <button class="btn btn--ghost" type="button" id="copy">Copy link</button>
-          <a class="btn btn--bee" id="open" target="_blank" rel="noopener">Open store ↗</a>
-        </div>
-      </div>
-      <div class="device" role="radiogroup" aria-label="Preview size">
-        <button type="button" role="radio" aria-checked="true" data-device="desktop">Desktop</button>
-        <button type="button" role="radio" aria-checked="false" data-device="mobile">Phone</button>
-      </div>
-      <div class="frame" id="frame-wrap">
-        <div class="frame__bar"><span></span><span></span><span></span><code id="frame-url"></code></div>
-        <div class="frame__screen" id="screen"><iframe id="preview" title="Your generated store"></iframe></div>
-      </div>
-      <p class="note">This store uses sample products and placeholder photos. When you launch, we swap in your own products, prices and photos.</p>
+      <p class="eyebrow">Sample stores</p>
+      <h2>Browse a store in your niche.</h2>
+      <p class="sub">Eight ready-made catalogs, each with search, filters, a cart and WhatsApp checkout. Open one and try it.</p>
+      <div class="chips chips--links" id="sample-links"></div>
     </div>
   </section>
 
@@ -126,11 +86,11 @@
   <section class="how" id="how">
     <div class="wrap">
       <p class="eyebrow">How it works</p>
-      <h2>From shop details to a shop.</h2>
+      <h2>From idea to a live shop.</h2>
       <ol class="steps">
-        <li><b>Tell us about your shop</b><p>Your shop name, WhatsApp number and products. Soon we'll also read them from your website or Instagram.</p></li>
-        <li><b>We build every page</b><p>Home, shop with filters, and a page for each product, styled in your own brand colours.</p></li>
-        <li><b>Buyers order on WhatsApp</b><p>They add to cart, pick size or colour, and send you a complete order message. You confirm and deliver.</p></li>
+        <li><b>Brand it</b><p>Upload your logo, or pick a colour and a style. No logo? We have a clean default.</p></li>
+        <li><b>Add your details and products</b><p>Your WhatsApp number, location and delivery terms, plus 3 to 5 products. Start from a ready-made niche and edit anything.</p></li>
+        <li><b>Preview, then say the word</b><p>Browse your live store, search and filter it, try the cart. Like it? Tap "I want this store" and we'll get it live.</p></li>
       </ol>
     </div>
   </section>
@@ -143,7 +103,7 @@
   </section>
 </main>
 
-<footer class="foot"><div class="wrap">© Duka Bee · Built with Kiwanda web mode</div></footer>
+<footer class="foot"><div class="wrap foot__inner"><span>© Duka Bee · Built with Kiwanda web mode</span><span>Built by <a href="https://utilityinformatics.co.ke/" target="_blank" rel="noopener">Utility Informatics</a></span></div></footer>
 <script type="module" src="/landing.js"></script>
 </body>
 </html>

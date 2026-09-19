@@ -168,8 +168,21 @@
     }
   }
 
-  // ---- shop: filter control over filterable attributes ----
+  // ---- search (name + category) ----
+  // Header search filters live on the shop page; on any other page it opens the shop with the query.
+  const searchForm = $('[data-search-form]');
+  const searchInput = searchForm && $('input', searchForm);
+  const shopHref = $('[data-shop-link]')?.getAttribute('href') || 'shop.html';
+
+  // ---- shop: search + filter control over filterable attributes + price range ----
   const filters = $('[data-filters]');
+  if (!filters && searchForm) {
+    searchForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const q = searchInput.value.trim();
+      location.href = q ? `${shopHref}${shopHref.includes('?') ? '&' : '?'}q=${encodeURIComponent(q)}` : shopHref;
+    });
+  }
   if (filters) {
     const grid = $('#kw-shop-grid');
     const cards = $$('.kw-card', grid);
@@ -179,30 +192,45 @@
     const activeEl = $('[data-filter-active]');
     const sortEl = $('[data-sort]');
     const details = $('details', filters);
+    const minEl = $('[data-price-min]', filters);
+    const maxEl = $('[data-price-max]', filters);
     if (matchMedia('(max-width: 820px)').matches) details.open = false;
 
-    const facetKeys = $$('[data-facet]', filters).map((f) => f.dataset.facet);
+    const facetKeys = $$('[data-facet]', filters).map((f) => f.dataset.facet).filter((k) => k !== '_price');
+    const managed = [...facetKeys, 'q', 'min', 'max'];
     const params = new URLSearchParams(location.search);
     params.forEach((v, k) => { const box = $(`input[name="${CSS.escape(k)}"][value="${CSS.escape(v)}"]`, filters); if (box) box.checked = true; });
+    if (params.get('q') && searchInput) searchInput.value = params.get('q');
+    if (params.get('min')) minEl.value = params.get('min');
+    if (params.get('max')) maxEl.value = params.get('max');
 
     const apply = () => {
       const chosen = {};
-      $$('input:checked', filters).forEach((i) => (chosen[i.name] ||= []).push(i.value));
+      $$('input[type=checkbox]:checked', filters).forEach((i) => (chosen[i.name] ||= []).push(i.value));
+      const tokens = (searchInput?.value || '').toLowerCase().split(/\s+/).filter(Boolean);
+      const min = minEl.value === '' ? -Infinity : Number(minEl.value);
+      const max = maxEl.value === '' ? Infinity : Number(maxEl.value);
       let shown = 0;
       cards.forEach((card) => {
-        const ok = Object.entries(chosen).every(([k, vals]) => {
-          const have = (card.dataset[`f${k[0].toUpperCase()}${k.slice(1)}`] || '').split('|');
-          return vals.some((v) => have.includes(v));
-        });
+        const price = Number(card.dataset.price);
+        const ok = tokens.every((t) => (card.dataset.search || '').includes(t))
+          && price >= min && price <= max
+          && Object.entries(chosen).every(([k, vals]) => {
+            const have = (card.dataset[`f${k[0].toUpperCase()}${k.slice(1)}`] || '').split('|');
+            return vals.some((v) => have.includes(v));
+          });
         card.hidden = !ok; if (ok) shown++;
       });
-      const n = Object.values(chosen).flat().length;
+      const n = Object.values(chosen).flat().length + (minEl.value !== '' || maxEl.value !== '' ? 1 : 0) + (tokens.length ? 1 : 0);
       activeEl.textContent = n ? `(${n})` : '';
       countEl.textContent = `${shown} of ${cards.length} products`;
       empty.hidden = shown > 0; grid.hidden = shown === 0;
       const q = new URLSearchParams(location.search);
-      facetKeys.forEach((k) => q.delete(k));
+      managed.forEach((k) => q.delete(k));
       Object.entries(chosen).forEach(([k, vals]) => vals.forEach((v) => q.append(k, v)));
+      if (tokens.length) q.set('q', searchInput.value.trim());
+      if (minEl.value !== '') q.set('min', minEl.value);
+      if (maxEl.value !== '') q.set('max', maxEl.value);
       history.replaceState(null, '', q.toString() ? `?${q}` : location.pathname);
     };
     const sort = () => {
@@ -211,10 +239,16 @@
       grid.append(...list);
     };
     filters.addEventListener('change', apply);
+    filters.addEventListener('input', (e) => { if (e.target.matches('[data-price-min],[data-price-max]')) apply(); });
+    if (searchForm) {
+      searchInput.addEventListener('input', apply);
+      searchForm.addEventListener('submit', (e) => { e.preventDefault(); apply(); });
+    }
     sortEl.addEventListener('change', sort);
     document.addEventListener('click', (e) => {
       if (!e.target.closest('[data-filter-clear]')) return;
-      $$('input:checked', filters).forEach((i) => { i.checked = false; });
+      $$('input[type=checkbox]:checked', filters).forEach((i) => { i.checked = false; });
+      minEl.value = ''; maxEl.value = ''; if (searchInput) searchInput.value = '';
       apply();
     });
     apply();

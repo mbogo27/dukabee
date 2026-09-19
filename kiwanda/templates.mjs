@@ -49,5 +49,5 @@ export const shopTemplate = ({ shop, products, facets, base = '' }) => shell({
 
 export const productTemplate = ({ shop, product, base = '../' }) => shell({
   shop, base, current: 'product', title: `${product.name} · ${shop.name}`, description: product.description.slice(0, 150),
-  body: productDetail({ product, base }),
+  body: productDetail({ product, base, shop }),
 });

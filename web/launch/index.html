@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Launch your store · Duka Bee</title>
+<meta name="description" content="Build your online store in four short steps and see it live before you commit to anything.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐝</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=DM+Sans:wght@400;500;700&display=swap">
+<link rel="stylesheet" href="/landing.css">
+<link rel="stylesheet" href="/launch/launch.css">
+</head>
+<body class="wiz">
+<header class="nav">
+  <div class="wrap nav__inner">
+    <a class="logo" href="/"><span aria-hidden="true">🐝</span> Duka Bee</a>
+    <nav aria-label="Launch">
+      <button class="linkbtn" type="button" id="start-over">Start over</button>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap wizard" id="wizard">
+  <!-- Four steps, each asking for one thing. The bar fills steadily. -->
+  <nav class="progress" aria-label="Progress">
+    <ol id="progress">
+      <li><button type="button" data-goto="0"><span class="progress__n">1</span><span class="progress__t">Brand</span></button></li>
+      <li><button type="button" data-goto="1"><span class="progress__n">2</span><span class="progress__t">Details</span></button></li>
+      <li><button type="button" data-goto="2"><span class="progress__n">3</span><span class="progress__t">Catalog</span></button></li>
+      <li><button type="button" data-goto="3"><span class="progress__n">4</span><span class="progress__t">Preview</span></button></li>
+    </ol>
+    <div class="bar" aria-hidden="true"><i id="bar-fill"></i></div>
+  </nav>
+
+  <!-- ============ 1. BRAND ============ -->
+  <section class="step" data-step="0" aria-labelledby="h-brand">
+    <h1 id="h-brand">Your brand</h1>
+    <p class="lead">A name and a look. No logo yet? No problem.</p>
+
+    <label class="field">Store name
+      <input id="f-name" maxlength="40" autocomplete="organization" placeholder="e.g. Mama Njeri Boutique">
+    </label>
+
+    <div class="field" id="logo-field">
+      <span class="field__label">Logo <small>(optional)</small></span>
+      <label class="drop" id="drop">
+        <input type="file" id="f-logo" accept="image/*">
+        <span class="drop__icon" aria-hidden="true">⬆</span>
+        <span><b>Upload your logo</b><small>PNG, JPG or SVG. We'll pick your brand colour from it.</small></span>
+      </label>
+      <div class="logo-preview" id="logo-preview" hidden>
+        <img id="logo-img" alt="Your logo">
+        <span id="logo-note">Logo added</span>
+        <button type="button" class="linkbtn" id="logo-remove">Remove</button>
+      </div>
+    </div>
+
+    <fieldset class="field" id="nologo">
+      <legend>No logo? Choose how we brand your store</legend>
+      <div class="choice">
+        <label><input type="radio" name="brandmode" value="kit"><span class="card"><b>Build a quick brand kit</b><small>Pick a colour and a style. Takes ten seconds.</small></span></label>
+        <label><input type="radio" name="brandmode" value="generic" checked><span class="card"><b>Use the Duka Bee style</b><small>A clean, ready-made look. Nothing to fill in.</small></span></label>
+      </div>
+    </fieldset>
+
+    <div class="kit" id="kit" hidden>
+      <div class="field">
+        <span class="field__label" id="primary-label">Brand colour</span>
+        <div class="swatches" id="swatches" role="radiogroup" aria-labelledby="primary-label"></div>
+      </div>
+      <div class="field">
+        <span class="field__label" id="vibe-label">Style</span>
+        <div class="chips" id="vibes" role="radiogroup" aria-labelledby="vibe-label"></div>
+      </div>
+      <label class="field" id="wordmark-field">Wordmark text <small>(optional, if different from your store name)</small>
+        <input id="f-wordmark" maxlength="30" placeholder="e.g. NJERI">
+      </label>
+    </div>
+  </section>
+
+  <!-- ============ 2. DETAILS ============ -->
+  <section class="step" data-step="1" aria-labelledby="h-details" hidden>
+    <h1 id="h-details">Store details</h1>
+    <p class="lead">What buyers see, and where their orders go.</p>
+
+    <label class="field">Store description <small>(1–2 lines)</small>
+      <textarea id="f-desc" rows="2" maxlength="160" placeholder="e.g. Stylish everyday wear for men and women, delivered across Nairobi."></textarea>
+      <span class="field__help"><span id="desc-count">0</span>/160</span>
+    </label>
+
+    <label class="field">WhatsApp / phone number
+      <input id="f-phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="e.g. 0712 345 678">
+      <span class="field__help">Every order from your store lands on this number.</span>
+    </label>
+
+    <label class="field">Location or pickup point
+      <input id="f-loc" maxlength="100" autocomplete="street-address" placeholder="e.g. Tom Mboya Street, Nairobi CBD">
+    </label>
+
+    <fieldset class="field">
+      <legend>Delivery &amp; returns</legend>
+      <div class="chips chips--multi" id="policy"></div>
+      <label class="field field--tight">
+        <span class="visually-hidden">Delivery and returns note</span>
+        <input id="f-policy" maxlength="120" placeholder="Anything else? e.g. Same-day delivery before 2pm">
+      </label>
+    </fieldset>
+  </section>
+
+  <!-- ============ 3. CATALOG ============ -->
+  <section class="step" data-step="2" aria-labelledby="h-catalog" hidden>
+    <h1 id="h-catalog">Your catalog</h1>
+    <p class="lead">Start from a ready-made niche, then change anything. 3 to 5 products.</p>
+
+    <div class="field">
+      <span class="field__label" id="niche-label">Start from</span>
+      <div class="niches" id="niches" role="group" aria-labelledby="niche-label"></div>
+      <div class="notice" id="niche-confirm" role="alert" hidden>
+        <span>This replaces the products you edited.</span>
+        <button type="button" class="btn btn--ink btn--sm" id="niche-yes">Replace</button>
+        <button type="button" class="btn btn--ghost btn--sm" id="niche-no">Keep mine</button>
+      </div>
+    </div>
+
+    <div class="attr-config" id="attr-config">
+      <label class="field field--tight">Extra detail for each product
+        <input id="f-attrlabel" maxlength="20" placeholder="e.g. Size, Brand, Capacity">
+      </label>
+      <label class="check"><input type="checkbox" id="f-attrsel"><span>Buyers pick one of these before ordering <small>(like a size)</small></span></label>
+    </div>
+
+    <div id="products" class="products"></div>
+    <datalist id="cats"></datalist>
+    <div class="products__foot">
+      <button type="button" class="btn btn--ghost" id="add-product">+ Add a product</button>
+      <span class="counter" id="counter" aria-live="polite"></span>
+    </div>
+    <p class="soon-inline">Import from Instagram or a spreadsheet: <span class="pill">coming soon</span></p>
+  </section>
+
+  <!-- ============ 4. PREVIEW ============ -->
+  <section class="step step--preview" data-step="3" aria-labelledby="h-preview" hidden>
+    <div class="preview-head">
+      <div>
+        <h1 id="h-preview">Here's your store</h1>
+        <p class="lead" id="look-note">Browse it, search it, filter it, try the cart. It's yours to try.</p>
+      </div>
+      <div class="preview-tools">
+        <div class="device" role="radiogroup" aria-label="Preview size" id="device">
+          <button type="button" role="radio" aria-checked="true" data-device="desktop">Desktop</button>
+          <button type="button" role="radio" aria-checked="false" data-device="mobile">Phone</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="preview-grid">
+      <div class="frame" id="frame-wrap">
+        <div class="frame__bar"><span></span><span></span><span></span><code id="frame-url"></code></div>
+        <div class="frame__screen" id="screen"><iframe id="preview" title="Your store preview"></iframe></div>
+      </div>
+
+      <aside class="want" aria-labelledby="want-title">
+        <h2 id="want-title">Like what you see?</h2>
+        <p>Tell us and we'll get your store live. No payment now.</p>
+        <button type="button" class="btn btn--bee btn--lg" id="want-btn">I want this store</button>
+        <p class="want__fine">Also want a custom domain, more products or product photos? Ask about our add-on bundles when we call.</p>
+        <div class="want__edit">
+          <button type="button" class="linkbtn" data-goto="0">Edit brand</button>
+          <button type="button" class="linkbtn" data-goto="1">Edit details</button>
+          <button type="button" class="linkbtn" data-goto="2">Edit catalog</button>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <p class="form-error" id="step-error" role="alert" hidden></p>
+  <div class="wizard__nav" id="nav">
+    <button type="button" class="btn btn--ghost btn--lg" id="back">← Back</button>
+    <button type="button" class="btn btn--ink btn--lg" id="next">Continue →</button>
+  </div>
+</main>
+
+<!-- Intent capture: a real submission saved to the leads table. No payment. -->
+<dialog class="modal" id="lead" aria-labelledby="lead-title">
+  <form method="dialog" id="lead-form" novalidate>
+    <button type="button" class="modal__x" id="lead-close" aria-label="Close">×</button>
+    <div id="lead-fields">
+      <h2 id="lead-title">Activate my store</h2>
+      <p class="modal__lead">Leave your details and we'll follow up to get it live.</p>
+      <label class="field">Your name <input name="name" autocomplete="name" required></label>
+      <label class="field">Phone / WhatsApp <input name="phone" type="tel" inputmode="tel" autocomplete="tel" required></label>
+      <label class="field">Store name <small>(change it here if you like)</small> <input name="storeName" maxlength="80"></label>
+      <label class="field">Best time to reach you
+        <select name="bestTime"><option>Morning</option><option>Afternoon</option><option>Evening</option><option selected>Anytime</option></select>
+      </label>
+      <label class="check check--small"><input type="checkbox" name="wantsAddons"><span>Also tell me about add-on bundles</span></label>
+      <input class="hp" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <p class="form-error" id="lead-error" role="alert" hidden></p>
+      <button class="btn btn--ink btn--lg btn--block" type="submit" id="lead-submit">Send my request</button>
+    </div>
+    <div id="lead-done" hidden>
+      <div class="done__icon" aria-hidden="true">✓</div>
+      <h2>Request received</h2>
+      <p id="done-msg"></p>
+      <button type="button" class="btn btn--ghost btn--block" id="done-close">Back to my store</button>
+    </div>
+  </form>
+</dialog>
+<script type="module" src="/launch/launch.js"></script>
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Leads · Duka Bee</title>
+<style>
+  :root{--bg:#faf7ef;--surface:#fffdf8;--ink:#16140f;--muted:#5f5a4f;--line:#e6dfcd;--bee:#ffc905}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 system-ui,-apple-system,'Segoe UI',sans-serif}
+  main{width:min(1100px,calc(100% - 32px));margin:32px auto 64px}
+  h1{margin:0 0 4px;font-size:32px;letter-spacing:-.03em}
+  p{margin:0 0 16px;color:var(--muted)}
+  .bar{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:20px}
+  input{min-height:42px;padding:0 12px;border:1.5px solid var(--line);border-radius:10px;background:#fff;font:inherit;min-width:260px}
+  button,.btn{min-height:42px;padding:0 16px;border:1.5px solid var(--ink);border-radius:999px;background:var(--bee);font:inherit;font-weight:700;cursor:pointer;color:inherit;text-decoration:none;display:inline-flex;align-items:center}
+  button.ghost{background:var(--surface)}
+  .err{padding:10px 14px;border-radius:10px;background:#fbe5e1;color:#8c1d14;font-weight:700}
+  .table-wrap{overflow:auto;border:1px solid var(--line);border-radius:14px;background:var(--surface)}
+  table{border-collapse:collapse;width:100%;font-size:14px}
+  th,td{padding:10px 12px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top;white-space:nowrap}
+  th{font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
+  tr:last-child td{border-bottom:0}
+  .tag{display:inline-block;padding:1px 8px;border-radius:999px;background:var(--bee);font-size:12px;font-weight:700}
+  a{color:inherit}
+</style>
+</head>
+<body>
+<main>
+  <h1>Leads</h1>
+  <p>"I want this store" requests, newest first.</p>
+  <form class="bar" id="auth">
+    <input type="password" id="key" placeholder="Admin key" autocomplete="current-password" aria-label="Admin key" required>
+    <button type="submit">Load leads</button>
+    <button type="button" class="ghost" id="refresh" hidden>Refresh</button>
+  </form>
+  <p class="err" id="err" role="alert" hidden></p>
+  <div class="table-wrap" id="wrap" hidden>
+    <table><thead><tr><th>When</th><th>Name</th><th>Phone</th><th>Store</th><th>Best time</th><th>Add-ons</th><th>Draft</th></tr></thead><tbody id="rows"></tbody></table>
+  </div>
+  <p id="empty" hidden>No leads yet.</p>
+</main>
+<script type="module">
+  const $ = (s) => document.querySelector(s);
+  const esc = (v) => String(v ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+  let key = sessionStorage.getItem('dukabee:adminkey') || '';
+  const api = async (path) => {
+    const r = await fetch(path, { headers: { authorization: `Bearer ${key}` } });
+    const data = await r.json().catch(() => ({}));
+    if (!r.ok || !data.ok) throw new Error(r.status === 401 ? 'Wrong key, or ADMIN_KEY has not been set on the server yet.' : data.error || 'Request failed.');
+    return data;
+  };
+  async function load() {
+    $('#err').hidden = true;
+    try {
+      const { leads } = await api('/api/leads');
+      sessionStorage.setItem('dukabee:adminkey', key);
+      $('#refresh').hidden = false;
+      $('#wrap').hidden = !leads.length; $('#empty').hidden = leads.length > 0;
+      $('#rows').innerHTML = leads.map((l) => `<tr>
+        <td>${esc(new Date(l.created_at).toLocaleString('en-KE', { dateStyle: 'medium', timeStyle: 'short' }))}</td>
+        <td>${esc(l.name)}</td>
+        <td><a href="https://wa.me/${esc(l.phone)}" target="_blank" rel="noopener">+${esc(l.phone)}</a></td>
+        <td>${esc(l.store_name || '')}</td><td>${esc(l.best_time || '')}</td>
+        <td>${l.wants_addons ? '<span class="tag">yes</span>' : ''}</td>
+        <td>${l.draft_size ? `<a href="#" data-id="${l.id}">Open store</a>` : ''}</td></tr>`).join('');
+    } catch (e) { $('#err').textContent = e.message; $('#err').hidden = false; $('#wrap').hidden = true; }
+  }
+  $('#auth').addEventListener('submit', (e) => { e.preventDefault(); key = $('#key').value; load(); });
+  $('#refresh').addEventListener('click', load);
+  // Open a lead's store draft: copy it into this browser under its own name, then view it.
+  $('#rows').addEventListener('click', async (e) => {
+    const a = e.target.closest('[data-id]'); if (!a) return;
+    e.preventDefault();
+    try {
+      const { lead } = await api(`/api/leads/${a.dataset.id}`);
+      localStorage.setItem(`dukabee:draft:lead-${lead.id}`, lead.draft);
+      window.open(`/store/?draft=lead-${lead.id}`, '_blank');
+    } catch (err) { $('#err').textContent = err.message; $('#err').hidden = false; }
+  });
+  if (key) { $('#key').value = key; load(); }
+</script>
+</body>
+</html>

@@ -199,6 +199,28 @@ body.kw-locked{overflow:hidden}
 .kw-toast.is-on{opacity:1;transform:translate(-50%,0)}
 .kw-toast button{border:0;background:none;color:var(--kw-highlight);font-weight:700;text-decoration:underline;cursor:pointer;padding:0}
 
+/* ---------- logo, search, price range, delivery & returns ---------- */
+.kw-logo{display:inline-flex;align-items:center;gap:10px}
+.kw-logo__img{height:36px;width:auto;max-width:96px;object-fit:contain;border-radius:calc(var(--kw-radius)/3)}
+.kw-search{position:relative;display:flex;align-items:center;flex:0 1 240px;min-width:0;margin-left:auto}
+.kw-search svg{position:absolute;left:12px;color:var(--kw-muted);pointer-events:none}
+.kw-search input{width:100%;min-height:40px;padding:0 12px 0 38px;border:1px solid var(--kw-line);border-radius:var(--kw-radius);background:var(--kw-surface);font-size:14px}
+.kw-btn--pill .kw-search input,.kw-card--soft .kw-search input{border-radius:999px}
+.kw-search input:focus{border-color:var(--kw-ink);outline:none}
+.kw-nav{margin-left:0}
+.kw-price{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.kw-price label{display:grid;gap:4px;font-size:12px;color:var(--kw-muted)}
+.kw-price input{width:100%;min-height:40px;padding:0 10px;border:1px solid var(--kw-line);border-radius:var(--kw-radius);background:var(--kw-surface);font-size:14px}
+.kw-policy{margin:8px 0 0;padding:0;list-style:none;display:grid;gap:4px;font-size:14px}
+.kw-policy li{position:relative;padding-left:16px}
+.kw-policy li::before{content:'';position:absolute;left:0;top:.6em;width:6px;height:6px;border-radius:50%;background:var(--kw-highlight)}
+.kw-policy__note{margin:8px 0 0!important;font-size:14px}
+.kw-footer__block{margin-top:20px}
+.kw-footer__block p{margin-top:6px}
+.kw-footer .kw-policy{opacity:.85}
+.kw-pdp__policy{margin:22px 0 0;padding:16px 18px;border:1px solid var(--kw-line);border-radius:var(--kw-radius);background:var(--kw-surface)}
+.kw-pdp__policy-title{margin:0;font-weight:700;font-size:13px;text-transform:uppercase;letter-spacing:.08em}
+
 /* ---------- responsive ---------- */
 @media (max-width:820px){
   .kw-hero__inner,.kw-pdp__inner,.kw-shop-layout,.kw-footer__inner{grid-template-columns:1fr}
@@ -214,7 +236,9 @@ body.kw-locked{overflow:hidden}
   .kw-shop-layout{gap:12px}
 }
 @media (max-width:560px){
-  .kw-header__inner{gap:14px}
+  .kw-header__inner{gap:10px 14px;flex-wrap:wrap;padding:10px 0}
+  .kw-search{order:5;flex:1 1 100%;margin-left:0}
+  .kw-nav{margin-left:auto}
   .kw-logo{font-size:20px}
   .kw-nav{gap:14px}
   .kw-cart-btn__label{display:none}

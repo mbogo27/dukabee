@@ -22,11 +22,14 @@ const NEUTRAL_LIGHT = '#ffffff';
 // Text-on-background pairs the templates actually render. `fix` says how to repair a failing pair:
 // 'neutral' forces black/white text, 'shift' nudges the text token toward whichever end has more room.
 const PAIRS = [
+  // Order matters: adjust the colours that other pairs depend on first (accent, muted), then choose the
+  // text that sits on the *final* accent. Doing it the other way round left button text unreadable
+  // whenever darkening the accent for the accent/paper pair undid an earlier accentInk choice.
   { text: 'ink', bg: 'paper', min: 4.5, fix: 'neutral' },
   { text: 'ink', bg: 'surface', min: 4.5, fix: 'neutral' },
   { text: 'muted', bg: 'paper', min: 4.5, fix: 'shift' },
-  { text: 'accentInk', bg: 'accent', min: 4.5, fix: 'neutral' },
   { text: 'accent', bg: 'paper', min: 4.5, fix: 'shift' },
+  { text: 'accentInk', bg: 'accent', min: 4.5, fix: 'neutral' },
   { text: 'ink', bg: 'highlight', min: 4.5, fix: 'neutral', setBg: true },
 ];
 

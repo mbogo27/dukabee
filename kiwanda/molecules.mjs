@@ -21,7 +21,7 @@ export const productCard = ({ product, href, base }) => {
   const needsChoice = product.attributes.some((a) => a.selectable);
   const filterData = Object.fromEntries(product.attributes.filter((a) => a.filterable)
     .map((a) => [`data-f-${a.key}`, a.values.map((v) => v.value).join('|')]));
-  return el('article', { class: 'kw-card', 'data-product': product.slug, 'data-price': product.price, ...filterData }, [
+  return el('article', { class: 'kw-card', 'data-product': product.slug, 'data-price': product.price, 'data-search': `${product.name} ${category || ''}`.toLowerCase(), ...filterData }, [
     link({ class: 'kw-card__media', href, tabindex: '-1', 'aria-hidden': 'true' }, image({ src: base + product.image, alt: '' })),
     div({ class: 'kw-card__body' }, [
       category ? paragraph({ class: 'kw-card__eyebrow' }, esc(category)) : '',

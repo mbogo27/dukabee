@@ -5,13 +5,24 @@ import { cta, statBlock, mediaFrame, productCard, attributeSelector, cartLineIte
 
 const routes = (base) => ({ home: `${base}index.html`, shop: `${base}shop.html`, product: (slug) => `${base}product/${slug}.html` });
 
+// Logo (uploaded image or wordmark text). The image is decorative next to the name, so alt is empty.
+const logoLink = ({ shop, href }) => link({ class: 'kw-logo', href }, [
+  shop.logo ? `<img class="kw-logo__img" src="${esc(shop.logo)}" alt="">` : '',
+  `<span class="kw-logo__text">${esc(shop.wordmark)}</span>`,
+]);
+
 export const header = ({ shop, base, current }) => {
   const r = routes(base);
   return el('header', { class: 'kw-header' }, div({ class: 'kw-wrap kw-header__inner' }, [
-    link({ class: 'kw-logo', href: r.home }, esc(shop.wordmark)),
+    logoLink({ shop, href: r.home }),
     el('nav', { class: 'kw-nav', 'aria-label': 'Main' }, [
       link({ href: r.home, 'aria-current': current === 'home' ? 'page' : false }, 'Home'),
-      link({ href: r.shop, 'aria-current': current === 'shop' ? 'page' : false }, 'Shop'),
+      link({ href: r.shop, 'data-shop-link': true, 'aria-current': current === 'shop' ? 'page' : false }, 'Shop'),
+    ]),
+    // Search matches product name + category; on the shop page it filters live, elsewhere it opens the shop.
+    el('form', { class: 'kw-search', role: 'search', 'data-search-form': true }, [
+      '<svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><circle cx="11" cy="11" r="6.5" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="m16 16 4.5 4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>',
+      '<input type="search" name="q" placeholder="Search products" aria-label="Search products" autocomplete="off" enterkeyhint="search">',
     ]),
     button({ class: 'kw-cart-btn', 'data-cart-open': true, 'aria-label': 'Open cart' }, [
       '<svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M5 7h14l-1.2 11.2a2 2 0 0 1-2 1.8H8.2a2 2 0 0 1-2-1.8L5 7Z" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M9 9V6a3 3 0 0 1 6 0v3" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>',
@@ -21,11 +32,18 @@ export const header = ({ shop, base, current }) => {
   ]));
 };
 
+const policyList = (policy) => policy ? [
+  policy.items?.length ? list({ class: 'kw-policy' }, policy.items.map((t) => listItem({}, esc(t))).join('')) : '',
+  policy.note ? paragraph({ class: 'kw-policy__note' }, esc(policy.note)) : '',
+].join('') : '';
+
 export const footer = ({ shop, base }) => el('footer', { class: 'kw-footer' }, div({ class: 'kw-wrap kw-footer__inner' }, [
-  div({}, [link({ class: 'kw-logo', href: `${base}index.html` }, esc(shop.wordmark)), paragraph({}, esc(shop.footer))]),
+  div({}, [logoLink({ shop, href: `${base}index.html` }), paragraph({}, esc(shop.footer))]),
   div({ class: 'kw-footer__contact' }, [
     paragraph({ class: 'kw-footer__label' }, 'Order or ask a question'),
     link({ class: 'kw-footer__wa', href: `https://wa.me/${shop.whatsapp}`, target: '_blank', rel: 'noopener' }, `WhatsApp +${esc(shop.whatsapp)}`),
+    shop.location ? div({ class: 'kw-footer__block' }, [paragraph({ class: 'kw-footer__label' }, 'Find us'), paragraph({}, esc(shop.location))]) : '',
+    shop.policy ? div({ class: 'kw-footer__block' }, [paragraph({ class: 'kw-footer__label' }, 'Delivery & returns'), policyList(shop.policy)]) : '',
   ]),
   paragraph({ class: 'kw-footer__fine' }, `© ${esc(shop.name)} · Prices in KSh · Built with Duka Bee`),
 ]));
@@ -66,7 +84,7 @@ export const featuredStrip = ({ shop, products, base }) => el('section', { class
 ]));
 
 // Filter control: reads only filterable attributes (facets), with a zero-result empty state.
-export const filterControl = ({ facets }) => el('aside', { class: 'kw-filters', 'data-filters': true }, el('details', { class: 'kw-filters__details', open: true }, [
+export const filterControl = ({ facets, prices }) => el('aside', { class: 'kw-filters', 'data-filters': true }, el('details', { class: 'kw-filters__details', open: true }, [
   el('summary', {}, `Filter <span class="kw-filters__active" data-filter-active></span>`),
   ...facets.map((f) => el('fieldset', { class: 'kw-facet', 'data-facet': f.key }, [
     el('legend', {}, esc(f.label)),
@@ -75,6 +93,13 @@ export const filterControl = ({ facets }) => el('aside', { class: 'kw-filters', 
       el('span', {}, esc(v.value)), el('small', {}, String(v.count)),
     ]))),
   ])),
+  el('fieldset', { class: 'kw-facet', 'data-facet': '_price' }, [
+    el('legend', {}, 'Price (KSh)'),
+    div({ class: 'kw-price' }, [
+      `<label><span>Min</span><input type="number" inputmode="numeric" min="0" name="min" data-price-min placeholder="${prices.min}"></label>`,
+      `<label><span>Max</span><input type="number" inputmode="numeric" min="0" name="max" data-price-max placeholder="${prices.max}"></label>`,
+    ]),
+  ]),
   button({ class: 'kw-textlink', 'data-filter-clear': true }, 'Clear all filters'),
 ]));
 
@@ -89,7 +114,7 @@ export const shopBody = ({ products, facets, base }) => el('section', { class: '
     ]),
   ]),
   div({ class: 'kw-shop-layout' }, [
-    filterControl({ facets }),
+    filterControl({ facets, prices: { min: Math.min(...products.map((p) => p.price)), max: Math.max(...products.map((p) => p.price)) } }),
     div({}, [
       productGrid({ products, base, id: 'kw-shop-grid' }),
       div({ class: 'kw-empty', 'data-empty': true, hidden: true }, [
@@ -102,7 +127,7 @@ export const shopBody = ({ products, facets, base }) => el('section', { class: '
 ]));
 
 // Product detail: image + text zone. One selector per selectable attribute; the rest render as text.
-export const productDetail = ({ product, base }) => {
+export const productDetail = ({ product, base, shop }) => {
   const selectable = product.attributes.filter((a) => a.selectable);
   const plain = product.attributes.filter((a) => !a.selectable);
   const category = product.attributes.find((a) => a.key === 'category')?.values[0]?.value;
@@ -123,6 +148,7 @@ export const productDetail = ({ product, base }) => {
         el('button', { class: 'kw-cta kw-cta--ghost', type: 'submit', value: 'add', 'data-add-to-cart': true, disabled: selectable.length > 0 }, 'Add to cart'),
         el('button', { class: 'kw-cta kw-cta--primary', type: 'submit', value: 'buy', 'data-buy-now': true, disabled: selectable.length > 0 }, 'Buy now'),
       ]),
+      shop?.policy ? div({ class: 'kw-pdp__policy' }, [paragraph({ class: 'kw-pdp__policy-title' }, 'Delivery & returns'), policyList(shop.policy)]) : '',
       plain.length ? el('dl', { class: 'kw-specs' }, plain.map((a) => div({}, [el('dt', {}, esc(a.label)), el('dd', {}, esc(a.values.map((v) => v.value).join(', ')))])).join('')) : '',
     ]),
   ]));

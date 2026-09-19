@@ -9,13 +9,24 @@
 <body>
 <p>Building your store…</p>
 <script type="module">
-  // Generated stores are rendered client-side from the URL: name, WhatsApp, catalog and look seed.
-  import { readConfig, renderStorePage } from '/lib/launch/dummy.mjs';
+  // Stores are rendered in the browser from either
+  //   ?draft=<name>            a seller's draft saved by the launch flow (localStorage "dukabee:draft:<name>")
+  //   ?name=&wa=&cat=&seed=    a shareable sample store (dummy niche catalog + a random look)
+  import { draftFromQuery, renderStorePage } from '/lib/launch/store.mjs';
   const q = new URLSearchParams(location.search);
   try {
-    const { html } = renderStorePage(readConfig(q), { page: q.get('p') || 'home', slug: q.get('s') });
-    // Swap in the generated document (DOMParser rather than document.write), then re-add its scripts,
-    // which parsed-in <script> elements don't run on their own.
+    let draft, linkParams;
+    if (q.get('draft')) {
+      const name = q.get('draft');
+      draft = JSON.parse(localStorage.getItem(`dukabee:draft:${name}`) || 'null');
+      if (!draft) throw new Error('draft-missing');
+      linkParams = { draft: name };
+    } else {
+      draft = draftFromQuery(q);
+      linkParams = { name: q.get('name') || '', wa: q.get('wa') || '', cat: q.get('cat') || '', seed: q.get('seed') || '' };
+    }
+    const { html } = renderStorePage(draft, { page: q.get('p') || 'home', slug: q.get('s'), linkParams });
+    // Swap in the generated document, then re-add its scripts (parsed-in <script> elements don't run on their own).
     const doc = new DOMParser().parseFromString(html, 'text/html');
     document.replaceChild(document.adoptNode(doc.documentElement), document.documentElement);
     for (const old of document.querySelectorAll('script[src]')) {
@@ -24,7 +35,8 @@
       old.replaceWith(s);
     }
   } catch (err) {
-    document.body.innerHTML = `<p>Sorry, this store link looks broken. <a href="/">Make a new one</a>.</p>`;
+    const missing = err.message === 'draft-missing';
+    document.body.innerHTML = `<p>${missing ? 'We could not find that store draft in this browser.' : 'Sorry, this store link looks broken.'} <a href="/launch/">Build a store</a>.</p>`;
     console.error(err);
   }
 </script>

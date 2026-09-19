@@ -11,14 +11,15 @@ import { runPipeline, DEMOS, ROOT } from '../pipeline/run.mjs';
 const DIST = path.join(ROOT, 'dist');
 const cp = (from, to) => fs.cpSync(path.join(ROOT, from), path.join(DIST, to), { recursive: true });
 
-fs.rmSync(DIST, { recursive: true, force: true });
+// Empty dist/ rather than deleting it: on Windows a running `wrangler dev` keeps the folder open (EBUSY).
 fs.mkdirSync(DIST, { recursive: true });
+for (const e of fs.readdirSync(DIST)) fs.rmSync(path.join(DIST, e), { recursive: true, force: true });
 
 cp('web', '.');
 cp('kiwanda/runtime', 'assets');
 for (const f of ['atoms.mjs', 'molecules.mjs', 'sections.mjs', 'templates.mjs', 'pages.mjs']) cp(`kiwanda/${f}`, `lib/kiwanda/${f}`);
 for (const f of ['vault.mjs', 'contrast.mjs']) cp(`pipeline/${f}`, `lib/pipeline/${f}`);
-cp('launch/dummy.mjs', 'lib/launch/dummy.mjs');
+for (const f of ['config.mjs', 'niches.mjs', 'brand.mjs', 'store.mjs']) cp(`launch/${f}`, `lib/launch/${f}`);
 
 const showcase = [];
 for (const demo of DEMOS) {

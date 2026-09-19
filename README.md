@@ -10,23 +10,46 @@ npm run check      # structural acceptance checks over out/
 npm run studio     # Duka Bee Studio → http://localhost:4321 (local tool, not deployed)
 npm run build      # assemble dist/ for Cloudflare Pages
 npm run preview    # serve dist/ → http://localhost:8788
-npm run deploy     # build + npx wrangler pages deploy dist --project-name dukabee
+npm run dev        # build + local Worker (static site + /api) at http://localhost:8787
+npm run deploy     # build + npx wrangler deploy
 ```
+
+## Launch flow (docs: `duka-bee-mvp-spec.md`)
+
+`/launch/` is a four-step, no-signup flow. The store preview is the pitch, and nothing is paid for before the seller sees it.
+
+1. **Brand**: store name; logo upload (brand colour is sampled from it), or a Brand Kit (colour + style + optional wordmark), or the Duka Bee house style.
+2. **Details**: description, WhatsApp/phone, location, delivery & returns (presets + a note).
+3. **Catalog**: 3 to 5 products (name, price, photo, description, category, one flexible attribute). Seed from one of 8 niche templates (`launch/niches.mjs`) or start blank; everything is editable.
+4. **Preview**: the real store (search on name + category, filters on category / price range / the flexible attribute, cart, Buy Now) plus **"I want this store"**: an intent-capture form saved to the leads table. No payment.
+
+The draft lives in `localStorage` (`dukabee:draft:local`), so a refresh loses nothing. Stores render in the browser from a draft or from a shareable sample link (`/store/?name=&wa=&cat=&seed=`) via the same Kiwanda composer and runtime as the demos.
+
+## Leads (backend)
+
+`worker/index.mjs` is a Cloudflare Worker (only `/api/*` runs it; everything else is served as static assets).
+Leads are stored in a SQLite-backed Durable Object, so there is **no database to create**.
+
+| Route | |
+|---|---|
+| `POST /api/leads` | public; validates, honeypot, 5/hour/IP limit, saves the lead + the store draft |
+| `GET /api/leads`, `GET /api/leads/<id>` | need `Authorization: Bearer <ADMIN_KEY>` |
+| `/admin/` | leads table; "Open store" re-renders that lead's draft |
+
+Set the admin key once: `npx wrangler secret put ADMIN_KEY` (or Cloudflare dashboard → Worker → Settings → Variables and Secrets).
+Local: `npm run dev` (builds, then `wrangler dev` at http://localhost:8787; add `--var ADMIN_KEY:test` to use /admin/).
 
 ## Deployed site (dist/)
 
 | Path | What |
 |---|---|
-| `/` | Duka Bee landing: hero, launch form, proof-of-work showcase (`web/`) |
-| `/store/?name=…&wa=…&cat=…&seed=…` | A store generated in the browser from dummy data (`launch/dummy.mjs`) |
+| `/` | Landing: hero, launch card, sample stores by niche, three pipeline-built demos |
+| `/launch/` | The four-step flow |
+| `/store/?draft=local` or `/store/?name=…&wa=…&cat=…&seed=…` | Store rendered in the browser |
 | `/demos/kladi/`, `/demos/jikoni/`, `/demos/rembo/` | The three pipeline-built demo stores |
+| `/admin/` | Leads (needs `ADMIN_KEY`) |
 
-Launch flow intake modes: **sample products** (live; the seller enters only shop name + WhatsApp),
-**website URL** and **Instagram username** (visible, marked "coming soon"). Each generation picks a new
-seed → palette, type pairing, card/button shape and hero layout, with placehold.co images tinted to the
-palette. The share link reproduces the exact store. Tokens pass the same contrast-safety check as the demos.
-
-Duka Bee's own WhatsApp for the "Talk to us" button is `CONTACT_WA` in `web/landing.js`.
+Duka Bee's own WhatsApp number and the activation fee are in `launch/config.mjs`.
 
 No dependencies; Node 20+.
 
