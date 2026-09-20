@@ -346,3 +346,11 @@ body.kw-locked{overflow:hidden}
   .kw .kw-publish__btn{width:100%;text-align:center}
 }
 .kw-cover .kw-card__media img{object-fit:cover;padding:0}
+
+/* service shops: bookings, not deliveries */
+.kw-service .kw-qty{display:none}
+.kw-service .kw-cta-set{grid-template-columns:1fr}
+.kw-checkout .kw-check{display:flex;align-items:flex-start;gap:10px;font-weight:600;line-height:1.4}
+.kw-checkout .kw-check input{width:20px;min-height:0;height:20px;margin-top:2px;flex:none}
+.kw-paybox{padding:14px 16px;border-radius:var(--kw-radius);background:var(--kw-soft);border:1px solid var(--kw-line)}
+.kw-paybox p{margin:4px 0 0}

@@ -166,6 +166,22 @@ export const productDetail = ({ product, base, shop }) => {
   ]));
 };
 
+// Booking variant of the pre-checkout form, for shops that sell sessions/programs instead of shipped goods.
+// Cohort products (fixed dates) ask for date confirmation; always-open products ask when the client wants to start.
+const bookingForm = ({ checkout }) => el('form', { class: 'kw-drawer__view kw-checkout', 'data-view': 'checkout', 'data-checkout-form': true, hidden: true }, [
+  button({ class: 'kw-textlink', 'data-checkout-back': true }, '← Back'),
+  heading(3, {}, 'Your booking details'),
+  paragraph({ class: 'kw-fine' }, esc(checkout.intro)),
+  el('label', {}, ['Your name', '<input name="customerName" required autocomplete="name" placeholder="e.g. Mary Wanjiku">']),
+  el('label', {}, ['Partner\'s name <small>(if booking as a couple)</small>', '<input name="partnerName" placeholder="e.g. John Kamau">']),
+  el('label', {}, ['Phone number', '<input name="phone" type="tel" inputmode="tel" required autocomplete="tel" placeholder="e.g. 0712 345 678">']),
+  el('label', { class: 'kw-check', 'data-cohort-box': true, hidden: true }, ['<input type="checkbox" name="cohortOk">', '<span data-cohort-text></span>']),
+  el('label', { 'data-start-box': true, hidden: true }, ['When would you like to start?', '<select name="startWhen"><option>As soon as possible</option><option>Next week</option><option>Let\'s discuss</option></select>']),
+  el('label', {}, ['Notes <small>(optional)</small>', '<textarea name="notes" rows="2"></textarea>']),
+  div({ class: 'kw-paybox' }, [el('strong', {}, 'Pay by M-Pesa'), paragraph({}, esc(checkout.payment)), paragraph({ class: 'kw-fine' }, esc(checkout.paymentNote))]),
+  el('button', { class: 'kw-cta kw-cta--primary kw-cta--block', type: 'submit' }, esc(checkout.submit)),
+]);
+
 // Cart + checkout overlay — present on every page, opened from the header cart icon.
 export const cartOverlay = ({ shop, base }) => [
   el('div', { class: 'kw-overlay', 'data-cart': true, hidden: true, 'data-shop': shop.id, 'data-shop-name': shop.name, 'data-whatsapp': shop.whatsapp }, [
@@ -178,11 +194,11 @@ export const cartOverlay = ({ shop, base }) => [
         div({ class: 'kw-drawer__foot', 'data-cart-foot': true }, [
           div({ class: 'kw-total' }, ['<span>Total</span>', el('strong', { 'data-cart-total': true }, 'KSh 0')]),
           button({ class: 'kw-cta kw-cta--primary kw-cta--block', 'data-checkout-open': true }, 'Checkout'),
-          paragraph({ class: 'kw-fine' }, 'You\'ll confirm the order with a real person on WhatsApp.'),
+          paragraph({ class: 'kw-fine' }, shop.checkout ? 'You\'ll confirm your booking with a real person on WhatsApp.' : 'You\'ll confirm the order with a real person on WhatsApp.'),
         ]),
       ]),
       // Pre-checkout form (the Dobatron/Taskbee form): structures the order, then fires the WhatsApp message.
-      el('form', { class: 'kw-drawer__view kw-checkout', 'data-view': 'checkout', 'data-checkout-form': true, hidden: true }, [
+      shop.checkout ? bookingForm({ checkout: shop.checkout }) : el('form', { class: 'kw-drawer__view kw-checkout', 'data-view': 'checkout', 'data-checkout-form': true, hidden: true }, [
         button({ class: 'kw-textlink', 'data-checkout-back': true }, '← Back to cart'),
         heading(3, {}, 'Send the useful details first'),
         paragraph({ class: 'kw-fine' }, 'Give the shop enough detail to reply clearly on WhatsApp.'),
@@ -194,6 +210,7 @@ export const cartOverlay = ({ shop, base }) => [
       ]),
     ]),
   ]),
+  shop.checkout ? `<script type="application/json" data-service>${JSON.stringify({ verb: shop.checkout.verb, greeting: shop.checkout.greeting, payment: shop.checkout.payment, cohorts: shop.checkout.cohorts || {} }).replace(/</g, '\\u003c')}</script>` : '',
   cartLineItemTemplate(),
   div({ class: 'kw-toast', 'data-toast': true, role: 'status', hidden: true }, ''),
 ].join('');

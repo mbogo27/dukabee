@@ -24,6 +24,13 @@ export const shop = {
   whatsapp: '254720399323',
   location: 'Hazina Towers, 16th Floor, Nairobi',
   payment: 'M-Pesa Till 947392 (Faith Njogu Global)',
+  checkout: {
+    verb: 'Book now', greeting: 'I\'d like to book:', submit: 'Send booking on WhatsApp ↗',
+    intro: 'Tell Faith who is attending so she can confirm your place on WhatsApp.',
+    payment: 'M-Pesa Till 947392 (Faith Njogu Global)',
+    paymentNote: 'Please pay before, or right after, you send this booking so Faith can confirm your place.',
+    cohorts: { 'rebuild-the-we': 'October 11 to 24' }, // fixed-date cohorts; the other programs are always open
+  },
   coverPhotos: true, policy: null, currency: 'KSh', featuredCount: 3,
   home: {
     publish: false,
@@ -59,7 +66,7 @@ export const products = [
     price: 1000, priceNote: 'per couple', image: 'images/IMG_20211023_145026-1.jpg',
     description: 'A short, structured in-person reset for couples: daily guided sessions plus the accountability of other couples going through it alongside you.',
     attributes: [A('category', 'Category', 'In-person program', true)],
-    facts: [{ label: 'Format', value: 'In-person, group, Nairobi (Hazina Towers)' }, { label: 'Dates', value: '10 days, October 11 to 24' }],
+    facts: [{ label: 'Format', value: 'In-person, group, Nairobi (Hazina Towers)' }, { label: 'Dates', value: 'Next cohort: 10 days, October 11 to 24' }],
     sections: [
       { title: 'What you will cover', items: [
         'Days 1 and 2: Reset and understand what is really going on beneath surface arguments',
@@ -77,7 +84,7 @@ export const products = [
     price: 45000, image: 'images/magnetize-your-love-program.jpg',
     description: 'An 8-week online coaching journey that helps singles and couples reignite attraction, rebuild intimacy and create a relationship that feels alive and secure.',
     attributes: [A('category', 'Category', 'Online program', true)],
-    facts: [{ label: 'Format', value: 'Online, self-paced with weekly structure' }, { label: 'Length', value: '8 weeks' }],
+    facts: [{ label: 'Format', value: 'Online, self-paced with weekly structure' }, { label: 'Length', value: '8 weeks' }, { label: 'Start', value: 'Any time, enrolment is always open' }],
     sections: [
       { title: 'What you will cover', items: [
         'Week 1: Root sources of conflict vs. surface symptoms',
@@ -97,7 +104,7 @@ export const products = [
     price: 24000, priceNote: 'or USD $149 for international clients', image: 'images/ignite-your-love-program.jpg',
     description: 'A focused masterclass that helps couples break out of repeating arguments and reconnect, with root-cause tools rather than quick fixes.',
     attributes: [A('category', 'Category', 'Online masterclass', true)],
-    facts: [{ label: 'Format', value: 'Online masterclass, self-paced' }, { label: 'Access', value: 'Lifetime' }],
+    facts: [{ label: 'Format', value: 'Online masterclass, self-paced' }, { label: 'Access', value: 'Lifetime' }, { label: 'Start', value: 'Any time, enrolment is always open' }],
     sections: [
       { title: 'What is included', items: [
         'Core training: root-cause discovery, techniques for open and honest conversation, and one core communication tool to stop conflicts escalating',

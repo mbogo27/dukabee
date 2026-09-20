@@ -53,8 +53,28 @@
     if (empty) showView('cart');
   };
 
+  // ---- service shops (bookings instead of delivery): wording + the fields each cart needs ----
+  let svc = null;
+  try { svc = JSON.parse($('[data-service]')?.textContent || 'null'); } catch {}
+  if (svc) {
+    document.body.classList.add('kw-service');
+    $$('[data-buy-now],[data-quick-add][data-buy]').forEach((b) => { b.textContent = svc.verb; });
+    $$('[data-add-to-cart],[data-quick-add]:not([data-buy])').forEach((b) => { b.hidden = true; });
+    const title = $('#kw-cart-title'); if (title) title.textContent = 'Your booking';
+  }
+  const syncService = () => {
+    const lines = read();
+    const cohortLines = lines.filter((l) => svc.cohorts[l.slug]);
+    const cohortBox = $('[data-cohort-box]', cartEl), startBox = $('[data-start-box]', cartEl);
+    cohortBox.hidden = cohortLines.length === 0;
+    $('[name=cohortOk]', cartEl).required = cohortLines.length > 0;
+    $('[data-cohort-text]', cartEl).textContent = cohortLines.length ? `I can attend the fixed dates: ${cohortLines.map((l) => `${l.name} (${svc.cohorts[l.slug]})`).join('; ')}` : '';
+    const open_ = lines.some((l) => !svc.cohorts[l.slug]);
+    startBox.hidden = !open_; $('[name=startWhen]', cartEl).disabled = !open_;
+  };
+
   let lastFocus = null;
-  const showView = (name) => $$('[data-view]', cartEl).forEach((v) => { v.hidden = v.dataset.view !== name; });
+  const showView = (name) => { $$('[data-view]', cartEl).forEach((v) => { v.hidden = v.dataset.view !== name; }); if (svc && name === 'checkout') syncService(); };
   const open = (view = 'cart') => {
     lastFocus = document.activeElement;
     showView(view); cartEl.hidden = false; document.body.classList.add('kw-locked');
@@ -92,6 +112,16 @@
     if (!form.reportValidity()) return;
     const f = new FormData(form);
     const lines = read();
+    if (svc) {
+      const body = lines.map((l) => {
+        const when = svc.cohorts[l.slug] ? `Fixed dates: ${svc.cohorts[l.slug]}` : `Start: ${f.get('startWhen')}`;
+        return `${l.name}\n${when}\n${ksh(l.price * l.qty)}`;
+      }).join('\n\n');
+      const total = lines.reduce((s, l) => s + l.price * l.qty, 0);
+      const msg = `Hello ${shopName}!\n\n${svc.greeting}\n\n${body}\n\nTotal: ${ksh(total)}\n\nName: ${f.get('customerName')}${f.get('partnerName') ? `\nPartner: ${f.get('partnerName')}` : ''}\nPhone: ${f.get('phone')}${f.get('notes') ? `\nNotes: ${f.get('notes')}` : ''}\n\nPayment: I will pay by ${svc.payment}.\n\n[ref: ${shopId}-booking]`;
+      window.open(`https://wa.me/${whatsapp}?text=${encodeURIComponent(msg)}`, '_blank', 'noopener');
+      return;
+    }
     const body = lines.map((l) => {
       const sel = Object.entries(l.selections || {}).map(([k, v]) => `${k[0].toUpperCase() + k.slice(1)}: ${v}`).join(', ');
       return `${l.name}${sel ? `\n${sel}` : ''}\nQty: ${l.qty} · ${ksh(l.price * l.qty)}`;
