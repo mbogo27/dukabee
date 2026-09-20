@@ -104,14 +104,13 @@ export default {
     const url = new URL(request.url);
     const storeRoot = STORE_HOSTS[url.hostname];
     if (storeRoot && !url.pathname.startsWith('/api/')) {
-      const res = await env.ASSETS.fetch(new Request(new URL(storeRoot + url.pathname, url), { method: request.method, headers: request.headers, redirect: 'manual' }));
-      // The assets layer may redirect (/shop.html -> /shop/); keep the visitor on the subdomain's own paths.
-      const loc = res.headers.get('location');
-      if (loc && res.status >= 300 && res.status < 400) {
-        const to = new URL(loc, url);
-        if (to.pathname.startsWith(storeRoot)) to.pathname = to.pathname.slice(storeRoot.length) || '/';
-        to.protocol = url.protocol; to.host = url.host;
-        return Response.redirect(to.toString(), res.status);
+      // The assets layer redirects /shop.html <-> /shop/. Follow those internally instead of bouncing the visitor:
+      // the pages use relative links (assets/, ../assets/), which only resolve if the URL stays as requested.
+      let target = new URL(storeRoot + url.pathname, url);
+      let res = await env.ASSETS.fetch(new Request(target, { method: request.method, headers: request.headers, redirect: 'manual' }));
+      for (let hops = 0; hops < 3 && res.status >= 300 && res.status < 400 && res.headers.get('location'); hops++) {
+        target = new URL(res.headers.get('location'), target);
+        res = await env.ASSETS.fetch(new Request(target, { method: request.method, headers: request.headers, redirect: 'manual' }));
       }
       return res.status === 404 ? new Response('Not found', { status: 404 }) : res;
     }
