@@ -83,6 +83,7 @@ export function buildVault(draft) {
     whatsapp: normalisePhone(draft.details.phone) || '254700000000',
     location: (draft.details.location || '').trim(),
     policy: policyItems.length || (draft.details.policyNote || '').trim() ? { items: policyItems, note: (draft.details.policyNote || '').trim() } : null,
+    home: { trust: { items: ['M-Pesa accepted', 'Fast delivery', 'Verified seller'] }, tiles: true },
     currency: 'KSh', featuredCount: Math.min(6, Math.max(4, products.length)),
     theme: { color: c, type: { display: type.display, displayWeight: type.displayWeight, body: type.body, tracking: type.tracking }, shape },
   };

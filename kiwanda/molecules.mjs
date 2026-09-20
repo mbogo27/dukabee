@@ -26,7 +26,7 @@ export const productCard = ({ product, href, base }) => {
     div({ class: 'kw-card__body' }, [
       category ? paragraph({ class: 'kw-card__eyebrow' }, esc(category)) : '',
       heading(3, { class: 'kw-card__title' }, link({ href }, esc(product.name))),
-      paragraph({ class: 'kw-card__price' }, (needsChoice && hasPriceDelta(product) ? 'From ' : '') + ksh(product.price)),
+      paragraph({ class: 'kw-card__price' }, (needsChoice && hasPriceDelta(product) ? 'From ' : '') + ksh(product.price) + (product.priceNote ? ` <small>${esc(product.priceNote)}</small>` : '')),
       needsChoice
         ? cta({ label: 'Choose options', href, variant: 'ghost' })
         : div({ class: 'kw-card__ctas' }, [

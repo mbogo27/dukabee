@@ -3,11 +3,12 @@ main = "worker/index.mjs"
 compatibility_date = "2026-09-01"
 
 # Static site (landing, launch flow, stores, demos) is built into dist/ by `npm run build`.
-# Only /api/* runs the Worker; everything else is served straight from the assets.
+# The Worker runs first so seller subdomains (worker/index.mjs STORE_HOSTS) can be mapped onto their store folder;
+# everything else falls straight through to the assets.
 [assets]
 directory = "./dist"
 binding = "ASSETS"
-run_worker_first = ["/api/*"]
+run_worker_first = true
 
 # Leads captured by the "I want this store" form. SQLite-backed Durable Object: no database to
 # create by hand, and it deploys with the normal `wrangler deploy`.

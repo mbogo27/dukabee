@@ -356,6 +356,53 @@ function fit() {
   f.style.width = `${width}px`; f.style.height = `${h / scale}px`; f.style.transform = `scale(${scale})`;
 }
 new ResizeObserver(fit).observe(document.body);
+
+// Share a screenshot of the store: rendered in the browser from the live preview (same origin), then handed to the
+// phone's share sheet, or downloaded where sharing files isn't supported. Nothing is uploaded.
+let h2cLoading;
+const loadH2C = () => h2cLoading || (h2cLoading = new Promise((ok, no) => {
+  if (window.html2canvas) return ok(window.html2canvas);
+  const s = document.createElement('script'); s.src = '/launch/html2canvas-pro.min.js';
+  s.onload = () => ok(window.html2canvas); s.onerror = () => { h2cLoading = null; no(new Error('load')); };
+  document.head.appendChild(s);
+}));
+$('#shot-btn').addEventListener('click', async (e) => {
+  const btn = e.currentTarget, label = btn.innerHTML;
+  fit();
+  const f = $('#preview'), doc = f.contentDocument;
+  if (!doc || !doc.body || !doc.body.children.length) return;
+  btn.disabled = true; btn.textContent = 'Preparing…';
+  try {
+    const html2canvas = await loadH2C();
+    const w = parseInt(f.style.width, 10) || f.clientWidth, h = Math.min(parseInt(f.style.height, 10) || f.clientHeight, 2400);
+    const win = f.contentWindow;
+    // useCORS: photos that can't be read cross-origin are left out rather than blocking the screenshot.
+    const shot = await html2canvas(doc.documentElement, { useCORS: true, scale: 2, width: w, height: h, windowWidth: w, windowHeight: h, x: win.scrollX, y: win.scrollY, backgroundColor: '#ffffff', logging: false });
+    const bar = Math.round(shot.width * (w > 700 ? 0.03 : 0.11));
+    const out = document.createElement('canvas'); out.width = shot.width; out.height = shot.height + bar;
+    const c = out.getContext('2d');
+    c.drawImage(shot, 0, 0);
+    c.fillStyle = '#16140f'; c.fillRect(0, shot.height, out.width, bar);
+    c.fillStyle = '#ffc905'; c.textBaseline = 'middle'; c.font = `700 ${Math.round(bar * 0.42)}px system-ui, sans-serif`;
+    c.fillText('Built with Duka Bee', bar * 0.4, shot.height + bar / 2);
+    c.fillStyle = '#ffffff'; c.textAlign = 'right';
+    c.fillText('dukabee.co.ke', out.width - bar * 0.4, shot.height + bar / 2);
+    const blob = await new Promise((r) => out.toBlob(r, 'image/png'));
+    const name = `${(draft.brand.name || 'my-store').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '') || 'my-store'}-store-preview.png`;
+    const file = new File([blob], name, { type: 'image/png' });
+    let how = 'download';
+    if (navigator.canShare && navigator.canShare({ files: [file] })) {
+      try { await navigator.share({ files: [file], title: `${draft.brand.name || 'My store'} on Duka Bee`, text: 'My online store preview, built with Duka Bee. Build yours free: https://dukabee.co.ke' }); how = 'share'; }
+      catch (err) { if (err && err.name === 'AbortError') how = 'cancel'; }
+    }
+    if (how === 'download') {
+      const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = name; document.body.appendChild(a); a.click(); a.remove();
+      setTimeout(() => URL.revokeObjectURL(a.href), 4000);
+    }
+    if (how !== 'cancel') track('preview_screenshot_share', { ...trackContext(), method: how });
+  } catch { btn.textContent = 'Couldn’t capture. Try again'; setTimeout(() => { btn.innerHTML = label; btn.disabled = false; }, 2200); return; }
+  btn.innerHTML = label; btn.disabled = false;
+});
 $('#device').addEventListener('click', (e) => {
   const b = e.target.closest('[data-device]'); if (!b) return;
   device = b.dataset.device;

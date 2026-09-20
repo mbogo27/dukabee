@@ -1,7 +1,7 @@
 // Named page templates — sections arranged into layout, no live data. Header, footer and the cart
 // overlay are reused across every template, never redeclared per template.
 import { esc } from './atoms.mjs';
-import { header, footer, cartOverlay, hero, featuredStrip, shopBody, productDetail, demoBar } from './sections.mjs';
+import { header, footer, cartOverlay, hero, featuredStrip, shopBody, productDetail, demoBar, trustStrip, categoryTiles, testimonials, aboutCta, publishCta } from './sections.mjs';
 
 const fontHref = (type) => {
   const fam = (name, weights) => `family=${name.replace(/ /g, '+')}:wght@${weights}`;
@@ -26,7 +26,7 @@ const shell = ({ shop, base, title, description, current, body, demo }) => `<!do
 <link rel="stylesheet" href="${base}assets/kiwanda.css">
 <style>${themeCss(shop.theme)}</style>
 ${demo ? '<script src="/analytics.js" async></script>\n' : ''}</head>
-<body class="kw kw-card--${shop.theme.shape.card} kw-btn--${shop.theme.shape.button} kw-density--${shop.theme.shape.density} kw-page--${current}${demo ? ' kw-has-demobar' : ''}" data-base="${base}">
+<body class="kw kw-card--${shop.theme.shape.card} kw-btn--${shop.theme.shape.button} kw-density--${shop.theme.shape.density} kw-page--${current}${shop.coverPhotos ? ' kw-cover' : ''}${demo ? ' kw-has-demobar' : ''}" data-base="${base}">
 <a class="kw-skip" href="#main">Skip to content</a>
 ${header({ shop, base, current })}
 <main id="main">${body}</main>
@@ -38,9 +38,20 @@ ${demo ? demoBar(typeof demo === 'object' ? demo : {}) : ''}
 </html>
 `;
 
+const categoryCounts = (products) => {
+  const counts = new Map();
+  for (const p of products) { const c = p.attributes.find((a) => a.key === 'category')?.values[0]?.value; if (c) counts.set(c, (counts.get(c) || 0) + 1); }
+  return [...counts].slice(0, 4).map(([label, count]) => ({ label, count }));
+};
+
 export const homeTemplate = ({ shop, products, base = '', demo }) => shell({
   shop, base, demo, current: 'home', title: `${shop.name} — ${shop.tagline}`, description: shop.hero.body,
-  body: hero({ shop, products, base }) + featuredStrip({ shop, products, base }),
+  body: hero({ shop, products, base }) + featuredStrip({ shop, products, base })
+    + (shop.home?.trust ? trustStrip({ trust: shop.home.trust }) : '')
+    + (shop.home?.tiles ? categoryTiles({ tiles: categoryCounts(products), base }) : '')
+    + (shop.home?.testimonials ? testimonials({ items: shop.home.testimonials, base }) : '')
+    + (shop.home?.about ? aboutCta({ about: shop.home.about, base }) : '')
+    + (demo && shop.home?.publish !== false ? publishCta({ price: shop.home?.publishPrice || 'KSh 10,000' }) : ''),
 });
 
 export const shopTemplate = ({ shop, products, facets, base = '', demo }) => shell({

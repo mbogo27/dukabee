@@ -48,6 +48,7 @@ Local: `npm run dev` (builds, then `wrangler dev` at http://localhost:8787; add 
 | `/store/?draft=local` or `/store/?name=…&wa=…&cat=…&seed=…` | Store rendered in the browser |
 | `/demos/kladi/`, `/demos/jikoni/`, `/demos/rembo/` | The three pipeline-built demo stores |
 | `/addons/` | Optional add-ons (bulk product upload, M-Pesa, WhatsApp integration, logo + brand kit), mirrored from taskbee.co.ke/addons; picks travel with the launch request |
+| `/stores/faith/` | Faith Njogu's live store, hand-authored from faithnjogu.com (`stores/faith/store.mjs` + `images/`, built by `scripts/build.mjs`) |
 | `/admin/` | Leads (needs `ADMIN_KEY`) |
 
 Duka Bee's own WhatsApp number and the activation fee are in `launch/config.mjs`.
@@ -97,7 +98,15 @@ load on localhost, so your own testing stays out of the reports.
 | `store_enquiry` | the claim form is submitted | same, plus saved, addon_count, addons, best_time |
 | `claim_click` | "Claim & launch" tapped | same as store_preview |
 | `launch_step` | each wizard step viewed | step_name, step_number |
+| `preview_screenshot_share` | "Share your store" used on the launch preview | same as store_preview, plus method (share / download) |
 | `sample_store_click`, `demo_store_click`, `demobar_click` | sample store / demo opened, "Built with Duka Bee" bar clicked | niche or demo |
 
 Enquiries per preview = `store_enquiry` / `store_preview`. In GA4: Admin > Events > mark `store_enquiry` as a key event, and register the
 parameters you want to report on under Admin > Custom definitions. Add `data-track="event_name"` (plus `data-track-*` parameters) to any element to track its clicks.
+
+## Homepage sections
+
+Store homepages can carry optional sections from `shop.home`: `trust` (badge strip, optional logos), `tiles` (category tiles linking into shop filters),
+`testimonials`, `about` (blurb + CTA) and, on demo previews only, the closing **Customize & publish · KSh 10,000** section (`publish: false` turns it off).
+Sample stores from the launch flow get the generic trust strip and category tiles. Products can add `priceNote`, `facts` and expandable `sections`
+(curriculum, who it's for). Real seller stores live in `stores/<id>/` and are added to the list in `scripts/build.mjs`.

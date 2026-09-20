@@ -6,9 +6,9 @@ import { cta, statBlock, mediaFrame, productCard, attributeSelector, cartLineIte
 const routes = (base) => ({ home: `${base}index.html`, shop: `${base}shop.html`, product: (slug) => `${base}product/${slug}.html` });
 
 // Logo (uploaded image or wordmark text). The image is decorative next to the name, so alt is empty.
-const logoLink = ({ shop, href }) => link({ class: 'kw-logo', href }, [
+const logoLink = ({ shop, href }) => link({ class: `kw-logo${shop.logoWide ? ' kw-logo--wide' : ''}`, href, ...(shop.logoWide ? { 'aria-label': shop.name } : {}) }, [
   shop.logo ? `<img class="kw-logo__img" src="${esc(shop.logo)}" alt="">` : '',
-  `<span class="kw-logo__text">${esc(shop.wordmark)}</span>`,
+  shop.logoWide ? '' : `<span class="kw-logo__text">${esc(shop.wordmark)}</span>`,
 ]);
 
 export const header = ({ shop, base, current }) => {
@@ -51,6 +51,7 @@ export const footer = ({ shop, base }) => el('footer', { class: 'kw-footer' }, d
     paragraph({ class: 'kw-footer__label' }, 'Order or ask a question'),
     link({ class: 'kw-footer__wa', href: `https://wa.me/${shop.whatsapp}`, target: '_blank', rel: 'noopener' }, `WhatsApp +${esc(shop.whatsapp)}`),
     shop.location ? div({ class: 'kw-footer__block' }, [paragraph({ class: 'kw-footer__label' }, 'Find us'), paragraph({}, esc(shop.location))]) : '',
+    shop.payment ? div({ class: 'kw-footer__block' }, [paragraph({ class: 'kw-footer__label' }, 'Pay with'), paragraph({}, esc(shop.payment))]) : '',
     shop.policy ? div({ class: 'kw-footer__block' }, [paragraph({ class: 'kw-footer__label' }, 'Delivery & returns'), policyList(shop.policy)]) : '',
   ]),
   paragraph({ class: 'kw-footer__fine' }, `© ${esc(shop.name)} · Prices in KSh · Built with Duka Bee`),
@@ -69,7 +70,7 @@ export const hero = ({ shop, products, base }) => {
     paragraph({ class: 'kw-eyebrow' }, esc(shop.eyebrow)),
     heading(1, { class: 'kw-hero__title' }, esc(shop.hero.title)),
     paragraph({ class: 'kw-hero__body' }, esc(shop.hero.body)),
-    div({ class: 'kw-hero__actions' }, [cta({ label: 'Shop all products', href: routes(base).shop }), cta({ label: 'Order on WhatsApp', href: `https://wa.me/${shop.whatsapp}`, variant: 'ghost', attrs: { target: '_blank', rel: 'noopener' } })]),
+    div({ class: 'kw-hero__actions' }, [cta({ label: shop.hero.primary || 'Shop all products', href: routes(base).shop }), cta({ label: shop.hero.secondary || 'Order on WhatsApp', href: `https://wa.me/${shop.whatsapp}`, variant: 'ghost', attrs: { target: '_blank', rel: 'noopener' } })]),
   ]);
   if (shop.hero.variant === 'hero-photo-stat') {
     const categories = new Set(products.map((p) => p.attributes.find((a) => a.key === 'category')?.values[0]?.value));
@@ -148,6 +149,7 @@ export const productDetail = ({ product, base, shop }) => {
       el('nav', { class: 'kw-crumbs', 'aria-label': 'Breadcrumb' }, [link({ href: r.shop }, 'Shop'), category ? ` / ${link({ href: `${r.shop}?category=${encodeURIComponent(category)}` }, esc(category))}` : '']),
       heading(1, { class: 'kw-pdp__title' }, esc(product.name)),
       paragraph({ class: 'kw-pdp__price', 'data-pdp-price': true }, ksh(product.price)),
+      product.priceNote ? paragraph({ class: 'kw-pdp__pricenote' }, esc(product.priceNote)) : '',
       div({ class: 'kw-desc', 'data-desc': true }, [div({ class: 'kw-desc__text' }, product.description.split(/\n+/).map((t) => paragraph({}, esc(t))).join('')), button({ class: 'kw-textlink kw-desc__toggle', 'data-desc-toggle': true, hidden: true }, 'Read more')]),
       ...selectable.map((a) => attributeSelector({ attribute: a, base })),
       paragraph({ class: 'kw-pdp__hint', 'data-pdp-hint': true, 'aria-live': 'polite' }, selectable.length ? `Choose ${selectable.map((a) => a.label.toLowerCase()).join(' and ')} to continue` : ''),
@@ -156,6 +158,8 @@ export const productDetail = ({ product, base, shop }) => {
         el('button', { class: 'kw-cta kw-cta--ghost', type: 'submit', value: 'add', 'data-add-to-cart': true, disabled: selectable.length > 0 }, 'Add to cart'),
         el('button', { class: 'kw-cta kw-cta--primary', type: 'submit', value: 'buy', 'data-buy-now': true, disabled: selectable.length > 0 }, 'Buy now'),
       ]),
+      product.facts?.length ? el('dl', { class: 'kw-specs kw-specs--facts' }, product.facts.map((f) => div({}, [el('dt', {}, esc(f.label)), el('dd', {}, esc(f.value))])).join('')) : '',
+      ...(product.sections || []).map((s) => el('details', { class: 'kw-more' }, [el('summary', {}, esc(s.title)), s.items ? el('ul', {}, s.items.map((i) => el('li', {}, esc(i))).join('')) : paragraph({}, esc(s.text))])),
       shop?.policy ? div({ class: 'kw-pdp__policy' }, [paragraph({ class: 'kw-pdp__policy-title' }, 'Delivery & returns'), policyList(shop.policy)]) : '',
       plain.length ? el('dl', { class: 'kw-specs' }, plain.map((a) => div({}, [el('dt', {}, esc(a.label)), el('dd', {}, esc(a.values.map((v) => v.value).join(', ')))])).join('')) : '',
     ]),
@@ -193,3 +197,39 @@ export const cartOverlay = ({ shop, base }) => [
   cartLineItemTemplate(),
   div({ class: 'kw-toast', 'data-toast': true, role: 'status', hidden: true }, ''),
 ].join('');
+
+// ---- optional homepage sections, driven by shop.home (trust, tiles, testimonials, about, publish) ----
+export const trustStrip = ({ trust }) => el('section', { class: 'kw-trust', 'aria-label': 'Why buy here' }, div({ class: 'kw-wrap kw-trust__inner' }, [
+  list({ class: 'kw-trust__items' }, (trust.items || []).map((t) => listItem({}, ['<span class="kw-trust__tick" aria-hidden="true">✓</span>', esc(t)]))),
+  trust.logos?.length ? div({ class: 'kw-trust__logos' }, [paragraph({ class: 'kw-trust__label' }, esc(trust.logosLabel || 'As seen on')), ...trust.logos.map((l) => `<img src="${esc(l.src)}" alt="${esc(l.alt)}" loading="lazy" height="34">`)]) : '',
+]));
+
+export const categoryTiles = ({ tiles, base, title = 'Shop by category' }) => el('section', { class: 'kw-section kw-tiles' }, div({ class: 'kw-wrap' }, [
+  div({ class: 'kw-section__head' }, [heading(2, {}, esc(title))]),
+  div({ class: 'kw-tiles__grid', 'data-count': tiles.length }, tiles.map((t) => link({ class: 'kw-tile', href: `${routes(base).shop}?category=${encodeURIComponent(t.label)}` }, [
+    el('span', { class: 'kw-tile__name' }, esc(t.label)), el('span', { class: 'kw-tile__count' }, `${t.count} ${t.count === 1 ? 'item' : 'items'} →`),
+  ]))),
+]));
+
+export const testimonials = ({ items, base }) => el('section', { class: 'kw-section kw-quotes' }, div({ class: 'kw-wrap' }, [
+  div({ class: 'kw-section__head' }, [heading(2, {}, 'What clients say')]),
+  div({ class: 'kw-quotes__grid' }, items.map((t) => el('figure', { class: 'kw-quote' }, [
+    el('blockquote', {}, paragraph({}, `“${esc(t.quote)}”`)),
+    el('figcaption', {}, [t.image ? `<img src="${esc(base + t.image)}" alt="" width="48" height="48" loading="lazy">` : '', el('span', {}, esc(t.name))]),
+  ]))),
+]));
+
+export const aboutCta = ({ about, base }) => el('section', { class: 'kw-section kw-about' }, div({ class: 'kw-wrap kw-about__inner' }, [
+  about.image ? mediaFrame({ src: base + about.image, alt: about.title }) : '',
+  div({ class: 'kw-about__copy' }, [
+    heading(2, {}, esc(about.title)),
+    ...about.body.map((t) => paragraph({}, esc(t))),
+    div({ class: 'kw-hero__actions' }, [cta({ label: about.cta.label, href: about.cta.external ? about.cta.href : `${base}${about.cta.href}`, attrs: about.cta.external ? { target: '_blank', rel: 'noopener' } : {} })]),
+  ]),
+]));
+
+// Demo previews only: the closing section that turns the preview into the offer.
+export const publishCta = ({ price, href = '/launch/' }) => el('section', { class: 'kw-publish' }, div({ class: 'kw-wrap kw-publish__inner' }, [
+  div({}, [heading(2, {}, 'Like what you see?'), paragraph({}, `Customize this into your store. ${esc(price)} to launch, with your domain and hosting included.`)]),
+  link({ class: 'kw-cta kw-cta--primary kw-publish__btn', href, 'data-track': 'publish_cta_click' }, `Customize &amp; publish · ${esc(price)}`),
+]));

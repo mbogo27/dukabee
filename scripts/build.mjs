@@ -49,6 +49,18 @@ for (const demo of DEMOS) {
 }
 fs.writeFileSync(path.join(DIST, 'demos', 'demos.json'), JSON.stringify(showcase, null, 2));
 
+// Real seller stores (hand-authored, no demo bar): stores/<id>/store.mjs + images/ -> dist/stores/<id>/
+import { composeSite } from '../kiwanda/pages.mjs';
+for (const id of ['faith']) {
+  const { shop, products } = await import(`../stores/${id}/store.mjs`);
+  const site = composeSite({ shop, products }, { base: '', productBase: '../', demo: false });
+  const dir = path.join(DIST, 'stores', id);
+  for (const page of site.pages) { fs.mkdirSync(path.dirname(path.join(dir, page.path)), { recursive: true }); fs.writeFileSync(path.join(dir, page.path), page.html); }
+  cp(`stores/${id}/images`, `stores/${id}/images`);
+  cp('kiwanda/runtime', `stores/${id}/assets`);
+  console.log(`  ✓ store ${id}: ${site.pages.length} pages`);
+}
+
 // Short cache on HTML/modules so redeploys show up immediately; images can cache longer.
 fs.writeFileSync(path.join(DIST, '_headers'), `/*
   X-Content-Type-Options: nosniff

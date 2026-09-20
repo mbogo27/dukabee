@@ -95,9 +95,26 @@ async function createLead(request, env) {
   return json({ ok: true, id: res.id });
 }
 
+// Seller subdomains: the host serves that store's folder from the assets as its site root.
+// Add a host here and attach it as a Custom Domain on the Worker.
+const STORE_HOSTS = { 'faithnjogu.dukabee.co.ke': '/stores/faith' };
+
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
+    const storeRoot = STORE_HOSTS[url.hostname];
+    if (storeRoot && !url.pathname.startsWith('/api/')) {
+      const res = await env.ASSETS.fetch(new Request(new URL(storeRoot + url.pathname, url), { method: request.method, headers: request.headers, redirect: 'manual' }));
+      // The assets layer may redirect (/shop.html -> /shop/); keep the visitor on the subdomain's own paths.
+      const loc = res.headers.get('location');
+      if (loc && res.status >= 300 && res.status < 400) {
+        const to = new URL(loc, url);
+        if (to.pathname.startsWith(storeRoot)) to.pathname = to.pathname.slice(storeRoot.length) || '/';
+        to.protocol = url.protocol; to.host = url.host;
+        return Response.redirect(to.toString(), res.status);
+      }
+      return res.status === 404 ? new Response('Not found', { status: 404 }) : res;
+    }
     if (url.pathname === '/api/leads' && request.method === 'POST') return createLead(request, env);
 
     if (url.pathname.startsWith('/api/leads') && request.method === 'GET') {
