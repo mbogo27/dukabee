@@ -21,7 +21,8 @@ const shell = ({ shop, base, title, description, current, body, demo }) => `<!do
 <title>${esc(title)}</title>
 <meta name="description" content="${esc(description)}">
 <meta name="generator" content="Duka Bee · Kiwanda web mode">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+${shop.favicon ? `<link rel="icon" href="${esc(shop.favicon)}">
+` : ''}<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="${fontHref(shop.theme.type)}">
 <link rel="stylesheet" href="${base}assets/kiwanda.css">
 <style>${themeCss(shop.theme)}</style>

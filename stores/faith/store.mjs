@@ -12,7 +12,7 @@ const { color } = safeColors({
 
 export const shop = {
   type: 'shop', id: 'faith', name: 'Faith Njogu', wordmark: 'Faith Njogu',
-  logo: `${ROOT}images/faith-njogu-logo-4.png`, logoWide: true,
+  logo: `${ROOT}images/faith-njogu-logo.png`, logoWide: true,
   descriptor: 'Marriage Counselor & Relationship Coach', tagline: 'Marriage Counselor & Relationship Coach', eyebrow: 'Faith Njogu / marriage counselor & relationship coach',
   hero: {
     title: 'Rediscover Fulfillment in Your Relationship',
@@ -31,7 +31,7 @@ export const shop = {
     paymentNote: 'Please pay before, or right after, you send this booking so Faith can confirm your place.',
     cohorts: { 'rebuild-the-we': 'October 11 to 24' }, // fixed-date cohorts; the other programs are always open
   },
-  coverPhotos: true, policy: null, currency: 'KSh', featuredCount: 3,
+  favicon: `${ROOT}images/favicon-192.png`, coverPhotos: true, policy: null, currency: 'KSh', featuredCount: 3,
   home: {
     publish: false,
     trust: {

@@ -302,7 +302,7 @@ body.kw-locked{overflow:hidden}
 }
 
 /* ---- optional homepage sections + product extras ---- */
-.kw-logo--wide .kw-logo__img{height:44px;max-width:230px}
+.kw-logo--wide .kw-logo__img{height:48px;max-width:300px;border-radius:0}
 .kw-card__price small{font-size:.72em;font-weight:500;color:var(--kw-muted)}
 .kw-pdp__pricenote{margin:-12px 0 16px;color:var(--kw-muted);font-size:14px}
 .kw-trust{background:var(--kw-soft);border-block:1px solid var(--kw-line)}
@@ -342,7 +342,7 @@ body.kw-locked{overflow:hidden}
   .kw-tiles__grid{grid-template-columns:repeat(2,minmax(0,1fr))}
   .kw-quotes__grid,.kw-about__inner{grid-template-columns:minmax(0,1fr)}
   .kw-trust__items{flex-direction:column}
-  .kw-logo--wide .kw-logo__img{height:36px;max-width:190px}
+  .kw-logo--wide .kw-logo__img{height:34px;max-width:200px}
   .kw .kw-publish__btn{width:100%;text-align:center}
 }
 .kw-cover .kw-card__media img{object-fit:cover;padding:0}
