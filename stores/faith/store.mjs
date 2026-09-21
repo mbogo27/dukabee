@@ -63,7 +63,7 @@ export const shop = {
 export const products = [
   {
     type: 'product', id: 'rebuild-the-we', slug: 'rebuild-the-we', name: '10 Days to Rebuild the “We” in Your Marriage',
-    price: 1000, priceNote: 'per couple', image: 'images/IMG_20211023_145026-1.jpg',
+    price: 1000, priceNote: 'per couple', image: 'images/holding-hands.jpg',
     description: 'A short, structured in-person reset for couples: daily guided sessions plus the accountability of other couples going through it alongside you.',
     attributes: [A('category', 'Category', 'In-person program', true)],
     facts: [{ label: 'Format', value: 'In-person, group, Nairobi (Hazina Towers)' }, { label: 'Dates', value: 'Next cohort: 10 days, October 11 to 24' }],
