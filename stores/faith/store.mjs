@@ -2,7 +2,9 @@
 // Built into dist/stores/faith/ by scripts/build.mjs. Images live in ./images and are copied alongside the pages.
 import { safeColors } from '../../pipeline/contrast.mjs';
 
-const ROOT = '/stores/faith/'; // logos are referenced from every page depth, so they use absolute paths
+const ROOT = '/'; // logos are referenced from every page depth, so they use root-relative paths - this store's
+// canonical URL is the faithnjogu.dukabee.co.ke subdomain (root '/'); dukabee.co.ke/stores/faith/* redirects
+// there instead of also serving the files, so there's only ever one root these absolute paths need to match.
 const A = (key, label, value, filterable = false) => ({ key, label, values: [{ value }], filterable, selectable: false, evidence: 'faithnjogu.com', assumed: false });
 
 const { color } = safeColors({

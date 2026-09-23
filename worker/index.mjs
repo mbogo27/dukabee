@@ -98,10 +98,20 @@ async function createLead(request, env) {
 // Seller subdomains: the host serves that store's folder from the assets as its site root.
 // Add a host here and attach it as a Custom Domain on the Worker.
 const STORE_HOSTS = { 'faithnjogu.dukabee.co.ke': '/stores/faith' };
+// The reverse of the above: a visit to dukabee.co.ke/stores/<id>/... redirects to that store's own subdomain
+// instead of also serving the files there. The store's HTML uses root-relative paths (e.g. its logo), which
+// only resolve correctly against ONE root - so it can only really live at one place, not two.
+const STORE_PATH_TO_HOST = Object.fromEntries(Object.entries(STORE_HOSTS).map(([host, root]) => [root, host]));
 
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
+    const storeRedirect = Object.keys(STORE_PATH_TO_HOST).find((root) => url.pathname === root || url.pathname.startsWith(root + '/'));
+    if (storeRedirect && !STORE_HOSTS[url.hostname]) {
+      const to = new URL(url.pathname.slice(storeRedirect.length) || '/', `https://${STORE_PATH_TO_HOST[storeRedirect]}`);
+      to.search = url.search;
+      return Response.redirect(to.toString(), 301);
+    }
     const storeRoot = STORE_HOSTS[url.hostname];
     if (storeRoot && !url.pathname.startsWith('/api/')) {
       // The assets layer redirects /shop.html <-> /shop/. Follow those internally instead of bouncing the visitor:
