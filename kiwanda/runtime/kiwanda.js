@@ -114,8 +114,9 @@
     const lines = read();
     if (svc) {
       const body = lines.map((l) => {
+        const sel = Object.entries(l.selections || {}).map(([k, v]) => `${k[0].toUpperCase() + k.slice(1)}: ${v}`).join(', ');
         const when = svc.cohorts[l.slug] ? `Fixed dates: ${svc.cohorts[l.slug]}` : `Start: ${f.get('startWhen')}`;
-        return `${l.name}\n${when}\n${ksh(l.price * l.qty)}`;
+        return `${l.name}${sel ? `\n${sel}` : ''}\n${when}\n${ksh(l.price * l.qty)}`;
       }).join('\n\n');
       const total = lines.reduce((s, l) => s + l.price * l.qty, 0);
       const msg = `Hello ${shopName}!\n\n${svc.greeting}\n\n${body}\n\nTotal: ${ksh(total)}\n\nName: ${f.get('customerName')}${f.get('partnerName') ? `\nPartner: ${f.get('partnerName')}` : ''}\nPhone: ${f.get('phone')}${f.get('notes') ? `\nNotes: ${f.get('notes')}` : ''}\n\nPayment: I will pay by ${svc.payment}.\n\n[ref: ${shopId}-booking]`;

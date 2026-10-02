@@ -31,9 +31,9 @@ export const shop = {
     intro: 'Tell Faith who is attending so she can confirm your place on WhatsApp.',
     payment: 'M-Pesa Till 947392 (Faith Njogu Global)',
     paymentNote: 'Please pay before, or right after, you send this booking so Faith can confirm your place.',
-    cohorts: { 'rebuild-the-we': 'October 11 to 24' }, // fixed-date cohorts; the other programs are always open
+    cohorts: { 'rebuild-the-we': 'November 9 to 20' }, // fixed-date cohorts; the other programs are always open
   },
-  favicon: `${ROOT}images/favicon-192.png`, coverPhotos: true, policy: null, currency: 'KSh', featuredCount: 3,
+  favicon: `${ROOT}images/favicon-192.png`, coverPhotos: true, policy: null, currency: 'KSh', featuredCount: 4,
   home: {
     publish: false,
     trust: {
@@ -68,7 +68,7 @@ export const products = [
     price: 1000, priceNote: 'per couple', image: 'images/holding-hands.jpg',
     description: 'A short, structured in-person reset for couples: daily guided sessions plus the accountability of other couples going through it alongside you.',
     attributes: [A('category', 'Category', 'In-person program', true)],
-    facts: [{ label: 'Format', value: 'In-person, group, Nairobi (Hazina Towers)' }, { label: 'Dates', value: 'Next cohort: 10 days, October 11 to 24' }],
+    facts: [{ label: 'Format', value: 'In-person, group, Nairobi (Hazina Towers)' }, { label: 'Dates', value: 'Next cohort: 10 days, November 9 to 20' }],
     sections: [
       { title: 'What you will cover', items: [
         'Days 1 and 2: Reset and understand what is really going on beneath surface arguments',
@@ -83,10 +83,17 @@ export const products = [
   },
   {
     type: 'product', id: 'magnetize-your-love', slug: 'magnetize-your-love', name: 'Magnetize Your Love',
-    price: 45000, image: 'images/magnetize-your-love-program.jpg',
-    description: 'An 8-week online coaching journey that helps singles and couples reignite attraction, rebuild intimacy and create a relationship that feels alive and secure.',
-    attributes: [A('category', 'Category', 'Online program', true)],
-    facts: [{ label: 'Format', value: 'Online, self-paced with weekly structure' }, { label: 'Length', value: '8 weeks' }, { label: 'Start', value: 'Any time, enrolment is always open' }],
+    price: 48000, image: 'images/magnetize-your-love-program.jpg',
+    description: 'An online coaching journey — 8, 10 or 12 weeks, your choice — that helps singles and couples reignite attraction, rebuild intimacy and create a relationship that feels alive and secure.',
+    attributes: [
+      A('category', 'Category', 'Online program', true),
+      {
+        key: 'duration', label: 'Duration',
+        values: [{ value: '8 weeks', priceDelta: 0 }, { value: '10 weeks', priceDelta: 12000 }, { value: '12 weeks', priceDelta: 24000 }],
+        filterable: false, selectable: true, evidence: 'Seller-provided tiers', assumed: false,
+      },
+    ],
+    facts: [{ label: 'Format', value: 'Online, self-paced with weekly structure' }, { label: 'Start', value: 'Any time, enrolment is always open' }],
     sections: [
       { title: 'What you will cover', items: [
         'Week 1: Root sources of conflict vs. surface symptoms',
@@ -115,6 +122,56 @@ export const products = [
         'Bonus: one personal coaching call with Faith',
       ] },
       { title: 'Who it is for', items: ['Couples stuck in repeating arguments', 'Partners who shut down or escalate under stress', 'Anyone wanting more passion without being “in crisis”'] },
+    ],
+  },
+  {
+    type: 'product', id: 'marriage-counseling', slug: 'marriage-counseling', name: 'Marriage Counseling',
+    price: 3000, priceNote: 'per session', image: 'images/holding-hands.jpg',
+    description: 'Certified marriage counseling to resolve conflict, heal from infidelity or distance, and rebuild an authentic connection. Most couples notice change within 4 to 8 sessions.',
+    attributes: [A('category', 'Category', '1:1 Sessions', true)],
+    facts: [{ label: 'Format', value: 'Online or in-person, Nairobi (Hazina Towers)' }, { label: 'Typical length', value: '4 to 8 sessions' }],
+    sections: [
+      { title: 'Who it is for', items: ['Couples in crisis, or strengthening an already good relationship', 'Couples navigating a big transition — parenting, a job change, an empty nest', 'Intercultural or interfaith couples', 'Anyone who wants to start, even without their spouse'] },
+    ],
+  },
+  {
+    type: 'product', id: 'couples-therapy', slug: 'couples-therapy', name: 'Couples Therapy',
+    price: 5000, priceNote: 'per session', image: 'images/holding-hands.jpg',
+    description: 'Evidence-based therapy focused on the relationship itself: better communication, resolved conflict, rebuilt intimacy. Most couples see progress within 6 to 12 sessions.',
+    attributes: [A('category', 'Category', '1:1 Sessions', true)],
+    facts: [{ label: 'Format', value: 'Online or in-person, Nairobi (Hazina Towers)' }, { label: 'Typical length', value: '6 to 12 sessions' }],
+    sections: [
+      { title: 'Who it is for', items: ['Couples at any stage — newly married, long-term, or considering separation', 'Engaged, cohabiting or married partners', 'Couples doing preventative work, not just repair', 'Anyone facing strain, infidelity or emotional distance'] },
+    ],
+  },
+  {
+    type: 'product', id: 'pre-marital-counselling', slug: 'pre-marital-counselling', name: 'Pre-Marital Counselling Package',
+    price: 5000, priceNote: 'per session · 6 to 12 sessions', image: 'images/holding-hands.jpg',
+    description: 'A proactive package for engaged couples building a strong foundation before the wedding — culturally grounded guidance for modern Kenyan couples, including interfaith and blended families.',
+    attributes: [A('category', 'Category', '1:1 Sessions', true)],
+    facts: [{ label: 'Format', value: 'Online or in-person, Nairobi (Hazina Towers)' }, { label: 'Sessions', value: '6 to 12, tailored to the couple' }],
+    sections: [
+      { title: 'Who it is for', items: ['Engaged couples of any faith or background', 'Interfaith and intercultural couples', 'Couples already living together, or with children', 'Anyone wanting a certificate for a church or legal requirement'] },
+    ],
+  },
+  {
+    type: 'product', id: 'relationship-coaching', slug: 'relationship-coaching', name: 'Relationship Coaching',
+    price: 3000, priceNote: 'per session', image: 'images/holding-hands.jpg',
+    description: 'Practical, forward-looking coaching on where you want your relationship to go and how to get there — not a replay of the past. Includes a free initial consultation.',
+    attributes: [A('category', 'Category', '1:1 Sessions', true)],
+    facts: [{ label: 'Format', value: 'Online or in-person, Nairobi (Hazina Towers)' }, { label: 'First step', value: 'Free consultation' }],
+    sections: [
+      { title: 'Who it is for', items: ['Individuals wanting to improve how they connect with others', 'Couples wanting to strengthen what already works', 'Anyone whose partner isn’t ready to join sessions yet', 'Those navigating a new stage in the relationship'] },
+    ],
+  },
+  {
+    type: 'product', id: 'personal-therapy', slug: 'personal-therapy', name: 'Personal Therapy',
+    price: 3000, priceNote: 'per session', image: 'images/holding-hands.jpg',
+    description: 'A confidential space to process grief, anxiety, childhood wounds or everyday overwhelm, in person or online — wherever you are in Kenya.',
+    attributes: [A('category', 'Category', '1:1 Sessions', true)],
+    facts: [{ label: 'Format', value: 'In-person (Hazina Towers) or online via Zoom/WhatsApp' }, { label: 'Typical length', value: '6 to 12 sessions for lasting change' }],
+    sections: [
+      { title: 'Who it is for', items: ['Anyone feeling stuck, overwhelmed or emotionally drained', 'People processing grief, anxiety or childhood wounds', 'All genders, faiths and backgrounds welcome', 'Those who just need a few sessions of relief, not a diagnosis'] },
     ],
   },
 ];
