@@ -8,6 +8,8 @@ const routes = (base) => ({ home: `${base}index.html`, shop: `${base}shop.html`,
 // Logo (uploaded image or wordmark text). The image is decorative next to the name, so alt is empty.
 const logoLink = ({ shop, href }) => link({ class: `kw-logo${shop.logoWide ? ' kw-logo--wide' : ''}`, href, ...(shop.logoWide ? { 'aria-label': shop.name } : {}) }, [
   shop.logo ? `<img class="kw-logo__img" src="${esc(shop.logo)}" alt="">` : '',
+  // No logo, no wide wordmark lockup: a coloured initials badge (v2 intake's fallback) instead of plain text.
+  !shop.logo && shop.markStyle === 'initials' ? `<span class="kw-logo__mark" aria-hidden="true">${esc(shop.initials || '')}</span>` : '',
   shop.logoWide ? '' : `<span class="kw-logo__text">${esc(shop.wordmark)}</span>`,
 ]);
 
@@ -147,6 +149,7 @@ export const productDetail = ({ product, base, shop }) => {
       class: 'kw-pdp__info', 'data-pdp': product.slug, 'data-name': product.name, 'data-price': product.price, 'data-image': product.image, novalidate: true,
     }, [
       el('nav', { class: 'kw-crumbs', 'aria-label': 'Breadcrumb' }, [link({ href: r.shop }, 'Shop'), category ? ` / ${link({ href: `${r.shop}?category=${encodeURIComponent(category)}` }, esc(category))}` : '']),
+      product.sample ? '<span class="kw-sample-tag kw-sample-tag--pdp">Sample product</span>' : '',
       heading(1, { class: 'kw-pdp__title' }, esc(product.name)),
       paragraph({ class: 'kw-pdp__price', 'data-pdp-price': true }, ksh(product.price)),
       product.priceNote ? paragraph({ class: 'kw-pdp__pricenote' }, esc(product.priceNote)) : '',

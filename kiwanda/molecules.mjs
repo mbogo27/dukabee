@@ -22,7 +22,7 @@ export const productCard = ({ product, href, base }) => {
   const filterData = Object.fromEntries(product.attributes.filter((a) => a.filterable)
     .map((a) => [`data-f-${a.key}`, a.values.map((v) => v.value).join('|')]));
   return el('article', { class: 'kw-card', 'data-product': product.slug, 'data-price': product.price, 'data-search': `${product.name} ${category || ''}`.toLowerCase(), ...filterData }, [
-    link({ class: 'kw-card__media', href, tabindex: '-1', 'aria-hidden': 'true' }, image({ src: base + product.image, alt: '' })),
+    link({ class: 'kw-card__media', href, tabindex: '-1', 'aria-hidden': 'true' }, [image({ src: base + product.image, alt: '' }), product.sample ? '<span class="kw-sample-tag">Sample</span>' : ''].join('')),
     div({ class: 'kw-card__body' }, [
       category ? paragraph({ class: 'kw-card__eyebrow' }, esc(category)) : '',
       heading(3, { class: 'kw-card__title' }, link({ href }, esc(product.name))),

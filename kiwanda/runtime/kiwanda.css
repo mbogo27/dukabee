@@ -354,3 +354,9 @@ body.kw-locked{overflow:hidden}
 .kw-checkout .kw-check input{width:20px;min-height:0;height:20px;margin-top:2px;flex:none}
 .kw-paybox{padding:14px 16px;border-radius:var(--kw-radius);background:var(--kw-soft);border:1px solid var(--kw-line)}
 .kw-paybox p{margin:4px 0 0}
+
+/* v2 intake fallbacks: coloured initials badge (no-logo stores) + "Sample" tag on niche filler products */
+.kw-logo__mark{display:inline-grid;place-items:center;flex:none;width:34px;height:34px;border-radius:50%;background:var(--kw-accent);color:var(--kw-accent-ink);font:700 13px/1 var(--kw-font-body,system-ui,sans-serif);letter-spacing:0}
+.kw-card__media{position:relative}
+.kw-sample-tag{position:absolute;top:8px;left:8px;padding:3px 9px;border-radius:999px;background:rgba(22,20,15,.78);color:#fff;font:700 11px/1 system-ui,sans-serif;letter-spacing:.02em}
+.kw-sample-tag--pdp{display:inline-block;position:static;margin:0 0 6px;background:var(--kw-soft);color:var(--kw-muted)}

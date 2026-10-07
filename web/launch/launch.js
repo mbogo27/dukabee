@@ -5,7 +5,7 @@ import { CONTACT_WA, ACTIVATION_FEE } from '/lib/launch/config.mjs';
 import { ADDONS, addonById, addonLine } from '/lib/launch/addons.mjs';
 
 // Analytics (GA4, see /analytics.js). No personal data: never the seller's name, phone or store name.
-const track = (name, params) => window.dukabeeTrack && window.dukabeeTrack(name, params);
+const track = (name, params) => window.dukabeeTrack && window.dukabeeTrack(name, { variant: 'v1', ...params });
 const STEP_NAMES = ['brand', 'details', 'catalog', 'preview'];
 
 const $ = (s, r = document) => r.querySelector(s);

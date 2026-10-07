@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+<head>
+<script>
+// v1/v2 intake A/B split - mirror of the check in /launch/index.html (see that file for the full comment).
+// Landing here directly (bookmark, shared ?intake=v2 link) must still respect an override or an existing
+// cookie that actually says v1, and send that visitor back rather than silently forcing v2 on them.
+(function () {
+  var qs = new URLSearchParams(location.search), override = qs.get('intake');
+  var variant = (override === 'v1' || override === 'v2') ? override : null;
+  if (!variant) { var m = document.cookie.match(/(?:^|; )dk_intake=([^;]+)/); variant = m ? decodeURIComponent(m[1]) : null; }
+  if (!variant) variant = Math.random() < 0.5 ? 'v1' : 'v2';
+  try { document.cookie = 'dk_intake=' + variant + '; path=/; max-age=' + (60 * 60 * 24 * 365); } catch (e) {}
+  if (variant === 'v1') location.replace('/launch/' + location.search);
+})();
+</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Build your store · Duka Bee</title>
+<meta name="description" content="Three quick steps. Watch your store fill in as you type, then claim it on WhatsApp.">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="/brand/favicon-32.png">
+<link rel="apple-touch-icon" href="/brand/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=DM+Sans:wght@400;500;700&display=swap">
+<link rel="stylesheet" href="/landing.css">
+<link rel="stylesheet" href="/launch/v2/intake.css">
+<script src="/analytics.js"></script>
+</head>
+<body class="v2">
+<header class="nav">
+  <div class="wrap nav__inner">
+    <a class="logo" href="/"><img class="logo__bee" src="/brand/bee-256.png" width="34" height="34" alt=""> Duka Bee</a>
+  </div>
+</header>
+
+<main class="v2-main">
+  <div class="v2-returning" id="returning" hidden>
+    We kept what you typed last time. <button type="button" id="start-fresh">Start fresh</button>
+  </div>
+
+  <div class="v2-head wrap">
+    <h1>Your shop, online before your chai cools.</h1>
+    <p class="lead">Three quick steps. Watch your store fill in as you type, then claim it on WhatsApp. Free to preview.</p>
+  </div>
+
+  <div class="v2-layout wrap">
+    <div class="v2-form-col">
+
+      <div class="v2-progress" id="progress" role="progressbar" aria-valuemin="1" aria-valuemax="3" aria-valuenow="1">
+        <span class="v2-progress__dot" data-dot="1"></span>
+        <span class="v2-progress__dot" data-dot="2"></span>
+        <span class="v2-progress__dot" data-dot="3"></span>
+      </div>
+
+      <form id="v2-form" novalidate>
+
+        <!-- Step 1: Your shop -->
+        <section class="v2-step" data-step="1">
+          <h2>Your shop</h2>
+          <label>Shop name<input name="shopName" id="shopName" maxlength="40" required placeholder="e.g. Wanjiku Closet"></label>
+
+          <p class="v2-label">What do you sell?</p>
+          <div class="v2-niche-grid" id="niche-grid"></div>
+          <p class="v2-skip-niche" id="skip-niche" hidden>Happy with the sample store? <button type="button" id="skip-to-claim">Skip to claim it →</button></p>
+
+          <label>Where are you? <small>(optional)</small><input name="location" id="location" maxlength="50" placeholder="e.g. Nairobi, Thika, Mombasa"></label>
+
+          <div class="v2-nav">
+            <span></span>
+            <button type="button" class="btn btn--primary" data-next>Next →</button>
+          </div>
+        </section>
+
+        <!-- Step 2: Your products -->
+        <section class="v2-step" data-step="2" hidden>
+          <h2>Your products</h2>
+          <p class="fine">Up to 3. Anything you leave blank stays as a sample product, clearly tagged.</p>
+          <div id="product-fields"></div>
+
+          <label>Banner headline<input name="headline" id="headline" maxlength="70" placeholder="e.g. Everyday style, delivered."></label>
+          <div class="v2-chip-row" id="headline-chips"></div>
+
+          <label>Logo <small>(optional)</small><input type="file" id="logoFile" accept="image/*"></label>
+          <p class="fine" id="logo-note" hidden></p>
+
+          <p class="v2-label">Colours</p>
+          <div class="v2-colour-grid" id="colour-grid"></div>
+
+          <p class="v2-label">How you sell</p>
+          <div class="v2-chip-row" id="policy-row"></div>
+
+          <div class="v2-nav">
+            <button type="button" class="btn btn--ghost" data-back>← Back</button>
+            <button type="button" class="btn btn--primary" data-next>Next →</button>
+          </div>
+        </section>
+
+        <!-- Step 3: Claim it -->
+        <section class="v2-step" data-step="3" hidden>
+          <h2>Claim it</h2>
+          <label>WhatsApp number<input name="whatsapp" id="whatsapp" inputmode="tel" required placeholder="0712 345 678"></label>
+          <p class="err" id="whatsapp-err" hidden>Enter a Kenyan number like 0712 345 678.</p>
+          <label>Your name <small>(optional)</small><input name="contactName" id="contactName" maxlength="60" placeholder="e.g. Wanjiku Mwangi"></label>
+
+          <div class="v2-summary" id="summary"></div>
+          <button type="button" class="v2-edit-link" data-back-to="1">Edit</button>
+
+          <label class="v2-consent"><input type="checkbox" id="consent" required> Duka Bee can message me on WhatsApp about this store and keep a private preview of it.</label>
+
+          <div class="v2-nav">
+            <button type="button" class="btn btn--ghost" data-back>← Back</button>
+            <button type="submit" class="btn btn--primary" id="build-btn">Build my store</button>
+          </div>
+        </section>
+      </form>
+
+      <!-- Done: domain claim -->
+      <section class="v2-done" id="done" hidden>
+        <span class="v2-built-chip" id="built-chip"></span>
+        <h2>Claim <span id="done-domain"></span></h2>
+        <div class="v2-domain-chips" id="domain-chips"></div>
+        <p class="v2-price-copy" id="price-copy"></p>
+        <a class="btn btn--primary btn--block" id="claim-cta" target="_blank" rel="noopener">Claim it on WhatsApp</a>
+        <div class="v2-done-secondary">
+          <button type="button" class="btn btn--ghost" id="try-store">Try the store</button>
+          <button type="button" class="btn btn--ghost" id="make-changes">Make changes</button>
+        </div>
+      </section>
+
+      <div class="v2-strength" id="strength" aria-live="polite">
+        <div class="v2-strength__bar"><span id="strength-fill"></span></div>
+        <p><strong id="strength-label"></strong> <span id="strength-tip"></span></p>
+      </div>
+    </div>
+
+    <aside class="v2-preview-col" id="preview-col">
+      <div class="v2-phone" id="phone">
+        <div class="v2-phone__bar"><span></span><span></span><span></span></div>
+        <div class="v2-phone__screen"><iframe id="preview-frame" title="Your store preview"></iframe></div>
+      </div>
+    </aside>
+  </div>
+</main>
+
+<button type="button" class="v2-mobile-cta" id="see-store">See your store ↗</button>
+<div class="v2-fullscreen" id="fs" hidden>
+  <button type="button" class="v2-fs-back" id="fs-close">← Back to form</button>
+  <iframe id="preview-frame-fs" title="Your store preview"></iframe>
+</div>
+
+<script type="module" src="/launch/v2/intake.js"></script>
+</body>
+</html>

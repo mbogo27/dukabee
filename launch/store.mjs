@@ -11,10 +11,13 @@ export const emptyDraft = () => ({
   v: 1,
   id: 'preview',
   seed: newSeed(),
-  brand: { name: '', mode: 'generic', logo: null, primary: '#0f6b8f', vibe: 'clean', wordmark: '' },
-  details: { description: '', phone: '', location: '', policy: [], policyNote: '' },
+  // markStyle: 'wordmark' (default; existing behaviour) | 'initials' (v2 intake's no-logo fallback badge)
+  brand: { name: '', mode: 'generic', logo: null, primary: '#0f6b8f', vibe: 'clean', wordmark: '', markStyle: 'wordmark' },
+  details: { description: '', phone: '', location: '', policy: [], policyNote: '', headline: '', contactName: '' },
   catalog: { niche: null, attrLabel: 'Size', attrSelectable: false, dirty: false, products: [] },
 });
+
+const initials = (name) => { const w = String(name || '').trim().split(/\s+/).filter(Boolean); return ((w[0]?.[0] || 'D') + (w[1]?.[0] || '')).toUpperCase(); };
 
 export const productFromTemplate = (t, i = 0) => ({ id: `p${Date.now().toString(36)}${i}`, name: t.name, price: t.price, category: t.category, attr: t.attr, description: t.description, photo: null });
 export const blankProduct = (i = 0) => ({ id: `p${Date.now().toString(36)}${i}`, name: '', price: '', category: '', attr: '', description: '', photo: null });
@@ -68,6 +71,7 @@ export function buildVault(draft) {
         image: p.photo || ph(800, 1000, bg, fg, p.name.trim(), type.ph),
         description: (p.description || '').trim() || `${p.name.trim()} from ${name}.`,
         attributes, provenance: { sourceSlugs: ['draft'], rawDescription: false },
+        sample: !!p.sample, // v2 intake: a niche product auto-filling an empty slot, not the seller's own
       };
     });
 
@@ -77,8 +81,11 @@ export function buildVault(draft) {
   const shop = {
     type: 'shop', id: draft.id || 'preview', name, wordmark: (draft.brand.wordmark || '').trim() || name,
     logo: draft.brand.mode === 'logo' ? draft.brand.logo : null,
+    // No logo and the caller opted in (v2 intake) -> a coloured initials badge instead of the plain wordmark.
+    markStyle: draft.brand.mode !== 'logo' && draft.brand.markStyle === 'initials' ? 'initials' : undefined,
+    initials: initials(name),
     descriptor: niche?.label || 'Online store', tagline: niche?.hero || `Welcome to ${name}`, eyebrow: niche ? `${name} / ${niche.label.toLowerCase()}` : name,
-    hero: { title: niche?.hero || `Welcome to ${name}`, body: description, variant: brand.hero, images: [uploaded ? uploaded.image : ph(1200, 1400, c.accent, c.accentInk, name, type.ph)] },
+    hero: { title: (draft.details.headline || '').trim() || niche?.hero || `Welcome to ${name}`, body: description, variant: brand.hero, images: [uploaded ? uploaded.image : ph(1200, 1400, c.accent, c.accentInk, name, type.ph)] },
     footer: description,
     whatsapp: normalisePhone(draft.details.phone) || '254700000000',
     location: (draft.details.location || '').trim(),

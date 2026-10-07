@@ -11,6 +11,7 @@ export const NICHES = {
     label: 'Electronics', emoji: '🎧',
     attr: { label: 'Brand', selectable: false },
     hero: 'Tech that keeps up with you.',
+    headlines: ["Tech that keeps up with you.", "Genuine gadgets, fair prices.", "Shop. Chat. Delivered today."],
     body: 'Audio, power and smart gadgets with warranty. Order on WhatsApp and we deliver.',
     products: [
       P('Wireless Earbuds Pro', 2800, 'Audio', 'Pulse', 'Bluetooth 5.3 earbuds with charging case and up to 24 hours of playtime.'),
@@ -24,6 +25,7 @@ export const NICHES = {
     label: 'Cosmetics', emoji: '💄',
     attr: { label: 'Skin type', selectable: false },
     hero: 'Small rituals. Big glow.',
+    headlines: ["Small rituals. Big glow.", "Skincare that actually works.", "Your glow-up, delivered."],
     body: 'Skincare and makeup for everyday routines. Ask us anything on WhatsApp.',
     products: [
       P('Hydrating Face Serum 30ml', 1900, 'Skincare', 'All skin types', 'Lightweight hyaluronic serum that plumps and smooths.'),
@@ -37,6 +39,7 @@ export const NICHES = {
     label: 'Kitchen utensils', emoji: '🍳',
     attr: { label: 'Capacity', selectable: false },
     hero: 'Tools for the meals you make.',
+    headlines: ["Tools for the meals you make.", "Cook smarter, not harder.", "Everyday kitchen, upgraded."],
     body: 'Cookware, appliances and everyday helpers for busy kitchens.',
     products: [
       P('Electric Kettle 1.7L', 2600, 'Appliances', 'Up to 2 L', 'Fast-boil stainless steel kettle with auto shut-off.'),
@@ -50,6 +53,7 @@ export const NICHES = {
     label: 'Gym / fitness', emoji: '🏋️',
     attr: { label: 'Option', selectable: true },
     hero: 'Train harder. Recover better.',
+    headlines: ["Train harder. Recover better.", "Your home gym, sorted.", "Gear that keeps you moving."],
     body: 'Gym gear and accessories for home workouts and the gym floor.',
     products: [
       P('Non-Slip Yoga Mat', 1800, 'Mats', 'Blue, Black', '6mm cushioned mat with a grippy surface.'),
@@ -63,6 +67,7 @@ export const NICHES = {
     label: 'Baby store', emoji: '🍼',
     attr: { label: 'Age', selectable: true },
     hero: 'Everything for the little one.',
+    headlines: ["Everything for the little one.", "Gentle essentials, trusted quality.", "Made for tiny humans."],
     body: 'Gentle, safe essentials for babies and toddlers.',
     products: [
       P('Baby Diapers Jumbo Pack', 2400, 'Diapers', '0-6 months, 6-12 months, 1-3 years', 'Soft, ultra-absorbent diapers with a wetness indicator.'),
@@ -76,6 +81,7 @@ export const NICHES = {
     label: 'Clothing / fashion', emoji: '👗',
     attr: { label: 'Size', selectable: true },
     hero: 'Everyday style, delivered.',
+    headlines: ["Everyday style, delivered.", "Dress well. Pay less.", "Fashion that fits your life."],
     body: 'Shirts, dresses and denim picked for how you actually live.',
     products: [
       P('Linen Button-Down Shirt', 2400, 'Shirts', 'S, M, L, XL', 'Breathable linen shirt with a relaxed, tailored fit.'),
@@ -89,6 +95,7 @@ export const NICHES = {
     label: 'Phone accessories', emoji: '📱',
     attr: { label: 'Fits', selectable: true },
     hero: 'Protect it. Power it. Show it off.',
+    headlines: ["Protect it. Power it. Show it off.", "Phone gear, sorted in minutes.", "Accessories that just work."],
     body: 'Cases, chargers and accessories for the phone in your pocket.',
     products: [
       P('Shockproof Phone Case', 800, 'Cases', 'iPhone 13, iPhone 14, Samsung A54', 'Raised edges and air cushions absorb drops.'),
@@ -102,6 +109,7 @@ export const NICHES = {
     label: 'Food / pantry', emoji: '🍚',
     attr: { label: 'Pack size', selectable: false },
     hero: 'Fresh pantry staples, delivered.',
+    headlines: ["Fresh pantry staples, delivered.", "Your kitchen, always stocked.", "Groceries without the queue."],
     body: 'Everyday groceries and pantry favourites at fair prices.',
     products: [
       P('Pishori Rice 2kg', 450, 'Grains', '2 kg', 'Aromatic long-grain rice that cooks up fluffy.'),

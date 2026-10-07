@@ -1,6 +1,19 @@
 <!doctype html>
 <html lang="en">
 <head>
+<script>
+// v1/v2 intake A/B split (dukabee-v2-spec.md §"Comparing v2 against the current intake"). Runs first, before
+// any stylesheet, so a visitor routed to v2 never sees v1 flash first. ?intake=v1|v2 always wins; otherwise a
+// cookie keeps the same visitor on the same variant; new visitors get a 50/50 coin flip.
+(function () {
+  var qs = new URLSearchParams(location.search), override = qs.get('intake');
+  var variant = (override === 'v1' || override === 'v2') ? override : null;
+  if (!variant) { var m = document.cookie.match(/(?:^|; )dk_intake=([^;]+)/); variant = m ? decodeURIComponent(m[1]) : null; }
+  if (!variant) variant = Math.random() < 0.5 ? 'v1' : 'v2';
+  try { document.cookie = 'dk_intake=' + variant + '; path=/; max-age=' + (60 * 60 * 24 * 365); } catch (e) {}
+  if (variant === 'v2') location.replace('/launch/v2/' + location.search);
+})();
+</script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Launch your store · Duka Bee</title>

@@ -54,6 +54,41 @@ export class Leads extends DurableObject {
   }
 }
 
+// v2 intake: a server-side copy of a seller's draft, keyed by an unguessable id, so a `/preview/<id>` link
+// (shared in a WhatsApp claim message) works from another device, not just the browser that built it.
+const MAX_PREVIEW_CHARS = 1_500_000;
+export class Previews extends DurableObject {
+  constructor(ctx, env) {
+    super(ctx, env);
+    this.sql = ctx.storage.sql;
+    this.sql.exec(`CREATE TABLE IF NOT EXISTS previews (
+      id TEXT PRIMARY KEY,
+      created_at TEXT NOT NULL,
+      draft TEXT NOT NULL
+    )`);
+  }
+  save(id, draft) { this.sql.exec('INSERT OR REPLACE INTO previews (id, created_at, draft) VALUES (?, ?, ?)', id, new Date().toISOString(), draft); return { id }; }
+  get(id) { return this.sql.exec('SELECT draft FROM previews WHERE id = ?', id).toArray()[0] || null; }
+}
+
+async function createPreview(request, env) {
+  let body;
+  try { body = await request.json(); } catch { return json({ ok: false, error: 'Invalid request.' }, 400); }
+  const draft = typeof body.draft === 'string' ? body.draft : JSON.stringify(body.draft ?? null);
+  if (!body.draft) return json({ ok: false, error: 'Nothing to save yet.' }, 400);
+  if (draft.length > MAX_PREVIEW_CHARS) return json({ ok: false, error: 'This store is too large to save. Try smaller photos.' }, 413);
+  const id = crypto.randomUUID().replace(/-/g, '').slice(0, 14); // >= 10 chars, unguessable
+  const stub = env.PREVIEWS.get(env.PREVIEWS.idFromName('main'));
+  await stub.save(id, draft);
+  return json({ ok: true, id });
+}
+
+async function getPreview(id, env) {
+  const stub = env.PREVIEWS.get(env.PREVIEWS.idFromName('main'));
+  const row = await stub.get(id);
+  return row ? json({ ok: true, draft: JSON.parse(row.draft) }) : json({ ok: false, error: 'Not found.' }, 404);
+}
+
 const isAdmin = (request, env) => {
   const key = env.ADMIN_KEY;
   if (!key) return false;
@@ -124,6 +159,20 @@ export default {
       }
       return res.status === 404 ? new Response('Not found', { status: 404 }) : res;
     }
+    // v2 intake preview link: dukabee.co.ke/preview/<id>. Served as the store page itself (not a redirect,
+    // so the address bar stays on the private link), with the preview id handed to its client script and
+    // search engines told not to index it - it's an unlisted, unguessable per-seller page, not a real store yet.
+    const previewMatch = url.pathname.match(/^\/preview\/([a-z0-9]{10,})\/?$/);
+    if (previewMatch && request.method === 'GET') {
+      const res = await env.ASSETS.fetch(new URL('/store/', url));
+      const html = await res.text();
+      const tagged = html.replace('</head>', `<meta name="robots" content="noindex"><script>window.__previewId=${JSON.stringify(previewMatch[1])}</script></head>`);
+      return new Response(tagged, { status: res.status, headers: { 'content-type': 'text/html; charset=utf-8', 'cache-control': 'no-store' } });
+    }
+    if (url.pathname === '/api/previews' && request.method === 'POST') return createPreview(request, env);
+    const apiPreviewMatch = url.pathname.match(/^\/api\/previews\/([a-z0-9]{10,})$/);
+    if (apiPreviewMatch && request.method === 'GET') return getPreview(apiPreviewMatch[1], env);
+
     if (url.pathname === '/api/leads' && request.method === 'POST') return createLead(request, env);
 
     if (url.pathname.startsWith('/api/leads') && request.method === 'GET') {

@@ -12,11 +12,20 @@
   // Stores are rendered in the browser from either
   //   ?draft=<name>            a seller's draft saved by the launch flow (localStorage "dukabee:draft:<name>")
   //   ?name=&wa=&cat=&seed=    a shareable sample store (dummy niche catalog + a random look)
+  //   window.__previewId       a v2 intake preview (/preview/<id>): the Worker serves this page for that URL
+  //                            and sets this before any script runs; the draft itself lives server-side.
   import { draftFromQuery, renderStorePage } from '/lib/launch/store.mjs';
   const q = new URLSearchParams(location.search);
   try {
     let draft, linkParams;
-    if (q.get('draft')) {
+    if (window.__previewId) {
+      const id = window.__previewId;
+      const res = await fetch(`/api/previews/${id}`);
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok || !data.draft) throw new Error('preview-missing');
+      draft = data.draft;
+      linkParams = { previewId: id };
+    } else if (q.get('draft')) {
       const name = q.get('draft');
       draft = JSON.parse(localStorage.getItem(`dukabee:draft:${name}`) || 'null');
       if (!draft) throw new Error('draft-missing');
@@ -25,18 +34,21 @@
       draft = draftFromQuery(q);
       linkParams = { name: q.get('name') || '', wa: q.get('wa') || '', cat: q.get('cat') || '', seed: q.get('seed') || '' };
     }
-    const { html } = renderStorePage(draft, { page: q.get('p') || 'home', slug: q.get('s'), linkParams, demo: !q.get('draft') });
+    const { html } = renderStorePage(draft, { page: q.get('p') || 'home', slug: q.get('s'), linkParams, demo: !q.get('draft') && !window.__previewId });
     // Swap in the generated document, then re-add its scripts (parsed-in <script> elements don't run on their own).
     const doc = new DOMParser().parseFromString(html, 'text/html');
     document.replaceChild(document.adoptNode(doc.documentElement), document.documentElement);
+    if (window.__previewId) { const m = document.createElement('meta'); m.name = 'robots'; m.content = 'noindex'; document.head.appendChild(m); }
     for (const old of document.querySelectorAll('script[src]')) {
       const s = document.createElement('script');
       s.src = old.getAttribute('src');
       old.replaceWith(s);
     }
   } catch (err) {
-    const missing = err.message === 'draft-missing';
-    document.body.innerHTML = `<p>${missing ? 'We could not find that store draft in this browser.' : 'Sorry, this store link looks broken.'} <a href="/launch/">Build a store</a>.</p>`;
+    const msg = err.message === 'draft-missing' ? 'We could not find that store draft in this browser.'
+      : err.message === 'preview-missing' ? 'This preview link has expired or does not exist.'
+      : 'Sorry, this store link looks broken.';
+    document.body.innerHTML = `<p>${msg} <a href="/launch/">Build a store</a>.</p>`;
     console.error(err);
   }
 </script>

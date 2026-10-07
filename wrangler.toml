@@ -16,8 +16,17 @@ run_worker_first = true
 name = "LEADS"
 class_name = "Leads"
 
+# v2 intake: server-side copies of a seller's draft, so a `/preview/<id>` link works on another device/phone.
+[[durable_objects.bindings]]
+name = "PREVIEWS"
+class_name = "Previews"
+
 [[migrations]]
 tag = "v1"
 new_sqlite_classes = ["Leads"]
+
+[[migrations]]
+tag = "v2"
+new_sqlite_classes = ["Previews"]
 
 # To read leads at /admin/, set a secret once:  npx wrangler secret put ADMIN_KEY

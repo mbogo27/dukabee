@@ -1,0 +1,103 @@
+/* Intake v2 (dukabee-v2-spec.md Phase 1). Builds on landing.css's tokens (--ink, --bg, --surface, --line,
+   --bee, .wrap, .btn, fonts) rather than redefining them. */
+.v2 { padding-bottom: 40px; }
+.v2-main { padding-top: 8px; }
+.btn--primary { background: var(--ink); color: #fff; }
+
+.v2-returning { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; justify-content: center; padding: 10px 16px; background: var(--bee-soft); font-size: 14px; font-weight: 600; text-align: center; }
+.v2-returning button { border: 0; background: none; font: inherit; font-weight: 800; text-decoration: underline; cursor: pointer; color: var(--ink); }
+
+.v2-head { padding-block: 26px 10px; text-align: center; }
+.v2-head h1 { font: 800 clamp(1.7rem, 4vw, 2.4rem) var(--display); letter-spacing: -0.02em; margin: 0 0 10px; }
+.v2-head .lead { color: var(--muted); max-width: 48ch; margin-inline: auto; }
+
+.v2-layout { display: grid; grid-template-columns: minmax(0, 1fr) 360px; gap: 40px; align-items: start; padding-bottom: 30px; }
+.v2-form-col { min-width: 0; }
+
+.v2-progress { display: flex; gap: 8px; margin-bottom: 20px; }
+.v2-progress__dot { flex: 1; height: 5px; border-radius: 3px; background: var(--line); }
+.v2-progress__dot.is-done, .v2-progress__dot.is-current { background: var(--bee); }
+
+.v2-step h2 { font: 800 1.5rem var(--display); letter-spacing: -0.02em; margin: 0 0 16px; }
+.v2-step label { display: block; font-weight: 700; font-size: 13px; margin-bottom: 16px; }
+.v2-step label small { font-weight: 500; color: var(--muted); text-transform: none; }
+.v2-step input[type=text], .v2-step input:not([type=checkbox]):not([type=radio]):not([type=file]), .v2-step select { display: block; width: 100%; margin-top: 6px; min-height: 46px; padding: 10px 14px; border: 1.5px solid var(--line); border-radius: 12px; background: var(--surface); font: 15px/1.3 var(--body); color: var(--ink); }
+.v2-step input:focus { border-color: var(--ink); outline: none; }
+.v2-label { font-weight: 800; font-size: 13px; text-transform: uppercase; letter-spacing: .04em; color: var(--muted); margin: 0 0 10px; }
+.fine { color: var(--muted); font-size: 13px; margin: -8px 0 14px; }
+.err { color: #b3261e; font-size: 13px; font-weight: 700; margin: -10px 0 14px; }
+
+.v2-niche-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; margin-bottom: 16px; }
+.v2-niche-tile { display: flex; flex-direction: column; align-items: center; gap: 6px; padding: 14px 8px; border: 1.5px solid var(--line); border-radius: 14px; background: var(--surface); cursor: pointer; font: 700 12.5px/1.2 var(--body); color: var(--ink); text-align: center; }
+.v2-niche-tile__emoji { font-size: 22px; }
+.v2-niche-tile[aria-pressed=true] { border-color: var(--ink); background: var(--bee-soft); box-shadow: 3px 3px 0 var(--ink); }
+.v2-skip-niche { background: var(--bee-soft); border-radius: 12px; padding: 10px 14px; font-size: 13.5px; font-weight: 600; margin: -4px 0 16px; }
+.v2-skip-niche button { border: 0; background: none; font: inherit; font-weight: 800; text-decoration: underline; cursor: pointer; color: var(--ink); padding: 0; }
+
+.v2-product-field { padding: 14px; border: 1.5px solid var(--line); border-radius: 14px; margin-bottom: 12px; }
+.v2-product-field__head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 10px; }
+.v2-product-field__head b { font-size: 13px; }
+.v2-product-field__tag { font-size: 11px; font-weight: 700; color: var(--muted); }
+.v2-product-field .row { display: grid; grid-template-columns: 2fr 1fr; gap: 10px; }
+.v2-product-field label { margin-bottom: 10px; }
+.v2-product-field input[type=file] { margin-top: 6px; font-size: 12.5px; }
+
+.v2-chip-row { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 16px; }
+.v2-chip { padding: 8px 14px; border: 1.5px solid var(--line); border-radius: 999px; background: var(--surface); font: 600 13px/1 var(--body); cursor: pointer; color: var(--ink); }
+.v2-chip[aria-pressed=true] { background: var(--ink); color: #fff; border-color: var(--ink); }
+.v2-chip input { position: absolute; opacity: 0; pointer-events: none; }
+
+.v2-colour-grid { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 16px; }
+.v2-colour-swatch { display: flex; flex-direction: column; align-items: center; gap: 6px; cursor: pointer; }
+.v2-colour-swatch__dot { width: 36px; height: 36px; border-radius: 50%; border: 3px solid transparent; box-shadow: 0 0 0 1px var(--line); }
+.v2-colour-swatch[aria-pressed=true] .v2-colour-swatch__dot { border-color: var(--ink); box-shadow: 0 0 0 1px var(--surface), 0 0 0 3px var(--ink); }
+.v2-colour-swatch span.name { font-size: 11px; font-weight: 600; color: var(--muted); }
+
+.v2-summary { padding: 16px; border: 1.5px solid var(--line); border-radius: 14px; margin-bottom: 8px; font-size: 14px; line-height: 1.7; background: var(--surface); }
+.v2-summary b { font-weight: 700; }
+.v2-edit-link { border: 0; background: none; font: 700 13px var(--body); text-decoration: underline; cursor: pointer; color: var(--ink); padding: 0; margin: 0 0 18px; }
+.v2-consent { display: flex; align-items: flex-start; gap: 10px; font-weight: 500 !important; font-size: 13.5px !important; line-height: 1.4; }
+.v2-consent input { width: auto; min-height: 0; margin-top: 2px; }
+
+.v2-nav { display: flex; justify-content: space-between; gap: 10px; margin-top: 22px; }
+
+.v2-strength { margin-top: 26px; padding-top: 18px; border-top: 1px solid var(--line); }
+.v2-strength__bar { height: 7px; border-radius: 4px; background: var(--line); overflow: hidden; margin-bottom: 8px; }
+.v2-strength__bar span { display: block; height: 100%; background: linear-gradient(90deg, var(--ink), var(--bee)); transition: width .25s; }
+.v2-strength p { margin: 0; font-size: 13px; color: var(--muted); }
+.v2-strength strong { color: var(--ink); }
+
+/* Done screen: domain claim */
+.v2-done h2 { font: 800 1.8rem var(--display); letter-spacing: -0.02em; margin: 10px 0 16px; }
+.v2-built-chip { display: inline-block; padding: 5px 12px; border-radius: 999px; background: var(--bee); font: 800 12px/1 var(--body); }
+.v2-domain-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
+.v2-domain-chip { padding: 9px 15px; border: 1.5px solid var(--line); border-radius: 999px; background: var(--surface); font: 700 13.5px/1 var(--body); cursor: pointer; }
+.v2-domain-chip[aria-pressed=true] { background: var(--ink); color: #fff; border-color: var(--ink); }
+.v2-price-copy { color: var(--muted); font-size: 14px; margin: 0 0 18px; }
+.v2-done-secondary { display: flex; gap: 10px; margin-top: 12px; }
+.v2-done-secondary .btn { flex: 1; }
+
+/* Sticky phone-frame preview (desktop) */
+.v2-preview-col { position: sticky; top: 20px; }
+.v2-phone { border: 10px solid var(--ink); border-radius: 36px; overflow: hidden; background: var(--ink); box-shadow: 10px 10px 0 var(--line); }
+.v2-phone__bar { display: flex; gap: 5px; justify-content: center; padding: 8px 0 6px; }
+.v2-phone__bar span { width: 5px; height: 5px; border-radius: 50%; background: #55514a; }
+.v2-phone__screen { aspect-ratio: 9 / 18.5; background: #fff; }
+.v2-phone__screen iframe, #preview-frame-fs { width: 100%; height: 100%; border: 0; }
+
+.v2-mobile-cta { display: none; }
+.v2-fullscreen { display: none; }
+.v2-fullscreen.is-open { display: flex; flex-direction: column; position: fixed; inset: 0; z-index: 200; background: #fff; }
+.v2-fs-back { align-self: flex-start; margin: 10px; padding: 8px 16px; border: 1.5px solid var(--ink); border-radius: 999px; background: var(--surface); font: 700 13px var(--body); cursor: pointer; }
+.v2-fullscreen iframe { flex: 1; }
+
+@media (max-width: 980px) {
+  .v2-layout { grid-template-columns: 1fr; }
+  .v2-preview-col { display: none; }
+  .v2-mobile-cta { display: block; position: fixed; left: 50%; bottom: 18px; transform: translateX(-50%); z-index: 50; padding: 13px 24px; border: 0; border-radius: 999px; background: var(--ink); color: #fff; font: 800 14px var(--body); box-shadow: 0 8px 20px rgb(0 0 0 / .25); cursor: pointer; }
+  .v2-niche-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+@media (max-width: 480px) {
+  .v2-niche-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .v2-product-field .row { grid-template-columns: 1fr; }
+}
