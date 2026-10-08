@@ -11,8 +11,10 @@ import { buildStorefront } from '../../scripts/build-storefront.mjs';
 import { seed, stockSheet, tempData, tempDir, readJson, DATA } from './helpers.mjs';
 
 const expected = seed().products;
+// `images` is left out: photos are keyed by model and come from models.json (scripts/dobatron-images.py), so they
+// change as photos are added, independently of the stock sheet. The build test checks every product has one.
 const norm = (p, { featured = true } = {}) => {
-  const { inferred, sourceRows, featured: f, ...rest } = p;
+  const { inferred, sourceRows, featured: f, images, ...rest } = p;
   return { ...rest, inferred: [...inferred].sort(), sourceRows: [...sourceRows].sort((a, b) => a - b), ...(featured ? { featured: f } : {}) };
 };
 

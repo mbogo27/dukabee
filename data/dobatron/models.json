@@ -17,11 +17,27 @@
       "images": [
         {
           "id": "hp-zbook-firefly-14-g6-01",
+          "src": "/images/hp-zbook-firefly-14-g8-01.webp",
+          "width": 800,
+          "height": 800,
           "alt": "HP ZBook Firefly 14 G6",
           "placeholder": {
             "tint": "#ECE6DE",
             "glyph": "💻"
-          }
+          },
+          "standIn": "hp-zbook-firefly-14-g8"
+        },
+        {
+          "id": "hp-zbook-firefly-14-g6-02",
+          "src": "/images/hp-zbook-firefly-14-g8-02.webp",
+          "width": 800,
+          "height": 800,
+          "alt": "HP ZBook Firefly 14 G6",
+          "placeholder": {
+            "tint": "#ECE6DE",
+            "glyph": "💻"
+          },
+          "standIn": "hp-zbook-firefly-14-g8"
         }
       ],
       "sheetAliases": [
@@ -44,6 +60,20 @@
       "images": [
         {
           "id": "hp-zbook-firefly-14-g8-01",
+          "src": "/images/hp-zbook-firefly-14-g8-01.webp",
+          "width": 800,
+          "height": 800,
+          "alt": "HP ZBook Firefly 14 G8",
+          "placeholder": {
+            "tint": "#ECE6DE",
+            "glyph": "💻"
+          }
+        },
+        {
+          "id": "hp-zbook-firefly-14-g8-02",
+          "src": "/images/hp-zbook-firefly-14-g8-02.webp",
+          "width": 800,
+          "height": 800,
           "alt": "HP ZBook Firefly 14 G8",
           "placeholder": {
             "tint": "#ECE6DE",
@@ -69,6 +99,9 @@
       "images": [
         {
           "id": "dell-latitude-5300-01",
+          "src": "/images/dell-latitude-5300-01.webp",
+          "width": 800,
+          "height": 800,
           "alt": "Dell Latitude 5300",
           "placeholder": {
             "tint": "#E8E6E1",
@@ -94,6 +127,9 @@
       "images": [
         {
           "id": "dell-latitude-5400-01",
+          "src": "/images/dell-latitude-5400-01.webp",
+          "width": 447,
+          "height": 447,
           "alt": "Dell Latitude 5400",
           "placeholder": {
             "tint": "#E8E6E1",
@@ -119,6 +155,9 @@
       "images": [
         {
           "id": "dell-latitude-7280-01",
+          "src": "/images/dell-latitude-7280-01.webp",
+          "width": 800,
+          "height": 800,
           "alt": "Dell Latitude 7280",
           "placeholder": {
             "tint": "#E8E6E1",
@@ -147,11 +186,15 @@
       "images": [
         {
           "id": "hp-elitebook-745-g6-01",
+          "src": "/images/hp-elitebook-840-g6-01.webp",
+          "width": 800,
+          "height": 800,
           "alt": "HP EliteBook 745 G6",
           "placeholder": {
             "tint": "#E8E6E1",
             "glyph": "💻"
-          }
+          },
+          "standIn": "hp-elitebook-840-g6"
         }
       ],
       "sheetAliases": [
@@ -175,11 +218,15 @@
       "images": [
         {
           "id": "hp-elitebook-830-g5-01",
+          "src": "/images/hp-elitebook-830-g7-01.webp",
+          "width": 447,
+          "height": 447,
           "alt": "HP EliteBook 830 G5",
           "placeholder": {
             "tint": "#E8E6E1",
             "glyph": "💻"
-          }
+          },
+          "standIn": "hp-elitebook-830-g7"
         }
       ],
       "sheetAliases": [
@@ -203,11 +250,15 @@
       "images": [
         {
           "id": "hp-elitebook-830-g6-01",
+          "src": "/images/hp-elitebook-830-g7-01.webp",
+          "width": 447,
+          "height": 447,
           "alt": "HP EliteBook 830 G6",
           "placeholder": {
             "tint": "#E8E6E1",
             "glyph": "💻"
-          }
+          },
+          "standIn": "hp-elitebook-830-g7"
         }
       ],
       "sheetAliases": [
@@ -231,6 +282,9 @@
       "images": [
         {
           "id": "hp-elitebook-830-g7-01",
+          "src": "/images/hp-elitebook-830-g7-01.webp",
+          "width": 447,
+          "height": 447,
           "alt": "HP EliteBook 830 G7",
           "placeholder": {
             "tint": "#E8E6E1",
@@ -259,11 +313,15 @@
       "images": [
         {
           "id": "hp-elitebook-830-g8-01",
+          "src": "/images/hp-elitebook-830-g7-01.webp",
+          "width": 447,
+          "height": 447,
           "alt": "HP EliteBook 830 G8",
           "placeholder": {
             "tint": "#E8E6E1",
             "glyph": "💻"
-          }
+          },
+          "standIn": "hp-elitebook-830-g7"
         }
       ],
       "sheetAliases": [
@@ -287,6 +345,9 @@
       "images": [
         {
           "id": "hp-elitebook-840-g3-01",
+          "src": "/images/hp-elitebook-840-g3-01.webp",
+          "width": 554,
+          "height": 554,
           "alt": "HP EliteBook 840 G3",
           "placeholder": {
             "tint": "#E8E6E1",
@@ -315,6 +376,9 @@
       "images": [
         {
           "id": "hp-elitebook-840-g4-01",
+          "src": "/images/hp-elitebook-840-g4-01.webp",
+          "width": 447,
+          "height": 447,
           "alt": "HP EliteBook 840 G4",
           "placeholder": {
             "tint": "#E8E6E1",
@@ -343,11 +407,15 @@
       "images": [
         {
           "id": "hp-elitebook-840-g5-01",
+          "src": "/images/hp-elitebook-840-g6-01.webp",
+          "width": 800,
+          "height": 800,
           "alt": "HP EliteBook 840 G5",
           "placeholder": {
             "tint": "#E8E6E1",
             "glyph": "💻"
-          }
+          },
+          "standIn": "hp-elitebook-840-g6"
         }
       ],
       "sheetAliases": [
@@ -371,6 +439,9 @@
       "images": [
         {
           "id": "hp-elitebook-840-g6-01",
+          "src": "/images/hp-elitebook-840-g6-01.webp",
+          "width": 800,
+          "height": 800,
           "alt": "HP EliteBook 840 G6",
           "placeholder": {
             "tint": "#E8E6E1",
@@ -399,11 +470,15 @@
       "images": [
         {
           "id": "hp-elitebook-840-g7-01",
+          "src": "/images/hp-elitebook-840-g6-01.webp",
+          "width": 800,
+          "height": 800,
           "alt": "HP EliteBook 840 G7",
           "placeholder": {
             "tint": "#E8E6E1",
             "glyph": "💻"
-          }
+          },
+          "standIn": "hp-elitebook-840-g6"
         }
       ],
       "sheetAliases": [
@@ -427,11 +502,15 @@
       "images": [
         {
           "id": "hp-elitebook-840-g8-01",
+          "src": "/images/hp-elitebook-840-g6-01.webp",
+          "width": 800,
+          "height": 800,
           "alt": "HP EliteBook 840 G8",
           "placeholder": {
             "tint": "#E8E6E1",
             "glyph": "💻"
-          }
+          },
+          "standIn": "hp-elitebook-840-g6"
         }
       ],
       "sheetAliases": [
@@ -455,11 +534,15 @@
       "images": [
         {
           "id": "hp-elitebook-845-g7-01",
+          "src": "/images/hp-elitebook-840-g6-01.webp",
+          "width": 800,
+          "height": 800,
           "alt": "HP EliteBook 845 G7",
           "placeholder": {
             "tint": "#E8E6E1",
             "glyph": "💻"
-          }
+          },
+          "standIn": "hp-elitebook-840-g6"
         }
       ],
       "sheetAliases": [
@@ -483,11 +566,15 @@
       "images": [
         {
           "id": "hp-elitebook-845-g8-01",
+          "src": "/images/hp-elitebook-840-g6-01.webp",
+          "width": 800,
+          "height": 800,
           "alt": "HP EliteBook 845 G8",
           "placeholder": {
             "tint": "#E8E6E1",
             "glyph": "💻"
-          }
+          },
+          "standIn": "hp-elitebook-840-g6"
         }
       ],
       "sheetAliases": [
@@ -508,11 +595,15 @@
       "images": [
         {
           "id": "hp-probook-440-g8-01",
+          "src": "/images/hp-probook-640-g5-01.webp",
+          "width": 800,
+          "height": 800,
           "alt": "HP ProBook 440 G8",
           "placeholder": {
             "tint": "#E8E6E1",
             "glyph": "💻"
-          }
+          },
+          "standIn": "hp-probook-640-g5"
         }
       ],
       "sheetAliases": [
@@ -533,11 +624,15 @@
       "images": [
         {
           "id": "hp-probook-450-g7-01",
+          "src": "/images/hp-probook-640-g5-01.webp",
+          "width": 800,
+          "height": 800,
           "alt": "HP ProBook 450 G7",
           "placeholder": {
             "tint": "#E8E6E1",
             "glyph": "💻"
-          }
+          },
+          "standIn": "hp-probook-640-g5"
         }
       ],
       "sheetAliases": [
@@ -558,6 +653,9 @@
       "images": [
         {
           "id": "hp-probook-640-g5-01",
+          "src": "/images/hp-probook-640-g5-01.webp",
+          "width": 800,
+          "height": 800,
           "alt": "HP ProBook 640 G5",
           "placeholder": {
             "tint": "#E8E6E1",
@@ -583,6 +681,9 @@
       "images": [
         {
           "id": "hp-probook-645-g4-01",
+          "src": "/images/hp-probook-645-g4-01.webp",
+          "width": 447,
+          "height": 447,
           "alt": "HP ProBook 645 G4",
           "placeholder": {
             "tint": "#E8E6E1",
@@ -610,6 +711,9 @@
       "images": [
         {
           "id": "lenovo-thinkpad-t490s-01",
+          "src": "/images/lenovo-thinkpad-t490s-01.webp",
+          "width": 800,
+          "height": 800,
           "alt": "Lenovo ThinkPad T490s",
           "placeholder": {
             "tint": "#E8E6E1",
@@ -637,6 +741,9 @@
       "images": [
         {
           "id": "lenovo-thinkpad-x1-carbon-5th-gen-01",
+          "src": "/images/lenovo-thinkpad-x1-carbon-5th-gen-01.webp",
+          "width": 800,
+          "height": 800,
           "alt": "Lenovo ThinkPad X1 Carbon (5th Gen)",
           "placeholder": {
             "tint": "#E8E6E1",
@@ -664,11 +771,15 @@
       "images": [
         {
           "id": "lenovo-thinkpad-x13-gen-1-01",
+          "src": "/images/lenovo-thinkpad-t490s-01.webp",
+          "width": 800,
+          "height": 800,
           "alt": "Lenovo ThinkPad X13 Gen 1",
           "placeholder": {
             "tint": "#E8E6E1",
             "glyph": "💻"
-          }
+          },
+          "standIn": "lenovo-thinkpad-t490s"
         }
       ],
       "sheetAliases": [
@@ -691,6 +802,9 @@
       "images": [
         {
           "id": "lenovo-thinkpad-x260-01",
+          "src": "/images/lenovo-thinkpad-x260-01.webp",
+          "width": 800,
+          "height": 800,
           "alt": "Lenovo ThinkPad X260",
           "placeholder": {
             "tint": "#E8E6E1",
@@ -718,6 +832,9 @@
       "images": [
         {
           "id": "lenovo-thinkpad-x270-01",
+          "src": "/images/lenovo-thinkpad-x270-01.webp",
+          "width": 447,
+          "height": 447,
           "alt": "Lenovo ThinkPad X270",
           "placeholder": {
             "tint": "#E8E6E1",
@@ -747,11 +864,15 @@
       "images": [
         {
           "id": "hp-elite-x2-1012-g1-01",
+          "src": "/images/hp-probook-x360-11-g5-01.webp",
+          "width": 554,
+          "height": 554,
           "alt": "HP Elite x2 1012 G1",
           "placeholder": {
             "tint": "#E3E8E4",
             "glyph": "💻"
-          }
+          },
+          "standIn": "hp-probook-x360-11-g5"
         }
       ],
       "sheetAliases": [
@@ -778,11 +899,15 @@
       "images": [
         {
           "id": "hp-elitebook-x360-830-g6-01",
+          "src": "/images/hp-elitebook-830-g7-01.webp",
+          "width": 447,
+          "height": 447,
           "alt": "HP EliteBook x360 830 G6",
           "placeholder": {
             "tint": "#E3E8E4",
             "glyph": "💻"
-          }
+          },
+          "standIn": "hp-elitebook-830-g7"
         }
       ],
       "sheetAliases": [
@@ -809,11 +934,15 @@
       "images": [
         {
           "id": "hp-elitebook-x360-830-g7-01",
+          "src": "/images/hp-elitebook-830-g7-01.webp",
+          "width": 447,
+          "height": 447,
           "alt": "HP EliteBook x360 830 G7",
           "placeholder": {
             "tint": "#E3E8E4",
             "glyph": "💻"
-          }
+          },
+          "standIn": "hp-elitebook-830-g7"
         }
       ],
       "sheetAliases": [
@@ -838,6 +967,9 @@
       "images": [
         {
           "id": "hp-probook-x360-11-g5-01",
+          "src": "/images/hp-probook-x360-11-g5-01.webp",
+          "width": 554,
+          "height": 554,
           "alt": "HP ProBook x360 11 G5",
           "placeholder": {
             "tint": "#E3E8E4",
@@ -868,6 +1000,9 @@
       "images": [
         {
           "id": "lenovo-thinkpad-11e-yoga-01",
+          "src": "/images/lenovo-thinkpad-11e-yoga-01.webp",
+          "width": 447,
+          "height": 447,
           "alt": "Lenovo ThinkPad 11e Yoga",
           "placeholder": {
             "tint": "#E3E8E4",
@@ -898,6 +1033,9 @@
       "images": [
         {
           "id": "lenovo-thinkpad-x1-yoga-01",
+          "src": "/images/lenovo-thinkpad-x1-yoga-01.webp",
+          "width": 447,
+          "height": 447,
           "alt": "Lenovo ThinkPad X1 Yoga",
           "placeholder": {
             "tint": "#E3E8E4",
@@ -928,11 +1066,15 @@
       "images": [
         {
           "id": "lenovo-thinkpad-x13-yoga-gen-1-01",
+          "src": "/images/lenovo-thinkpad-x1-yoga-01.webp",
+          "width": 447,
+          "height": 447,
           "alt": "Lenovo ThinkPad X13 Yoga Gen 1",
           "placeholder": {
             "tint": "#E3E8E4",
             "glyph": "💻"
-          }
+          },
+          "standIn": "lenovo-thinkpad-x1-yoga"
         }
       ],
       "sheetAliases": [
@@ -958,11 +1100,15 @@
       "images": [
         {
           "id": "lenovo-thinkpad-x380-yoga-01",
+          "src": "/images/lenovo-thinkpad-x1-yoga-01.webp",
+          "width": 447,
+          "height": 447,
           "alt": "Lenovo ThinkPad X380 Yoga",
           "placeholder": {
             "tint": "#E3E8E4",
             "glyph": "💻"
-          }
+          },
+          "standIn": "lenovo-thinkpad-x1-yoga"
         }
       ],
       "sheetAliases": [
@@ -988,11 +1134,15 @@
       "images": [
         {
           "id": "lenovo-thinkpad-x390-yoga-01",
+          "src": "/images/lenovo-thinkpad-x1-yoga-01.webp",
+          "width": 447,
+          "height": 447,
           "alt": "Lenovo ThinkPad X390 Yoga",
           "placeholder": {
             "tint": "#E3E8E4",
             "glyph": "💻"
-          }
+          },
+          "standIn": "lenovo-thinkpad-x1-yoga"
         }
       ],
       "sheetAliases": [
@@ -1019,11 +1169,15 @@
       "images": [
         {
           "id": "lenovo-thinkpad-yoga-370-01",
+          "src": "/images/lenovo-thinkpad-x1-yoga-01.webp",
+          "width": 447,
+          "height": 447,
           "alt": "Lenovo ThinkPad Yoga 370",
           "placeholder": {
             "tint": "#E3E8E4",
             "glyph": "💻"
-          }
+          },
+          "standIn": "lenovo-thinkpad-x1-yoga"
         }
       ],
       "sheetAliases": [
@@ -1047,6 +1201,9 @@
       "images": [
         {
           "id": "apple-macbook-pro-13-2012-01",
+          "src": "/images/apple-macbook-pro-13-2012-01.webp",
+          "width": 447,
+          "height": 447,
           "alt": "Apple MacBook Pro 13\" (2012)",
           "placeholder": {
             "tint": "#E6E6EA",
@@ -1075,11 +1232,15 @@
       "images": [
         {
           "id": "apple-macbook-pro-13-2017-01",
+          "src": "/images/apple-macbook-pro-13-2012-01.webp",
+          "width": 447,
+          "height": 447,
           "alt": "Apple MacBook Pro 13\" (2017)",
           "placeholder": {
             "tint": "#E6E6EA",
             "glyph": "💻"
-          }
+          },
+          "standIn": "apple-macbook-pro-13-2012"
         }
       ],
       "sheetAliases": [
@@ -1103,11 +1264,15 @@
       "images": [
         {
           "id": "apple-macbook-pro-13-2018-01",
+          "src": "/images/apple-macbook-pro-13-2012-01.webp",
+          "width": 447,
+          "height": 447,
           "alt": "Apple MacBook Pro 13\" (2018)",
           "placeholder": {
             "tint": "#E6E6EA",
             "glyph": "💻"
-          }
+          },
+          "standIn": "apple-macbook-pro-13-2012"
         }
       ],
       "sheetAliases": [
@@ -1140,6 +1305,9 @@
       "images": [
         {
           "id": "hp-elitedesk-prodesk-g1-mini-01",
+          "src": "/images/hp-elitedesk-prodesk-g1-mini-01.webp",
+          "width": 800,
+          "height": 800,
           "alt": "HP EliteDesk 800 / ProDesk 600 G1 Mini PC",
           "placeholder": {
             "tint": "#E4E7EA",
@@ -1169,6 +1337,9 @@
       "images": [
         {
           "id": "lenovo-thinkcentre-m73-tiny-01",
+          "src": "/images/lenovo-thinkcentre-m73-tiny-01.webp",
+          "width": 800,
+          "height": 800,
           "alt": "Lenovo ThinkCentre M73 Tiny",
           "placeholder": {
             "tint": "#E4E7EA",

@@ -19,8 +19,9 @@ const truncate = (s, n) => { const t = String(s).replace(/\s+/g, ' ').trim(); re
 export async function composeStorefront({ catalog, content, relFile = (f) => f, now = new Date() }) {
   const warnings = [], errors = [];
   const store = await catalog.getStore();
-  const products = (await catalog.listProducts()).map(publicProduct);
   const models = new Map((await catalog.listModels()).map((m) => [m.modelId, m]));
+  // Images are keyed by model (one photo set covers every configuration), so pages read them from the registry.
+  const products = (await catalog.listProducts()).map((p) => ({ ...publicProduct(p), images: models.get(p.modelId)?.images || p.images }));
   const categories = await catalog.listCategories();
   const banners = await catalog.listBanners();
   const defs = await catalog.listAttributes();
@@ -75,7 +76,16 @@ export async function composeStorefront({ catalog, content, relFile = (f) => f, 
   }
 
   // ---- shell ----
-  const shell = ({ kind, title, description, canonical, body, top = '', jsonld = [], robots, ogType = 'website' }) => `<!doctype html>
+  // Product photos: one image, or a swipeable strip with thumbnails. A borrowed (stand-in) photo says so.
+  const gallery = (images = [], title) => {
+    const shots = images.length ? images : [null];
+    const note = shots[0]?.standIn ? `<p class="sf-gallery__note">Photo shows a similar model (${esc(models.get(shots[0].standIn)?.name || 'same family')}). Ask us on WhatsApp for photos of this exact unit.</p>` : '';
+    if (shots.length === 1) return imageRef(shots[0], { eager: true, alt: title, cls: 'sf-pdp__img' }) + note;
+    return `<div class="sf-gallery" data-gallery><div class="sf-gallery__track" data-gallery-track tabindex="0" role="group" aria-label="${esc(title)} photos">${shots.map((img, i) => `<figure class="sf-gallery__slide">${imageRef(img, { eager: i === 0, alt: `${title}, photo ${i + 1} of ${shots.length}`, cls: 'sf-pdp__img' })}</figure>`).join('')}</div>
+<div class="sf-gallery__thumbs">${shots.map((img, i) => `<button type="button" data-gallery-to="${i}" aria-label="Show photo ${i + 1} of ${shots.length}"${i ? '' : ' aria-current="true"'}>${imageRef(img, { alt: '' })}</button>`).join('')}</div></div>${note}`;
+  };
+
+  const shell = ({ kind, title, description, canonical, body, top = '', jsonld = [], robots, ogType = 'website', image }) => `<!doctype html>
 <html lang="en-KE">
 <head>
 <meta charset="utf-8">
@@ -86,7 +96,7 @@ ${canonical ? `<link rel="canonical" href="${esc(canonical)}">\n` : ''}${robots 
 <meta property="og:site_name" content="${esc(store.name)}">
 <meta property="og:title" content="${esc(title)}">
 <meta property="og:description" content="${esc(description)}">
-${canonical ? `<meta property="og:url" content="${esc(canonical)}">\n` : ''}<meta name="theme-color" content="${esc(store.palette.primary)}">
+${canonical ? `<meta property="og:url" content="${esc(canonical)}">\n` : ''}${image ? `<meta property="og:image" content="${esc(image)}">\n` : ''}<meta name="theme-color" content="${esc(store.palette.primary)}">
 <meta name="generator" content="Duka Bee · Kiwanda storefront v2">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -203,7 +213,7 @@ ${jsonScript('sf-index', { facets, defs: defs.map(({ key, label, order, summary,
     const body = `<div class="sf-wrap">
 <nav class="sf-crumbs" aria-label="Breadcrumb"><a href="/shop">Shop</a> / <a href="/shop?category=${encodeURIComponent(p.categoryId)}">${esc(cat?.name || p.categoryId)}</a></nav>
 <article class="sf-pdp${out ? ' is-out' : ''}" data-product="${esc(p.slug)}">
-<div class="sf-pdp__media">${imageRef(p.images?.[0], { eager: true, alt: title, cls: 'sf-pdp__img' })}</div>
+<div class="sf-pdp__media">${gallery(p.images, title)}</div>
 <div class="sf-pdp__info">
 <p class="sf-eyebrow">${esc([attr1(p, 'brand'), attr1(p, 'series'), attr1(p, 'formFactor')].filter(Boolean).join(' · '))}</p>
 <h1 class="sf-pdp__title">${esc(title)}</h1>
@@ -223,9 +233,9 @@ ${inGuides.map((g) => `<p class="sf-pdp__guide"><a href="${routes.guide(g.slug)}
 </div></article></div>
 ${related.length ? `<section class="sf-section sf-related"><div class="sf-wrap"><div class="sf-section__head"><h2>You might also like</h2></div><div class="sf-grid sf-grid--rail">${related.map((r) => productCard(r, { model: models.get(r.modelId) })).join('')}</div></div></section>` : ''}`;
     page(`p/${p.slug}.html`, shell({
-      kind: 'product', title: `${p.name}${store.seo.titleSuffix}`, description: truncate(p.description, 155), canonical: url, body, ogType: 'product',
+      kind: 'product', title: `${p.name}${store.seo.titleSuffix}`, description: truncate(p.description, 155), canonical: url, body, ogType: 'product', image: p.images?.[0]?.src ? origin + p.images[0].src : undefined,
       jsonld: [{
-        '@context': 'https://schema.org', '@type': 'Product', name: p.name, sku: p.slug, url,
+        '@context': 'https://schema.org', '@type': 'Product', name: p.name, sku: p.slug, url, ...(p.images?.some((i) => i.src) ? { image: p.images.filter((i) => i.src).map((i) => origin + i.src) } : {}),
         brand: { '@type': 'Brand', name: attr1(p, 'brand') }, model: m?.name || title, description: p.description, category: cat?.name,
         offers: {
           '@type': 'Offer', url, priceCurrency: 'KES', price: String(p.price),

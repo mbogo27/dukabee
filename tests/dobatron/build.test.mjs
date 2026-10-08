@@ -4,7 +4,9 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import path from 'node:path';
 import { buildStorefront, BuildError } from '../../scripts/build-storefront.mjs';
-import { tempData, tempDir, walk } from './helpers.mjs';
+import { tempData, tempDir, walk, readJson, DATA } from './helpers.mjs';
+
+const readProducts = () => readJson(path.join(DATA, 'products.json')).products;
 
 let out, result;
 const read = (p) => fs.readFileSync(path.join(out, p), 'utf8');
@@ -47,7 +49,7 @@ test('§10.4 homepage: sections in order, no trust strip yet, every token interp
   assert.match(html, /href="https:\/\/dukabee\.co\.ke"/);
   assert.equal((html.match(/<h1[\s>]/g) || []).length, 1);
   const org = ldOf(html).find((x) => x['@type'] === 'Organization');
-  assert.equal(org.telephone, '+254743747496');
+  assert.equal(org.telephone, '+254717571951');
 });
 
 test('§10.5 product page: 840 G6 i5 Touch shows its 3 other configurations, linked correctly', () => {
@@ -87,7 +89,7 @@ test('§10.6 guide: 6 embed blocks, 13 products (incl. the 3-way compare), no wa
   assert.equal(cards + compareCols, 13);
   const list = ldOf(html).find((x) => x['@type'] === 'ItemList');
   assert.equal(list.itemListElement.length, 13);
-  assert.equal(list.itemListElement[0].url, 'https://dobatron.dukabee.co.ke/p/dell-latitude-5300-i5-8gb-256gb');
+  assert.equal(list.itemListElement[0].url, 'https://dobatron.com/p/dell-latitude-5300-i5-8gb-256gb');
   assert.ok(ldOf(html).some((x) => x['@type'] === 'Article' && x.datePublished === '2026-10-08'));
   assert.deepEqual(result.warnings, []);
   assert.match(html, /<tr class="is-diff"><th scope="row">Intel generation<\/th>/, 'differing compare rows are highlighted');
@@ -123,24 +125,47 @@ test('§8 SEO: titles, canonicals, sitemap and robots', () => {
   assert.match(read('index.html'), /<title>Dobatron: Ex-UK laptops in Kenya\. HP, Lenovo, Dell, Apple<\/title>/);
   assert.match(read('shop.html'), /<title>Shop ex-UK laptops \| Dobatron<\/title>/);
   assert.match(read('shop.html'), /<meta name="description" content="64 ex-UK laptops\. Filter by price, RAM, processor, touchscreen and more\.">/);
-  assert.match(read('shop.html'), /<link rel="canonical" href="https:\/\/dobatron\.dukabee\.co\.ke\/shop">/);
+  assert.match(read('shop.html'), /<link rel="canonical" href="https:\/\/dobatron.com\/shop">/);
   assert.match(read('guides/best-ex-uk-laptops-kenya-by-budget.html'), /<title>The best ex-UK laptops in Kenya by budget \(2026\) \| Dobatron<\/title>/);
   const sitemap = read('sitemap.xml');
-  assert.equal((sitemap.match(/<loc>https:\/\/dobatron\.dukabee\.co\.ke\/p\//g) || []).length, 64);
-  for (const loc of ['/', '/shop', '/guides', '/guides/best-ex-uk-laptops-kenya-by-budget']) assert.match(sitemap, new RegExp(`<loc>https://dobatron\\.dukabee\\.co\\.ke${loc.replace(/\//g, '\\/')}</loc>`));
+  assert.equal((sitemap.match(/<loc>https:\/\/dobatron.com\/p\//g) || []).length, 64);
+  for (const loc of ['/', '/shop', '/guides', '/guides/best-ex-uk-laptops-kenya-by-budget']) assert.match(sitemap, new RegExp(`<loc>https://dobatron\\.com${loc.replace(/\//g, '\\/')}</loc>`));
   assert.ok([...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].every((m) => !m[1].includes('?')), 'no filtered /shop?… URLs');
-  assert.match(read('robots.txt'), /Sitemap: https:\/\/dobatron\.dukabee\.co\.ke\/sitemap\.xml/);
+  assert.match(read('robots.txt'), /Sitemap: https:\/\/dobatron.com\/sitemap\.xml/);
   assert.match(read('404.html'), /<meta name="robots" content="noindex">/);
 });
 
-test('§10.7 every WhatsApp link goes to wa.me/254743747496, with a filled message where one is expected', () => {
+test('§10.7 every WhatsApp link goes to wa.me/254717571951, with a filled message where one is expected', () => {
   for (const f of walk(out).filter((x) => x.endsWith('.html'))) {
     const html = fs.readFileSync(f, 'utf8');
-    for (const m of html.matchAll(/href="(https:\/\/wa\.me\/[^"]*)"/g)) assert.match(m[1], /^https:\/\/wa\.me\/254743747496(\?text=.+)?$/, `${f}: ${m[1]}`);
+    for (const m of html.matchAll(/href="(https:\/\/wa\.me\/[^"]*)"/g)) assert.match(m[1], /^https:\/\/wa\.me\/254717571951(\?text=.+)?$/, `${f}: ${m[1]}`);
   }
   const pdp = read('p/hp-elitebook-840-g6-i5-8gb-256gb-touch.html');
-  const ask = decodeURIComponent(pdp.match(/href="https:\/\/wa\.me\/254743747496\?text=([^"]+)"[^>]*data-track="ask_click"/)[1].replace(/&amp;/g, '&'));
-  assert.equal(ask, 'Hi Dobatron, is "HP EliteBook 840 G6 · Core i5 8th Gen, 8GB/256GB, Touch" available? Can you send photos and the battery health of this unit? https://dobatron.dukabee.co.ke/p/hp-elitebook-840-g6-i5-8gb-256gb-touch');
+  const ask = decodeURIComponent(pdp.match(/href="https:\/\/wa\.me\/254717571951\?text=([^"]+)"[^>]*data-track="ask_click"/)[1].replace(/&amp;/g, '&'));
+  assert.equal(ask, 'Hi Dobatron, is "HP EliteBook 840 G6 · Core i5 8th Gen, 8GB/256GB, Touch" available? Can you send photos and the battery health of this unit? https://dobatron.com/p/hp-elitebook-840-g6-i5-8gb-256gb-touch');
+});
+
+test('every product shows a real photo (own or a labelled stand-in), served from /images/', () => {
+  const products = readProducts();
+  for (const p of products) {
+    const html = read(`p/${p.slug}.html`);
+    const src = html.match(/<div class="sf-pdp__media">[\s\S]*?<img class="sf-img [^"]*" src="(\/images\/[^"]+\.webp)" alt="([^"]+)" width="\d+" height="\d+"/);
+    assert.ok(src, `${p.slug}: no photo`);
+    assert.ok(fs.existsSync(path.join(out, src[1])), `${p.slug}: ${src[1]} missing from the build`);
+    assert.match(html, /<meta property="og:image" content="https:\/\/dobatron\.com\/images\//);
+  }
+  assert.match(read('p/hp-elitebook-845-g8-ryzen-5-8gb-256gb.html'), /Photo shows a similar model \(HP EliteBook 840 G6\)/);
+  assert.doesNotMatch(read('p/hp-elitebook-840-g6-i5-8gb-256gb-touch.html'), /Photo shows a similar model/);
+  const zbook = read('p/hp-zbook-firefly-14-g8-i7-32gb-512gb.html');
+  assert.equal((zbook.match(/data-gallery-to=/g) || []).length, 2, 'ZBook G8 has a two-photo gallery');
+  const ld = ldOf(zbook).find((x) => x['@type'] === 'Product');
+  assert.deepEqual(ld.image, ['https://dobatron.com/images/hp-zbook-firefly-14-g8-01.webp', 'https://dobatron.com/images/hp-zbook-firefly-14-g8-02.webp']);
+  assert.doesNotMatch(read('shop.html'), /class="sf-ph sf-card__img"/, 'no placeholder tiles left in the shop grid');
+});
+
+test('canonical domain is dobatron.com', () => {
+  assert.match(read('index.html'), /<link rel="canonical" href="https:\/\/dobatron\.com\/">/);
+  assert.doesNotMatch(read('sitemap.xml'), /dukabee\.co\.ke/);
 });
 
 test('accessibility basics: every image placeholder has alt text, contrast pairs pass', async () => {

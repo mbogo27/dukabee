@@ -6,7 +6,7 @@
   "store": {
     "id": "dobatron",
     "name": "Dobatron",
-    "domain": null,
+    "domain": "dobatron.com",
     "previewDomain": "dobatron.dukabee.co.ke",
     "niche": "electronics",
     "recipe": "marketplace",
@@ -20,13 +20,13 @@
       "mono": "JetBrains Mono"
     },
     "bannerFallback": "flat",
-    "whatsapp": "254743747496",
-    "phoneDisplay": "0743 747 496",
+    "whatsapp": "254717571951",
+    "phoneDisplay": "0717 571 951",
     "tagline": "Ex-UK laptops in Kenya",
     "footerBlurb": "Ex-UK business laptops from HP, Lenovo, Dell and Apple, with the specs that matter up front. Every unit is confirmed with you on WhatsApp before you pay.",
     "condition": "Ex-UK",
     "itemCondition": "UsedCondition",
-    "announcement": "Ex-UK laptops · HP · Lenovo · Dell · Apple · Order on WhatsApp 0743 747 496",
+    "announcement": "Ex-UK laptops · HP · Lenovo · Dell · Apple · Order on WhatsApp 0717 571 951",
     "policies": [
       "M-Pesa accepted"
     ],

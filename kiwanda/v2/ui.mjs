@@ -18,7 +18,8 @@ export function imageRef(img, { cls = '', eager = false, alt } = {}) {
   const label = alt ?? img?.alt ?? '';
   if (img?.src) {
     const focal = img.focal ? ` style="object-position:${img.focal[0] * 100}% ${img.focal[1] * 100}%"` : '';
-    return `<img class="sf-img ${cls}" src="${esc(img.src)}" alt="${esc(label)}"${focal} loading="${eager ? 'eager' : 'lazy'}" decoding="async">`;
+    const size = img.width && img.height ? ` width="${img.width}" height="${img.height}"` : '';
+    return `<img class="sf-img ${cls}" src="${esc(img.src)}" alt="${esc(label)}"${size}${focal} loading="${eager ? 'eager' : 'lazy'}" decoding="async"${eager ? ' fetchpriority="high"' : ''}>`;
   }
   const tint = img?.placeholder?.tint || '#E8E6E1';
   return `<div class="sf-ph ${cls}" role="img" aria-label="${esc(label)}" style="--tint:${esc(tint)}"><span aria-hidden="true">${esc(img?.placeholder?.glyph || '')}</span></div>`;

@@ -78,7 +78,7 @@ test('search filters live on /shop; header search elsewhere goes to /shop?q=', {
   assert.equal(await count(), '4 laptops');
   await page.goto(`${base}/p/hp-elitebook-840-g6-i5-8gb-256gb-touch`);
   await page.eval(`(() => { const f = document.querySelector('[data-search-form]'); f.q.value = 'tp yoga'; f.submit(); })()`);
-  await page.settle(800);
+  await page.waitFor(`location.pathname === '/shop' && document.readyState === 'complete' && document.querySelector('[data-result-count]')?.textContent !== '64 laptops'`);
   assert.equal(await page.eval('location.pathname + location.search'), '/shop?q=tp+yoga');
   assert.equal(await count(), '9 laptops');
 });

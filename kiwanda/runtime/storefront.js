@@ -279,3 +279,18 @@ if (shop) {
 }
 
 renderCart();
+
+// ---- product photo gallery: thumbnails scroll the swipeable track; the track's position marks the thumbnail ----
+$$('[data-gallery]').forEach((g) => {
+  const track = $('[data-gallery-track]', g);
+  const thumbs = $$('[data-gallery-to]', g);
+  thumbs.forEach((t) => t.addEventListener('click', () => track.scrollTo({ left: Number(t.dataset.galleryTo) * track.clientWidth, behavior: 'smooth' })));
+  let tick;
+  track.addEventListener('scroll', () => {
+    cancelAnimationFrame(tick);
+    tick = requestAnimationFrame(() => {
+      const i = Math.round(track.scrollLeft / track.clientWidth);
+      thumbs.forEach((t, n) => t.setAttribute('aria-current', String(n === i)));
+    });
+  });
+});

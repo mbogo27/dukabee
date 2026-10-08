@@ -47,7 +47,16 @@ export async function launch({ port = 9300 + Math.floor(Math.random() * 500) } =
     errors,
     send,
     async viewport(width, height = 800, mobile = width < 600) { await send('Emulation.setDeviceMetricsOverride', { width, height, deviceScaleFactor: 1, mobile }); },
-    async goto(url) { const loaded = waitLoad(); await send('Page.navigate', { url }); await loaded; await page.settle(); },
+    async goto(url) { const loaded = waitLoad(); await send('Page.navigate', { url }); await loaded; await page.waitFor(`document.readyState === 'complete' && location.href === ${JSON.stringify(new URL(url).href)}`); await page.settle(); },
+    /** Poll a page expression until it's truthy (navigation, async rendering), instead of sleeping a fixed time. */
+    async waitFor(expr, timeout = 30000) {
+      const end = Date.now() + timeout;
+      while (Date.now() < end) {
+        try { if (await page.eval(expr)) return; } catch { /* page mid-navigation */ }
+        await new Promise((r) => setTimeout(r, 100));
+      }
+      throw new Error(`Timed out waiting for: ${expr}`);
+    },
     async settle(ms = 250) { await new Promise((r) => setTimeout(r, ms)); },
     async eval(expr) {
       const r = await send('Runtime.evaluate', { expression: expr, awaitPromise: true, returnByValue: true });

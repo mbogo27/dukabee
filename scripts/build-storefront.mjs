@@ -21,6 +21,7 @@ export function privacyLeaks(files, rawProducts) {
   const figureRe = figures.length ? new RegExp(`(?<![\\d.])(${figures.map((c) => String(c).replace('.', '\\.')).join('|')})(?![\\d])`) : null;
   const leaks = [];
   for (const f of files) {
+    if (f.binary) continue;
     const text = typeof f.content === 'string' ? f.content : f.content.toString('utf8');
     if (/["']cost["']\s*:/.test(text)) leaks.push(`${f.path}: contains a "cost" key`);
     const m = figureRe && text.match(figureRe);
@@ -41,7 +42,13 @@ export async function buildStorefront(id, { outDir = path.join(ROOT, 'dist', 'st
     ['assets/storefront.js', 'kiwanda/runtime/storefront.js'],
     ['assets/catalog.mjs', 'kiwanda/v2/catalog.mjs'],
   ].map(([to, from]) => ({ path: to, content: fs.readFileSync(path.join(ROOT, from), 'utf8') }));
-  const files = [...result.files, ...assets];
+  // Product photos (scripts/dobatron-images.py writes them as WebP into data/<id>/images/), served at /images/.
+  const imgDir = path.join(dataDir, 'images');
+  const images = fs.existsSync(imgDir) ? fs.readdirSync(imgDir).filter((f) => /\.(webp|jpe?g|png|avif)$/i.test(f)).map((f) => ({ path: `images/${f}`, content: fs.readFileSync(path.join(imgDir, f)), binary: true })) : [];
+  for (const m of catalog.models) for (const img of m.images || []) {
+    if (img.src && !images.some((i) => `/${i.path}` === img.src)) throw new BuildError(`${id}: ${m.modelId} points at ${img.src}, which isn't in data/${id}/images/`);
+  }
+  const files = [...result.files, ...assets, ...images];
 
   const leaks = privacyLeaks(files, catalog.products);
   if (leaks.length) throw new BuildError(`${id}: private cost would be published\n${leaks.map((l) => `  ✗ ${l}`).join('\n')}`);

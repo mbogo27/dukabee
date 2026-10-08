@@ -1,0 +1,27 @@
+{
+  "_note": "Models without their own photo borrow the closest-looking model's photos until real ones arrive. Drop a file named <modelId>-01.<ext> into the image source folder and re-run scripts/dobatron-images.py: the model's own photo replaces the stand-in automatically. Pairs are chosen by chassis: same family, same size, same generation styling where possible.",
+  "standIns": {
+    "hp-zbook-firefly-14-g6": "hp-zbook-firefly-14-g8",
+    "hp-elitebook-745-g6": "hp-elitebook-840-g6",
+    "hp-elitebook-830-g5": "hp-elitebook-830-g7",
+    "hp-elitebook-830-g6": "hp-elitebook-830-g7",
+    "hp-elitebook-830-g8": "hp-elitebook-830-g7",
+    "hp-elitebook-840-g5": "hp-elitebook-840-g6",
+    "hp-elitebook-840-g7": "hp-elitebook-840-g6",
+    "hp-elitebook-840-g8": "hp-elitebook-840-g6",
+    "hp-elitebook-845-g7": "hp-elitebook-840-g6",
+    "hp-elitebook-845-g8": "hp-elitebook-840-g6",
+    "hp-probook-440-g8": "hp-probook-640-g5",
+    "hp-probook-450-g7": "hp-probook-640-g5",
+    "lenovo-thinkpad-x13-gen-1": "lenovo-thinkpad-t490s",
+    "hp-elite-x2-1012-g1": "hp-probook-x360-11-g5",
+    "hp-elitebook-x360-830-g6": "hp-elitebook-830-g7",
+    "hp-elitebook-x360-830-g7": "hp-elitebook-830-g7",
+    "lenovo-thinkpad-x13-yoga-gen-1": "lenovo-thinkpad-x1-yoga",
+    "lenovo-thinkpad-x380-yoga": "lenovo-thinkpad-x1-yoga",
+    "lenovo-thinkpad-x390-yoga": "lenovo-thinkpad-x1-yoga",
+    "lenovo-thinkpad-yoga-370": "lenovo-thinkpad-x1-yoga",
+    "apple-macbook-pro-13-2017": "apple-macbook-pro-13-2012",
+    "apple-macbook-pro-13-2018": "apple-macbook-pro-13-2012"
+  }
+}

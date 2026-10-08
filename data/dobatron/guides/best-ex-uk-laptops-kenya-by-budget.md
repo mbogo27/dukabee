@@ -74,4 +74,4 @@ Whoever you buy from, check these on the actual unit:
 
 When you order from Dobatron, ask us on WhatsApp for photos and the battery report of the exact unit before you pay.
 
-Not sure which one fits? [Send us your budget and what you'll use it for on WhatsApp](https://wa.me/254743747496?text=Hi%20Dobatron%2C%20help%20me%20pick%20a%20laptop.%20Budget%3A%20%20Use%3A%20).
+Not sure which one fits? [Send us your budget and what you'll use it for on WhatsApp](https://wa.me/254717571951?text=Hi%20Dobatron%2C%20help%20me%20pick%20a%20laptop.%20Budget%3A%20%20Use%3A%20).

@@ -116,7 +116,7 @@ Sample stores from the launch flow get the generic trust strip and category tile
 `dobatron.dukabee.co.ke` is the first store on the v2 storefront (`kiwanda/v2/`): attribute-schema facets with URL state,
 the homepage formula (`composeHomepage`), product pages with sibling configurations and out-of-stock request mode,
 guides with live product embeds, and checkout presets. Its data is in `data/dobatron/`; a stock sheet is imported with
-`npm run import:dobatron -- <sheet.xlsx>`. See `docs/dobatron-mapping.md`.
+`npm run import:dobatron -- <sheet.xlsx>`; photos with `python scripts/dobatron-images.py <folder>`. Domain: https://dobatron.com. See `docs/dobatron-mapping.md`.
 
 ```
 npm run build:dobatron     # → dist/stores/dobatron (also part of npm run build)

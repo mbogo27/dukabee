@@ -21,7 +21,7 @@ Jikoni, Rembo and Faith are untouched and still render through the v1 composer (
 | Island props / client search index | One inline `<script type="application/json" id="sf-index">` on `/shop`: slim entries (`indexEntry` in `kiwanda/v2/catalog.mjs`), no `cost` |
 | Filters, facet counts, search, sort | `kiwanda/v2/catalog.mjs`. Isomorphic: the build and the browser import the same file, so pre-rendered counts and live counts can't drift |
 | Astro build | `scripts/build-storefront.mjs` (also run by `npm run build`) → `dist/stores/dobatron/` |
-| Routes `/`, `/shop`, `/p/[slug]`, `/guides`, `/guides/[slug]` | `index.html`, `shop.html`, `p/<slug>.html`, `guides.html`, `guides/<slug>.html`. Cloudflare's asset layer serves them extensionless; `worker/index.mjs` maps `dobatron.dukabee.co.ke` → `/stores/dobatron` |
+| Routes `/`, `/shop`, `/p/[slug]`, `/guides`, `/guides/[slug]` | `index.html`, `shop.html`, `p/<slug>.html`, `guides.html`, `guides/<slug>.html`. Cloudflare's asset layer serves them extensionless; `worker/index.mjs` maps `dobatron.com` → `/stores/dobatron`; `www.dobatron.com` and `dobatron.dukabee.co.ke` 301 to it |
 
 ## Spec §9 core capabilities → implementation
 
@@ -50,7 +50,9 @@ Jikoni, Rembo and Faith are untouched and still render through the v1 composer (
 - **Out of stock:** hidden from the default `/shop` listing and rails; shown (sorted last) once any filter or search is active; the page stays live and in the sitemap.
 - **Rule 4 (≤2 appearances)** is enforced, so the "Business laptops" grid skips the Latitude 5400 (already in Staff picks and the Touchscreen tab) and shows the next cheapest.
 - **`featured` rail source** tops up with other products when fewer than 4 are flagged, so small stores still get a product grid.
-- **Canonical domain:** `store.domain` is null until confirmed, so canonicals, sitemap and JSON-LD use `store.previewDomain` (`dobatron.dukabee.co.ke`).
+- **Canonical domain:** `dobatron.com` (`store.domain`). Canonicals, sitemap, JSON-LD and `og:image` use it.
+- **Contact:** WhatsApp and calls go to `+254717571951` (`store.whatsapp`, `store.phoneDisplay`). It replaces the spec's 0743 747 496, which is Duka Bee's own number.
+- **Photos:** keyed by model. `python scripts/dobatron-images.py <folder>` converts `<modelId>-01.jpg|png|webp` (any subfolder) to WebP in `data/dobatron/images/` and updates `models.json`. Models without their own photo borrow one per `data/dobatron/image-standins.json`; the product page then says "Photo shows a similar model". The build fails if a model points at a missing image.
 - **`/shop?…` noindex:** the worker sends `X-Robots-Tag: noindex, follow` on filtered views; the page also adds the meta tag client-side. Canonical is `/shop`.
 - **Analytics:** events (`sourcing_request`, `guide_embed_click`, `add_to_cart`, `begin_checkout`, `checkout_preview`, `whatsapp_order`, `ask_click`, `request_click`) go to `window.dataLayer` (and `gtag` if a store adds one). No GA tag on seller stores, per the README.
 
@@ -66,9 +68,9 @@ Lighthouse 12 (local preview): SEO 100 and Accessibility 100 on `/`, `/shop`, a 
 
 ## Deploy
 
-1. `npm run deploy` (builds everything, including `dist/stores/dobatron`).
-2. Attach `dobatron.dukabee.co.ke` as a Custom Domain on the Worker (already in `STORE_HOSTS`).
-3. When Dobatron's own domain is confirmed: set `store.domain` in `data/dobatron/store.json`, add the host to `STORE_HOSTS`, rebuild.
+1. Cloudflare dashboard → Workers & Pages → `dukabee` → Settings → Domains & Routes → **Add Custom Domain**: `dobatron.com`, then `www.dobatron.com` (the zone is already on this Cloudflare account). Remove any existing DNS record or Pages project on those hostnames first, or Cloudflare will refuse the custom domain.
+2. `npm run deploy` (builds everything, including `dist/stores/dobatron`).
+3. Check `https://dobatron.com/`, `/shop`, a product page, and that `www.dobatron.com` redirects.
 
 ## Still to confirm (spec §12): where each answer goes
 
@@ -78,5 +80,5 @@ Lighthouse 12 (local preview): SEO 100 and Accessibility 100 on `/`, `/shop`, a 
 | Duplicate prices | Edit the sheet (or `products.json` price) for the 4 pairs in the report |
 | Policies (delivery, pickup, warranty, returns) | Move items from `store.policiesToConfirm` to `store.policies`; add `checkout.pickupPoints`. With ≥2 policies the trust strip appears automatically |
 | Condition (used vs refurbished) | `store.condition`, `store.itemCondition` (`RefurbishedCondition`) |
-| Domain | `store.domain` + `STORE_HOSTS` |
+| Domain | Done: `dobatron.com` |
 | Mini PC naming, X390 Yoga twins, inferred specs | `models.json` (name/blurb/aliases) or the sheet |

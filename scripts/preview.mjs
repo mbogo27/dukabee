@@ -18,7 +18,7 @@ const resolveIn = (DIST, pathname) => {
 };
 
 /** Serve a directory as a site root. Returns the http.Server (call .close() when done). */
-export const serve = (DIST, port) => http.createServer((req, res) => {
+export const serve = (root, port) => { const DIST = path.resolve(root); return http.createServer((req, res) => {
   const url = new URL(req.url, 'http://x');
   const file = resolveIn(DIST, url.pathname);
   const notFound = path.join(DIST, '404.html');
@@ -28,7 +28,7 @@ export const serve = (DIST, port) => http.createServer((req, res) => {
   }
   res.writeHead(200, { 'content-type': TYPES[path.extname(file)] || 'application/octet-stream', 'cache-control': 'no-store' });
   fs.createReadStream(file).pipe(res);
-}).listen(port);
+}).listen(port); };
 
 if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
   const args = process.argv.slice(2);
