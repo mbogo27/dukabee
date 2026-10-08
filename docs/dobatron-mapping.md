@@ -68,9 +68,12 @@ Lighthouse 12 (local preview): SEO 100 and Accessibility 100 on `/`, `/shop`, a 
 
 ## Deploy
 
-1. Cloudflare dashboard → Workers & Pages → `dukabee` → Settings → Domains & Routes → **Add Custom Domain**: `dobatron.com`, then `www.dobatron.com` (the zone is already on this Cloudflare account). Remove any existing DNS record or Pages project on those hostnames first, or Cloudflare will refuse the custom domain.
-2. `npm run deploy` (builds everything, including `dist/stores/dobatron`).
-3. Check `https://dobatron.com/`, `/shop`, a product page, and that `www.dobatron.com` redirects.
+Live on **https://dobatron.com** since 2026-10-08 (worker `dukabee`, version 744bb333).
+
+- `npm run deploy` builds everything (including `dist/stores/dobatron`) and deploys the `dukabee` worker, which also serves dukabee.co.ke and Faith's store.
+- dobatron.com is attached with **Worker routes** (`dobatron.com/*`, `www.dobatron.com/*` → `dukabee`, zone `dobatron.com`), not Custom Domains. The zone's existing DNS records (an A record to a cPanel host at 185.166.155.186, plus MX/SPF/DKIM/CalDAV records) are left untouched. To undo, delete the two routes in Cloudflare → dobatron.com → Workers Routes.
+- The worker answers `dobatron.com` from `/stores/dobatron`, and 301s `www.dobatron.com` and `dobatron.dukabee.co.ke` to it.
+- **Email:** MX points at `dobatron.com`, whose A record is proxied, so mail to @dobatron.com probably doesn't arrive. That was already the case before this deploy. To use cPanel mail, point MX at an unproxied `mail` A record.
 
 ## Still to confirm (spec §12): where each answer goes
 
