@@ -1,0 +1,5941 @@
+{
+  "_meta": {
+    "generatedFrom": "laptop_stock_no_markup.xlsx — 68 rows → 64 SKUs (4 duplicate pairs merged at the higher price)",
+    "generatedAt": "2026-10-07",
+    "priceRule": "price = ceil(cost × (1 + markupPct/100) / roundUpTo) × roundUpTo; markupPct=0 here until confirmed",
+    "warning": "`cost` is private. Strip it before anything reaches the client bundle or public JSON."
+  },
+  "pricing": {
+    "markupPct": 0,
+    "roundUpTo": 500
+  },
+  "store": {
+    "name": "Dobatron",
+    "domain": null,
+    "niche": "electronics",
+    "recipe": "marketplace",
+    "palette": {
+      "primary": "#111111",
+      "accent": "#FFD60A",
+      "paper": "#F7F5F0"
+    },
+    "bannerFallback": "flat",
+    "whatsapp": "254743747496",
+    "phoneDisplay": "0743 747 496",
+    "announcement": "Ex-UK laptops · HP · Lenovo · Dell · Apple · Order on WhatsApp 0743 747 496",
+    "policies": [
+      "M-Pesa accepted"
+    ],
+    "policiesToConfirm": [
+      "Countrywide delivery",
+      "Delivery in Nairobi",
+      "Pickup point",
+      "Pay on delivery",
+      "Warranty (length?)",
+      "Returns/exchange window"
+    ],
+    "poweredBy": {
+      "label": "Store built on Duka Bee",
+      "href": "https://dukabee.co.ke"
+    },
+    "checkout": {
+      "fields": [
+        "name",
+        "fulfilment",
+        "deliveryArea",
+        "pickupPoint",
+        "paymentMethod",
+        "notes"
+      ],
+      "pickupPoints": []
+    }
+  },
+  "categories": [
+    {
+      "id": "business-laptops",
+      "slug": "business-laptops",
+      "name": "Business laptops",
+      "image": {
+        "id": "cat-business",
+        "alt": "Business laptops",
+        "placeholder": {
+          "tint": "#E8E6E1",
+          "glyph": "BL"
+        }
+      }
+    },
+    {
+      "id": "2-in-1",
+      "slug": "2-in-1",
+      "name": "2-in-1 & convertibles",
+      "image": {
+        "id": "cat-2in1",
+        "alt": "2-in-1 laptops",
+        "placeholder": {
+          "tint": "#E3E8E4",
+          "glyph": "2in1"
+        }
+      }
+    },
+    {
+      "id": "macbooks",
+      "slug": "macbooks",
+      "name": "MacBooks",
+      "image": {
+        "id": "cat-mac",
+        "alt": "MacBooks",
+        "placeholder": {
+          "tint": "#E6E6EA",
+          "glyph": "M"
+        }
+      }
+    },
+    {
+      "id": "workstations",
+      "slug": "workstations",
+      "name": "Workstations",
+      "image": {
+        "id": "cat-ws",
+        "alt": "Workstations",
+        "placeholder": {
+          "tint": "#ECE6DE",
+          "glyph": "WS"
+        }
+      }
+    },
+    {
+      "id": "mini-pcs",
+      "slug": "mini-pcs",
+      "name": "Mini PCs",
+      "image": {
+        "id": "cat-mini",
+        "alt": "Mini PCs",
+        "placeholder": {
+          "tint": "#E4E7EA",
+          "glyph": "PC"
+        }
+      }
+    }
+  ],
+  "attributes": [
+    {
+      "key": "brand",
+      "label": "Brand",
+      "filterable": true,
+      "selectable": false,
+      "display": "checkbox",
+      "order": 1,
+      "values": [
+        "HP",
+        "Lenovo",
+        "Dell",
+        "Apple"
+      ]
+    },
+    {
+      "key": "series",
+      "label": "Series",
+      "filterable": true,
+      "selectable": false,
+      "display": "checkbox",
+      "order": 2,
+      "values": [
+        "EliteBook",
+        "ProBook",
+        "ZBook",
+        "Elite x2",
+        "ThinkPad",
+        "Latitude",
+        "MacBook Pro",
+        "ThinkCentre",
+        "EliteDesk/ProDesk"
+      ]
+    },
+    {
+      "key": "cpu",
+      "label": "Processor",
+      "filterable": true,
+      "selectable": false,
+      "display": "checkbox",
+      "order": 3,
+      "values": [
+        "Intel Core i7",
+        "Intel Core i5",
+        "Intel Core i3",
+        "Intel Core m5",
+        "Intel Celeron",
+        "AMD Ryzen 7",
+        "AMD Ryzen 5"
+      ]
+    },
+    {
+      "key": "cpuGen",
+      "label": "Intel generation",
+      "filterable": true,
+      "selectable": false,
+      "display": "chips",
+      "order": 4,
+      "values": [
+        "11th Gen",
+        "10th Gen",
+        "8th Gen",
+        "7th Gen",
+        "6th Gen",
+        "4th Gen",
+        "3rd Gen"
+      ]
+    },
+    {
+      "key": "ram",
+      "label": "RAM",
+      "filterable": true,
+      "selectable": false,
+      "display": "chips",
+      "order": 5,
+      "values": [
+        "4GB",
+        "8GB",
+        "16GB",
+        "32GB"
+      ]
+    },
+    {
+      "key": "storage",
+      "label": "Storage",
+      "filterable": true,
+      "selectable": false,
+      "display": "chips",
+      "order": 6,
+      "values": [
+        "128GB",
+        "192GB",
+        "256GB",
+        "500GB",
+        "512GB"
+      ]
+    },
+    {
+      "key": "screen",
+      "label": "Screen",
+      "filterable": true,
+      "selectable": false,
+      "display": "chips",
+      "order": 7,
+      "values": [
+        "11.6\"",
+        "12\"",
+        "12.5\"",
+        "13.3\"",
+        "14\"",
+        "15.6\""
+      ]
+    },
+    {
+      "key": "touch",
+      "label": "Touchscreen",
+      "filterable": true,
+      "selectable": false,
+      "display": "toggle",
+      "order": 8,
+      "values": [
+        "Yes",
+        "No"
+      ]
+    },
+    {
+      "key": "formFactor",
+      "label": "Type",
+      "filterable": true,
+      "selectable": false,
+      "display": "checkbox",
+      "order": 9,
+      "values": [
+        "Clamshell",
+        "Convertible",
+        "Detachable",
+        "Mini PC"
+      ]
+    },
+    {
+      "key": "graphics",
+      "label": "Graphics",
+      "filterable": true,
+      "selectable": false,
+      "display": "checkbox",
+      "order": 10,
+      "values": [
+        "Integrated",
+        "Dedicated"
+      ]
+    },
+    {
+      "key": "windows11",
+      "label": "Windows 11",
+      "filterable": true,
+      "selectable": false,
+      "display": "checkbox",
+      "order": 11,
+      "values": [
+        "Yes",
+        "No",
+        "Check",
+        "macOS"
+      ]
+    },
+    {
+      "key": "features",
+      "label": "Extras",
+      "filterable": true,
+      "selectable": false,
+      "display": "checkbox",
+      "order": 12,
+      "values": [
+        "Stylus pen",
+        "Touch Bar",
+        "Extra 1TB HDD"
+      ]
+    },
+    {
+      "key": "gpuMemory",
+      "label": "Graphics memory",
+      "filterable": false,
+      "selectable": false,
+      "display": "spec",
+      "order": 13
+    },
+    {
+      "key": "condition",
+      "label": "Condition",
+      "filterable": false,
+      "selectable": false,
+      "display": "spec",
+      "order": 14
+    }
+  ],
+  "priceBuckets": [
+    {
+      "id": "0-25000",
+      "label": "Under KSh 25K"
+    },
+    {
+      "id": "25000-35000",
+      "label": "KSh 25K–35K"
+    },
+    {
+      "id": "35000-45000",
+      "label": "KSh 35K–45K"
+    },
+    {
+      "id": "45000-60000",
+      "label": "KSh 45K–60K"
+    },
+    {
+      "id": "60000-",
+      "label": "KSh 60K+"
+    }
+  ],
+  "banners": [
+    {
+      "id": "hero-main",
+      "kind": "hero",
+      "headline": "Buying a laptop shouldn't take 40 YouTube reviews.",
+      "sub": "Ex-UK laptops from HP, Lenovo, Dell and Apple, with the specs that matter up front. Filter, pick one, order on WhatsApp.",
+      "cta": "Shop all laptops",
+      "target": {
+        "type": "filter",
+        "query": {}
+      },
+      "copySide": "left"
+    },
+    {
+      "id": "promo-under-30",
+      "kind": "promo",
+      "headline": "Under KSh 30K",
+      "sub": "{count} picks for students and first jobs",
+      "cta": "See them",
+      "target": {
+        "type": "filter",
+        "query": {
+          "price": "0-30000"
+        }
+      },
+      "copySide": "left"
+    },
+    {
+      "id": "promo-2in1",
+      "kind": "promo",
+      "headline": "Flip it into a tablet",
+      "sub": "2-in-1s from {fromPrice}",
+      "cta": "Shop 2-in-1s",
+      "target": {
+        "type": "category",
+        "id": "2-in-1"
+      },
+      "copySide": "left"
+    },
+    {
+      "id": "promo-macbooks",
+      "kind": "promo",
+      "headline": "MacBooks from {fromPrice}",
+      "sub": "Ex-UK MacBook Pros",
+      "cta": "Shop MacBooks",
+      "target": {
+        "type": "category",
+        "id": "macbooks"
+      },
+      "copySide": "left"
+    },
+    {
+      "id": "promo-graphics",
+      "kind": "promo",
+      "headline": "Need graphics power?",
+      "sub": "{count} laptops with dedicated graphics for design and editing",
+      "cta": "See them",
+      "target": {
+        "type": "filter",
+        "query": {
+          "graphics": "Dedicated"
+        }
+      },
+      "copySide": "right"
+    },
+    {
+      "id": "promo-thinkpad",
+      "kind": "promo",
+      "headline": "ThinkPad",
+      "sub": "{count} in stock, from {fromPrice}",
+      "cta": "Shop ThinkPads",
+      "target": {
+        "type": "filter",
+        "query": {
+          "series": "ThinkPad"
+        }
+      },
+      "copySide": "left"
+    },
+    {
+      "id": "promo-elitebook",
+      "kind": "promo",
+      "headline": "EliteBook",
+      "sub": "{count} in stock, from {fromPrice}",
+      "cta": "Shop EliteBooks",
+      "target": {
+        "type": "filter",
+        "query": {
+          "series": "EliteBook"
+        }
+      },
+      "copySide": "left"
+    },
+    {
+      "id": "promo-latitude",
+      "kind": "promo",
+      "headline": "Dell Latitude",
+      "sub": "{count} in stock, from {fromPrice}",
+      "cta": "Shop Latitudes",
+      "target": {
+        "type": "filter",
+        "query": {
+          "series": "Latitude"
+        }
+      },
+      "copySide": "left"
+    }
+  ],
+  "homepage": {
+    "sections": [
+      {
+        "type": "announcement",
+        "variant": "static"
+      },
+      {
+        "type": "hero",
+        "variant": "split",
+        "bannerIds": [
+          "hero-main",
+          "promo-under-30",
+          "promo-2in1"
+        ]
+      },
+      {
+        "type": "categoryNav",
+        "variant": "circles",
+        "title": "Shop by type"
+      },
+      {
+        "type": "productRail",
+        "variant": "tabs",
+        "title": "Shop by need",
+        "source": {
+          "tabs": [
+            {
+              "label": "Under 30K",
+              "source": {
+                "filter": {
+                  "price": "0-30000"
+                },
+                "sort": "price-asc"
+              }
+            },
+            {
+              "label": "16GB RAM+",
+              "source": {
+                "filter": {
+                  "ram": [
+                    "16GB",
+                    "32GB"
+                  ]
+                },
+                "sort": "price-asc"
+              }
+            },
+            {
+              "label": "Touchscreen",
+              "source": {
+                "filter": {
+                  "touch": "Yes"
+                },
+                "sort": "price-asc"
+              }
+            },
+            {
+              "label": "Windows 11 ready",
+              "source": {
+                "filter": {
+                  "windows11": "Yes"
+                },
+                "sort": "price-asc"
+              }
+            }
+          ]
+        },
+        "limit": 8
+      },
+      {
+        "type": "promoBanner",
+        "variant": "twoUp",
+        "bannerIds": [
+          "promo-macbooks",
+          "promo-graphics"
+        ]
+      },
+      {
+        "type": "productShowcase",
+        "variant": "left",
+        "productId": "hp-zbook-firefly-14-g8-i7-32gb-512gb"
+      },
+      {
+        "type": "productRail",
+        "variant": "carousel",
+        "title": "Staff picks",
+        "source": "featured"
+      },
+      {
+        "type": "promoBanner",
+        "variant": "threeUp",
+        "bannerIds": [
+          "promo-thinkpad",
+          "promo-elitebook",
+          "promo-latitude"
+        ]
+      },
+      {
+        "type": "productRail",
+        "variant": "grid",
+        "title": "Business laptops",
+        "source": {
+          "category": "business-laptops"
+        },
+        "sort": "price-asc",
+        "limit": 8,
+        "seeAll": true
+      },
+      {
+        "type": "guideTeaser",
+        "variant": "card",
+        "title": "Buying guides"
+      },
+      {
+        "type": "trustStrip",
+        "variant": "icons"
+      },
+      {
+        "type": "footer",
+        "variant": "standard"
+      }
+    ]
+  },
+  "models": [
+    {
+      "modelId": "hp-zbook-firefly-14-g6",
+      "name": "HP ZBook Firefly 14 G6",
+      "brand": "HP",
+      "series": "ZBook",
+      "categoryId": "workstations",
+      "formFactor": "Clamshell",
+      "screenInches": 14,
+      "images": [
+        {
+          "id": "hp-zbook-firefly-14-g6-01",
+          "alt": "HP ZBook Firefly 14 G6",
+          "placeholder": {
+            "tint": "#ECE6DE",
+            "glyph": "💻"
+          }
+        }
+      ],
+      "blurb": "A slim 14-inch HP workstation with dedicated graphics, for design, CAD and editing work at a lower price than the G8.",
+      "sheetAliases": [
+        "HP | ZBook Firefly 14 G6"
+      ]
+    },
+    {
+      "modelId": "hp-zbook-firefly-14-g8",
+      "name": "HP ZBook Firefly 14 G8",
+      "brand": "HP",
+      "series": "ZBook",
+      "categoryId": "workstations",
+      "formFactor": "Clamshell",
+      "screenInches": 14,
+      "images": [
+        {
+          "id": "hp-zbook-firefly-14-g8-01",
+          "alt": "HP ZBook Firefly 14 G8",
+          "placeholder": {
+            "tint": "#ECE6DE",
+            "glyph": "💻"
+          }
+        }
+      ],
+      "blurb": "HP's slim 14-inch mobile workstation. The dedicated graphics card makes it the pick for CAD, design and video work that would slow an ordinary office laptop.",
+      "sheetAliases": [
+        "HP | ZBook Firefly 14 G8"
+      ]
+    },
+    {
+      "modelId": "dell-latitude-5300",
+      "name": "Dell Latitude 5300",
+      "brand": "Dell",
+      "series": "Latitude",
+      "categoryId": "business-laptops",
+      "formFactor": "Clamshell",
+      "screenInches": 13.3,
+      "images": [
+        {
+          "id": "dell-latitude-5300-01",
+          "alt": "Dell Latitude 5300",
+          "placeholder": {
+            "tint": "#E8E6E1",
+            "glyph": "💻"
+          }
+        }
+      ],
+      "blurb": "Dell's compact 13.3-inch Latitude, light enough for the daily commute.",
+      "sheetAliases": [
+        "Dell | 5300"
+      ]
+    },
+    {
+      "modelId": "dell-latitude-5400",
+      "name": "Dell Latitude 5400",
+      "brand": "Dell",
+      "series": "Latitude",
+      "categoryId": "business-laptops",
+      "formFactor": "Clamshell",
+      "screenInches": 14,
+      "images": [
+        {
+          "id": "dell-latitude-5400-01",
+          "alt": "Dell Latitude 5400",
+          "placeholder": {
+            "tint": "#E8E6E1",
+            "glyph": "💻"
+          }
+        }
+      ],
+      "blurb": "Dell's 14-inch business Latitude: a dependable office machine with a full-size keyboard.",
+      "sheetAliases": [
+        "Dell | 5400"
+      ]
+    },
+    {
+      "modelId": "dell-latitude-7280",
+      "name": "Dell Latitude 7280",
+      "brand": "Dell",
+      "series": "Latitude",
+      "categoryId": "business-laptops",
+      "formFactor": "Clamshell",
+      "screenInches": 12.5,
+      "images": [
+        {
+          "id": "dell-latitude-7280-01",
+          "alt": "Dell Latitude 7280",
+          "placeholder": {
+            "tint": "#E8E6E1",
+            "glyph": "💻"
+          }
+        }
+      ],
+      "blurb": "A small 12.5-inch premium Dell Latitude, light and well built.",
+      "sheetAliases": [
+        "Dell | 7280"
+      ]
+    },
+    {
+      "modelId": "hp-elitebook-745-g6",
+      "name": "HP EliteBook 745 G6",
+      "brand": "HP",
+      "series": "EliteBook",
+      "categoryId": "business-laptops",
+      "formFactor": "Clamshell",
+      "screenInches": 14,
+      "images": [
+        {
+          "id": "hp-elitebook-745-g6-01",
+          "alt": "HP EliteBook 745 G6",
+          "placeholder": {
+            "tint": "#E8E6E1",
+            "glyph": "💻"
+          }
+        }
+      ],
+      "blurb": "A 14-inch AMD EliteBook for office work and multitasking. Units with 2GB graphics cope better with light photo editing than integrated-only laptops.",
+      "sheetAliases": [
+        "HP | 745 G6"
+      ]
+    },
+    {
+      "modelId": "hp-elitebook-830-g5",
+      "name": "HP EliteBook 830 G5",
+      "brand": "HP",
+      "series": "EliteBook",
+      "categoryId": "business-laptops",
+      "formFactor": "Clamshell",
+      "screenInches": 13.3,
+      "images": [
+        {
+          "id": "hp-elitebook-830-g5-01",
+          "alt": "HP EliteBook 830 G5",
+          "placeholder": {
+            "tint": "#E8E6E1",
+            "glyph": "💻"
+          }
+        }
+      ],
+      "blurb": "HP's compact 13.3-inch EliteBook: business-grade build in a size that fits any bag, made to be carried every day.",
+      "sheetAliases": [
+        "HP | 830 G5"
+      ]
+    },
+    {
+      "modelId": "hp-elitebook-830-g6",
+      "name": "HP EliteBook 830 G6",
+      "brand": "HP",
+      "series": "EliteBook",
+      "categoryId": "business-laptops",
+      "formFactor": "Clamshell",
+      "screenInches": 13.3,
+      "images": [
+        {
+          "id": "hp-elitebook-830-g6-01",
+          "alt": "HP EliteBook 830 G6",
+          "placeholder": {
+            "tint": "#E8E6E1",
+            "glyph": "💻"
+          }
+        }
+      ],
+      "blurb": "HP's compact 13.3-inch EliteBook: business-grade build in a size that fits any bag, made to be carried every day.",
+      "sheetAliases": [
+        "HP | 830 G6"
+      ]
+    },
+    {
+      "modelId": "hp-elitebook-830-g7",
+      "name": "HP EliteBook 830 G7",
+      "brand": "HP",
+      "series": "EliteBook",
+      "categoryId": "business-laptops",
+      "formFactor": "Clamshell",
+      "screenInches": 13.3,
+      "images": [
+        {
+          "id": "hp-elitebook-830-g7-01",
+          "alt": "HP EliteBook 830 G7",
+          "placeholder": {
+            "tint": "#E8E6E1",
+            "glyph": "💻"
+          }
+        }
+      ],
+      "blurb": "HP's compact 13.3-inch EliteBook: business-grade build in a size that fits any bag, made to be carried every day.",
+      "sheetAliases": [
+        "HP | 830 G7"
+      ]
+    },
+    {
+      "modelId": "hp-elitebook-830-g8",
+      "name": "HP EliteBook 830 G8",
+      "brand": "HP",
+      "series": "EliteBook",
+      "categoryId": "business-laptops",
+      "formFactor": "Clamshell",
+      "screenInches": 13.3,
+      "images": [
+        {
+          "id": "hp-elitebook-830-g8-01",
+          "alt": "HP EliteBook 830 G8",
+          "placeholder": {
+            "tint": "#E8E6E1",
+            "glyph": "💻"
+          }
+        }
+      ],
+      "blurb": "HP's compact 13.3-inch EliteBook: business-grade build in a size that fits any bag, made to be carried every day.",
+      "sheetAliases": [
+        "HP | 830 G8"
+      ]
+    },
+    {
+      "modelId": "hp-elitebook-840-g3",
+      "name": "HP EliteBook 840 G3",
+      "brand": "HP",
+      "series": "EliteBook",
+      "categoryId": "business-laptops",
+      "formFactor": "Clamshell",
+      "screenInches": 14,
+      "images": [
+        {
+          "id": "hp-elitebook-840-g3-01",
+          "alt": "HP EliteBook 840 G3",
+          "placeholder": {
+            "tint": "#E8E6E1",
+            "glyph": "💻"
+          }
+        }
+      ],
+      "blurb": "The 14-inch EliteBook 840 is the classic ex-UK office laptop: solid keyboard, sturdy build and easy to service.",
+      "sheetAliases": [
+        "HP | 840 G3"
+      ]
+    },
+    {
+      "modelId": "hp-elitebook-840-g4",
+      "name": "HP EliteBook 840 G4",
+      "brand": "HP",
+      "series": "EliteBook",
+      "categoryId": "business-laptops",
+      "formFactor": "Clamshell",
+      "screenInches": 14,
+      "images": [
+        {
+          "id": "hp-elitebook-840-g4-01",
+          "alt": "HP EliteBook 840 G4",
+          "placeholder": {
+            "tint": "#E8E6E1",
+            "glyph": "💻"
+          }
+        }
+      ],
+      "blurb": "The 14-inch EliteBook 840 is the classic ex-UK office laptop: solid keyboard, sturdy build and easy to service.",
+      "sheetAliases": [
+        "HP | 840 G4"
+      ]
+    },
+    {
+      "modelId": "hp-elitebook-840-g5",
+      "name": "HP EliteBook 840 G5",
+      "brand": "HP",
+      "series": "EliteBook",
+      "categoryId": "business-laptops",
+      "formFactor": "Clamshell",
+      "screenInches": 14,
+      "images": [
+        {
+          "id": "hp-elitebook-840-g5-01",
+          "alt": "HP EliteBook 840 G5",
+          "placeholder": {
+            "tint": "#E8E6E1",
+            "glyph": "💻"
+          }
+        }
+      ],
+      "blurb": "The 14-inch EliteBook 840 is the classic ex-UK office laptop: solid keyboard, sturdy build and easy to service.",
+      "sheetAliases": [
+        "HP | 840 G5"
+      ]
+    },
+    {
+      "modelId": "hp-elitebook-840-g6",
+      "name": "HP EliteBook 840 G6",
+      "brand": "HP",
+      "series": "EliteBook",
+      "categoryId": "business-laptops",
+      "formFactor": "Clamshell",
+      "screenInches": 14,
+      "images": [
+        {
+          "id": "hp-elitebook-840-g6-01",
+          "alt": "HP EliteBook 840 G6",
+          "placeholder": {
+            "tint": "#E8E6E1",
+            "glyph": "💻"
+          }
+        }
+      ],
+      "blurb": "The 14-inch EliteBook 840 is the classic ex-UK office laptop: solid keyboard, sturdy build and easy to service.",
+      "sheetAliases": [
+        "HP | 840 G6"
+      ]
+    },
+    {
+      "modelId": "hp-elitebook-840-g7",
+      "name": "HP EliteBook 840 G7",
+      "brand": "HP",
+      "series": "EliteBook",
+      "categoryId": "business-laptops",
+      "formFactor": "Clamshell",
+      "screenInches": 14,
+      "images": [
+        {
+          "id": "hp-elitebook-840-g7-01",
+          "alt": "HP EliteBook 840 G7",
+          "placeholder": {
+            "tint": "#E8E6E1",
+            "glyph": "💻"
+          }
+        }
+      ],
+      "blurb": "The 14-inch EliteBook 840 is the classic ex-UK office laptop: solid keyboard, sturdy build and easy to service.",
+      "sheetAliases": [
+        "HP | 840 G7"
+      ]
+    },
+    {
+      "modelId": "hp-elitebook-840-g8",
+      "name": "HP EliteBook 840 G8",
+      "brand": "HP",
+      "series": "EliteBook",
+      "categoryId": "business-laptops",
+      "formFactor": "Clamshell",
+      "screenInches": 14,
+      "images": [
+        {
+          "id": "hp-elitebook-840-g8-01",
+          "alt": "HP EliteBook 840 G8",
+          "placeholder": {
+            "tint": "#E8E6E1",
+            "glyph": "💻"
+          }
+        }
+      ],
+      "blurb": "The 14-inch EliteBook 840 is the classic ex-UK office laptop: solid keyboard, sturdy build and easy to service.",
+      "sheetAliases": [
+        "HP | 840 G8"
+      ]
+    },
+    {
+      "modelId": "hp-elitebook-845-g7",
+      "name": "HP EliteBook 845 G7",
+      "brand": "HP",
+      "series": "EliteBook",
+      "categoryId": "business-laptops",
+      "formFactor": "Clamshell",
+      "screenInches": 14,
+      "images": [
+        {
+          "id": "hp-elitebook-845-g7-01",
+          "alt": "HP EliteBook 845 G7",
+          "placeholder": {
+            "tint": "#E8E6E1",
+            "glyph": "💻"
+          }
+        }
+      ],
+      "blurb": "The AMD Ryzen version of HP's 14-inch EliteBook 840: same business build, strong multi-core performance for heavy multitasking.",
+      "sheetAliases": [
+        "HP | 845 G7"
+      ]
+    },
+    {
+      "modelId": "hp-elitebook-845-g8",
+      "name": "HP EliteBook 845 G8",
+      "brand": "HP",
+      "series": "EliteBook",
+      "categoryId": "business-laptops",
+      "formFactor": "Clamshell",
+      "screenInches": 14,
+      "images": [
+        {
+          "id": "hp-elitebook-845-g8-01",
+          "alt": "HP EliteBook 845 G8",
+          "placeholder": {
+            "tint": "#E8E6E1",
+            "glyph": "💻"
+          }
+        }
+      ],
+      "blurb": "The AMD Ryzen version of HP's 14-inch EliteBook 840: same business build, strong multi-core performance for heavy multitasking.",
+      "sheetAliases": [
+        "HP | 845 G8"
+      ]
+    },
+    {
+      "modelId": "hp-probook-440-g8",
+      "name": "HP ProBook 440 G8",
+      "brand": "HP",
+      "series": "ProBook",
+      "categoryId": "business-laptops",
+      "formFactor": "Clamshell",
+      "screenInches": 14,
+      "images": [
+        {
+          "id": "hp-probook-440-g8-01",
+          "alt": "HP ProBook 440 G8",
+          "placeholder": {
+            "tint": "#E8E6E1",
+            "glyph": "💻"
+          }
+        }
+      ],
+      "blurb": "HP's 14-inch ProBook with an 11th Gen Intel chip: a newer processor at a mid-range price.",
+      "sheetAliases": [
+        "HP | 440 G8"
+      ]
+    },
+    {
+      "modelId": "hp-probook-450-g7",
+      "name": "HP ProBook 450 G7",
+      "brand": "HP",
+      "series": "ProBook",
+      "categoryId": "business-laptops",
+      "formFactor": "Clamshell",
+      "screenInches": 15.6,
+      "images": [
+        {
+          "id": "hp-probook-450-g7-01",
+          "alt": "HP ProBook 450 G7",
+          "placeholder": {
+            "tint": "#E8E6E1",
+            "glyph": "💻"
+          }
+        }
+      ],
+      "blurb": "A 15.6-inch ProBook with a bigger screen, a number pad and plenty of space: an SSD for the system plus a 1TB hard drive for files.",
+      "sheetAliases": [
+        "HP | ProBook 450 G7"
+      ]
+    },
+    {
+      "modelId": "hp-probook-640-g5",
+      "name": "HP ProBook 640 G5",
+      "brand": "HP",
+      "series": "ProBook",
+      "categoryId": "business-laptops",
+      "formFactor": "Clamshell",
+      "screenInches": 14,
+      "images": [
+        {
+          "id": "hp-probook-640-g5-01",
+          "alt": "HP ProBook 640 G5",
+          "placeholder": {
+            "tint": "#E8E6E1",
+            "glyph": "💻"
+          }
+        }
+      ],
+      "blurb": "A 14-inch HP ProBook for everyday office and school work.",
+      "sheetAliases": [
+        "HP | 640 G5"
+      ]
+    },
+    {
+      "modelId": "hp-probook-645-g4",
+      "name": "HP ProBook 645 G4",
+      "brand": "HP",
+      "series": "ProBook",
+      "categoryId": "business-laptops",
+      "formFactor": "Clamshell",
+      "screenInches": 14,
+      "images": [
+        {
+          "id": "hp-probook-645-g4-01",
+          "alt": "HP ProBook 645 G4",
+          "placeholder": {
+            "tint": "#E8E6E1",
+            "glyph": "💻"
+          }
+        }
+      ],
+      "blurb": "A 14-inch AMD ProBook with 1GB graphics, a budget pick for office work and light multitasking.",
+      "sheetAliases": [
+        "HP | ProBook 645 G4"
+      ]
+    },
+    {
+      "modelId": "lenovo-thinkpad-t490s",
+      "name": "Lenovo ThinkPad T490s",
+      "brand": "Lenovo",
+      "series": "ThinkPad",
+      "categoryId": "business-laptops",
+      "formFactor": "Clamshell",
+      "screenInches": 14,
+      "images": [
+        {
+          "id": "lenovo-thinkpad-t490s-01",
+          "alt": "Lenovo ThinkPad T490s",
+          "placeholder": {
+            "tint": "#E8E6E1",
+            "glyph": "💻"
+          }
+        }
+      ],
+      "blurb": "A slim 14-inch ThinkPad with the classic ThinkPad keyboard and business-grade build.",
+      "sheetAliases": [
+        "Lenovo | T490s"
+      ]
+    },
+    {
+      "modelId": "lenovo-thinkpad-x1-carbon-5th-gen",
+      "name": "Lenovo ThinkPad X1 Carbon (5th Gen)",
+      "brand": "Lenovo",
+      "series": "ThinkPad",
+      "categoryId": "business-laptops",
+      "formFactor": "Clamshell",
+      "screenInches": 14,
+      "images": [
+        {
+          "id": "lenovo-thinkpad-x1-carbon-5th-gen-01",
+          "alt": "Lenovo ThinkPad X1 Carbon (5th Gen)",
+          "placeholder": {
+            "tint": "#E8E6E1",
+            "glyph": "💻"
+          }
+        }
+      ],
+      "blurb": "Lenovo's premium 14-inch ultralight ThinkPad, with a carbon-fibre body and the keyboard ThinkPads are known for.",
+      "sheetAliases": [
+        "Lenovo | X1 Carbon"
+      ]
+    },
+    {
+      "modelId": "lenovo-thinkpad-x13-gen-1",
+      "name": "Lenovo ThinkPad X13 Gen 1",
+      "brand": "Lenovo",
+      "series": "ThinkPad",
+      "categoryId": "business-laptops",
+      "formFactor": "Clamshell",
+      "screenInches": 13.3,
+      "images": [
+        {
+          "id": "lenovo-thinkpad-x13-gen-1-01",
+          "alt": "Lenovo ThinkPad X13 Gen 1",
+          "placeholder": {
+            "tint": "#E8E6E1",
+            "glyph": "💻"
+          }
+        }
+      ],
+      "blurb": "A compact 13.3-inch ThinkPad with a 10th Gen Intel chip, made for working on the move.",
+      "sheetAliases": [
+        "Lenovo | X13"
+      ]
+    },
+    {
+      "modelId": "lenovo-thinkpad-x260",
+      "name": "Lenovo ThinkPad X260",
+      "brand": "Lenovo",
+      "series": "ThinkPad",
+      "categoryId": "business-laptops",
+      "formFactor": "Clamshell",
+      "screenInches": 12.5,
+      "images": [
+        {
+          "id": "lenovo-thinkpad-x260-01",
+          "alt": "Lenovo ThinkPad X260",
+          "placeholder": {
+            "tint": "#E8E6E1",
+            "glyph": "💻"
+          }
+        }
+      ],
+      "blurb": "A small 12.5-inch ThinkPad, light and tough, for students and anyone who carries a laptop all day.",
+      "sheetAliases": [
+        "Lenovo | X260"
+      ]
+    },
+    {
+      "modelId": "lenovo-thinkpad-x270",
+      "name": "Lenovo ThinkPad X270",
+      "brand": "Lenovo",
+      "series": "ThinkPad",
+      "categoryId": "business-laptops",
+      "formFactor": "Clamshell",
+      "screenInches": 12.5,
+      "images": [
+        {
+          "id": "lenovo-thinkpad-x270-01",
+          "alt": "Lenovo ThinkPad X270",
+          "placeholder": {
+            "tint": "#E8E6E1",
+            "glyph": "💻"
+          }
+        }
+      ],
+      "blurb": "A small 12.5-inch ThinkPad, light and tough, for students and anyone who carries a laptop all day.",
+      "sheetAliases": [
+        "Lenovo | X270"
+      ]
+    },
+    {
+      "modelId": "hp-elite-x2-1012-g1",
+      "name": "HP Elite x2 1012 G1",
+      "brand": "HP",
+      "series": "Elite x2",
+      "categoryId": "2-in-1",
+      "formFactor": "Detachable",
+      "screenInches": 12,
+      "images": [
+        {
+          "id": "hp-elite-x2-1012-g1-01",
+          "alt": "HP Elite x2 1012 G1",
+          "placeholder": {
+            "tint": "#E3E8E4",
+            "glyph": "💻"
+          }
+        }
+      ],
+      "blurb": "A 12-inch Windows tablet with a detachable keyboard, light enough to carry like a notebook.",
+      "sheetAliases": [
+        "HP | X2 Elite 1012 G1"
+      ]
+    },
+    {
+      "modelId": "hp-elitebook-x360-830-g6",
+      "name": "HP EliteBook x360 830 G6",
+      "brand": "HP",
+      "series": "EliteBook",
+      "categoryId": "2-in-1",
+      "formFactor": "Convertible",
+      "screenInches": 13.3,
+      "images": [
+        {
+          "id": "hp-elitebook-x360-830-g6-01",
+          "alt": "HP EliteBook x360 830 G6",
+          "placeholder": {
+            "tint": "#E3E8E4",
+            "glyph": "💻"
+          }
+        }
+      ],
+      "blurb": "A 13.3-inch EliteBook that folds back into a tablet. Handy for presenting, note-taking and working on the move.",
+      "sheetAliases": [
+        "HP | 830 G6 x360"
+      ]
+    },
+    {
+      "modelId": "hp-elitebook-x360-830-g7",
+      "name": "HP EliteBook x360 830 G7",
+      "brand": "HP",
+      "series": "EliteBook",
+      "categoryId": "2-in-1",
+      "formFactor": "Convertible",
+      "screenInches": 13.3,
+      "images": [
+        {
+          "id": "hp-elitebook-x360-830-g7-01",
+          "alt": "HP EliteBook x360 830 G7",
+          "placeholder": {
+            "tint": "#E3E8E4",
+            "glyph": "💻"
+          }
+        }
+      ],
+      "blurb": "A 13.3-inch EliteBook that folds back into a tablet. Handy for presenting, note-taking and working on the move.",
+      "sheetAliases": [
+        "HP | 830 x360 G7"
+      ]
+    },
+    {
+      "modelId": "hp-probook-x360-11-g5",
+      "name": "HP ProBook x360 11 G5",
+      "brand": "HP",
+      "series": "ProBook",
+      "categoryId": "2-in-1",
+      "formFactor": "Convertible",
+      "screenInches": 11.6,
+      "images": [
+        {
+          "id": "hp-probook-x360-11-g5-01",
+          "alt": "HP ProBook x360 11 G5",
+          "placeholder": {
+            "tint": "#E3E8E4",
+            "glyph": "💻"
+          }
+        }
+      ],
+      "blurb": "A tough 11.6-inch touchscreen convertible built for students. Made for school work, browsing and video calls, not heavy software.",
+      "sheetAliases": [
+        "HP | ProBook 11e x360 G5"
+      ]
+    },
+    {
+      "modelId": "lenovo-thinkpad-11e-yoga",
+      "name": "Lenovo ThinkPad 11e Yoga",
+      "brand": "Lenovo",
+      "series": "ThinkPad",
+      "categoryId": "2-in-1",
+      "formFactor": "Convertible",
+      "screenInches": 11.6,
+      "images": [
+        {
+          "id": "lenovo-thinkpad-11e-yoga-01",
+          "alt": "Lenovo ThinkPad 11e Yoga",
+          "placeholder": {
+            "tint": "#E3E8E4",
+            "glyph": "💻"
+          }
+        }
+      ],
+      "blurb": "A rugged 11.6-inch convertible from Lenovo's education line, built to survive a school bag.",
+      "sheetAliases": [
+        "Lenovo | Yoga 11e x360"
+      ]
+    },
+    {
+      "modelId": "lenovo-thinkpad-x1-yoga",
+      "name": "Lenovo ThinkPad X1 Yoga",
+      "brand": "Lenovo",
+      "series": "ThinkPad",
+      "categoryId": "2-in-1",
+      "formFactor": "Convertible",
+      "screenInches": 14,
+      "images": [
+        {
+          "id": "lenovo-thinkpad-x1-yoga-01",
+          "alt": "Lenovo ThinkPad X1 Yoga",
+          "placeholder": {
+            "tint": "#E3E8E4",
+            "glyph": "💻"
+          }
+        }
+      ],
+      "blurb": "Lenovo's premium 14-inch convertible ThinkPad: flips into a tablet, with a bigger screen than most 2-in-1s.",
+      "sheetAliases": [
+        "Lenovo | X1 Yoga x360"
+      ]
+    },
+    {
+      "modelId": "lenovo-thinkpad-x13-yoga-gen-1",
+      "name": "Lenovo ThinkPad X13 Yoga Gen 1",
+      "brand": "Lenovo",
+      "series": "ThinkPad",
+      "categoryId": "2-in-1",
+      "formFactor": "Convertible",
+      "screenInches": 13.3,
+      "images": [
+        {
+          "id": "lenovo-thinkpad-x13-yoga-gen-1-01",
+          "alt": "Lenovo ThinkPad X13 Yoga Gen 1",
+          "placeholder": {
+            "tint": "#E3E8E4",
+            "glyph": "💻"
+          }
+        }
+      ],
+      "blurb": "A 13.3-inch convertible ThinkPad that flips into a tablet for notes, signing documents and presenting.",
+      "sheetAliases": [
+        "Lenovo | Yoga X13 x360"
+      ]
+    },
+    {
+      "modelId": "lenovo-thinkpad-x380-yoga",
+      "name": "Lenovo ThinkPad X380 Yoga",
+      "brand": "Lenovo",
+      "series": "ThinkPad",
+      "categoryId": "2-in-1",
+      "formFactor": "Convertible",
+      "screenInches": 13.3,
+      "images": [
+        {
+          "id": "lenovo-thinkpad-x380-yoga-01",
+          "alt": "Lenovo ThinkPad X380 Yoga",
+          "placeholder": {
+            "tint": "#E3E8E4",
+            "glyph": "💻"
+          }
+        }
+      ],
+      "blurb": "A 13.3-inch convertible ThinkPad that flips into a tablet for notes, signing documents and presenting.",
+      "sheetAliases": [
+        "Lenovo | Yoga X380"
+      ]
+    },
+    {
+      "modelId": "lenovo-thinkpad-x390-yoga",
+      "name": "Lenovo ThinkPad X390 Yoga",
+      "brand": "Lenovo",
+      "series": "ThinkPad",
+      "categoryId": "2-in-1",
+      "formFactor": "Convertible",
+      "screenInches": 13.3,
+      "images": [
+        {
+          "id": "lenovo-thinkpad-x390-yoga-01",
+          "alt": "Lenovo ThinkPad X390 Yoga",
+          "placeholder": {
+            "tint": "#E3E8E4",
+            "glyph": "💻"
+          }
+        }
+      ],
+      "blurb": "A 13.3-inch convertible ThinkPad that flips into a tablet for notes, signing documents and presenting.",
+      "sheetAliases": [
+        "Lenovo | Yoga X390",
+        "Lenovo | Yoga X390 x360"
+      ]
+    },
+    {
+      "modelId": "lenovo-thinkpad-yoga-370",
+      "name": "Lenovo ThinkPad Yoga 370",
+      "brand": "Lenovo",
+      "series": "ThinkPad",
+      "categoryId": "2-in-1",
+      "formFactor": "Convertible",
+      "screenInches": 13.3,
+      "images": [
+        {
+          "id": "lenovo-thinkpad-yoga-370-01",
+          "alt": "Lenovo ThinkPad Yoga 370",
+          "placeholder": {
+            "tint": "#E3E8E4",
+            "glyph": "💻"
+          }
+        }
+      ],
+      "blurb": "A 13.3-inch convertible ThinkPad that flips into a tablet for notes, signing documents and presenting.",
+      "sheetAliases": [
+        "Lenovo | Yoga X370 x360"
+      ]
+    },
+    {
+      "modelId": "apple-macbook-pro-13-2012",
+      "name": "Apple MacBook Pro 13\" (2012)",
+      "brand": "Apple",
+      "series": "MacBook Pro",
+      "categoryId": "macbooks",
+      "formFactor": "Clamshell",
+      "screenInches": 13.3,
+      "images": [
+        {
+          "id": "apple-macbook-pro-13-2012-01",
+          "alt": "Apple MacBook Pro 13\" (2012)",
+          "placeholder": {
+            "tint": "#E6E6EA",
+            "glyph": "💻"
+          }
+        }
+      ],
+      "blurb": "The 2012 13-inch MacBook Pro: the cheapest way into macOS. It no longer gets new macOS versions, so it suits writing, browsing and light work.",
+      "sheetAliases": [
+        "Apple | MacBook Pro (2012)"
+      ]
+    },
+    {
+      "modelId": "apple-macbook-pro-13-2017",
+      "name": "Apple MacBook Pro 13\" (2017)",
+      "brand": "Apple",
+      "series": "MacBook Pro",
+      "categoryId": "macbooks",
+      "formFactor": "Clamshell",
+      "screenInches": 13.3,
+      "images": [
+        {
+          "id": "apple-macbook-pro-13-2017-01",
+          "alt": "Apple MacBook Pro 13\" (2017)",
+          "placeholder": {
+            "tint": "#E6E6EA",
+            "glyph": "💻"
+          }
+        }
+      ],
+      "blurb": "A 13-inch MacBook Pro with a sharp Retina display, for macOS users, designers and developers.",
+      "sheetAliases": [
+        "Apple | MacBook Pro 13\" (2017)"
+      ]
+    },
+    {
+      "modelId": "apple-macbook-pro-13-2018",
+      "name": "Apple MacBook Pro 13\" (2018)",
+      "brand": "Apple",
+      "series": "MacBook Pro",
+      "categoryId": "macbooks",
+      "formFactor": "Clamshell",
+      "screenInches": 13.3,
+      "images": [
+        {
+          "id": "apple-macbook-pro-13-2018-01",
+          "alt": "Apple MacBook Pro 13\" (2018)",
+          "placeholder": {
+            "tint": "#E6E6EA",
+            "glyph": "💻"
+          }
+        }
+      ],
+      "blurb": "A 13-inch MacBook Pro with a sharp Retina display, for macOS users, designers and developers.",
+      "sheetAliases": [
+        "Apple | MacBook Pro (2018)",
+        "Apple | MacBook Pro 13\" (2018)"
+      ]
+    },
+    {
+      "modelId": "hp-elitedesk-prodesk-g1-mini",
+      "name": "HP EliteDesk 800 / ProDesk 600 G1 Mini PC",
+      "brand": "HP",
+      "series": "EliteDesk/ProDesk",
+      "categoryId": "mini-pcs",
+      "formFactor": "Mini PC",
+      "screenInches": null,
+      "images": [
+        {
+          "id": "hp-elitedesk-prodesk-g1-mini-01",
+          "alt": "HP EliteDesk 800 / ProDesk 600 G1 Mini PC",
+          "placeholder": {
+            "tint": "#E4E7EA",
+            "glyph": "🖥️"
+          }
+        }
+      ],
+      "blurb": "A compact HP desktop that tucks behind a monitor, for office, cyber café and point-of-sale use.",
+      "sheetAliases": [
+        "HP | EliteBook 800 / ProDesk 600 G1 Mini PC (Desktop)"
+      ]
+    },
+    {
+      "modelId": "lenovo-thinkcentre-m73-tiny",
+      "name": "Lenovo ThinkCentre M73 Tiny",
+      "brand": "Lenovo",
+      "series": "ThinkCentre",
+      "categoryId": "mini-pcs",
+      "formFactor": "Mini PC",
+      "screenInches": null,
+      "images": [
+        {
+          "id": "lenovo-thinkcentre-m73-tiny-01",
+          "alt": "Lenovo ThinkCentre M73 Tiny",
+          "placeholder": {
+            "tint": "#E4E7EA",
+            "glyph": "🖥️"
+          }
+        }
+      ],
+      "blurb": "A palm-sized Lenovo desktop for reception desks, cyber cafés and point-of-sale counters. Plug in a monitor, keyboard and mouse.",
+      "sheetAliases": [
+        "Lenovo | ThinkCentre M73 Tiny (Desktop)"
+      ]
+    }
+  ],
+  "products": [
+    {
+      "id": "hp-zbook-firefly-14-g6-i7-16gb-512gb-touch",
+      "slug": "hp-zbook-firefly-14-g6-i7-16gb-512gb-touch",
+      "modelId": "hp-zbook-firefly-14-g6",
+      "name": "HP ZBook Firefly 14 G6 · Core i7 8th Gen, 16GB/512GB, Touch, 4GB GPU",
+      "price": 57500,
+      "cost": 57198.7,
+      "categoryId": "workstations",
+      "images": [
+        {
+          "id": "hp-zbook-firefly-14-g6-01",
+          "alt": "HP ZBook Firefly 14 G6",
+          "placeholder": {
+            "tint": "#ECE6DE",
+            "glyph": "💻"
+          }
+        }
+      ],
+      "description": "A slim 14-inch HP workstation with dedicated graphics, for design, CAD and editing work at a lower price than the G8. This unit: Intel Core i7 (8th Gen), 16GB RAM, 512GB storage, touchscreen, 4GB dedicated graphics.",
+      "attributes": {
+        "brand": [
+          "HP"
+        ],
+        "series": [
+          "ZBook"
+        ],
+        "cpu": [
+          "Intel Core i7"
+        ],
+        "ram": [
+          "16GB"
+        ],
+        "storage": [
+          "512GB"
+        ],
+        "touch": [
+          "Yes"
+        ],
+        "formFactor": [
+          "Clamshell"
+        ],
+        "graphics": [
+          "Dedicated"
+        ],
+        "windows11": [
+          "Yes"
+        ],
+        "condition": [
+          "Ex-UK"
+        ],
+        "cpuGen": [
+          "8th Gen"
+        ],
+        "screen": [
+          "14\""
+        ],
+        "gpuMemory": [
+          "4GB"
+        ]
+      },
+      "inferred": [
+        "cpuGen",
+        "screen"
+      ],
+      "featured": false,
+      "bestseller": false,
+      "createdAt": "2026-10-08T00:00:00+03:00",
+      "stock": "in",
+      "sourceRows": [
+        3
+      ]
+    },
+    {
+      "id": "hp-zbook-firefly-14-g8-i7-32gb-512gb",
+      "slug": "hp-zbook-firefly-14-g8-i7-32gb-512gb",
+      "modelId": "hp-zbook-firefly-14-g8",
+      "name": "HP ZBook Firefly 14 G8 · Core i7 11th Gen, 32GB/512GB, 4GB GPU",
+      "price": 78000,
+      "cost": 77998.7,
+      "categoryId": "workstations",
+      "images": [
+        {
+          "id": "hp-zbook-firefly-14-g8-01",
+          "alt": "HP ZBook Firefly 14 G8",
+          "placeholder": {
+            "tint": "#ECE6DE",
+            "glyph": "💻"
+          }
+        }
+      ],
+      "description": "HP's slim 14-inch mobile workstation. The dedicated graphics card makes it the pick for CAD, design and video work that would slow an ordinary office laptop. This unit: Intel Core i7 (11th Gen), 32GB RAM, 512GB storage, 4GB dedicated graphics.",
+      "attributes": {
+        "brand": [
+          "HP"
+        ],
+        "series": [
+          "ZBook"
+        ],
+        "cpu": [
+          "Intel Core i7"
+        ],
+        "ram": [
+          "32GB"
+        ],
+        "storage": [
+          "512GB"
+        ],
+        "touch": [
+          "No"
+        ],
+        "formFactor": [
+          "Clamshell"
+        ],
+        "graphics": [
+          "Dedicated"
+        ],
+        "windows11": [
+          "Yes"
+        ],
+        "condition": [
+          "Ex-UK"
+        ],
+        "cpuGen": [
+          "11th Gen"
+        ],
+        "screen": [
+          "14\""
+        ],
+        "gpuMemory": [
+          "4GB"
+        ]
+      },
+      "inferred": [
+        "screen",
+        "touch"
+      ],
+      "featured": true,
+      "bestseller": false,
+      "createdAt": "2026-10-08T00:00:00+03:00",
+      "stock": "in",
+      "sourceRows": [
+        2
+      ]
+    },
+    {
+      "id": "dell-latitude-5300-i5-8gb-256gb",
+      "slug": "dell-latitude-5300-i5-8gb-256gb",
+      "modelId": "dell-latitude-5300",
+      "name": "Dell Latitude 5300 · Core i5 8th Gen, 8GB/256GB",
+      "price": 24500,
+      "cost": 24048.7,
+      "categoryId": "business-laptops",
+      "images": [
+        {
+          "id": "dell-latitude-5300-01",
+          "alt": "Dell Latitude 5300",
+          "placeholder": {
+            "tint": "#E8E6E1",
+            "glyph": "💻"
+          }
+        }
+      ],
+      "description": "Dell's compact 13.3-inch Latitude, light enough for the daily commute. This unit: Intel Core i5 (8th Gen), 8GB RAM, 256GB storage.",
+      "attributes": {
+        "brand": [
+          "Dell"
+        ],
+        "series": [
+          "Latitude"
+        ],
+        "cpu": [
+          "Intel Core i5"
+        ],
+        "ram": [
+          "8GB"
+        ],
+        "storage": [
+          "256GB"
+        ],
+        "touch": [
+          "No"
+        ],
+        "formFactor": [
+          "Clamshell"
+        ],
+        "graphics": [
+          "Integrated"
+        ],
+        "windows11": [
+          "Yes"
+        ],
+        "condition": [
+          "Ex-UK"
+        ],
+        "cpuGen": [
+          "8th Gen"
+        ],
+        "screen": [
+          "13.3\""
+        ]
+      },
+      "inferred": [
+        "cpuGen",
+        "screen",
+        "touch"
+      ],
+      "featured": false,
+      "bestseller": false,
+      "createdAt": "2026-10-08T00:00:00+03:00",
+      "stock": "in",
+      "sourceRows": [
+        23
+      ]
+    },
+    {
+      "id": "dell-latitude-5300-i7-8gb-256gb",
+      "slug": "dell-latitude-5300-i7-8gb-256gb",
+      "modelId": "dell-latitude-5300",
+      "name": "Dell Latitude 5300 · Core i7 8th Gen, 8GB/256GB",
+      "price": 26000,
+      "cost": 25998.7,
+      "categoryId": "business-laptops",
+      "images": [
+        {
+          "id": "dell-latitude-5300-01",
+          "alt": "Dell Latitude 5300",
+          "placeholder": {
+            "tint": "#E8E6E1",
+            "glyph": "💻"
+          }
+        }
+      ],
+      "description": "Dell's compact 13.3-inch Latitude, light enough for the daily commute. This unit: Intel Core i7 (8th Gen), 8GB RAM, 256GB storage.",
+      "attributes": {
+        "brand": [
+          "Dell"
+        ],
+        "series": [
+          "Latitude"
+        ],
+        "cpu": [
+          "Intel Core i7"
+        ],
+        "ram": [
+          "8GB"
+        ],
+        "storage": [
+          "256GB"
+        ],
+        "touch": [
+          "No"
+        ],
+        "formFactor": [
+          "Clamshell"
+        ],
+        "graphics": [
+          "Integrated"
+        ],
+        "windows11": [
+          "Yes"
+        ],
+        "condition": [
+          "Ex-UK"
+        ],
+        "cpuGen": [
+          "8th Gen"
+        ],
+        "screen": [
+          "13.3\""
+        ]
+      },
+      "inferred": [
+        "cpuGen",
+        "screen"
+      ],
+      "featured": false,
+      "bestseller": false,
+      "createdAt": "2026-10-08T00:00:00+03:00",
+      "stock": "in",
+      "sourceRows": [
+        22
+      ]
+    },
+    {
+      "id": "dell-latitude-5400-i5-8gb-256gb-touch",
+      "slug": "dell-latitude-5400-i5-8gb-256gb-touch",
+      "modelId": "dell-latitude-5400",
+      "name": "Dell Latitude 5400 · Core i5 8th Gen, 8GB/256GB, Touch",
+      "price": 27500,
+      "cost": 27298.7,
+      "categoryId": "business-laptops",
+      "images": [
+        {
+          "id": "dell-latitude-5400-01",
+          "alt": "Dell Latitude 5400",
+          "placeholder": {
+            "tint": "#E8E6E1",
+            "glyph": "💻"
+          }
+        }
+      ],
+      "description": "Dell's 14-inch business Latitude: a dependable office machine with a full-size keyboard. This unit: Intel Core i5 (8th Gen), 8GB RAM, 256GB storage, touchscreen.",
+      "attributes": {
+        "brand": [
+          "Dell"
+        ],
+        "series": [
+          "Latitude"
+        ],
+        "cpu": [
+          "Intel Core i5"
+        ],
+        "ram": [
+          "8GB"
+        ],
+        "storage": [
+          "256GB"
+        ],
+        "touch": [
+          "Yes"
+        ],
+        "formFactor": [
+          "Clamshell"
+        ],
+        "graphics": [
+          "Integrated"
+        ],
+        "windows11": [
+          "Yes"
+        ],
+        "condition": [
+          "Ex-UK"
+        ],
+        "cpuGen": [
+          "8th Gen"
+        ],
+        "screen": [
+          "14\""
+        ]
+      },
+      "inferred": [
+        "cpuGen",
+        "screen"
+      ],
+      "featured": true,
+      "bestseller": false,
+      "createdAt": "2026-10-08T00:00:00+03:00",
+      "stock": "in",
+      "sourceRows": [
+        21
+      ]
+    },
+    {
+      "id": "dell-latitude-7280-i7-8gb-256gb",
+      "slug": "dell-latitude-7280-i7-8gb-256gb",
+      "modelId": "dell-latitude-7280",
+      "name": "Dell Latitude 7280 · Core i7, 8GB/256GB",
+      "price": 23000,
+      "cost": 22750,
+      "categoryId": "business-laptops",
+      "images": [
+        {
+          "id": "dell-latitude-7280-01",
+          "alt": "Dell Latitude 7280",
+          "placeholder": {
+            "tint": "#E8E6E1",
+            "glyph": "💻"
+          }
+        }
+      ],
+      "description": "A small 12.5-inch premium Dell Latitude, light and well built. This unit: Intel Core i7, 8GB RAM, 256GB storage.",
+      "attributes": {
+        "brand": [
+          "Dell"
+        ],
+        "series": [
+          "Latitude"
+        ],
+        "cpu": [
+          "Intel Core i7"
+        ],
+        "ram": [
+          "8GB"
+        ],
+        "storage": [
+          "256GB"
+        ],
+        "touch": [
+          "No"
+        ],
+        "formFactor": [
+          "Clamshell"
+        ],
+        "graphics": [
+          "Integrated"
+        ],
+        "windows11": [
+          "Check"
+        ],
+        "condition": [
+          "Ex-UK"
+        ],
+        "screen": [
+          "12.5\""
+        ]
+      },
+      "inferred": [
+        "screen",
+        "touch"
+      ],
+      "featured": false,
+      "bestseller": false,
+      "createdAt": "2026-10-08T00:00:00+03:00",
+      "stock": "in",
+      "sourceRows": [
+        24
+      ]
+    },
+    {
+      "id": "hp-elitebook-745-g6-ryzen-5-8gb-256gb",
+      "slug": "hp-elitebook-745-g6-ryzen-5-8gb-256gb",
+      "modelId": "hp-elitebook-745-g6",
+      "name": "HP EliteBook 745 G6 · AMD Ryzen 5, 8GB/256GB, 2GB GPU",
+      "price": 34000,
+      "cost": 33800,
+      "categoryId": "business-laptops",
+      "images": [
+        {
+          "id": "hp-elitebook-745-g6-01",
+          "alt": "HP EliteBook 745 G6",
+          "placeholder": {
+            "tint": "#E8E6E1",
+            "glyph": "💻"
+          }
+        }
+      ],
+      "description": "A 14-inch AMD EliteBook for office work and multitasking. Units with 2GB graphics cope better with light photo editing than integrated-only laptops. This unit: AMD Ryzen 5, 8GB RAM, 256GB storage, 2GB dedicated graphics.",
+      "attributes": {
+        "brand": [
+          "HP"
+        ],
+        "series": [
+          "EliteBook"
+        ],
+        "cpu": [
+          "AMD Ryzen 5"
+        ],
+        "ram": [
+          "8GB"
+        ],
+        "storage": [
+          "256GB"
+        ],
+        "touch": [
+          "No"
+        ],
+        "formFactor": [
+          "Clamshell"
+        ],
+        "graphics": [
+          "Dedicated"
+        ],
+        "windows11": [
+          "Yes"
+        ],
+        "condition": [
+          "Ex-UK"
+        ],
+        "screen": [
+          "14\""
+        ],
+        "gpuMemory": [
+          "2GB"
+        ]
+      },
+      "inferred": [
+        "screen"
+      ],
+      "featured": false,
+      "bestseller": false,
+      "createdAt": "2026-10-08T00:00:00+03:00",
+      "stock": "in",
+      "sourceRows": [
+        11,
+        54
+      ]
+    },
+    {
+      "id": "hp-elitebook-745-g6-ryzen-5-8gb-256gb-touch",
+      "slug": "hp-elitebook-745-g6-ryzen-5-8gb-256gb-touch",
+      "modelId": "hp-elitebook-745-g6",
+      "name": "HP EliteBook 745 G6 · AMD Ryzen 5, 8GB/256GB, Touch, 2GB GPU",
+      "price": 35500,
+      "cost": 35100,
+      "categoryId": "business-laptops",
+      "images": [
+        {
+          "id": "hp-elitebook-745-g6-01",
+          "alt": "HP EliteBook 745 G6",
+          "placeholder": {
+            "tint": "#E8E6E1",
+            "glyph": "💻"
+          }
+        }
+      ],
+      "description": "A 14-inch AMD EliteBook for office work and multitasking. Units with 2GB graphics cope better with light photo editing than integrated-only laptops. This unit: AMD Ryzen 5, 8GB RAM, 256GB storage, touchscreen, 2GB dedicated graphics.",
+      "attributes": {
+        "brand": [
+          "HP"
+        ],
+        "series": [
+          "EliteBook"
+        ],
+        "cpu": [
+          "AMD Ryzen 5"
+        ],
+        "ram": [
+          "8GB"
+        ],
+        "storage": [
+          "256GB"
+        ],
+        "touch": [
+          "Yes"
+        ],
+        "formFactor": [
+          "Clamshell"
+        ],
+        "graphics": [
+          "Dedicated"
+        ],
+        "windows11": [
+          "Yes"
+        ],
+        "condition": [
+          "Ex-UK"
+        ],
+        "screen": [
+          "14\""
+        ],
+        "gpuMemory": [
+          "2GB"
+        ]
+      },
+      "inferred": [
+        "screen"
+      ],
+      "featured": false,
+      "bestseller": false,
+      "createdAt": "2026-10-08T00:00:00+03:00",
+      "stock": "in",
+      "sourceRows": [
+        10,
+        55
+      ]
+    },
+    {
+      "id": "hp-elitebook-745-g6-ryzen-7-16gb-256gb",
+      "slug": "hp-elitebook-745-g6-ryzen-7-16gb-256gb",
+      "modelId": "hp-elitebook-745-g6",
+      "name": "HP EliteBook 745 G6 · AMD Ryzen 7, 16GB/256GB",
+      "price": 37500,
+      "cost": 37048.7,
+      "categoryId": "business-laptops",
+      "images": [
+        {
+          "id": "hp-elitebook-745-g6-01",
+          "alt": "HP EliteBook 745 G6",
+          "placeholder": {
+            "tint": "#E8E6E1",
+            "glyph": "💻"
+          }
+        }
+      ],
+      "description": "A 14-inch AMD EliteBook for office work and multitasking. Units with 2GB graphics cope better with light photo editing than integrated-only laptops. This unit: AMD Ryzen 7, 16GB RAM, 256GB storage.",
+      "attributes": {
+        "brand": [
+          "HP"
+        ],
+        "series": [
+          "EliteBook"
+        ],
+        "cpu": [
+          "AMD Ryzen 7"
+        ],
+        "ram": [
+          "16GB"
+        ],
+        "storage": [
+          "256GB"
+        ],
+        "touch": [
+          "No"
+        ],
+        "formFactor": [
+          "Clamshell"
+        ],
+        "graphics": [
+          "Integrated"
+        ],
+        "windows11": [
+          "Yes"
+        ],
+        "condition": [
+          "Ex-UK"
+        ],
+        "screen": [
+          "14\""
+        ]
+      },
+      "inferred": [
+        "screen",
+        "touch"
+      ],
+      "featured": false,
+      "bestseller": false,
+      "createdAt": "2026-10-08T00:00:00+03:00",
+      "stock": "in",
+      "sourceRows": [
+        9
+      ]
+    },
+    {
+      "id": "hp-elitebook-745-g6-ryzen-5-16gb-256gb-touch",
+      "slug": "hp-elitebook-745-g6-ryzen-5-16gb-256gb-touch",
+      "modelId": "hp-elitebook-745-g6",
+      "name": "HP EliteBook 745 G6 · AMD Ryzen 5, 16GB/256GB, Touch, 2GB GPU",
+      "price": 39000,
+      "cost": 39000,
+      "categoryId": "business-laptops",
+      "images": [
+        {
+          "id": "hp-elitebook-745-g6-01",
+          "alt": "HP EliteBook 745 G6",
+          "placeholder": {
+            "tint": "#E8E6E1",
+            "glyph": "💻"
+          }
+        }
+      ],
+      "description": "A 14-inch AMD EliteBook for office work and multitasking. Units with 2GB graphics cope better with light photo editing than integrated-only laptops. This unit: AMD Ryzen 5, 16GB RAM, 256GB storage, touchscreen, 2GB dedicated graphics.",
+      "attributes": {
+        "brand": [
+          "HP"
+        ],
+        "series": [
+          "EliteBook"
+        ],
+        "cpu": [
+          "AMD Ryzen 5"
+        ],
+        "ram": [
+          "16GB"
+        ],
+        "storage": [
+          "256GB"
+        ],
+        "touch": [
+          "Yes"
+        ],
+        "formFactor": [
+          "Clamshell"
+        ],
+        "graphics": [
+          "Dedicated"
+        ],
+        "windows11": [
+          "Yes"
+        ],
+        "condition": [
+          "Ex-UK"
+        ],
+        "screen": [
+          "14\""
+        ],
+        "gpuMemory": [
+          "2GB"
+        ]
+      },
+      "inferred": [
+        "screen"
+      ],
+      "featured": false,
+      "bestseller": false,
+      "createdAt": "2026-10-08T00:00:00+03:00",
+      "stock": "in",
+      "sourceRows": [
+        56
+      ]
+    },
+    {
+      "id": "hp-elitebook-745-g6-ryzen-7-8gb-256gb",
+      "slug": "hp-elitebook-745-g6-ryzen-7-8gb-256gb",
+      "modelId": "hp-elitebook-745-g6",
+      "name": "HP EliteBook 745 G6 · AMD Ryzen 7, 8GB/256GB, 2GB GPU",
+      "price": 39000,
+      "cost": 39000,
+      "categoryId": "business-laptops",
+      "images": [
+        {
+          "id": "hp-elitebook-745-g6-01",
+          "alt": "HP EliteBook 745 G6",
+          "placeholder": {
+            "tint": "#E8E6E1",
+            "glyph": "💻"
+          }
+        }
+      ],
+      "description": "A 14-inch AMD EliteBook for office work and multitasking. Units with 2GB graphics cope better with light photo editing than integrated-only laptops. This unit: AMD Ryzen 7, 8GB RAM, 256GB storage, 2GB dedicated graphics.",
+      "attributes": {
+        "brand": [
+          "HP"
+        ],
+        "series": [
+          "EliteBook"
+        ],
+        "cpu": [
+          "AMD Ryzen 7"
+        ],
+        "ram": [
+          "8GB"
+        ],
+        "storage": [
+          "256GB"
+        ],
+        "touch": [
+          "No"
+        ],
+        "formFactor": [
+          "Clamshell"
+        ],
+        "graphics": [
+          "Dedicated"
+        ],
+        "windows11": [
+          "Yes"
+        ],
+        "condition": [
+          "Ex-UK"
+        ],
+        "screen": [
+          "14\""
+        ],
+        "gpuMemory": [
+          "2GB"
+        ]
+      },
+      "inferred": [
+        "screen",
+        "touch"
+      ],
+      "featured": false,
+      "bestseller": false,
+      "createdAt": "2026-10-08T00:00:00+03:00",
+      "stock": "in",
+      "sourceRows": [
+        57
+      ]
+    },
+    {
+      "id": "hp-elitebook-830-g5-i7-8gb-256gb-touch",
+      "slug": "hp-elitebook-830-g5-i7-8gb-256gb-touch",
+      "modelId": "hp-elitebook-830-g5",
+      "name": "HP EliteBook 830 G5 · Core i7 8th Gen, 8GB/256GB, Touch",
+      "price": 42000,
+      "cost": 41600,
+      "categoryId": "business-laptops",
+      "images": [
+        {
+          "id": "hp-elitebook-830-g5-01",
+          "alt": "HP EliteBook 830 G5",
+          "placeholder": {
+            "tint": "#E8E6E1",
+            "glyph": "💻"
+          }
+        }
+      ],
+      "description": "HP's compact 13.3-inch EliteBook: business-grade build in a size that fits any bag, made to be carried every day. This unit: Intel Core i7 (8th Gen), 8GB RAM, 256GB storage, touchscreen.",
+      "attributes": {
+        "brand": [
+          "HP"
+        ],
+        "series": [
+          "EliteBook"
+        ],
+        "cpu": [
+          "Intel Core i7"
+        ],
+        "ram": [
+          "8GB"
+        ],
+        "storage": [
+          "256GB"
+        ],
+        "touch": [
+          "Yes"
+        ],
+        "formFactor": [
+          "Clamshell"
+        ],
+        "graphics": [
+          "Integrated"
+        ],
+        "windows11": [
+          "Yes"
+        ],
+        "condition": [
+          "Ex-UK"
+        ],
+        "cpuGen": [
+          "8th Gen"
+        ],
+        "screen": [
+          "13.3\""
+        ]
+      },
+      "inferred": [
+        "screen"
+      ],
+      "featured": false,
+      "bestseller": false,
+      "createdAt": "2026-10-08T00:00:00+03:00",
+      "stock": "in",
+      "sourceRows": [
+        34
+      ]
+    },
+    {
+      "id": "hp-elitebook-830-g6-i5-8gb-256gb",
+      "slug": "hp-elitebook-830-g6-i5-8gb-256gb",
+      "modelId": "hp-elitebook-830-g6",
+      "name": "HP EliteBook 830 G6 · Core i5 8th Gen, 8GB/256GB",
+      "price": 34000,
+      "cost": 33800,
+      "categoryId": "business-laptops",
+      "images": [
+        {
+          "id": "hp-elitebook-830-g6-01",
+          "alt": "HP EliteBook 830 G6",
+          "placeholder": {
+            "tint": "#E8E6E1",
+            "glyph": "💻"
+          }
+        }
+      ],
+      "description": "HP's compact 13.3-inch EliteBook: business-grade build in a size that fits any bag, made to be carried every day. This unit: Intel Core i5 (8th Gen), 8GB RAM, 256GB storage.",
+      "attributes": {
+        "brand": [
+          "HP"
+        ],
+        "series": [
+          "EliteBook"
+        ],
+        "cpu": [
+          "Intel Core i5"
+        ],
+        "ram": [
+          "8GB"
+        ],
+        "storage": [
+          "256GB"
+        ],
+        "touch": [
+          "No"
+        ],
+        "formFactor": [
+          "Clamshell"
+        ],
+        "graphics": [
+          "Integrated"
+        ],
+        "windows11": [
+          "Yes"
+        ],
+        "condition": [
+          "Ex-UK"
+        ],
+        "cpuGen": [
+          "8th Gen"
+        ],
+        "screen": [
+          "13.3\""
+        ]
+      },
+      "inferred": [
+        "screen",
+        "touch"
+      ],
+      "featured": false,
+      "bestseller": false,
+      "createdAt": "2026-10-08T00:00:00+03:00",
+      "stock": "in",
+      "sourceRows": [
+        32
+      ]
+    },
+    {
+      "id": "hp-elitebook-830-g6-i5-8gb-256gb-touch",
+      "slug": "hp-elitebook-830-g6-i5-8gb-256gb-touch",
+      "modelId": "hp-elitebook-830-g6",
+      "name": "HP EliteBook 830 G6 · Core i5 8th Gen, 8GB/256GB, Touch",
+      "price": 35500,
+      "cost": 35100,
+      "categoryId": "business-laptops",
+      "images": [
+        {
+          "id": "hp-elitebook-830-g6-01",
+          "alt": "HP EliteBook 830 G6",
+          "placeholder": {
+            "tint": "#E8E6E1",
+            "glyph": "💻"
+          }
+        }
+      ],
+      "description": "HP's compact 13.3-inch EliteBook: business-grade build in a size that fits any bag, made to be carried every day. This unit: Intel Core i5 (8th Gen), 8GB RAM, 256GB storage, touchscreen.",
+      "attributes": {
+        "brand": [
+          "HP"
+        ],
+        "series": [
+          "EliteBook"
+        ],
+        "cpu": [
+          "Intel Core i5"
+        ],
+        "ram": [
+          "8GB"
+        ],
+        "storage": [
+          "256GB"
+        ],
+        "touch": [
+          "Yes"
+        ],
+        "formFactor": [
+          "Clamshell"
+        ],
+        "graphics": [
+          "Integrated"
+        ],
+        "windows11": [
+          "Yes"
+        ],
+        "condition": [
+          "Ex-UK"
+        ],
+        "cpuGen": [
+          "8th Gen"
+        ],
+        "screen": [
+          "13.3\""
+        ]
+      },
+      "inferred": [
+        "screen"
+      ],
+      "featured": false,
+      "bestseller": false,
+      "createdAt": "2026-10-08T00:00:00+03:00",
+      "stock": "in",
+      "sourceRows": [
+        33
+      ]
+    },
+    {
+      "id": "hp-elitebook-830-g7-i5-8gb-256gb-touch",
+      "slug": "hp-elitebook-830-g7-i5-8gb-256gb-touch",
+      "modelId": "hp-elitebook-830-g7",
+      "name": "HP EliteBook 830 G7 · Core i5 10th Gen, 8GB/256GB, Touch",
+      "price": 38000,
+      "cost": 37698.7,
+      "categoryId": "business-laptops",
+      "images": [
+        {
+          "id": "hp-elitebook-830-g7-01",
+          "alt": "HP EliteBook 830 G7",
+          "placeholder": {
+            "tint": "#E8E6E1",
+            "glyph": "💻"
+          }
+        }
+      ],
+      "description": "HP's compact 13.3-inch EliteBook: business-grade build in a size that fits any bag, made to be carried every day. This unit: Intel Core i5 (10th Gen), 8GB RAM, 256GB storage, touchscreen.",
+      "attributes": {
+        "brand": [
+          "HP"
+        ],
+        "series": [
+          "EliteBook"
+        ],
+        "cpu": [
+          "Intel Core i5"
+        ],
+        "ram": [
+          "8GB"
+        ],
+        "storage": [
+          "256GB"
+        ],
+        "touch": [
+          "Yes"
+        ],
+        "formFactor": [
+          "Clamshell"
+        ],
+        "graphics": [
+          "Integrated"
+        ],
+        "windows11": [
+          "Yes"
+        ],
+        "condition": [
+          "Ex-UK"
+        ],
+        "cpuGen": [
+          "10th Gen"
+        ],
+        "screen": [
+          "13.3\""
+        ]
+      },
+      "inferred": [
+        "cpuGen",
+        "screen"
+      ],
+      "featured": false,
+      "bestseller": false,
+      "createdAt": "2026-10-08T00:00:00+03:00",
+      "stock": "in",
+      "sourceRows": [
+        5
+      ]
+    },
+    {
+      "id": "hp-elitebook-830-g7-i7-16gb-256gb-touch",
+      "slug": "hp-elitebook-830-g7-i7-16gb-256gb-touch",
+      "modelId": "hp-elitebook-830-g7",
+      "name": "HP EliteBook 830 G7 · Core i7 10th Gen, 16GB/256GB, Touch",
+      "price": 49500,
+      "cost": 49400,
+      "categoryId": "business-laptops",
+      "images": [
+        {
+          "id": "hp-elitebook-830-g7-01",
+          "alt": "HP EliteBook 830 G7",
+          "placeholder": {
+            "tint": "#E8E6E1",
+            "glyph": "💻"
+          }
+        }
+      ],
+      "description": "HP's compact 13.3-inch EliteBook: business-grade build in a size that fits any bag, made to be carried every day. This unit: Intel Core i7 (10th Gen), 16GB RAM, 256GB storage, touchscreen.",
+      "attributes": {
+        "brand": [
+          "HP"
+        ],
+        "series": [
+          "EliteBook"
+        ],
+        "cpu": [
+          "Intel Core i7"
+        ],
+        "ram": [
+          "16GB"
+        ],
+        "storage": [
+          "256GB"
+        ],
+        "touch": [
+          "Yes"
+        ],
+        "formFactor": [
+          "Clamshell"
+        ],
+        "graphics": [
+          "Integrated"
+        ],
+        "windows11": [
+          "Yes"
+        ],
+        "condition": [
+          "Ex-UK"
+        ],
+        "cpuGen": [
+          "10th Gen"
+        ],
+        "screen": [
+          "13.3\""
+        ]
+      },
+      "inferred": [
+        "screen"
+      ],
+      "featured": false,
+      "bestseller": false,
+      "createdAt": "2026-10-08T00:00:00+03:00",
+      "stock": "in",
+      "sourceRows": [
+        38
+      ]
+    },
+    {
+      "id": "hp-elitebook-830-g7-i7-16gb-512gb-touch",
+      "slug": "hp-elitebook-830-g7-i7-16gb-512gb-touch",
+      "modelId": "hp-elitebook-830-g7",
+      "name": "HP EliteBook 830 G7 · Core i7 10th Gen, 16GB/512GB, Touch",
+      "price": 52000,
+      "cost": 52000,
+      "categoryId": "business-laptops",
+      "images": [
+        {
+          "id": "hp-elitebook-830-g7-01",
+          "alt": "HP EliteBook 830 G7",
+          "placeholder": {
+            "tint": "#E8E6E1",
+            "glyph": "💻"
+          }
+        }
+      ],
+      "description": "HP's compact 13.3-inch EliteBook: business-grade build in a size that fits any bag, made to be carried every day. This unit: Intel Core i7 (10th Gen), 16GB RAM, 512GB storage, touchscreen.",
+      "attributes": {
+        "brand": [
+          "HP"
+        ],
+        "series": [
+          "EliteBook"
+        ],
+        "cpu": [
+          "Intel Core i7"
+        ],
+        "ram": [
+          "16GB"
+        ],
+        "storage": [
+          "512GB"
+        ],
+        "touch": [
+          "Yes"
+        ],
+        "formFactor": [
+          "Clamshell"
+        ],
+        "graphics": [
+          "Integrated"
+        ],
+        "windows11": [
+          "Yes"
+        ],
+        "condition": [
+          "Ex-UK"
+        ],
+        "cpuGen": [
+          "10th Gen"
+        ],
+        "screen": [
+          "13.3\""
+        ]
+      },
+      "inferred": [
+        "screen"
+      ],
+      "featured": true,
+      "bestseller": false,
+      "createdAt": "2026-10-08T00:00:00+03:00",
+      "stock": "in",
+      "sourceRows": [
+        37
+      ]
+    },
+    {
+      "id": "hp-elitebook-830-g8-i7-16gb-512gb-touch",
+      "slug": "hp-elitebook-830-g8-i7-16gb-512gb-touch",
+      "modelId": "hp-elitebook-830-g8",
+      "name": "HP EliteBook 830 G8 · Core i7 11th Gen, 16GB/512GB, Touch",
+      "price": 55000,
+      "cost": 54598.7,
+      "categoryId": "business-laptops",
+      "images": [
+        {
+          "id": "hp-elitebook-830-g8-01",
+          "alt": "HP EliteBook 830 G8",
+          "placeholder": {
+            "tint": "#E8E6E1",
+            "glyph": "💻"
+          }
+        }
+      ],
+      "description": "HP's compact 13.3-inch EliteBook: business-grade build in a size that fits any bag, made to be carried every day. This unit: Intel Core i7 (11th Gen), 16GB RAM, 512GB storage, touchscreen.",
+      "attributes": {
+        "brand": [
+          "HP"
+        ],
+        "series": [
+          "EliteBook"
+        ],
+        "cpu": [
+          "Intel Core i7"
+        ],
+        "ram": [
+          "16GB"
+        ],
+        "storage": [
+          "512GB"
+        ],
+        "touch": [
+          "Yes"
+        ],
+        "formFactor": [
+          "Clamshell"
+        ],
+        "graphics": [
+          "Integrated"
+        ],
+        "windows11": [
+          "Yes"
+        ],
+        "condition": [
+          "Ex-UK"
+        ],
+        "cpuGen": [
+          "11th Gen"
+        ],
+        "screen": [
+          "13.3\""
+        ]
+      },
+      "inferred": [
+        "cpuGen",
+        "screen"
+      ],
+      "featured": false,
+      "bestseller": false,
+      "createdAt": "2026-10-08T00:00:00+03:00",
+      "stock": "in",
+      "sourceRows": [
+        4
+      ]
+    },
+    {
+      "id": "hp-elitebook-840-g3-i7-8gb-256gb",
+      "slug": "hp-elitebook-840-g3-i7-8gb-256gb",
+      "modelId": "hp-elitebook-840-g3",
+      "name": "HP EliteBook 840 G3 · Core i7 6th Gen, 8GB/256GB",
+      "price": 30000,
+      "cost": 29900,
+      "categoryId": "business-laptops",
+      "images": [
+        {
+          "id": "hp-elitebook-840-g3-01",
+          "alt": "HP EliteBook 840 G3",
+          "placeholder": {
+            "tint": "#E8E6E1",
+            "glyph": "💻"
+          }
+        }
+      ],
+      "description": "The 14-inch EliteBook 840 is the classic ex-UK office laptop: solid keyboard, sturdy build and easy to service. This unit: Intel Core i7 (6th Gen), 8GB RAM, 256GB storage.",
+      "attributes": {
+        "brand": [
+          "HP"
+        ],
+        "series": [
+          "EliteBook"
+        ],
+        "cpu": [
+          "Intel Core i7"
+        ],
+        "ram": [
+          "8GB"
+        ],
+        "storage": [
+          "256GB"
+        ],
+        "touch": [
+          "No"
+        ],
+        "formFactor": [
+          "Clamshell"
+        ],
+        "graphics": [
+          "Integrated"
+        ],
+        "windows11": [
+          "No"
+        ],
+        "condition": [
+          "Ex-UK"
+        ],
+        "cpuGen": [
+          "6th Gen"
+        ],
+        "screen": [
+          "14\""
+        ]
+      },
+      "inferred": [
+        "screen"
+      ],
+      "featured": false,
+      "bestseller": false,
+      "createdAt": "2026-10-08T00:00:00+03:00",
+      "stock": "in",
+      "sourceRows": [
+        40
+      ]
+    },
+    {
+      "id": "hp-elitebook-840-g4-i5-8gb-256gb",
+      "slug": "hp-elitebook-840-g4-i5-8gb-256gb",
+      "modelId": "hp-elitebook-840-g4",
+      "name": "HP EliteBook 840 G4 · Core i5 7th Gen, 8GB/256GB",
+      "price": 30000,
+      "cost": 29900,
+      "categoryId": "business-laptops",
+      "images": [
+        {
+          "id": "hp-elitebook-840-g4-01",
+          "alt": "HP EliteBook 840 G4",
+          "placeholder": {
+            "tint": "#E8E6E1",
+            "glyph": "💻"
+          }
+        }
+      ],
+      "description": "The 14-inch EliteBook 840 is the classic ex-UK office laptop: solid keyboard, sturdy build and easy to service. This unit: Intel Core i5 (7th Gen), 8GB RAM, 256GB storage.",
+      "attributes": {
+        "brand": [
+          "HP"
+        ],
+        "series": [
+          "EliteBook"
+        ],
+        "cpu": [
+          "Intel Core i5"
+        ],
+        "ram": [
+          "8GB"
+        ],
+        "storage": [
+          "256GB"
+        ],
+        "touch": [
+          "No"
+        ],
+        "formFactor": [
+          "Clamshell"
+        ],
+        "graphics": [
+          "Integrated"
+        ],
+        "windows11": [
+          "No"
+        ],
+        "condition": [
+          "Ex-UK"
+        ],
+        "cpuGen": [
+          "7th Gen"
+        ],
+        "screen": [
+          "14\""
+        ]
+      },
+      "inferred": [
+        "screen"
+      ],
+      "featured": false,
+      "bestseller": false,
+      "createdAt": "2026-10-08T00:00:00+03:00",
+      "stock": "in",
+      "sourceRows": [
+        41
+      ]
+    },
+    {
+      "id": "hp-elitebook-840-g5-i7-8gb-256gb-touch",
+      "slug": "hp-elitebook-840-g5-i7-8gb-256gb-touch",
+      "modelId": "hp-elitebook-840-g5",
+      "name": "HP EliteBook 840 G5 · Core i7 8th Gen, 8GB/256GB, Touch",
+      "price": 42000,
+      "cost": 41600,
+      "categoryId": "business-laptops",
+      "images": [
+        {
+          "id": "hp-elitebook-840-g5-01",
+          "alt": "HP EliteBook 840 G5",
+          "placeholder": {
+            "tint": "#E8E6E1",
+            "glyph": "💻"
+          }
+        }
+      ],
+      "description": "The 14-inch EliteBook 840 is the classic ex-UK office laptop: solid keyboard, sturdy build and easy to service. This unit: Intel Core i7 (8th Gen), 8GB RAM, 256GB storage, touchscreen.",
+      "attributes": {
+        "brand": [
+          "HP"
+        ],
+        "series": [
+          "EliteBook"
+        ],
+        "cpu": [
+          "Intel Core i7"
+        ],
+        "ram": [
+          "8GB"
+        ],
+        "storage": [
+          "256GB"
+        ],
+        "touch": [
+          "Yes"
+        ],
+        "formFactor": [
+          "Clamshell"
+        ],
+        "graphics": [
+          "Integrated"
+        ],
+        "windows11": [
+          "Yes"
+        ],
+        "condition": [
+          "Ex-UK"
+        ],
+        "cpuGen": [
+          "8th Gen"
+        ],
+        "screen": [
+          "14\""
+        ]
+      },
+      "inferred": [
+        "screen"
+      ],
+      "featured": false,
+      "bestseller": false,
+      "createdAt": "2026-10-08T00:00:00+03:00",
+      "stock": "in",
+      "sourceRows": [
+        42
+      ]
+    },
+    {
+      "id": "hp-elitebook-840-g6-i5-8gb-256gb",
+      "slug": "hp-elitebook-840-g6-i5-8gb-256gb",
+      "modelId": "hp-elitebook-840-g6",
+      "name": "HP EliteBook 840 G6 · Core i5 8th Gen, 8GB/256GB",
+      "price": 35500,
+      "cost": 35100,
+      "categoryId": "business-laptops",
+      "images": [
+        {
+          "id": "hp-elitebook-840-g6-01",
+          "alt": "HP EliteBook 840 G6",
+          "placeholder": {
+            "tint": "#E8E6E1",
+            "glyph": "💻"
+          }
+        }
+      ],
+      "description": "The 14-inch EliteBook 840 is the classic ex-UK office laptop: solid keyboard, sturdy build and easy to service. This unit: Intel Core i5 (8th Gen), 8GB RAM, 256GB storage.",
+      "attributes": {
+        "brand": [
+          "HP"
+        ],
+        "series": [
+          "EliteBook"
+        ],
+        "cpu": [
+          "Intel Core i5"
+        ],
+        "ram": [
+          "8GB"
+        ],
+        "storage": [
+          "256GB"
+        ],
+        "touch": [
+          "No"
+        ],
+        "formFactor": [
+          "Clamshell"
+        ],
+        "graphics": [
+          "Integrated"
+        ],
+        "windows11": [
+          "Yes"
+        ],
+        "condition": [
+          "Ex-UK"
+        ],
+        "cpuGen": [
+          "8th Gen"
+        ],
+        "screen": [
+          "14\""
+        ]
+      },
+      "inferred": [
+        "screen"
+      ],
+      "featured": false,
+      "bestseller": false,
+      "createdAt": "2026-10-08T00:00:00+03:00",
+      "stock": "in",
+      "sourceRows": [
+        43
+      ]
+    },
+    {
+      "id": "hp-elitebook-840-g6-i5-8gb-256gb-touch",
+      "slug": "hp-elitebook-840-g6-i5-8gb-256gb-touch",
+      "modelId": "hp-elitebook-840-g6",
+      "name": "HP EliteBook 840 G6 · Core i5 8th Gen, 8GB/256GB, Touch",
+      "price": 38000,
+      "cost": 37700,
+      "categoryId": "business-laptops",
+      "images": [
+        {
+          "id": "hp-elitebook-840-g6-01",
+          "alt": "HP EliteBook 840 G6",
+          "placeholder": {
+            "tint": "#E8E6E1",
+            "glyph": "💻"
+          }
+        }
+      ],
+      "description": "The 14-inch EliteBook 840 is the classic ex-UK office laptop: solid keyboard, sturdy build and easy to service. This unit: Intel Core i5 (8th Gen), 8GB RAM, 256GB storage, touchscreen.",
+      "attributes": {
+        "brand": [
+          "HP"
+        ],
+        "series": [
+          "EliteBook"
+        ],
+        "cpu": [
+          "Intel Core i5"
+        ],
+        "ram": [
+          "8GB"
+        ],
+        "storage": [
+          "256GB"
+        ],
+        "touch": [
+          "Yes"
+        ],
+        "formFactor": [
+          "Clamshell"
+        ],
+        "graphics": [
+          "Integrated"
+        ],
+        "windows11": [
+          "Yes"
+        ],
+        "condition": [
+          "Ex-UK"
+        ],
+        "cpuGen": [
+          "8th Gen"
+        ],
+        "screen": [
+          "14\""
+        ]
+      },
+      "inferred": [
+        "screen"
+      ],
+      "featured": true,
+      "bestseller": false,
+      "createdAt": "2026-10-08T00:00:00+03:00",
+      "stock": "in",
+      "sourceRows": [
+        44
+      ]
+    },
+    {
+      "id": "hp-elitebook-840-g6-i7-8gb-256gb",
+      "slug": "hp-elitebook-840-g6-i7-8gb-256gb",
+      "modelId": "hp-elitebook-840-g6",
+      "name": "HP EliteBook 840 G6 · Core i7 8th Gen, 8GB/256GB",
+      "price": 39000,
+      "cost": 39000,
+      "categoryId": "business-laptops",
+      "images": [
+        {
+          "id": "hp-elitebook-840-g6-01",
+          "alt": "HP EliteBook 840 G6",
+          "placeholder": {
+            "tint": "#E8E6E1",
+            "glyph": "💻"
+          }
+        }
+      ],
+      "description": "The 14-inch EliteBook 840 is the classic ex-UK office laptop: solid keyboard, sturdy build and easy to service. This unit: Intel Core i7 (8th Gen), 8GB RAM, 256GB storage.",
+      "attributes": {
+        "brand": [
+          "HP"
+        ],
+        "series": [
+          "EliteBook"
+        ],
+        "cpu": [
+          "Intel Core i7"
+        ],
+        "ram": [
+          "8GB"
+        ],
+        "storage": [
+          "256GB"
+        ],
+        "touch": [
+          "No"
+        ],
+        "formFactor": [
+          "Clamshell"
+        ],
+        "graphics": [
+          "Integrated"
+        ],
+        "windows11": [
+          "Yes"
+        ],
+        "condition": [
+          "Ex-UK"
+        ],
+        "cpuGen": [
+          "8th Gen"
+        ],
+        "screen": [
+          "14\""
+        ]
+      },
+      "inferred": [
+        "screen"
+      ],
+      "featured": false,
+      "bestseller": false,
+      "createdAt": "2026-10-08T00:00:00+03:00",
+      "stock": "in",
+      "sourceRows": [
+        45
+      ]
+    },
+    {
+      "id": "hp-elitebook-840-g6-i7-8gb-512gb",
+      "slug": "hp-elitebook-840-g6-i7-8gb-512gb",
+      "modelId": "hp-elitebook-840-g6",
+      "name": "HP EliteBook 840 G6 · Core i7 8th Gen, 8GB/512GB",
+      "price": 43000,
+      "cost": 42900,
+      "categoryId": "business-laptops",
+      "images": [
+        {
+          "id": "hp-elitebook-840-g6-01",
+          "alt": "HP EliteBook 840 G6",
+          "placeholder": {
+            "tint": "#E8E6E1",
+            "glyph": "💻"
+          }
+        }
+      ],
+      "description": "The 14-inch EliteBook 840 is the classic ex-UK office laptop: solid keyboard, sturdy build and easy to service. This unit: Intel Core i7 (8th Gen), 8GB RAM, 512GB storage.",
+      "attributes": {
+        "brand": [
+          "HP"
+        ],
+        "series": [
+          "EliteBook"
+        ],
+        "cpu": [
+          "Intel Core i7"
+        ],
+        "ram": [
+          "8GB"
+        ],
+        "storage": [
+          "512GB"
+        ],
+        "touch": [
+          "No"
+        ],
+        "formFactor": [
+          "Clamshell"
+        ],
+        "graphics": [
+          "Integrated"
+        ],
+        "windows11": [
+          "Yes"
+        ],
+        "condition": [
+          "Ex-UK"
+        ],
+        "cpuGen": [
+          "8th Gen"
+        ],
+        "screen": [
+          "14\""
+        ]
+      },
+      "inferred": [
+        "screen"
+      ],
+      "featured": false,
+      "bestseller": false,
+      "createdAt": "2026-10-08T00:00:00+03:00",
+      "stock": "in",
+      "sourceRows": [
+        46
+      ]
+    },
+    {
+      "id": "hp-elitebook-840-g7-i5-8gb-256gb",
+      "slug": "hp-elitebook-840-g7-i5-8gb-256gb",
+      "modelId": "hp-elitebook-840-g7",
+      "name": "HP EliteBook 840 G7 · Core i5 10th Gen, 8GB/256GB",
+      "price": 38000,
+      "cost": 37700,
+      "categoryId": "business-laptops",
+      "images": [
+        {
+          "id": "hp-elitebook-840-g7-01",
+          "alt": "HP EliteBook 840 G7",
+          "placeholder": {
+            "tint": "#E8E6E1",
+            "glyph": "💻"
+          }
+        }
+      ],
+      "description": "The 14-inch EliteBook 840 is the classic ex-UK office laptop: solid keyboard, sturdy build and easy to service. This unit: Intel Core i5 (10th Gen), 8GB RAM, 256GB storage.",
+      "attributes": {
+        "brand": [
+          "HP"
+        ],
+        "series": [
+          "EliteBook"
+        ],
+        "cpu": [
+          "Intel Core i5"
+        ],
+        "ram": [
+          "8GB"
+        ],
+        "storage": [
+          "256GB"
+        ],
+        "touch": [
+          "No"
+        ],
+        "formFactor": [
+          "Clamshell"
+        ],
+        "graphics": [
+          "Integrated"
+        ],
+        "windows11": [
+          "Yes"
+        ],
+        "condition": [
+          "Ex-UK"
+        ],
+        "cpuGen": [
+          "10th Gen"
+        ],
+        "screen": [
+          "14\""
+        ]
+      },
+      "inferred": [
+        "screen"
+      ],
+      "featured": false,
+      "bestseller": false,
+      "createdAt": "2026-10-08T00:00:00+03:00",
+      "stock": "in",
+      "sourceRows": [
+        6,
+        47
+      ]
+    },
+    {
+      "id": "hp-elitebook-840-g7-i5-8gb-256gb-touch",
+      "slug": "hp-elitebook-840-g7-i5-8gb-256gb-touch",
+      "modelId": "hp-elitebook-840-g7",
+      "name": "HP EliteBook 840 G7 · Core i5 10th Gen, 8GB/256GB, Touch",
+      "price": 40500,
+      "cost": 40300,
+      "categoryId": "business-laptops",
+      "images": [
+        {
+          "id": "hp-elitebook-840-g7-01",
+          "alt": "HP EliteBook 840 G7",
+          "placeholder": {
+            "tint": "#E8E6E1",
+            "glyph": "💻"
+          }
+        }
+      ],
+      "description": "The 14-inch EliteBook 840 is the classic ex-UK office laptop: solid keyboard, sturdy build and easy to service. This unit: Intel Core i5 (10th Gen), 8GB RAM, 256GB storage, touchscreen.",
+      "attributes": {
+        "brand": [
+          "HP"
+        ],
+        "series": [
+          "EliteBook"
+        ],
+        "cpu": [
+          "Intel Core i5"
+        ],
+        "ram": [
+          "8GB"
+        ],
+        "storage": [
+          "256GB"
+        ],
+        "touch": [
+          "Yes"
+        ],
+        "formFactor": [
+          "Clamshell"
+        ],
+        "graphics": [
+          "Integrated"
+        ],
+        "windows11": [
+          "Yes"
+        ],
+        "condition": [
+          "Ex-UK"
+        ],
+        "cpuGen": [
+          "10th Gen"
+        ],
+        "screen": [
+          "14\""
+        ]
+      },
+      "inferred": [
+        "screen"
+      ],
+      "featured": false,
+      "bestseller": false,
+      "createdAt": "2026-10-08T00:00:00+03:00",
+      "stock": "in",
+      "sourceRows": [
+        48
+      ]
+    },
+    {
+      "id": "hp-elitebook-840-g7-i5-8gb-512gb-touch",
+      "slug": "hp-elitebook-840-g7-i5-8gb-512gb-touch",
+      "modelId": "hp-elitebook-840-g7",
+      "name": "HP EliteBook 840 G7 · Core i5 10th Gen, 8GB/512GB, Touch",
+      "price": 45500,
+      "cost": 45500,
+      "categoryId": "business-laptops",
+      "images": [
+        {
+          "id": "hp-elitebook-840-g7-01",
+          "alt": "HP EliteBook 840 G7",
+          "placeholder": {
+            "tint": "#E8E6E1",
+            "glyph": "💻"
+          }
+        }
+      ],
+      "description": "The 14-inch EliteBook 840 is the classic ex-UK office laptop: solid keyboard, sturdy build and easy to service. This unit: Intel Core i5 (10th Gen), 8GB RAM, 512GB storage, touchscreen.",
+      "attributes": {
+        "brand": [
+          "HP"
+        ],
+        "series": [
+          "EliteBook"
+        ],
+        "cpu": [
+          "Intel Core i5"
+        ],
+        "ram": [
+          "8GB"
+        ],
+        "storage": [
+          "512GB"
+        ],
+        "touch": [
+          "Yes"
+        ],
+        "formFactor": [
+          "Clamshell"
+        ],
+        "graphics": [
+          "Integrated"
+        ],
+        "windows11": [
+          "Yes"
+        ],
+        "condition": [
+          "Ex-UK"
+        ],
+        "cpuGen": [
+          "10th Gen"
+        ],
+        "screen": [
+          "14\""
+        ]
+      },
+      "inferred": [
+        "screen"
+      ],
+      "featured": false,
+      "bestseller": false,
+      "createdAt": "2026-10-08T00:00:00+03:00",
+      "stock": "in",
+      "sourceRows": [
+        49
+      ]
+    },
+    {
+      "id": "hp-elitebook-840-g8-i5-8gb-256gb-touch",
+      "slug": "hp-elitebook-840-g8-i5-8gb-256gb-touch",
+      "modelId": "hp-elitebook-840-g8",
+      "name": "HP EliteBook 840 G8 · Core i5 11th Gen, 8GB/256GB, Touch",
+      "price": 45500,
+      "cost": 45500,
+      "categoryId": "business-laptops",
+      "images": [
+        {
+          "id": "hp-elitebook-840-g8-01",
+          "alt": "HP EliteBook 840 G8",
+          "placeholder": {
+            "tint": "#E8E6E1",
+            "glyph": "💻"
+          }
+        }
+      ],
+      "description": "The 14-inch EliteBook 840 is the classic ex-UK office laptop: solid keyboard, sturdy build and easy to service. This unit: Intel Core i5 (11th Gen), 8GB RAM, 256GB storage, touchscreen.",
+      "attributes": {
+        "brand": [
+          "HP"
+        ],
+        "series": [
+          "EliteBook"
+        ],
+        "cpu": [
+          "Intel Core i5"
+        ],
+        "ram": [
+          "8GB"
+        ],
+        "storage": [
+          "256GB"
+        ],
+        "touch": [
+          "Yes"
+        ],
+        "formFactor": [
+          "Clamshell"
+        ],
+        "graphics": [
+          "Integrated"
+        ],
+        "windows11": [
+          "Yes"
+        ],
+        "condition": [
+          "Ex-UK"
+        ],
+        "cpuGen": [
+          "11th Gen"
+        ],
+        "screen": [
+          "14\""
+        ]
+      },
+      "inferred": [
+        "screen"
+      ],
+      "featured": false,
+      "bestseller": false,
+      "createdAt": "2026-10-08T00:00:00+03:00",
+      "stock": "in",
+      "sourceRows": [
+        50
+      ]
+    },
+    {
+      "id": "hp-elitebook-845-g7-ryzen-5-8gb-256gb",
+      "slug": "hp-elitebook-845-g7-ryzen-5-8gb-256gb",
+      "modelId": "hp-elitebook-845-g7",
+      "name": "HP EliteBook 845 G7 · AMD Ryzen 5 Pro, 8GB/256GB",
+      "price": 34000,
+      "cost": 33798.7,
+      "categoryId": "business-laptops",
+      "images": [
+        {
+          "id": "hp-elitebook-845-g7-01",
+          "alt": "HP EliteBook 845 G7",
+          "placeholder": {
+            "tint": "#E8E6E1",
+            "glyph": "💻"
+          }
+        }
+      ],
+      "description": "The AMD Ryzen version of HP's 14-inch EliteBook 840: same business build, strong multi-core performance for heavy multitasking. This unit: AMD Ryzen 5 Pro, 8GB RAM, 256GB storage.",
+      "attributes": {
+        "brand": [
+          "HP"
+        ],
+        "series": [
+          "EliteBook"
+        ],
+        "cpu": [
+          "AMD Ryzen 5"
+        ],
+        "ram": [
+          "8GB"
+        ],
+        "storage": [
+          "256GB"
+        ],
+        "touch": [
+          "No"
+        ],
+        "formFactor": [
+          "Clamshell"
+        ],
+        "graphics": [
+          "Integrated"
+        ],
+        "windows11": [
+          "Yes"
+        ],
+        "condition": [
+          "Ex-UK"
+        ],
+        "screen": [
+          "14\""
+        ]
+      },
+      "inferred": [
+        "screen",
+        "touch"
+      ],
+      "featured": false,
+      "bestseller": false,
+      "createdAt": "2026-10-08T00:00:00+03:00",
+      "stock": "in",
+      "sourceRows": [
+        12
+      ]
+    },
+    {
+      "id": "hp-elitebook-845-g8-ryzen-5-8gb-256gb",
+      "slug": "hp-elitebook-845-g8-ryzen-5-8gb-256gb",
+      "modelId": "hp-elitebook-845-g8",
+      "name": "HP EliteBook 845 G8 · AMD Ryzen 5 Pro, 8GB/256GB",
+      "price": 37500,
+      "cost": 37048.7,
+      "categoryId": "business-laptops",
+      "images": [
+        {
+          "id": "hp-elitebook-845-g8-01",
+          "alt": "HP EliteBook 845 G8",
+          "placeholder": {
+            "tint": "#E8E6E1",
+            "glyph": "💻"
+          }
+        }
+      ],
+      "description": "The AMD Ryzen version of HP's 14-inch EliteBook 840: same business build, strong multi-core performance for heavy multitasking. This unit: AMD Ryzen 5 Pro, 8GB RAM, 256GB storage.",
+      "attributes": {
+        "brand": [
+          "HP"
+        ],
+        "series": [
+          "EliteBook"
+        ],
+        "cpu": [
+          "AMD Ryzen 5"
+        ],
+        "ram": [
+          "8GB"
+        ],
+        "storage": [
+          "256GB"
+        ],
+        "touch": [
+          "No"
+        ],
+        "formFactor": [
+          "Clamshell"
+        ],
+        "graphics": [
+          "Integrated"
+        ],
+        "windows11": [
+          "Yes"
+        ],
+        "condition": [
+          "Ex-UK"
+        ],
+        "screen": [
+          "14\""
+        ]
+      },
+      "inferred": [
+        "screen",
+        "touch"
+      ],
+      "featured": false,
+      "bestseller": false,
+      "createdAt": "2026-10-08T00:00:00+03:00",
+      "stock": "in",
+      "sourceRows": [
+        8
+      ]
+    },
+    {
+      "id": "hp-elitebook-845-g8-ryzen-5-16gb-256gb",
+      "slug": "hp-elitebook-845-g8-ryzen-5-16gb-256gb",
+      "modelId": "hp-elitebook-845-g8",
+      "name": "HP EliteBook 845 G8 · AMD Ryzen 5 Pro, 16GB/256GB",
+      "price": 41000,
+      "cost": 40948.7,
+      "categoryId": "business-laptops",
+      "images": [
+        {
+          "id": "hp-elitebook-845-g8-01",
+          "alt": "HP EliteBook 845 G8",
+          "placeholder": {
+            "tint": "#E8E6E1",
+            "glyph": "💻"
+          }
+        }
+      ],
+      "description": "The AMD Ryzen version of HP's 14-inch EliteBook 840: same business build, strong multi-core performance for heavy multitasking. This unit: AMD Ryzen 5 Pro, 16GB RAM, 256GB storage.",
+      "attributes": {
+        "brand": [
+          "HP"
+        ],
+        "series": [
+          "EliteBook"
+        ],
+        "cpu": [
+          "AMD Ryzen 5"
+        ],
+        "ram": [
+          "16GB"
+        ],
+        "storage": [
+          "256GB"
+        ],
+        "touch": [
+          "No"
+        ],
+        "formFactor": [
+          "Clamshell"
+        ],
+        "graphics": [
+          "Integrated"
+        ],
+        "windows11": [
+          "Yes"
+        ],
+        "condition": [
+          "Ex-UK"
+        ],
+        "screen": [
+          "14\""
+        ]
+      },
+      "inferred": [
+        "screen",
+        "touch"
+      ],
+      "featured": false,
+      "bestseller": false,
+      "createdAt": "2026-10-08T00:00:00+03:00",
+      "stock": "in",
+      "sourceRows": [
+        7
+      ]
+    },
+    {
+      "id": "hp-probook-440-g8-i5-8gb-256gb",
+      "slug": "hp-probook-440-g8-i5-8gb-256gb",
+      "modelId": "hp-probook-440-g8",
+      "name": "HP ProBook 440 G8 · Core i5 11th Gen, 8GB/256GB",
+      "price": 43000,
+      "cost": 42900,
+      "categoryId": "business-laptops",
+      "images": [
+        {
+          "id": "hp-probook-440-g8-01",
+          "alt": "HP ProBook 440 G8",
+          "placeholder": {
+            "tint": "#E8E6E1",
+            "glyph": "💻"
+          }
+        }
+      ],
+      "description": "HP's 14-inch ProBook with an 11th Gen Intel chip: a newer processor at a mid-range price. This unit: Intel Core i5 (11th Gen), 8GB RAM, 256GB storage.",
+      "attributes": {
+        "brand": [
+          "HP"
+        ],
+        "series": [
+          "ProBook"
+        ],
+        "cpu": [
+          "Intel Core i5"
+        ],
+        "ram": [
+          "8GB"
+        ],
+        "storage": [
+          "256GB"
+        ],
+        "touch": [
+          "No"
+        ],
+        "formFactor": [
+          "Clamshell"
+        ],
+        "graphics": [
+          "Integrated"
+        ],
+        "windows11": [
+          "Yes"
+        ],
+        "condition": [
+          "Ex-UK"
+        ],
+        "cpuGen": [
+          "11th Gen"
+        ],
+        "screen": [
+          "14\""
+        ]
+      },
+      "inferred": [
+        "screen"
+      ],
+      "featured": false,
+      "bestseller": false,
+      "createdAt": "2026-10-08T00:00:00+03:00",
+      "stock": "in",
+      "sourceRows": [
+        51
+      ]
+    },
+    {
+      "id": "hp-probook-450-g7-i5-8gb-128gb-1tbhdd",
+      "slug": "hp-probook-450-g7-i5-8gb-128gb-1tbhdd",
+      "modelId": "hp-probook-450-g7",
+      "name": "HP ProBook 450 G7 · Core i5 10th Gen, 8GB/128GB + 1TB HDD, 2GB GPU",
+      "price": 43000,
+      "cost": 42900,
+      "categoryId": "business-laptops",
+      "images": [
+        {
+          "id": "hp-probook-450-g7-01",
+          "alt": "HP ProBook 450 G7",
+          "placeholder": {
+            "tint": "#E8E6E1",
+            "glyph": "💻"
+          }
+        }
+      ],
+      "description": "A 15.6-inch ProBook with a bigger screen, a number pad and plenty of space: an SSD for the system plus a 1TB hard drive for files. This unit: Intel Core i5 (10th Gen), 8GB RAM, 128GB + 1TB HDD storage, 2GB dedicated graphics.",
+      "attributes": {
+        "brand": [
+          "HP"
+        ],
+        "series": [
+          "ProBook"
+        ],
+        "cpu": [
+          "Intel Core i5"
+        ],
+        "ram": [
+          "8GB"
+        ],
+        "storage": [
+          "128GB"
+        ],
+        "touch": [
+          "No"
+        ],
+        "formFactor": [
+          "Clamshell"
+        ],
+        "graphics": [
+          "Dedicated"
+        ],
+        "windows11": [
+          "Yes"
+        ],
+        "condition": [
+          "Ex-UK"
+        ],
+        "cpuGen": [
+          "10th Gen"
+        ],
+        "screen": [
+          "15.6\""
+        ],
+        "gpuMemory": [
+          "2GB"
+        ],
+        "features": [
+          "Extra 1TB HDD"
+        ]
+      },
+      "inferred": [
+        "screen",
+        "touch"
+      ],
+      "featured": false,
+      "bestseller": false,
+      "createdAt": "2026-10-08T00:00:00+03:00",
+      "stock": "in",
+      "sourceRows": [
+        58
+      ]
+    },
+    {
+      "id": "hp-probook-640-g5-i5-8gb-256gb",
+      "slug": "hp-probook-640-g5-i5-8gb-256gb",
+      "modelId": "hp-probook-640-g5",
+      "name": "HP ProBook 640 G5 · Core i5 8th Gen, 8GB/256GB",
+      "price": 30000,
+      "cost": 29900,
+      "categoryId": "business-laptops",
+      "images": [
+        {
+          "id": "hp-probook-640-g5-01",
+          "alt": "HP ProBook 640 G5",
+          "placeholder": {
+            "tint": "#E8E6E1",
+            "glyph": "💻"
+          }
+        }
+      ],
+      "description": "A 14-inch HP ProBook for everyday office and school work. This unit: Intel Core i5 (8th Gen), 8GB RAM, 256GB storage.",
+      "attributes": {
+        "brand": [
+          "HP"
+        ],
+        "series": [
+          "ProBook"
+        ],
+        "cpu": [
+          "Intel Core i5"
+        ],
+        "ram": [
+          "8GB"
+        ],
+        "storage": [
+          "256GB"
+        ],
+        "touch": [
+          "No"
+        ],
+        "formFactor": [
+          "Clamshell"
+        ],
+        "graphics": [
+          "Integrated"
+        ],
+        "windows11": [
+          "Yes"
+        ],
+        "condition": [
+          "Ex-UK"
+        ],
+        "cpuGen": [
+          "8th Gen"
+        ],
+        "screen": [
+          "14\""
+        ]
+      },
+      "inferred": [
+        "screen"
+      ],
+      "featured": false,
+      "bestseller": false,
+      "createdAt": "2026-10-08T00:00:00+03:00",
+      "stock": "in",
+      "sourceRows": [
+        52
+      ]
+    },
+    {
+      "id": "hp-probook-645-g4-ryzen-7-8gb-256gb",
+      "slug": "hp-probook-645-g4-ryzen-7-8gb-256gb",
+      "modelId": "hp-probook-645-g4",
+      "name": "HP ProBook 645 G4 · AMD Ryzen 7 Pro 2500U, 8GB/256GB, 1GB GPU",
+      "price": 29000,
+      "cost": 28600,
+      "categoryId": "business-laptops",
+      "images": [
+        {
+          "id": "hp-probook-645-g4-01",
+          "alt": "HP ProBook 645 G4",
+          "placeholder": {
+            "tint": "#E8E6E1",
+            "glyph": "💻"
+          }
+        }
+      ],
+      "description": "A 14-inch AMD ProBook with 1GB graphics, a budget pick for office work and light multitasking. This unit: AMD Ryzen 7 Pro 2500U, 8GB RAM, 256GB storage, 1GB dedicated graphics.",
+      "attributes": {
+        "brand": [
+          "HP"
+        ],
+        "series": [
+          "ProBook"
+        ],
+        "cpu": [
+          "AMD Ryzen 7"
+        ],
+        "ram": [
+          "8GB"
+        ],
+        "storage": [
+          "256GB"
+        ],
+        "touch": [
+          "No"
+        ],
+        "formFactor": [
+          "Clamshell"
+        ],
+        "graphics": [
+          "Dedicated"
+        ],
+        "windows11": [
+          "Check"
+        ],
+        "condition": [
+          "Ex-UK"
+        ],
+        "screen": [
+          "14\""
+        ],
+        "gpuMemory": [
+          "1GB"
+        ]
+      },
+      "inferred": [
+        "screen",
+        "touch"
+      ],
+      "featured": false,
+      "bestseller": false,
+      "createdAt": "2026-10-08T00:00:00+03:00",
+      "stock": "in",
+      "sourceRows": [
+        53
+      ]
+    },
+    {
+      "id": "lenovo-thinkpad-t490s-i7-16gb-512gb-touch",
+      "slug": "lenovo-thinkpad-t490s-i7-16gb-512gb-touch",
+      "modelId": "lenovo-thinkpad-t490s",
+      "name": "Lenovo ThinkPad T490s · Core i7 8th Gen, 16GB/512GB, Touch",
+      "price": 38000,
+      "cost": 37700,
+      "categoryId": "business-laptops",
+      "images": [
+        {
+          "id": "lenovo-thinkpad-t490s-01",
+          "alt": "Lenovo ThinkPad T490s",
+          "placeholder": {
+            "tint": "#E8E6E1",
+            "glyph": "💻"
+          }
+        }
+      ],
+      "description": "A slim 14-inch ThinkPad with the classic ThinkPad keyboard and business-grade build. This unit: Intel Core i7 (8th Gen), 16GB RAM, 512GB storage, touchscreen.",
+      "attributes": {
+        "brand": [
+          "Lenovo"
+        ],
+        "series": [
+          "ThinkPad"
+        ],
+        "cpu": [
+          "Intel Core i7"
+        ],
+        "ram": [
+          "16GB"
+        ],
+        "storage": [
+          "512GB"
+        ],
+        "touch": [
+          "Yes"
+        ],
+        "formFactor": [
+          "Clamshell"
+        ],
+        "graphics": [
+          "Integrated"
+        ],
+        "windows11": [
+          "Yes"
+        ],
+        "condition": [
+          "Ex-UK"
+        ],
+        "cpuGen": [
+          "8th Gen"
+        ],
+        "screen": [
+          "14\""
+        ]
+      },
+      "inferred": [
+        "cpuGen",
+        "screen"
+      ],
+      "featured": true,
+      "bestseller": false,
+      "createdAt": "2026-10-08T00:00:00+03:00",
+      "stock": "in",
+      "sourceRows": [
+        14
+      ]
+    },
+    {
+      "id": "lenovo-thinkpad-x1-carbon-5th-gen-i5-8gb-256gb",
+      "slug": "lenovo-thinkpad-x1-carbon-5th-gen-i5-8gb-256gb",
+      "modelId": "lenovo-thinkpad-x1-carbon-5th-gen",
+      "name": "Lenovo ThinkPad X1 Carbon (5th Gen) · Core i5 7th Gen, 8GB/256GB",
+      "price": 26000,
+      "cost": 25998.7,
+      "categoryId": "business-laptops",
+      "images": [
+        {
+          "id": "lenovo-thinkpad-x1-carbon-5th-gen-01",
+          "alt": "Lenovo ThinkPad X1 Carbon (5th Gen)",
+          "placeholder": {
+            "tint": "#E8E6E1",
+            "glyph": "💻"
+          }
+        }
+      ],
+      "description": "Lenovo's premium 14-inch ultralight ThinkPad, with a carbon-fibre body and the keyboard ThinkPads are known for. This unit: Intel Core i5 (7th Gen), 8GB RAM, 256GB storage.",
+      "attributes": {
+        "brand": [
+          "Lenovo"
+        ],
+        "series": [
+          "ThinkPad"
+        ],
+        "cpu": [
+          "Intel Core i5"
+        ],
+        "ram": [
+          "8GB"
+        ],
+        "storage": [
+          "256GB"
+        ],
+        "touch": [
+          "No"
+        ],
+        "formFactor": [
+          "Clamshell"
+        ],
+        "graphics": [
+          "Integrated"
+        ],
+        "windows11": [
+          "No"
+        ],
+        "condition": [
+          "Ex-UK"
+        ],
+        "cpuGen": [
+          "7th Gen"
+        ],
+        "screen": [
+          "14\""
+        ]
+      },
+      "inferred": [
+        "screen",
+        "touch"
+      ],
+      "featured": false,
+      "bestseller": false,
+      "createdAt": "2026-10-08T00:00:00+03:00",
+      "stock": "in",
+      "sourceRows": [
+        13
+      ]
+    },
+    {
+      "id": "lenovo-thinkpad-x13-gen-1-i5-16gb-256gb",
+      "slug": "lenovo-thinkpad-x13-gen-1-i5-16gb-256gb",
+      "modelId": "lenovo-thinkpad-x13-gen-1",
+      "name": "Lenovo ThinkPad X13 Gen 1 · Core i5 10th Gen, 16GB/256GB",
+      "price": 34000,
+      "cost": 33798.7,
+      "categoryId": "business-laptops",
+      "images": [
+        {
+          "id": "lenovo-thinkpad-x13-gen-1-01",
+          "alt": "Lenovo ThinkPad X13 Gen 1",
+          "placeholder": {
+            "tint": "#E8E6E1",
+            "glyph": "💻"
+          }
+        }
+      ],
+      "description": "A compact 13.3-inch ThinkPad with a 10th Gen Intel chip, made for working on the move. This unit: Intel Core i5 (10th Gen), 16GB RAM, 256GB storage.",
+      "attributes": {
+        "brand": [
+          "Lenovo"
+        ],
+        "series": [
+          "ThinkPad"
+        ],
+        "cpu": [
+          "Intel Core i5"
+        ],
+        "ram": [
+          "16GB"
+        ],
+        "storage": [
+          "256GB"
+        ],
+        "touch": [
+          "No"
+        ],
+        "formFactor": [
+          "Clamshell"
+        ],
+        "graphics": [
+          "Integrated"
+        ],
+        "windows11": [
+          "Yes"
+        ],
+        "condition": [
+          "Ex-UK"
+        ],
+        "cpuGen": [
+          "10th Gen"
+        ],
+        "screen": [
+          "13.3\""
+        ]
+      },
+      "inferred": [
+        "cpuGen",
+        "screen",
+        "touch"
+      ],
+      "featured": false,
+      "bestseller": false,
+      "createdAt": "2026-10-08T00:00:00+03:00",
+      "stock": "in",
+      "sourceRows": [
+        15
+      ]
+    },
+    {
+      "id": "lenovo-thinkpad-x260-i5-8gb-256gb",
+      "slug": "lenovo-thinkpad-x260-i5-8gb-256gb",
+      "modelId": "lenovo-thinkpad-x260",
+      "name": "Lenovo ThinkPad X260 · Core i5 6th Gen, 8GB/256GB",
+      "price": 20500,
+      "cost": 20148.7,
+      "categoryId": "business-laptops",
+      "images": [
+        {
+          "id": "lenovo-thinkpad-x260-01",
+          "alt": "Lenovo ThinkPad X260",
+          "placeholder": {
+            "tint": "#E8E6E1",
+            "glyph": "💻"
+          }
+        }
+      ],
+      "description": "A small 12.5-inch ThinkPad, light and tough, for students and anyone who carries a laptop all day. This unit: Intel Core i5 (6th Gen), 8GB RAM, 256GB storage.",
+      "attributes": {
+        "brand": [
+          "Lenovo"
+        ],
+        "series": [
+          "ThinkPad"
+        ],
+        "cpu": [
+          "Intel Core i5"
+        ],
+        "ram": [
+          "8GB"
+        ],
+        "storage": [
+          "256GB"
+        ],
+        "touch": [
+          "No"
+        ],
+        "formFactor": [
+          "Clamshell"
+        ],
+        "graphics": [
+          "Integrated"
+        ],
+        "windows11": [
+          "No"
+        ],
+        "condition": [
+          "Ex-UK"
+        ],
+        "cpuGen": [
+          "6th Gen"
+        ],
+        "screen": [
+          "12.5\""
+        ]
+      },
+      "inferred": [
+        "cpuGen",
+        "screen",
+        "touch"
+      ],
+      "featured": false,
+      "bestseller": false,
+      "createdAt": "2026-10-08T00:00:00+03:00",
+      "stock": "in",
+      "sourceRows": [
+        20
+      ]
+    },
+    {
+      "id": "lenovo-thinkpad-x270-i5-8gb-256gb",
+      "slug": "lenovo-thinkpad-x270-i5-8gb-256gb",
+      "modelId": "lenovo-thinkpad-x270",
+      "name": "Lenovo ThinkPad X270 · Core i5, 8GB/256GB",
+      "price": 21000,
+      "cost": 20798.7,
+      "categoryId": "business-laptops",
+      "images": [
+        {
+          "id": "lenovo-thinkpad-x270-01",
+          "alt": "Lenovo ThinkPad X270",
+          "placeholder": {
+            "tint": "#E8E6E1",
+            "glyph": "💻"
+          }
+        }
+      ],
+      "description": "A small 12.5-inch ThinkPad, light and tough, for students and anyone who carries a laptop all day. This unit: Intel Core i5, 8GB RAM, 256GB storage.",
+      "attributes": {
+        "brand": [
+          "Lenovo"
+        ],
+        "series": [
+          "ThinkPad"
+        ],
+        "cpu": [
+          "Intel Core i5"
+        ],
+        "ram": [
+          "8GB"
+        ],
+        "storage": [
+          "256GB"
+        ],
+        "touch": [
+          "No"
+        ],
+        "formFactor": [
+          "Clamshell"
+        ],
+        "graphics": [
+          "Integrated"
+        ],
+        "windows11": [
+          "Check"
+        ],
+        "condition": [
+          "Ex-UK"
+        ],
+        "screen": [
+          "12.5\""
+        ]
+      },
+      "inferred": [
+        "screen",
+        "touch"
+      ],
+      "featured": false,
+      "bestseller": false,
+      "createdAt": "2026-10-08T00:00:00+03:00",
+      "stock": "in",
+      "sourceRows": [
+        19
+      ]
+    },
+    {
+      "id": "lenovo-thinkpad-x270-i7-8gb-256gb",
+      "slug": "lenovo-thinkpad-x270-i7-8gb-256gb",
+      "modelId": "lenovo-thinkpad-x270",
+      "name": "Lenovo ThinkPad X270 · Core i7, 8GB/256GB",
+      "price": 21500,
+      "cost": 21448.7,
+      "categoryId": "business-laptops",
+      "images": [
+        {
+          "id": "lenovo-thinkpad-x270-01",
+          "alt": "Lenovo ThinkPad X270",
+          "placeholder": {
+            "tint": "#E8E6E1",
+            "glyph": "💻"
+          }
+        }
+      ],
+      "description": "A small 12.5-inch ThinkPad, light and tough, for students and anyone who carries a laptop all day. This unit: Intel Core i7, 8GB RAM, 256GB storage.",
+      "attributes": {
+        "brand": [
+          "Lenovo"
+        ],
+        "series": [
+          "ThinkPad"
+        ],
+        "cpu": [
+          "Intel Core i7"
+        ],
+        "ram": [
+          "8GB"
+        ],
+        "storage": [
+          "256GB"
+        ],
+        "touch": [
+          "No"
+        ],
+        "formFactor": [
+          "Clamshell"
+        ],
+        "graphics": [
+          "Integrated"
+        ],
+        "windows11": [
+          "Check"
+        ],
+        "condition": [
+          "Ex-UK"
+        ],
+        "screen": [
+          "12.5\""
+        ]
+      },
+      "inferred": [
+        "screen",
+        "touch"
+      ],
+      "featured": false,
+      "bestseller": false,
+      "createdAt": "2026-10-08T00:00:00+03:00",
+      "stock": "in",
+      "sourceRows": [
+        18
+      ]
+    },
+    {
+      "id": "hp-elite-x2-1012-g1-m5-4gb-128gb-pen",
+      "slug": "hp-elite-x2-1012-g1-m5-4gb-128gb-pen",
+      "modelId": "hp-elite-x2-1012-g1",
+      "name": "HP Elite x2 1012 G1 · Core m5 6th Gen, 4GB/128GB, + Pen",
+      "price": 29000,
+      "cost": 28600,
+      "categoryId": "2-in-1",
+      "images": [
+        {
+          "id": "hp-elite-x2-1012-g1-01",
+          "alt": "HP Elite x2 1012 G1",
+          "placeholder": {
+            "tint": "#E3E8E4",
+            "glyph": "💻"
+          }
+        }
+      ],
+      "description": "A 12-inch Windows tablet with a detachable keyboard, light enough to carry like a notebook. This unit: Intel Core m5 (6th Gen), 4GB RAM, 128GB storage, touchscreen. Stylus pen included.",
+      "attributes": {
+        "brand": [
+          "HP"
+        ],
+        "series": [
+          "Elite x2"
+        ],
+        "cpu": [
+          "Intel Core m5"
+        ],
+        "ram": [
+          "4GB"
+        ],
+        "storage": [
+          "128GB"
+        ],
+        "touch": [
+          "Yes"
+        ],
+        "formFactor": [
+          "Detachable"
+        ],
+        "graphics": [
+          "Integrated"
+        ],
+        "windows11": [
+          "No"
+        ],
+        "condition": [
+          "Ex-UK"
+        ],
+        "cpuGen": [
+          "6th Gen"
+        ],
+        "screen": [
+          "12\""
+        ],
+        "features": [
+          "Stylus pen"
+        ]
+      },
+      "inferred": [
+        "cpuGen",
+        "screen"
+      ],
+      "featured": false,
+      "bestseller": false,
+      "createdAt": "2026-10-08T00:00:00+03:00",
+      "stock": "in",
+      "sourceRows": [
+        30
+      ]
+    },
+    {
+      "id": "hp-elite-x2-1012-g1-m5-8gb-256gb",
+      "slug": "hp-elite-x2-1012-g1-m5-8gb-256gb",
+      "modelId": "hp-elite-x2-1012-g1",
+      "name": "HP Elite x2 1012 G1 · Core m5 6th Gen, 8GB/256GB",
+      "price": 32500,
+      "cost": 32500,
+      "categoryId": "2-in-1",
+      "images": [
+        {
+          "id": "hp-elite-x2-1012-g1-01",
+          "alt": "HP Elite x2 1012 G1",
+          "placeholder": {
+            "tint": "#E3E8E4",
+            "glyph": "💻"
+          }
+        }
+      ],
+      "description": "A 12-inch Windows tablet with a detachable keyboard, light enough to carry like a notebook. This unit: Intel Core m5 (6th Gen), 8GB RAM, 256GB storage, touchscreen.",
+      "attributes": {
+        "brand": [
+          "HP"
+        ],
+        "series": [
+          "Elite x2"
+        ],
+        "cpu": [
+          "Intel Core m5"
+        ],
+        "ram": [
+          "8GB"
+        ],
+        "storage": [
+          "256GB"
+        ],
+        "touch": [
+          "Yes"
+        ],
+        "formFactor": [
+          "Detachable"
+        ],
+        "graphics": [
+          "Integrated"
+        ],
+        "windows11": [
+          "No"
+        ],
+        "condition": [
+          "Ex-UK"
+        ],
+        "cpuGen": [
+          "6th Gen"
+        ],
+        "screen": [
+          "12\""
+        ]
+      },
+      "inferred": [
+        "cpuGen",
+        "screen"
+      ],
+      "featured": false,
+      "bestseller": false,
+      "createdAt": "2026-10-08T00:00:00+03:00",
+      "stock": "in",
+      "sourceRows": [
+        31
+      ]
+    },
+    {
+      "id": "hp-elitebook-x360-830-g6-i5-8gb-256gb",
+      "slug": "hp-elitebook-x360-830-g6-i5-8gb-256gb",
+      "modelId": "hp-elitebook-x360-830-g6",
+      "name": "HP EliteBook x360 830 G6 · Core i5 8th Gen, 8GB/256GB",
+      "price": 40500,
+      "cost": 40300,
+      "categoryId": "2-in-1",
+      "images": [
+        {
+          "id": "hp-elitebook-x360-830-g6-01",
+          "alt": "HP EliteBook x360 830 G6",
+          "placeholder": {
+            "tint": "#E3E8E4",
+            "glyph": "💻"
+          }
+        }
+      ],
+      "description": "A 13.3-inch EliteBook that folds back into a tablet. Handy for presenting, note-taking and working on the move. This unit: Intel Core i5 (8th Gen), 8GB RAM, 256GB storage, touchscreen.",
+      "attributes": {
+        "brand": [
+          "HP"
+        ],
+        "series": [
+          "EliteBook"
+        ],
+        "cpu": [
+          "Intel Core i5"
+        ],
+        "ram": [
+          "8GB"
+        ],
+        "storage": [
+          "256GB"
+        ],
+        "touch": [
+          "Yes"
+        ],
+        "formFactor": [
+          "Convertible"
+        ],
+        "graphics": [
+          "Integrated"
+        ],
+        "windows11": [
+          "Yes"
+        ],
+        "condition": [
+          "Ex-UK"
+        ],
+        "cpuGen": [
+          "8th Gen"
+        ],
+        "screen": [
+          "13.3\""
+        ]
+      },
+      "inferred": [
+        "screen"
+      ],
+      "featured": false,
+      "bestseller": false,
+      "createdAt": "2026-10-08T00:00:00+03:00",
+      "stock": "in",
+      "sourceRows": [
+        35
+      ]
+    },
+    {
+      "id": "hp-elitebook-x360-830-g6-i7-8gb-256gb",
+      "slug": "hp-elitebook-x360-830-g6-i7-8gb-256gb",
+      "modelId": "hp-elitebook-x360-830-g6",
+      "name": "HP EliteBook x360 830 G6 · Core i7 8th Gen, 8GB/256GB",
+      "price": 48500,
+      "cost": 48100,
+      "categoryId": "2-in-1",
+      "images": [
+        {
+          "id": "hp-elitebook-x360-830-g6-01",
+          "alt": "HP EliteBook x360 830 G6",
+          "placeholder": {
+            "tint": "#E3E8E4",
+            "glyph": "💻"
+          }
+        }
+      ],
+      "description": "A 13.3-inch EliteBook that folds back into a tablet. Handy for presenting, note-taking and working on the move. This unit: Intel Core i7 (8th Gen), 8GB RAM, 256GB storage, touchscreen.",
+      "attributes": {
+        "brand": [
+          "HP"
+        ],
+        "series": [
+          "EliteBook"
+        ],
+        "cpu": [
+          "Intel Core i7"
+        ],
+        "ram": [
+          "8GB"
+        ],
+        "storage": [
+          "256GB"
+        ],
+        "touch": [
+          "Yes"
+        ],
+        "formFactor": [
+          "Convertible"
+        ],
+        "graphics": [
+          "Integrated"
+        ],
+        "windows11": [
+          "Yes"
+        ],
+        "condition": [
+          "Ex-UK"
+        ],
+        "cpuGen": [
+          "8th Gen"
+        ],
+        "screen": [
+          "13.3\""
+        ]
+      },
+      "inferred": [
+        "screen"
+      ],
+      "featured": false,
+      "bestseller": false,
+      "createdAt": "2026-10-08T00:00:00+03:00",
+      "stock": "in",
+      "sourceRows": [
+        36
+      ]
+    },
+    {
+      "id": "hp-elitebook-x360-830-g7-i7-16gb-512gb",
+      "slug": "hp-elitebook-x360-830-g7-i7-16gb-512gb",
+      "modelId": "hp-elitebook-x360-830-g7",
+      "name": "HP EliteBook x360 830 G7 · Core i7 10th Gen, 16GB/512GB",
+      "price": 60000,
+      "cost": 59800,
+      "categoryId": "2-in-1",
+      "images": [
+        {
+          "id": "hp-elitebook-x360-830-g7-01",
+          "alt": "HP EliteBook x360 830 G7",
+          "placeholder": {
+            "tint": "#E3E8E4",
+            "glyph": "💻"
+          }
+        }
+      ],
+      "description": "A 13.3-inch EliteBook that folds back into a tablet. Handy for presenting, note-taking and working on the move. This unit: Intel Core i7 (10th Gen), 16GB RAM, 512GB storage, touchscreen.",
+      "attributes": {
+        "brand": [
+          "HP"
+        ],
+        "series": [
+          "EliteBook"
+        ],
+        "cpu": [
+          "Intel Core i7"
+        ],
+        "ram": [
+          "16GB"
+        ],
+        "storage": [
+          "512GB"
+        ],
+        "touch": [
+          "Yes"
+        ],
+        "formFactor": [
+          "Convertible"
+        ],
+        "graphics": [
+          "Integrated"
+        ],
+        "windows11": [
+          "Yes"
+        ],
+        "condition": [
+          "Ex-UK"
+        ],
+        "cpuGen": [
+          "10th Gen"
+        ],
+        "screen": [
+          "13.3\""
+        ]
+      },
+      "inferred": [
+        "screen"
+      ],
+      "featured": false,
+      "bestseller": false,
+      "createdAt": "2026-10-08T00:00:00+03:00",
+      "stock": "in",
+      "sourceRows": [
+        39
+      ]
+    },
+    {
+      "id": "hp-probook-x360-11-g5-celeron-4gb-192gb",
+      "slug": "hp-probook-x360-11-g5-celeron-4gb-192gb",
+      "modelId": "hp-probook-x360-11-g5",
+      "name": "HP ProBook x360 11 G5 · Celeron, 4GB/192GB",
+      "price": 18500,
+      "cost": 18200,
+      "categoryId": "2-in-1",
+      "images": [
+        {
+          "id": "hp-probook-x360-11-g5-01",
+          "alt": "HP ProBook x360 11 G5",
+          "placeholder": {
+            "tint": "#E3E8E4",
+            "glyph": "💻"
+          }
+        }
+      ],
+      "description": "A tough 11.6-inch touchscreen convertible built for students. Made for school work, browsing and video calls, not heavy software. This unit: Intel Celeron, 4GB RAM, 192GB storage, touchscreen.",
+      "attributes": {
+        "brand": [
+          "HP"
+        ],
+        "series": [
+          "ProBook"
+        ],
+        "cpu": [
+          "Intel Celeron"
+        ],
+        "ram": [
+          "4GB"
+        ],
+        "storage": [
+          "192GB"
+        ],
+        "touch": [
+          "Yes"
+        ],
+        "formFactor": [
+          "Convertible"
+        ],
+        "graphics": [
+          "Integrated"
+        ],
+        "windows11": [
+          "Check"
+        ],
+        "condition": [
+          "Ex-UK"
+        ],
+        "screen": [
+          "11.6\""
+        ]
+      },
+      "inferred": [
+        "screen"
+      ],
+      "featured": false,
+      "bestseller": false,
+      "createdAt": "2026-10-08T00:00:00+03:00",
+      "stock": "in",
+      "sourceRows": [
+        29
+      ]
+    },
+    {
+      "id": "lenovo-thinkpad-11e-yoga-i3-8gb-128gb",
+      "slug": "lenovo-thinkpad-11e-yoga-i3-8gb-128gb",
+      "modelId": "lenovo-thinkpad-11e-yoga",
+      "name": "Lenovo ThinkPad 11e Yoga · Core i3 6th Gen, 8GB/128GB",
+      "price": 18500,
+      "cost": 18200,
+      "categoryId": "2-in-1",
+      "images": [
+        {
+          "id": "lenovo-thinkpad-11e-yoga-01",
+          "alt": "Lenovo ThinkPad 11e Yoga",
+          "placeholder": {
+            "tint": "#E3E8E4",
+            "glyph": "💻"
+          }
+        }
+      ],
+      "description": "A rugged 11.6-inch convertible from Lenovo's education line, built to survive a school bag. This unit: Intel Core i3 (6th Gen), 8GB RAM, 128GB storage, touchscreen.",
+      "attributes": {
+        "brand": [
+          "Lenovo"
+        ],
+        "series": [
+          "ThinkPad"
+        ],
+        "cpu": [
+          "Intel Core i3"
+        ],
+        "ram": [
+          "8GB"
+        ],
+        "storage": [
+          "128GB"
+        ],
+        "touch": [
+          "Yes"
+        ],
+        "formFactor": [
+          "Convertible"
+        ],
+        "graphics": [
+          "Integrated"
+        ],
+        "windows11": [
+          "No"
+        ],
+        "condition": [
+          "Ex-UK"
+        ],
+        "cpuGen": [
+          "6th Gen"
+        ],
+        "screen": [
+          "11.6\""
+        ]
+      },
+      "inferred": [
+        "screen"
+      ],
+      "featured": false,
+      "bestseller": false,
+      "createdAt": "2026-10-08T00:00:00+03:00",
+      "stock": "in",
+      "sourceRows": [
+        60
+      ]
+    },
+    {
+      "id": "lenovo-thinkpad-11e-yoga-i5-8gb-256gb-pen",
+      "slug": "lenovo-thinkpad-11e-yoga-i5-8gb-256gb-pen",
+      "modelId": "lenovo-thinkpad-11e-yoga",
+      "name": "Lenovo ThinkPad 11e Yoga · Core i5 7th Gen, 8GB/256GB, + Pen",
+      "price": 26000,
+      "cost": 26000,
+      "categoryId": "2-in-1",
+      "images": [
+        {
+          "id": "lenovo-thinkpad-11e-yoga-01",
+          "alt": "Lenovo ThinkPad 11e Yoga",
+          "placeholder": {
+            "tint": "#E3E8E4",
+            "glyph": "💻"
+          }
+        }
+      ],
+      "description": "A rugged 11.6-inch convertible from Lenovo's education line, built to survive a school bag. This unit: Intel Core i5 (7th Gen), 8GB RAM, 256GB storage, touchscreen. Stylus pen included.",
+      "attributes": {
+        "brand": [
+          "Lenovo"
+        ],
+        "series": [
+          "ThinkPad"
+        ],
+        "cpu": [
+          "Intel Core i5"
+        ],
+        "ram": [
+          "8GB"
+        ],
+        "storage": [
+          "256GB"
+        ],
+        "touch": [
+          "Yes"
+        ],
+        "formFactor": [
+          "Convertible"
+        ],
+        "graphics": [
+          "Integrated"
+        ],
+        "windows11": [
+          "No"
+        ],
+        "condition": [
+          "Ex-UK"
+        ],
+        "cpuGen": [
+          "7th Gen"
+        ],
+        "screen": [
+          "11.6\""
+        ],
+        "features": [
+          "Stylus pen"
+        ]
+      },
+      "inferred": [
+        "screen"
+      ],
+      "featured": false,
+      "bestseller": false,
+      "createdAt": "2026-10-08T00:00:00+03:00",
+      "stock": "in",
+      "sourceRows": [
+        61
+      ]
+    },
+    {
+      "id": "lenovo-thinkpad-x1-yoga-i5-8gb-256gb-pen",
+      "slug": "lenovo-thinkpad-x1-yoga-i5-8gb-256gb-pen",
+      "modelId": "lenovo-thinkpad-x1-yoga",
+      "name": "Lenovo ThinkPad X1 Yoga · Core i5 6th Gen, 8GB/256GB, + Pen",
+      "price": 29000,
+      "cost": 28600,
+      "categoryId": "2-in-1",
+      "images": [
+        {
+          "id": "lenovo-thinkpad-x1-yoga-01",
+          "alt": "Lenovo ThinkPad X1 Yoga",
+          "placeholder": {
+            "tint": "#E3E8E4",
+            "glyph": "💻"
+          }
+        }
+      ],
+      "description": "Lenovo's premium 14-inch convertible ThinkPad: flips into a tablet, with a bigger screen than most 2-in-1s. This unit: Intel Core i5 (6th Gen), 8GB RAM, 256GB storage, touchscreen. Stylus pen included.",
+      "attributes": {
+        "brand": [
+          "Lenovo"
+        ],
+        "series": [
+          "ThinkPad"
+        ],
+        "cpu": [
+          "Intel Core i5"
+        ],
+        "ram": [
+          "8GB"
+        ],
+        "storage": [
+          "256GB"
+        ],
+        "touch": [
+          "Yes"
+        ],
+        "formFactor": [
+          "Convertible"
+        ],
+        "graphics": [
+          "Integrated"
+        ],
+        "windows11": [
+          "No"
+        ],
+        "condition": [
+          "Ex-UK"
+        ],
+        "cpuGen": [
+          "6th Gen"
+        ],
+        "screen": [
+          "14\""
+        ],
+        "features": [
+          "Stylus pen"
+        ]
+      },
+      "inferred": [
+        "screen"
+      ],
+      "featured": false,
+      "bestseller": false,
+      "createdAt": "2026-10-08T00:00:00+03:00",
+      "stock": "in",
+      "sourceRows": [
+        64
+      ]
+    },
+    {
+      "id": "lenovo-thinkpad-x1-yoga-i7-8gb-512gb-pen",
+      "slug": "lenovo-thinkpad-x1-yoga-i7-8gb-512gb-pen",
+      "modelId": "lenovo-thinkpad-x1-yoga",
+      "name": "Lenovo ThinkPad X1 Yoga · Core i7 8th Gen, 8GB/512GB, + Pen",
+      "price": 45500,
+      "cost": 45500,
+      "categoryId": "2-in-1",
+      "images": [
+        {
+          "id": "lenovo-thinkpad-x1-yoga-01",
+          "alt": "Lenovo ThinkPad X1 Yoga",
+          "placeholder": {
+            "tint": "#E3E8E4",
+            "glyph": "💻"
+          }
+        }
+      ],
+      "description": "Lenovo's premium 14-inch convertible ThinkPad: flips into a tablet, with a bigger screen than most 2-in-1s. This unit: Intel Core i7 (8th Gen), 8GB RAM, 512GB storage, touchscreen. Stylus pen included.",
+      "attributes": {
+        "brand": [
+          "Lenovo"
+        ],
+        "series": [
+          "ThinkPad"
+        ],
+        "cpu": [
+          "Intel Core i7"
+        ],
+        "ram": [
+          "8GB"
+        ],
+        "storage": [
+          "512GB"
+        ],
+        "touch": [
+          "Yes"
+        ],
+        "formFactor": [
+          "Convertible"
+        ],
+        "graphics": [
+          "Integrated"
+        ],
+        "windows11": [
+          "Yes"
+        ],
+        "condition": [
+          "Ex-UK"
+        ],
+        "cpuGen": [
+          "8th Gen"
+        ],
+        "screen": [
+          "14\""
+        ],
+        "features": [
+          "Stylus pen"
+        ]
+      },
+      "inferred": [
+        "screen"
+      ],
+      "featured": true,
+      "bestseller": false,
+      "createdAt": "2026-10-08T00:00:00+03:00",
+      "stock": "in",
+      "sourceRows": [
+        65
+      ]
+    },
+    {
+      "id": "lenovo-thinkpad-x13-yoga-gen-1-i5-8gb-256gb-pen",
+      "slug": "lenovo-thinkpad-x13-yoga-gen-1-i5-8gb-256gb-pen",
+      "modelId": "lenovo-thinkpad-x13-yoga-gen-1",
+      "name": "Lenovo ThinkPad X13 Yoga Gen 1 · Core i5 10th Gen, 8GB/256GB, + Pen",
+      "price": 36500,
+      "cost": 36400,
+      "categoryId": "2-in-1",
+      "images": [
+        {
+          "id": "lenovo-thinkpad-x13-yoga-gen-1-01",
+          "alt": "Lenovo ThinkPad X13 Yoga Gen 1",
+          "placeholder": {
+            "tint": "#E3E8E4",
+            "glyph": "💻"
+          }
+        }
+      ],
+      "description": "A 13.3-inch convertible ThinkPad that flips into a tablet for notes, signing documents and presenting. This unit: Intel Core i5 (10th Gen), 8GB RAM, 256GB storage, touchscreen. Stylus pen included.",
+      "attributes": {
+        "brand": [
+          "Lenovo"
+        ],
+        "series": [
+          "ThinkPad"
+        ],
+        "cpu": [
+          "Intel Core i5"
+        ],
+        "ram": [
+          "8GB"
+        ],
+        "storage": [
+          "256GB"
+        ],
+        "touch": [
+          "Yes"
+        ],
+        "formFactor": [
+          "Convertible"
+        ],
+        "graphics": [
+          "Integrated"
+        ],
+        "windows11": [
+          "Yes"
+        ],
+        "condition": [
+          "Ex-UK"
+        ],
+        "cpuGen": [
+          "10th Gen"
+        ],
+        "screen": [
+          "13.3\""
+        ],
+        "features": [
+          "Stylus pen"
+        ]
+      },
+      "inferred": [
+        "screen"
+      ],
+      "featured": false,
+      "bestseller": false,
+      "createdAt": "2026-10-08T00:00:00+03:00",
+      "stock": "in",
+      "sourceRows": [
+        59
+      ]
+    },
+    {
+      "id": "lenovo-thinkpad-x380-yoga-i5-8gb-256gb",
+      "slug": "lenovo-thinkpad-x380-yoga-i5-8gb-256gb",
+      "modelId": "lenovo-thinkpad-x380-yoga",
+      "name": "Lenovo ThinkPad X380 Yoga · Core i5 8th Gen, 8GB/256GB",
+      "price": 30000,
+      "cost": 29900,
+      "categoryId": "2-in-1",
+      "images": [
+        {
+          "id": "lenovo-thinkpad-x380-yoga-01",
+          "alt": "Lenovo ThinkPad X380 Yoga",
+          "placeholder": {
+            "tint": "#E3E8E4",
+            "glyph": "💻"
+          }
+        }
+      ],
+      "description": "A 13.3-inch convertible ThinkPad that flips into a tablet for notes, signing documents and presenting. This unit: Intel Core i5 (8th Gen), 8GB RAM, 256GB storage, touchscreen.",
+      "attributes": {
+        "brand": [
+          "Lenovo"
+        ],
+        "series": [
+          "ThinkPad"
+        ],
+        "cpu": [
+          "Intel Core i5"
+        ],
+        "ram": [
+          "8GB"
+        ],
+        "storage": [
+          "256GB"
+        ],
+        "touch": [
+          "Yes"
+        ],
+        "formFactor": [
+          "Convertible"
+        ],
+        "graphics": [
+          "Integrated"
+        ],
+        "windows11": [
+          "Yes"
+        ],
+        "condition": [
+          "Ex-UK"
+        ],
+        "cpuGen": [
+          "8th Gen"
+        ],
+        "screen": [
+          "13.3\""
+        ]
+      },
+      "inferred": [
+        "cpuGen",
+        "screen"
+      ],
+      "featured": false,
+      "bestseller": false,
+      "createdAt": "2026-10-08T00:00:00+03:00",
+      "stock": "in",
+      "sourceRows": [
+        17
+      ]
+    },
+    {
+      "id": "lenovo-thinkpad-x390-yoga-i5-8gb-256gb",
+      "slug": "lenovo-thinkpad-x390-yoga-i5-8gb-256gb",
+      "modelId": "lenovo-thinkpad-x390-yoga",
+      "name": "Lenovo ThinkPad X390 Yoga · Core i5 8th Gen, 8GB/256GB",
+      "price": 31000,
+      "cost": 30548.7,
+      "categoryId": "2-in-1",
+      "images": [
+        {
+          "id": "lenovo-thinkpad-x390-yoga-01",
+          "alt": "Lenovo ThinkPad X390 Yoga",
+          "placeholder": {
+            "tint": "#E3E8E4",
+            "glyph": "💻"
+          }
+        }
+      ],
+      "description": "A 13.3-inch convertible ThinkPad that flips into a tablet for notes, signing documents and presenting. This unit: Intel Core i5 (8th Gen), 8GB RAM, 256GB storage, touchscreen.",
+      "attributes": {
+        "brand": [
+          "Lenovo"
+        ],
+        "series": [
+          "ThinkPad"
+        ],
+        "cpu": [
+          "Intel Core i5"
+        ],
+        "ram": [
+          "8GB"
+        ],
+        "storage": [
+          "256GB"
+        ],
+        "touch": [
+          "Yes"
+        ],
+        "formFactor": [
+          "Convertible"
+        ],
+        "graphics": [
+          "Integrated"
+        ],
+        "windows11": [
+          "Yes"
+        ],
+        "condition": [
+          "Ex-UK"
+        ],
+        "cpuGen": [
+          "8th Gen"
+        ],
+        "screen": [
+          "13.3\""
+        ]
+      },
+      "inferred": [
+        "cpuGen",
+        "screen"
+      ],
+      "featured": false,
+      "bestseller": false,
+      "createdAt": "2026-10-08T00:00:00+03:00",
+      "stock": "in",
+      "sourceRows": [
+        16
+      ]
+    },
+    {
+      "id": "lenovo-thinkpad-x390-yoga-i5-8gb-256gb-pen",
+      "slug": "lenovo-thinkpad-x390-yoga-i5-8gb-256gb-pen",
+      "modelId": "lenovo-thinkpad-x390-yoga",
+      "name": "Lenovo ThinkPad X390 Yoga · Core i5 8th Gen, 8GB/256GB, + Pen",
+      "price": 36500,
+      "cost": 36400,
+      "categoryId": "2-in-1",
+      "images": [
+        {
+          "id": "lenovo-thinkpad-x390-yoga-01",
+          "alt": "Lenovo ThinkPad X390 Yoga",
+          "placeholder": {
+            "tint": "#E3E8E4",
+            "glyph": "💻"
+          }
+        }
+      ],
+      "description": "A 13.3-inch convertible ThinkPad that flips into a tablet for notes, signing documents and presenting. This unit: Intel Core i5 (8th Gen), 8GB RAM, 256GB storage, touchscreen. Stylus pen included.",
+      "attributes": {
+        "brand": [
+          "Lenovo"
+        ],
+        "series": [
+          "ThinkPad"
+        ],
+        "cpu": [
+          "Intel Core i5"
+        ],
+        "ram": [
+          "8GB"
+        ],
+        "storage": [
+          "256GB"
+        ],
+        "touch": [
+          "Yes"
+        ],
+        "formFactor": [
+          "Convertible"
+        ],
+        "graphics": [
+          "Integrated"
+        ],
+        "windows11": [
+          "Yes"
+        ],
+        "condition": [
+          "Ex-UK"
+        ],
+        "cpuGen": [
+          "8th Gen"
+        ],
+        "screen": [
+          "13.3\""
+        ],
+        "features": [
+          "Stylus pen"
+        ]
+      },
+      "inferred": [
+        "screen"
+      ],
+      "featured": false,
+      "bestseller": false,
+      "createdAt": "2026-10-08T00:00:00+03:00",
+      "stock": "in",
+      "sourceRows": [
+        62
+      ]
+    },
+    {
+      "id": "lenovo-thinkpad-yoga-370-i5-8gb-256gb-pen",
+      "slug": "lenovo-thinkpad-yoga-370-i5-8gb-256gb-pen",
+      "modelId": "lenovo-thinkpad-yoga-370",
+      "name": "Lenovo ThinkPad Yoga 370 · Core i5 7th Gen, 8GB/256GB, + Pen",
+      "price": 31500,
+      "cost": 31200,
+      "categoryId": "2-in-1",
+      "images": [
+        {
+          "id": "lenovo-thinkpad-yoga-370-01",
+          "alt": "Lenovo ThinkPad Yoga 370",
+          "placeholder": {
+            "tint": "#E3E8E4",
+            "glyph": "💻"
+          }
+        }
+      ],
+      "description": "A 13.3-inch convertible ThinkPad that flips into a tablet for notes, signing documents and presenting. This unit: Intel Core i5 (7th Gen), 8GB RAM, 256GB storage, touchscreen. Stylus pen included.",
+      "attributes": {
+        "brand": [
+          "Lenovo"
+        ],
+        "series": [
+          "ThinkPad"
+        ],
+        "cpu": [
+          "Intel Core i5"
+        ],
+        "ram": [
+          "8GB"
+        ],
+        "storage": [
+          "256GB"
+        ],
+        "touch": [
+          "Yes"
+        ],
+        "formFactor": [
+          "Convertible"
+        ],
+        "graphics": [
+          "Integrated"
+        ],
+        "windows11": [
+          "No"
+        ],
+        "condition": [
+          "Ex-UK"
+        ],
+        "cpuGen": [
+          "7th Gen"
+        ],
+        "screen": [
+          "13.3\""
+        ],
+        "features": [
+          "Stylus pen"
+        ]
+      },
+      "inferred": [
+        "screen"
+      ],
+      "featured": false,
+      "bestseller": false,
+      "createdAt": "2026-10-08T00:00:00+03:00",
+      "stock": "in",
+      "sourceRows": [
+        63
+      ]
+    },
+    {
+      "id": "apple-macbook-pro-13-2012-i5-8gb-256gb",
+      "slug": "apple-macbook-pro-13-2012-i5-8gb-256gb",
+      "modelId": "apple-macbook-pro-13-2012",
+      "name": "Apple MacBook Pro 13\" (2012) · Core i5 3rd Gen, 8GB/256GB",
+      "price": 25000,
+      "cost": 24700,
+      "categoryId": "macbooks",
+      "images": [
+        {
+          "id": "apple-macbook-pro-13-2012-01",
+          "alt": "Apple MacBook Pro 13\" (2012)",
+          "placeholder": {
+            "tint": "#E6E6EA",
+            "glyph": "💻"
+          }
+        }
+      ],
+      "description": "The 2012 13-inch MacBook Pro: the cheapest way into macOS. It no longer gets new macOS versions, so it suits writing, browsing and light work. This unit: Intel Core i5 (3rd Gen), 8GB RAM, 256GB storage.",
+      "attributes": {
+        "brand": [
+          "Apple"
+        ],
+        "series": [
+          "MacBook Pro"
+        ],
+        "cpu": [
+          "Intel Core i5"
+        ],
+        "ram": [
+          "8GB"
+        ],
+        "storage": [
+          "256GB"
+        ],
+        "touch": [
+          "No"
+        ],
+        "formFactor": [
+          "Clamshell"
+        ],
+        "graphics": [
+          "Integrated"
+        ],
+        "windows11": [
+          "macOS"
+        ],
+        "condition": [
+          "Ex-UK"
+        ],
+        "cpuGen": [
+          "3rd Gen"
+        ],
+        "screen": [
+          "13.3\""
+        ]
+      },
+      "inferred": [
+        "cpuGen",
+        "screen",
+        "touch"
+      ],
+      "featured": false,
+      "bestseller": false,
+      "createdAt": "2026-10-08T00:00:00+03:00",
+      "stock": "in",
+      "sourceRows": [
+        66
+      ]
+    },
+    {
+      "id": "apple-macbook-pro-13-2017-i7-16gb-512gb",
+      "slug": "apple-macbook-pro-13-2017-i7-16gb-512gb",
+      "modelId": "apple-macbook-pro-13-2017",
+      "name": "Apple MacBook Pro 13\" (2017) · Core i7 7th Gen, 16GB/512GB, Touch Bar",
+      "price": 55000,
+      "cost": 54598.7,
+      "categoryId": "macbooks",
+      "images": [
+        {
+          "id": "apple-macbook-pro-13-2017-01",
+          "alt": "Apple MacBook Pro 13\" (2017)",
+          "placeholder": {
+            "tint": "#E6E6EA",
+            "glyph": "💻"
+          }
+        }
+      ],
+      "description": "A 13-inch MacBook Pro with a sharp Retina display, for macOS users, designers and developers. This unit: Intel Core i7 (7th Gen), 16GB RAM, 512GB storage. Touch Bar.",
+      "attributes": {
+        "brand": [
+          "Apple"
+        ],
+        "series": [
+          "MacBook Pro"
+        ],
+        "cpu": [
+          "Intel Core i7"
+        ],
+        "ram": [
+          "16GB"
+        ],
+        "storage": [
+          "512GB"
+        ],
+        "touch": [
+          "No"
+        ],
+        "formFactor": [
+          "Clamshell"
+        ],
+        "graphics": [
+          "Integrated"
+        ],
+        "windows11": [
+          "macOS"
+        ],
+        "condition": [
+          "Ex-UK"
+        ],
+        "cpuGen": [
+          "7th Gen"
+        ],
+        "screen": [
+          "13.3\""
+        ],
+        "features": [
+          "Touch Bar"
+        ]
+      },
+      "inferred": [
+        "cpuGen",
+        "screen",
+        "touch"
+      ],
+      "featured": false,
+      "bestseller": false,
+      "createdAt": "2026-10-08T00:00:00+03:00",
+      "stock": "in",
+      "sourceRows": [
+        25
+      ]
+    },
+    {
+      "id": "apple-macbook-pro-13-2018-i5-16gb-256gb",
+      "slug": "apple-macbook-pro-13-2018-i5-16gb-256gb",
+      "modelId": "apple-macbook-pro-13-2018",
+      "name": "Apple MacBook Pro 13\" (2018) · Core i5 8th Gen, 16GB/256GB",
+      "price": 57500,
+      "cost": 57198.7,
+      "categoryId": "macbooks",
+      "images": [
+        {
+          "id": "apple-macbook-pro-13-2018-01",
+          "alt": "Apple MacBook Pro 13\" (2018)",
+          "placeholder": {
+            "tint": "#E6E6EA",
+            "glyph": "💻"
+          }
+        }
+      ],
+      "description": "A 13-inch MacBook Pro with a sharp Retina display, for macOS users, designers and developers. This unit: Intel Core i5 (8th Gen), 16GB RAM, 256GB storage.",
+      "attributes": {
+        "brand": [
+          "Apple"
+        ],
+        "series": [
+          "MacBook Pro"
+        ],
+        "cpu": [
+          "Intel Core i5"
+        ],
+        "ram": [
+          "16GB"
+        ],
+        "storage": [
+          "256GB"
+        ],
+        "touch": [
+          "No"
+        ],
+        "formFactor": [
+          "Clamshell"
+        ],
+        "graphics": [
+          "Integrated"
+        ],
+        "windows11": [
+          "macOS"
+        ],
+        "condition": [
+          "Ex-UK"
+        ],
+        "cpuGen": [
+          "8th Gen"
+        ],
+        "screen": [
+          "13.3\""
+        ]
+      },
+      "inferred": [
+        "cpuGen",
+        "screen",
+        "touch"
+      ],
+      "featured": false,
+      "bestseller": false,
+      "createdAt": "2026-10-08T00:00:00+03:00",
+      "stock": "in",
+      "sourceRows": [
+        27
+      ]
+    },
+    {
+      "id": "apple-macbook-pro-13-2018-i5-8gb-256gb",
+      "slug": "apple-macbook-pro-13-2018-i5-8gb-256gb",
+      "modelId": "apple-macbook-pro-13-2018",
+      "name": "Apple MacBook Pro 13\" (2018) · Core i5 8th Gen, 8GB/256GB, Touch Bar",
+      "price": 58500,
+      "cost": 58500,
+      "categoryId": "macbooks",
+      "images": [
+        {
+          "id": "apple-macbook-pro-13-2018-01",
+          "alt": "Apple MacBook Pro 13\" (2018)",
+          "placeholder": {
+            "tint": "#E6E6EA",
+            "glyph": "💻"
+          }
+        }
+      ],
+      "description": "A 13-inch MacBook Pro with a sharp Retina display, for macOS users, designers and developers. This unit: Intel Core i5 (8th Gen), 8GB RAM, 256GB storage. Touch Bar.",
+      "attributes": {
+        "brand": [
+          "Apple"
+        ],
+        "series": [
+          "MacBook Pro"
+        ],
+        "cpu": [
+          "Intel Core i5"
+        ],
+        "ram": [
+          "8GB"
+        ],
+        "storage": [
+          "256GB"
+        ],
+        "touch": [
+          "No"
+        ],
+        "formFactor": [
+          "Clamshell"
+        ],
+        "graphics": [
+          "Integrated"
+        ],
+        "windows11": [
+          "macOS"
+        ],
+        "condition": [
+          "Ex-UK"
+        ],
+        "cpuGen": [
+          "8th Gen"
+        ],
+        "screen": [
+          "13.3\""
+        ],
+        "features": [
+          "Touch Bar"
+        ]
+      },
+      "inferred": [
+        "cpuGen",
+        "screen",
+        "touch"
+      ],
+      "featured": false,
+      "bestseller": false,
+      "createdAt": "2026-10-08T00:00:00+03:00",
+      "stock": "in",
+      "sourceRows": [
+        26,
+        67
+      ]
+    },
+    {
+      "id": "apple-macbook-pro-13-2018-i7-16gb-512gb",
+      "slug": "apple-macbook-pro-13-2018-i7-16gb-512gb",
+      "modelId": "apple-macbook-pro-13-2018",
+      "name": "Apple MacBook Pro 13\" (2018) · Core i7 8th Gen, 16GB/512GB",
+      "price": 60000,
+      "cost": 59798.7,
+      "categoryId": "macbooks",
+      "images": [
+        {
+          "id": "apple-macbook-pro-13-2018-01",
+          "alt": "Apple MacBook Pro 13\" (2018)",
+          "placeholder": {
+            "tint": "#E6E6EA",
+            "glyph": "💻"
+          }
+        }
+      ],
+      "description": "A 13-inch MacBook Pro with a sharp Retina display, for macOS users, designers and developers. This unit: Intel Core i7 (8th Gen), 16GB RAM, 512GB storage.",
+      "attributes": {
+        "brand": [
+          "Apple"
+        ],
+        "series": [
+          "MacBook Pro"
+        ],
+        "cpu": [
+          "Intel Core i7"
+        ],
+        "ram": [
+          "16GB"
+        ],
+        "storage": [
+          "512GB"
+        ],
+        "touch": [
+          "No"
+        ],
+        "formFactor": [
+          "Clamshell"
+        ],
+        "graphics": [
+          "Integrated"
+        ],
+        "windows11": [
+          "macOS"
+        ],
+        "condition": [
+          "Ex-UK"
+        ],
+        "cpuGen": [
+          "8th Gen"
+        ],
+        "screen": [
+          "13.3\""
+        ]
+      },
+      "inferred": [
+        "cpuGen",
+        "screen",
+        "touch",
+        "screen-ambiguous"
+      ],
+      "featured": false,
+      "bestseller": false,
+      "createdAt": "2026-10-08T00:00:00+03:00",
+      "stock": "in",
+      "sourceRows": [
+        28
+      ]
+    },
+    {
+      "id": "hp-elitedesk-prodesk-g1-mini-i5-8gb-500gb",
+      "slug": "hp-elitedesk-prodesk-g1-mini-i5-8gb-500gb",
+      "modelId": "hp-elitedesk-prodesk-g1-mini",
+      "name": "HP EliteDesk 800 / ProDesk 600 G1 Mini PC · Core i5 4th Gen, 8GB/500GB",
+      "price": 14000,
+      "cost": 13650,
+      "categoryId": "mini-pcs",
+      "images": [
+        {
+          "id": "hp-elitedesk-prodesk-g1-mini-01",
+          "alt": "HP EliteDesk 800 / ProDesk 600 G1 Mini PC",
+          "placeholder": {
+            "tint": "#E4E7EA",
+            "glyph": "🖥️"
+          }
+        }
+      ],
+      "description": "A compact HP desktop that tucks behind a monitor, for office, cyber café and point-of-sale use. This unit: Intel Core i5 (4th Gen), 8GB RAM, 500GB storage.",
+      "attributes": {
+        "brand": [
+          "HP"
+        ],
+        "series": [
+          "EliteDesk/ProDesk"
+        ],
+        "cpu": [
+          "Intel Core i5"
+        ],
+        "ram": [
+          "8GB"
+        ],
+        "storage": [
+          "500GB"
+        ],
+        "touch": [
+          "No"
+        ],
+        "formFactor": [
+          "Mini PC"
+        ],
+        "graphics": [
+          "Integrated"
+        ],
+        "windows11": [
+          "No"
+        ],
+        "condition": [
+          "Ex-UK"
+        ],
+        "cpuGen": [
+          "4th Gen"
+        ]
+      },
+      "inferred": [],
+      "featured": false,
+      "bestseller": false,
+      "createdAt": "2026-10-08T00:00:00+03:00",
+      "stock": "in",
+      "sourceRows": [
+        69
+      ]
+    },
+    {
+      "id": "lenovo-thinkcentre-m73-tiny-i5-8gb-500gb",
+      "slug": "lenovo-thinkcentre-m73-tiny-i5-8gb-500gb",
+      "modelId": "lenovo-thinkcentre-m73-tiny",
+      "name": "Lenovo ThinkCentre M73 Tiny · Core i5 4th Gen, 8GB/500GB",
+      "price": 26000,
+      "cost": 26000,
+      "categoryId": "mini-pcs",
+      "images": [
+        {
+          "id": "lenovo-thinkcentre-m73-tiny-01",
+          "alt": "Lenovo ThinkCentre M73 Tiny",
+          "placeholder": {
+            "tint": "#E4E7EA",
+            "glyph": "🖥️"
+          }
+        }
+      ],
+      "description": "A palm-sized Lenovo desktop for reception desks, cyber cafés and point-of-sale counters. Plug in a monitor, keyboard and mouse. This unit: Intel Core i5 (4th Gen), 8GB RAM, 500GB storage.",
+      "attributes": {
+        "brand": [
+          "Lenovo"
+        ],
+        "series": [
+          "ThinkCentre"
+        ],
+        "cpu": [
+          "Intel Core i5"
+        ],
+        "ram": [
+          "8GB"
+        ],
+        "storage": [
+          "500GB"
+        ],
+        "touch": [
+          "No"
+        ],
+        "formFactor": [
+          "Mini PC"
+        ],
+        "graphics": [
+          "Integrated"
+        ],
+        "windows11": [
+          "No"
+        ],
+        "condition": [
+          "Ex-UK"
+        ],
+        "cpuGen": [
+          "4th Gen"
+        ]
+      },
+      "inferred": [],
+      "featured": false,
+      "bestseller": false,
+      "createdAt": "2026-10-08T00:00:00+03:00",
+      "stock": "in",
+      "sourceRows": [
+        68
+      ]
+    }
+  ]
+}

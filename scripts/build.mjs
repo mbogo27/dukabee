@@ -61,6 +61,13 @@ for (const id of ['faith']) {
   console.log(`  ✓ store ${id}: ${site.pages.length} pages`);
 }
 
+// v2 storefronts (data/<id>/ + guides, built by kiwanda/v2): dist/stores/<id>/, served on their own subdomain.
+import { buildStorefront } from './build-storefront.mjs';
+for (const id of ['dobatron']) {
+  const r = await buildStorefront(id, { outDir: path.join(DIST, 'stores', id) });
+  console.log(`  ✓ store ${id}: ${r.files.filter((f) => f.path.endsWith('.html')).length} pages${r.warnings.length ? `, ${r.warnings.length} warning(s)` : ''}`);
+}
+
 // Short cache on HTML/modules so redeploys show up immediately; images can cache longer.
 fs.writeFileSync(path.join(DIST, '_headers'), `/*
   X-Content-Type-Options: nosniff

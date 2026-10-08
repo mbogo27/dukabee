@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "type": "module",
-  "description": "Duka Bee: preview-first launch flow, Kiwanda web-mode composition pipeline, and the Kladi, Jikoni and Rembo demo stores.",
+  "description": "Duka Bee: preview-first launch flow, Kiwanda web-mode composition pipeline, and the Kladi, Jikoni and Rembo demo stores, and v2 storefronts (Dobatron).",
   "scripts": {
     "import": "node scripts/import-taskbee.mjs",
     "generate": "node pipeline/cli.mjs",
@@ -12,7 +12,11 @@
     "build": "node scripts/build.mjs",
     "preview": "node scripts/preview.mjs",
     "deploy": "node scripts/build.mjs && npx wrangler deploy",
-    "dev": "node scripts/build.mjs && npx wrangler dev"
+    "dev": "node scripts/build.mjs && npx wrangler dev",
+    "import:dobatron": "node scripts/dobatron-import.mjs",
+    "build:dobatron": "node scripts/build-storefront.mjs dobatron",
+    "preview:dobatron": "node scripts/build-storefront.mjs dobatron && node scripts/preview.mjs --store dobatron",
+    "test": "node --test \"tests/**/*.test.mjs\""
   },
   "engines": {
     "node": ">=20"

@@ -1,0 +1,633 @@
+{
+  "pricing": {
+    "markupPct": 0,
+    "roundUpTo": 500
+  },
+  "store": {
+    "id": "dobatron",
+    "name": "Dobatron",
+    "domain": null,
+    "previewDomain": "dobatron.dukabee.co.ke",
+    "niche": "electronics",
+    "recipe": "marketplace",
+    "palette": {
+      "primary": "#111111",
+      "accent": "#FFD60A",
+      "paper": "#F7F5F0"
+    },
+    "fonts": {
+      "display": "Space Grotesk",
+      "mono": "JetBrains Mono"
+    },
+    "bannerFallback": "flat",
+    "whatsapp": "254743747496",
+    "phoneDisplay": "0743 747 496",
+    "tagline": "Ex-UK laptops in Kenya",
+    "footerBlurb": "Ex-UK business laptops from HP, Lenovo, Dell and Apple, with the specs that matter up front. Every unit is confirmed with you on WhatsApp before you pay.",
+    "condition": "Ex-UK",
+    "itemCondition": "UsedCondition",
+    "announcement": "Ex-UK laptops · HP · Lenovo · Dell · Apple · Order on WhatsApp 0743 747 496",
+    "policies": [
+      "M-Pesa accepted"
+    ],
+    "policiesToConfirm": [
+      "Countrywide delivery",
+      "Delivery in Nairobi",
+      "Pickup point",
+      "Pay on delivery",
+      "Warranty (length?)",
+      "Returns/exchange window"
+    ],
+    "poweredBy": {
+      "label": "Store built on Duka Bee",
+      "href": "https://dukabee.co.ke"
+    },
+    "checkout": {
+      "preset": "electronics",
+      "fields": [
+        "name",
+        "fulfilment",
+        "deliveryArea",
+        "pickupPoint",
+        "paymentMethod",
+        "notes"
+      ],
+      "pickupPoints": [],
+      "paymentMethods": [
+        "M-Pesa"
+      ],
+      "pickupFallback": "Pickup (we'll agree a point on WhatsApp)",
+      "closingLine": "Please confirm availability and condition before I pay.",
+      "orderRefPrefix": "DOB"
+    },
+    "seo": {
+      "homeTitle": "Dobatron: Ex-UK laptops in Kenya. HP, Lenovo, Dell, Apple",
+      "homeDescription": "Ex-UK EliteBooks, ThinkPads, Latitudes and MacBooks with clear specs. Filter by budget and order on WhatsApp.",
+      "shopTitle": "Shop ex-UK laptops | Dobatron",
+      "shopDescription": "{count} ex-UK laptops. Filter by price, RAM, processor, touchscreen and more.",
+      "titleSuffix": " | Dobatron"
+    },
+    "nouns": {
+      "one": "laptop",
+      "many": "laptops"
+    },
+    "emptyState": {
+      "text": "No laptops match that. Remove a filter, or tell us what you need and we'll look for it.",
+      "cta": "Ask us to find one",
+      "message": "Hi Dobatron, I'm looking for a laptop: {summary}. Can you find one?"
+    },
+    "messages": {
+      "ask": "Hi Dobatron, is \"{name}\" available? Can you send photos and the battery health of this unit? {url}",
+      "request": "Hi Dobatron, I'm looking for \"{name}\" (last listed at {price}). Can you find one? {url}"
+    },
+    "inferredFootnote": "Typical for this model. We confirm the exact unit's specs on WhatsApp before you pay.",
+    "inferredNotes": {
+      "screen-ambiguous": "Listed without a screen size: this unit could be the 13-inch or the 15-inch model. We confirm it before you pay."
+    }
+  },
+  "categories": [
+    {
+      "id": "business-laptops",
+      "slug": "business-laptops",
+      "name": "Business laptops",
+      "image": {
+        "id": "cat-business",
+        "alt": "Business laptops",
+        "placeholder": {
+          "tint": "#E8E6E1",
+          "glyph": "BL"
+        }
+      }
+    },
+    {
+      "id": "2-in-1",
+      "slug": "2-in-1",
+      "name": "2-in-1 & convertibles",
+      "image": {
+        "id": "cat-2in1",
+        "alt": "2-in-1 laptops",
+        "placeholder": {
+          "tint": "#E3E8E4",
+          "glyph": "2in1"
+        }
+      }
+    },
+    {
+      "id": "macbooks",
+      "slug": "macbooks",
+      "name": "MacBooks",
+      "image": {
+        "id": "cat-mac",
+        "alt": "MacBooks",
+        "placeholder": {
+          "tint": "#E6E6EA",
+          "glyph": "M"
+        }
+      }
+    },
+    {
+      "id": "workstations",
+      "slug": "workstations",
+      "name": "Workstations",
+      "image": {
+        "id": "cat-ws",
+        "alt": "Workstations",
+        "placeholder": {
+          "tint": "#ECE6DE",
+          "glyph": "WS"
+        }
+      }
+    },
+    {
+      "id": "mini-pcs",
+      "slug": "mini-pcs",
+      "name": "Mini PCs",
+      "image": {
+        "id": "cat-mini",
+        "alt": "Mini PCs",
+        "placeholder": {
+          "tint": "#E4E7EA",
+          "glyph": "PC"
+        }
+      }
+    }
+  ],
+  "attributes": [
+    {
+      "key": "brand",
+      "label": "Brand",
+      "filterable": true,
+      "selectable": false,
+      "display": "checkbox",
+      "order": 1,
+      "values": [
+        "HP",
+        "Lenovo",
+        "Dell",
+        "Apple"
+      ]
+    },
+    {
+      "key": "series",
+      "label": "Series",
+      "filterable": true,
+      "selectable": false,
+      "display": "checkbox",
+      "order": 2,
+      "values": [
+        "EliteBook",
+        "ProBook",
+        "ZBook",
+        "Elite x2",
+        "ThinkPad",
+        "Latitude",
+        "MacBook Pro",
+        "ThinkCentre",
+        "EliteDesk/ProDesk"
+      ]
+    },
+    {
+      "key": "cpu",
+      "label": "Processor",
+      "filterable": true,
+      "selectable": false,
+      "display": "checkbox",
+      "order": 3,
+      "values": [
+        "Intel Core i7",
+        "Intel Core i5",
+        "Intel Core i3",
+        "Intel Core m5",
+        "Intel Celeron",
+        "AMD Ryzen 7",
+        "AMD Ryzen 5"
+      ],
+      "summary": "{value}"
+    },
+    {
+      "key": "cpuGen",
+      "label": "Intel generation",
+      "filterable": true,
+      "selectable": false,
+      "display": "chips",
+      "order": 4,
+      "values": [
+        "11th Gen",
+        "10th Gen",
+        "8th Gen",
+        "7th Gen",
+        "6th Gen",
+        "4th Gen",
+        "3rd Gen"
+      ],
+      "summary": "{value} Intel"
+    },
+    {
+      "key": "ram",
+      "label": "RAM",
+      "filterable": true,
+      "selectable": false,
+      "display": "chips",
+      "order": 5,
+      "values": [
+        "4GB",
+        "8GB",
+        "16GB",
+        "32GB"
+      ],
+      "summary": "{value} RAM"
+    },
+    {
+      "key": "storage",
+      "label": "Storage",
+      "filterable": true,
+      "selectable": false,
+      "display": "chips",
+      "order": 6,
+      "values": [
+        "128GB",
+        "192GB",
+        "256GB",
+        "500GB",
+        "512GB"
+      ],
+      "summary": "{value} storage"
+    },
+    {
+      "key": "screen",
+      "label": "Screen",
+      "filterable": true,
+      "selectable": false,
+      "display": "chips",
+      "order": 7,
+      "values": [
+        "11.6\"",
+        "12\"",
+        "12.5\"",
+        "13.3\"",
+        "14\"",
+        "15.6\""
+      ],
+      "summary": "{value} screen"
+    },
+    {
+      "key": "touch",
+      "label": "Touchscreen",
+      "filterable": true,
+      "selectable": false,
+      "display": "toggle",
+      "order": 8,
+      "values": [
+        "Yes",
+        "No"
+      ],
+      "valueSummaries": {
+        "Yes": "touchscreen",
+        "No": "no touchscreen"
+      }
+    },
+    {
+      "key": "formFactor",
+      "label": "Type",
+      "filterable": true,
+      "selectable": false,
+      "display": "checkbox",
+      "order": 9,
+      "values": [
+        "Clamshell",
+        "Convertible",
+        "Detachable",
+        "Mini PC"
+      ]
+    },
+    {
+      "key": "graphics",
+      "label": "Graphics",
+      "filterable": true,
+      "selectable": false,
+      "display": "checkbox",
+      "order": 10,
+      "values": [
+        "Integrated",
+        "Dedicated"
+      ],
+      "valueSummaries": {
+        "Dedicated": "dedicated graphics",
+        "Integrated": "integrated graphics"
+      }
+    },
+    {
+      "key": "windows11",
+      "label": "Windows 11",
+      "filterable": true,
+      "selectable": false,
+      "display": "checkbox",
+      "order": 11,
+      "values": [
+        "Yes",
+        "No",
+        "Check",
+        "macOS"
+      ],
+      "explainer": "Windows 10 stopped getting security updates in Oct 2025.",
+      "valueSummaries": {
+        "Yes": "Windows 11 ready",
+        "No": "no Windows 11",
+        "Check": "Windows 11 to check",
+        "macOS": "macOS"
+      },
+      "valueHints": {
+        "Check": "Depends on the exact processor. Ask us before you buy.",
+        "No": "Runs Windows 10, which no longer gets security updates."
+      }
+    },
+    {
+      "key": "features",
+      "label": "Extras",
+      "filterable": true,
+      "selectable": false,
+      "display": "checkbox",
+      "order": 12,
+      "values": [
+        "Stylus pen",
+        "Touch Bar",
+        "Extra 1TB HDD"
+      ]
+    },
+    {
+      "key": "gpuMemory",
+      "label": "Graphics memory",
+      "filterable": false,
+      "selectable": false,
+      "display": "spec",
+      "order": 13
+    },
+    {
+      "key": "condition",
+      "label": "Condition",
+      "filterable": false,
+      "selectable": false,
+      "display": "spec",
+      "order": 14
+    }
+  ],
+  "priceBuckets": [
+    {
+      "id": "0-25000",
+      "label": "Under KSh 25K"
+    },
+    {
+      "id": "25000-35000",
+      "label": "KSh 25K–35K"
+    },
+    {
+      "id": "35000-45000",
+      "label": "KSh 35K–45K"
+    },
+    {
+      "id": "45000-60000",
+      "label": "KSh 45K–60K"
+    },
+    {
+      "id": "60000-",
+      "label": "KSh 60K+"
+    }
+  ],
+  "banners": [
+    {
+      "id": "hero-main",
+      "kind": "hero",
+      "headline": "Buying a laptop shouldn't take 40 YouTube reviews.",
+      "sub": "Ex-UK laptops from HP, Lenovo, Dell and Apple, with the specs that matter up front. Filter, pick one, order on WhatsApp.",
+      "cta": "Shop all laptops",
+      "target": {
+        "type": "filter",
+        "query": {}
+      },
+      "copySide": "left"
+    },
+    {
+      "id": "promo-under-30",
+      "kind": "promo",
+      "headline": "Under KSh 30K",
+      "sub": "{count} picks for students and first jobs",
+      "cta": "See them",
+      "target": {
+        "type": "filter",
+        "query": {
+          "price": "0-30000"
+        }
+      },
+      "copySide": "left"
+    },
+    {
+      "id": "promo-2in1",
+      "kind": "promo",
+      "headline": "Flip it into a tablet",
+      "sub": "2-in-1s from {fromPrice}",
+      "cta": "Shop 2-in-1s",
+      "target": {
+        "type": "category",
+        "id": "2-in-1"
+      },
+      "copySide": "left"
+    },
+    {
+      "id": "promo-macbooks",
+      "kind": "promo",
+      "headline": "MacBooks from {fromPrice}",
+      "sub": "Ex-UK MacBook Pros",
+      "cta": "Shop MacBooks",
+      "target": {
+        "type": "category",
+        "id": "macbooks"
+      },
+      "copySide": "left"
+    },
+    {
+      "id": "promo-graphics",
+      "kind": "promo",
+      "headline": "Need graphics power?",
+      "sub": "{count} laptops with dedicated graphics for design and editing",
+      "cta": "See them",
+      "target": {
+        "type": "filter",
+        "query": {
+          "graphics": "Dedicated"
+        }
+      },
+      "copySide": "right"
+    },
+    {
+      "id": "promo-thinkpad",
+      "kind": "promo",
+      "headline": "ThinkPad",
+      "sub": "{count} in stock, from {fromPrice}",
+      "cta": "Shop ThinkPads",
+      "target": {
+        "type": "filter",
+        "query": {
+          "series": "ThinkPad"
+        }
+      },
+      "copySide": "left"
+    },
+    {
+      "id": "promo-elitebook",
+      "kind": "promo",
+      "headline": "EliteBook",
+      "sub": "{count} in stock, from {fromPrice}",
+      "cta": "Shop EliteBooks",
+      "target": {
+        "type": "filter",
+        "query": {
+          "series": "EliteBook"
+        }
+      },
+      "copySide": "left"
+    },
+    {
+      "id": "promo-latitude",
+      "kind": "promo",
+      "headline": "Dell Latitude",
+      "sub": "{count} in stock, from {fromPrice}",
+      "cta": "Shop Latitudes",
+      "target": {
+        "type": "filter",
+        "query": {
+          "series": "Latitude"
+        }
+      },
+      "copySide": "left"
+    }
+  ],
+  "homepage": {
+    "sections": [
+      {
+        "type": "announcement",
+        "variant": "static"
+      },
+      {
+        "type": "hero",
+        "variant": "split",
+        "bannerIds": [
+          "hero-main",
+          "promo-under-30",
+          "promo-2in1"
+        ]
+      },
+      {
+        "type": "categoryNav",
+        "variant": "circles",
+        "title": "Shop by type"
+      },
+      {
+        "type": "productRail",
+        "variant": "tabs",
+        "title": "Shop by need",
+        "source": {
+          "tabs": [
+            {
+              "label": "Under 30K",
+              "source": {
+                "filter": {
+                  "price": "0-30000"
+                },
+                "sort": "price-asc"
+              }
+            },
+            {
+              "label": "16GB RAM+",
+              "source": {
+                "filter": {
+                  "ram": [
+                    "16GB",
+                    "32GB"
+                  ]
+                },
+                "sort": "price-asc"
+              }
+            },
+            {
+              "label": "Touchscreen",
+              "source": {
+                "filter": {
+                  "touch": "Yes"
+                },
+                "sort": "price-asc"
+              }
+            },
+            {
+              "label": "Windows 11 ready",
+              "source": {
+                "filter": {
+                  "windows11": "Yes"
+                },
+                "sort": "price-asc"
+              }
+            }
+          ]
+        },
+        "limit": 8
+      },
+      {
+        "type": "promoBanner",
+        "variant": "twoUp",
+        "bannerIds": [
+          "promo-macbooks",
+          "promo-graphics"
+        ]
+      },
+      {
+        "type": "productShowcase",
+        "variant": "left",
+        "productId": "hp-zbook-firefly-14-g8-i7-32gb-512gb",
+        "title": "Top of the range"
+      },
+      {
+        "type": "productRail",
+        "variant": "carousel",
+        "title": "Staff picks",
+        "source": "featured"
+      },
+      {
+        "type": "promoBanner",
+        "variant": "threeUp",
+        "bannerIds": [
+          "promo-thinkpad",
+          "promo-elitebook",
+          "promo-latitude"
+        ]
+      },
+      {
+        "type": "productRail",
+        "variant": "grid",
+        "title": "Business laptops",
+        "source": {
+          "category": "business-laptops"
+        },
+        "sort": "price-asc",
+        "limit": 8,
+        "seeAll": true
+      },
+      {
+        "type": "guideTeaser",
+        "variant": "card",
+        "title": "Buying guides"
+      },
+      {
+        "type": "trustStrip",
+        "variant": "icons"
+      },
+      {
+        "type": "footer",
+        "variant": "standard"
+      }
+    ],
+    "tiers": {
+      "starter": 1,
+      "growing": 9,
+      "full": 31
+    }
+  }
+}

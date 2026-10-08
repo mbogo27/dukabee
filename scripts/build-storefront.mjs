@@ -1,0 +1,72 @@
+// Build a v2 storefront (data/<id>/ + guides) into dist/stores/<id>/, served at its own subdomain by worker/index.mjs.
+//
+//   node scripts/build-storefront.mjs dobatron            # → dist/stores/dobatron
+//   node scripts/build-storefront.mjs dobatron --out tmp  # elsewhere (tests)
+//
+// Fails on guide errors (unknown embed slug, with file:line) and if any private supplier cost reaches the output.
+import fs from 'node:fs';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+import { JsonCatalogSource, FileContentSource } from '../kiwanda/v2/source.mjs';
+import { composeStorefront } from '../kiwanda/v2/pages.mjs';
+
+const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
+
+export class BuildError extends Error {}
+
+/** Every output file must be free of `cost` keys and of the supplier cost figures themselves (spec ground rule 6). */
+export function privacyLeaks(files, rawProducts) {
+  const prices = new Set(rawProducts.map((p) => p.price));
+  const figures = [...new Set(rawProducts.map((p) => p.cost).filter((c) => c != null && !prices.has(c)))];
+  const figureRe = figures.length ? new RegExp(`(?<![\\d.])(${figures.map((c) => String(c).replace('.', '\\.')).join('|')})(?![\\d])`) : null;
+  const leaks = [];
+  for (const f of files) {
+    const text = typeof f.content === 'string' ? f.content : f.content.toString('utf8');
+    if (/["']cost["']\s*:/.test(text)) leaks.push(`${f.path}: contains a "cost" key`);
+    const m = figureRe && text.match(figureRe);
+    if (m) leaks.push(`${f.path}: contains supplier cost ${m[1]}`);
+  }
+  return leaks;
+}
+
+export async function buildStorefront(id, { outDir = path.join(ROOT, 'dist', 'stores', id), dataDir = path.join(ROOT, 'data', id), log = console.log } = {}) {
+  const catalog = new JsonCatalogSource(dataDir);
+  const content = new FileContentSource(path.join(dataDir, 'guides'));
+  const result = await composeStorefront({ catalog, content, relFile: (f) => path.relative(ROOT, f).replace(/\\/g, '/') });
+  for (const w of result.warnings) log(`  ⚠ ${w}`);
+  if (result.errors.length) throw new BuildError(`${id}: ${result.errors.length} error(s)\n${result.errors.map((e) => `  ✗ ${e}`).join('\n')}`);
+
+  const assets = [
+    ['assets/storefront.css', 'kiwanda/runtime/storefront.css'],
+    ['assets/storefront.js', 'kiwanda/runtime/storefront.js'],
+    ['assets/catalog.mjs', 'kiwanda/v2/catalog.mjs'],
+  ].map(([to, from]) => ({ path: to, content: fs.readFileSync(path.join(ROOT, from), 'utf8') }));
+  const files = [...result.files, ...assets];
+
+  const leaks = privacyLeaks(files, catalog.products);
+  if (leaks.length) throw new BuildError(`${id}: private cost would be published\n${leaks.map((l) => `  ✗ ${l}`).join('\n')}`);
+
+  fs.mkdirSync(outDir, { recursive: true });
+  for (const e of fs.readdirSync(outDir)) fs.rmSync(path.join(outDir, e), { recursive: true, force: true });
+  for (const f of files) {
+    const target = path.join(outDir, f.path);
+    fs.mkdirSync(path.dirname(target), { recursive: true });
+    fs.writeFileSync(target, f.content);
+  }
+  return { ...result, files, outDir };
+}
+
+if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
+  const args = process.argv.slice(2);
+  const id = args[0] || 'dobatron';
+  const oi = args.indexOf('--out');
+  const outDir = oi >= 0 ? path.resolve(args[oi + 1]) : undefined;
+  try {
+    const r = await buildStorefront(id, { outDir });
+    const pages = r.files.filter((f) => f.path.endsWith('.html')).length;
+    console.log(`  ✓ store ${id}: ${pages} pages, ${r.homeSections.length} homepage sections${r.warnings.length ? `, ${r.warnings.length} warning(s)` : ''} → ${path.relative(ROOT, r.outDir)}`);
+  } catch (e) {
+    console.error(e instanceof BuildError ? `✗ ${e.message}` : e);
+    process.exit(1);
+  }
+}

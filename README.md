@@ -110,3 +110,16 @@ Store homepages can carry optional sections from `shop.home`: `trust` (badge str
 `testimonials`, `about` (blurb + CTA) and, on demo previews only, the closing **Customize & publish · KSh 10,000** section (`publish: false` turns it off).
 Sample stores from the launch flow get the generic trust strip and category tiles. Products can add `priceNote`, `facts` and expandable `sections`
 (curriculum, who it's for). Real seller stores live in `stores/<id>/` and are added to the list in `scripts/build.mjs`.
+
+## v2 storefronts (Dobatron)
+
+`dobatron.dukabee.co.ke` is the first store on the v2 storefront (`kiwanda/v2/`): attribute-schema facets with URL state,
+the homepage formula (`composeHomepage`), product pages with sibling configurations and out-of-stock request mode,
+guides with live product embeds, and checkout presets. Its data is in `data/dobatron/`; a stock sheet is imported with
+`npm run import:dobatron -- <sheet.xlsx>`. See `docs/dobatron-mapping.md`.
+
+```
+npm run build:dobatron     # → dist/stores/dobatron (also part of npm run build)
+npm run preview:dobatron   # build + serve it as the site root → http://localhost:8788
+npm test                   # importer, catalog, homepage, build output + headless-browser checks
+```

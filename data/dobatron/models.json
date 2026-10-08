@@ -1,0 +1,1184 @@
+{
+  "_note": "Model registry. One entry per model; every configuration (product) of a model shares its images and blurb. sheetAliases are \"Brand | Model\" exactly as written in supplier sheets.",
+  "models": [
+    {
+      "modelId": "hp-zbook-firefly-14-g6",
+      "name": "HP ZBook Firefly 14 G6",
+      "brand": "HP",
+      "series": "ZBook",
+      "categoryId": "workstations",
+      "formFactor": "Clamshell",
+      "screenInches": 14,
+      "typicalCpuGen": "8th Gen",
+      "searchAliases": [
+        "workstation"
+      ],
+      "blurb": "A slim 14-inch HP workstation with dedicated graphics, for design, CAD and editing work at a lower price than the G8.",
+      "images": [
+        {
+          "id": "hp-zbook-firefly-14-g6-01",
+          "alt": "HP ZBook Firefly 14 G6",
+          "placeholder": {
+            "tint": "#ECE6DE",
+            "glyph": "💻"
+          }
+        }
+      ],
+      "sheetAliases": [
+        "HP | ZBook Firefly 14 G6"
+      ]
+    },
+    {
+      "modelId": "hp-zbook-firefly-14-g8",
+      "name": "HP ZBook Firefly 14 G8",
+      "brand": "HP",
+      "series": "ZBook",
+      "categoryId": "workstations",
+      "formFactor": "Clamshell",
+      "screenInches": 14,
+      "typicalCpuGen": "11th Gen",
+      "searchAliases": [
+        "workstation"
+      ],
+      "blurb": "HP's slim 14-inch mobile workstation. The dedicated graphics card makes it the pick for CAD, design and video work that would slow an ordinary office laptop.",
+      "images": [
+        {
+          "id": "hp-zbook-firefly-14-g8-01",
+          "alt": "HP ZBook Firefly 14 G8",
+          "placeholder": {
+            "tint": "#ECE6DE",
+            "glyph": "💻"
+          }
+        }
+      ],
+      "sheetAliases": [
+        "HP | ZBook Firefly 14 G8"
+      ]
+    },
+    {
+      "modelId": "dell-latitude-5300",
+      "name": "Dell Latitude 5300",
+      "brand": "Dell",
+      "series": "Latitude",
+      "categoryId": "business-laptops",
+      "formFactor": "Clamshell",
+      "screenInches": 13.3,
+      "typicalCpuGen": "8th Gen",
+      "searchAliases": [],
+      "blurb": "Dell's compact 13.3-inch Latitude, light enough for the daily commute.",
+      "images": [
+        {
+          "id": "dell-latitude-5300-01",
+          "alt": "Dell Latitude 5300",
+          "placeholder": {
+            "tint": "#E8E6E1",
+            "glyph": "💻"
+          }
+        }
+      ],
+      "sheetAliases": [
+        "Dell | 5300"
+      ]
+    },
+    {
+      "modelId": "dell-latitude-5400",
+      "name": "Dell Latitude 5400",
+      "brand": "Dell",
+      "series": "Latitude",
+      "categoryId": "business-laptops",
+      "formFactor": "Clamshell",
+      "screenInches": 14,
+      "typicalCpuGen": "8th Gen",
+      "searchAliases": [],
+      "blurb": "Dell's 14-inch business Latitude: a dependable office machine with a full-size keyboard.",
+      "images": [
+        {
+          "id": "dell-latitude-5400-01",
+          "alt": "Dell Latitude 5400",
+          "placeholder": {
+            "tint": "#E8E6E1",
+            "glyph": "💻"
+          }
+        }
+      ],
+      "sheetAliases": [
+        "Dell | 5400"
+      ]
+    },
+    {
+      "modelId": "dell-latitude-7280",
+      "name": "Dell Latitude 7280",
+      "brand": "Dell",
+      "series": "Latitude",
+      "categoryId": "business-laptops",
+      "formFactor": "Clamshell",
+      "screenInches": 12.5,
+      "typicalCpuGen": null,
+      "searchAliases": [],
+      "blurb": "A small 12.5-inch premium Dell Latitude, light and well built.",
+      "images": [
+        {
+          "id": "dell-latitude-7280-01",
+          "alt": "Dell Latitude 7280",
+          "placeholder": {
+            "tint": "#E8E6E1",
+            "glyph": "💻"
+          }
+        }
+      ],
+      "sheetAliases": [
+        "Dell | 7280"
+      ]
+    },
+    {
+      "modelId": "hp-elitebook-745-g6",
+      "name": "HP EliteBook 745 G6",
+      "brand": "HP",
+      "series": "EliteBook",
+      "categoryId": "business-laptops",
+      "formFactor": "Clamshell",
+      "screenInches": 14,
+      "typicalRyzenSeries": 3000,
+      "searchAliases": [
+        "eb",
+        "elitebook"
+      ],
+      "blurb": "A 14-inch AMD EliteBook for office work and multitasking. Units with 2GB graphics cope better with light photo editing than integrated-only laptops.",
+      "images": [
+        {
+          "id": "hp-elitebook-745-g6-01",
+          "alt": "HP EliteBook 745 G6",
+          "placeholder": {
+            "tint": "#E8E6E1",
+            "glyph": "💻"
+          }
+        }
+      ],
+      "sheetAliases": [
+        "HP | 745 G6"
+      ]
+    },
+    {
+      "modelId": "hp-elitebook-830-g5",
+      "name": "HP EliteBook 830 G5",
+      "brand": "HP",
+      "series": "EliteBook",
+      "categoryId": "business-laptops",
+      "formFactor": "Clamshell",
+      "screenInches": 13.3,
+      "typicalCpuGen": "8th Gen",
+      "searchAliases": [
+        "eb",
+        "elitebook"
+      ],
+      "blurb": "HP's compact 13.3-inch EliteBook: business-grade build in a size that fits any bag, made to be carried every day.",
+      "images": [
+        {
+          "id": "hp-elitebook-830-g5-01",
+          "alt": "HP EliteBook 830 G5",
+          "placeholder": {
+            "tint": "#E8E6E1",
+            "glyph": "💻"
+          }
+        }
+      ],
+      "sheetAliases": [
+        "HP | 830 G5"
+      ]
+    },
+    {
+      "modelId": "hp-elitebook-830-g6",
+      "name": "HP EliteBook 830 G6",
+      "brand": "HP",
+      "series": "EliteBook",
+      "categoryId": "business-laptops",
+      "formFactor": "Clamshell",
+      "screenInches": 13.3,
+      "typicalCpuGen": "8th Gen",
+      "searchAliases": [
+        "eb",
+        "elitebook"
+      ],
+      "blurb": "HP's compact 13.3-inch EliteBook: business-grade build in a size that fits any bag, made to be carried every day.",
+      "images": [
+        {
+          "id": "hp-elitebook-830-g6-01",
+          "alt": "HP EliteBook 830 G6",
+          "placeholder": {
+            "tint": "#E8E6E1",
+            "glyph": "💻"
+          }
+        }
+      ],
+      "sheetAliases": [
+        "HP | 830 G6"
+      ]
+    },
+    {
+      "modelId": "hp-elitebook-830-g7",
+      "name": "HP EliteBook 830 G7",
+      "brand": "HP",
+      "series": "EliteBook",
+      "categoryId": "business-laptops",
+      "formFactor": "Clamshell",
+      "screenInches": 13.3,
+      "typicalCpuGen": "10th Gen",
+      "searchAliases": [
+        "eb",
+        "elitebook"
+      ],
+      "blurb": "HP's compact 13.3-inch EliteBook: business-grade build in a size that fits any bag, made to be carried every day.",
+      "images": [
+        {
+          "id": "hp-elitebook-830-g7-01",
+          "alt": "HP EliteBook 830 G7",
+          "placeholder": {
+            "tint": "#E8E6E1",
+            "glyph": "💻"
+          }
+        }
+      ],
+      "sheetAliases": [
+        "HP | 830 G7"
+      ]
+    },
+    {
+      "modelId": "hp-elitebook-830-g8",
+      "name": "HP EliteBook 830 G8",
+      "brand": "HP",
+      "series": "EliteBook",
+      "categoryId": "business-laptops",
+      "formFactor": "Clamshell",
+      "screenInches": 13.3,
+      "typicalCpuGen": "11th Gen",
+      "searchAliases": [
+        "eb",
+        "elitebook"
+      ],
+      "blurb": "HP's compact 13.3-inch EliteBook: business-grade build in a size that fits any bag, made to be carried every day.",
+      "images": [
+        {
+          "id": "hp-elitebook-830-g8-01",
+          "alt": "HP EliteBook 830 G8",
+          "placeholder": {
+            "tint": "#E8E6E1",
+            "glyph": "💻"
+          }
+        }
+      ],
+      "sheetAliases": [
+        "HP | 830 G8"
+      ]
+    },
+    {
+      "modelId": "hp-elitebook-840-g3",
+      "name": "HP EliteBook 840 G3",
+      "brand": "HP",
+      "series": "EliteBook",
+      "categoryId": "business-laptops",
+      "formFactor": "Clamshell",
+      "screenInches": 14,
+      "typicalCpuGen": "6th Gen",
+      "searchAliases": [
+        "eb",
+        "elitebook"
+      ],
+      "blurb": "The 14-inch EliteBook 840 is the classic ex-UK office laptop: solid keyboard, sturdy build and easy to service.",
+      "images": [
+        {
+          "id": "hp-elitebook-840-g3-01",
+          "alt": "HP EliteBook 840 G3",
+          "placeholder": {
+            "tint": "#E8E6E1",
+            "glyph": "💻"
+          }
+        }
+      ],
+      "sheetAliases": [
+        "HP | 840 G3"
+      ]
+    },
+    {
+      "modelId": "hp-elitebook-840-g4",
+      "name": "HP EliteBook 840 G4",
+      "brand": "HP",
+      "series": "EliteBook",
+      "categoryId": "business-laptops",
+      "formFactor": "Clamshell",
+      "screenInches": 14,
+      "typicalCpuGen": "7th Gen",
+      "searchAliases": [
+        "eb",
+        "elitebook"
+      ],
+      "blurb": "The 14-inch EliteBook 840 is the classic ex-UK office laptop: solid keyboard, sturdy build and easy to service.",
+      "images": [
+        {
+          "id": "hp-elitebook-840-g4-01",
+          "alt": "HP EliteBook 840 G4",
+          "placeholder": {
+            "tint": "#E8E6E1",
+            "glyph": "💻"
+          }
+        }
+      ],
+      "sheetAliases": [
+        "HP | 840 G4"
+      ]
+    },
+    {
+      "modelId": "hp-elitebook-840-g5",
+      "name": "HP EliteBook 840 G5",
+      "brand": "HP",
+      "series": "EliteBook",
+      "categoryId": "business-laptops",
+      "formFactor": "Clamshell",
+      "screenInches": 14,
+      "typicalCpuGen": "8th Gen",
+      "searchAliases": [
+        "eb",
+        "elitebook"
+      ],
+      "blurb": "The 14-inch EliteBook 840 is the classic ex-UK office laptop: solid keyboard, sturdy build and easy to service.",
+      "images": [
+        {
+          "id": "hp-elitebook-840-g5-01",
+          "alt": "HP EliteBook 840 G5",
+          "placeholder": {
+            "tint": "#E8E6E1",
+            "glyph": "💻"
+          }
+        }
+      ],
+      "sheetAliases": [
+        "HP | 840 G5"
+      ]
+    },
+    {
+      "modelId": "hp-elitebook-840-g6",
+      "name": "HP EliteBook 840 G6",
+      "brand": "HP",
+      "series": "EliteBook",
+      "categoryId": "business-laptops",
+      "formFactor": "Clamshell",
+      "screenInches": 14,
+      "typicalCpuGen": "8th Gen",
+      "searchAliases": [
+        "eb",
+        "elitebook"
+      ],
+      "blurb": "The 14-inch EliteBook 840 is the classic ex-UK office laptop: solid keyboard, sturdy build and easy to service.",
+      "images": [
+        {
+          "id": "hp-elitebook-840-g6-01",
+          "alt": "HP EliteBook 840 G6",
+          "placeholder": {
+            "tint": "#E8E6E1",
+            "glyph": "💻"
+          }
+        }
+      ],
+      "sheetAliases": [
+        "HP | 840 G6"
+      ]
+    },
+    {
+      "modelId": "hp-elitebook-840-g7",
+      "name": "HP EliteBook 840 G7",
+      "brand": "HP",
+      "series": "EliteBook",
+      "categoryId": "business-laptops",
+      "formFactor": "Clamshell",
+      "screenInches": 14,
+      "typicalCpuGen": "10th Gen",
+      "searchAliases": [
+        "eb",
+        "elitebook"
+      ],
+      "blurb": "The 14-inch EliteBook 840 is the classic ex-UK office laptop: solid keyboard, sturdy build and easy to service.",
+      "images": [
+        {
+          "id": "hp-elitebook-840-g7-01",
+          "alt": "HP EliteBook 840 G7",
+          "placeholder": {
+            "tint": "#E8E6E1",
+            "glyph": "💻"
+          }
+        }
+      ],
+      "sheetAliases": [
+        "HP | 840 G7"
+      ]
+    },
+    {
+      "modelId": "hp-elitebook-840-g8",
+      "name": "HP EliteBook 840 G8",
+      "brand": "HP",
+      "series": "EliteBook",
+      "categoryId": "business-laptops",
+      "formFactor": "Clamshell",
+      "screenInches": 14,
+      "typicalCpuGen": "11th Gen",
+      "searchAliases": [
+        "eb",
+        "elitebook"
+      ],
+      "blurb": "The 14-inch EliteBook 840 is the classic ex-UK office laptop: solid keyboard, sturdy build and easy to service.",
+      "images": [
+        {
+          "id": "hp-elitebook-840-g8-01",
+          "alt": "HP EliteBook 840 G8",
+          "placeholder": {
+            "tint": "#E8E6E1",
+            "glyph": "💻"
+          }
+        }
+      ],
+      "sheetAliases": [
+        "HP | 840 G8"
+      ]
+    },
+    {
+      "modelId": "hp-elitebook-845-g7",
+      "name": "HP EliteBook 845 G7",
+      "brand": "HP",
+      "series": "EliteBook",
+      "categoryId": "business-laptops",
+      "formFactor": "Clamshell",
+      "screenInches": 14,
+      "typicalRyzenSeries": 4000,
+      "searchAliases": [
+        "eb",
+        "elitebook"
+      ],
+      "blurb": "The AMD Ryzen version of HP's 14-inch EliteBook 840: same business build, strong multi-core performance for heavy multitasking.",
+      "images": [
+        {
+          "id": "hp-elitebook-845-g7-01",
+          "alt": "HP EliteBook 845 G7",
+          "placeholder": {
+            "tint": "#E8E6E1",
+            "glyph": "💻"
+          }
+        }
+      ],
+      "sheetAliases": [
+        "HP | 845 G7"
+      ]
+    },
+    {
+      "modelId": "hp-elitebook-845-g8",
+      "name": "HP EliteBook 845 G8",
+      "brand": "HP",
+      "series": "EliteBook",
+      "categoryId": "business-laptops",
+      "formFactor": "Clamshell",
+      "screenInches": 14,
+      "typicalRyzenSeries": 5000,
+      "searchAliases": [
+        "eb",
+        "elitebook"
+      ],
+      "blurb": "The AMD Ryzen version of HP's 14-inch EliteBook 840: same business build, strong multi-core performance for heavy multitasking.",
+      "images": [
+        {
+          "id": "hp-elitebook-845-g8-01",
+          "alt": "HP EliteBook 845 G8",
+          "placeholder": {
+            "tint": "#E8E6E1",
+            "glyph": "💻"
+          }
+        }
+      ],
+      "sheetAliases": [
+        "HP | 845 G8"
+      ]
+    },
+    {
+      "modelId": "hp-probook-440-g8",
+      "name": "HP ProBook 440 G8",
+      "brand": "HP",
+      "series": "ProBook",
+      "categoryId": "business-laptops",
+      "formFactor": "Clamshell",
+      "screenInches": 14,
+      "typicalCpuGen": "11th Gen",
+      "searchAliases": [],
+      "blurb": "HP's 14-inch ProBook with an 11th Gen Intel chip: a newer processor at a mid-range price.",
+      "images": [
+        {
+          "id": "hp-probook-440-g8-01",
+          "alt": "HP ProBook 440 G8",
+          "placeholder": {
+            "tint": "#E8E6E1",
+            "glyph": "💻"
+          }
+        }
+      ],
+      "sheetAliases": [
+        "HP | 440 G8"
+      ]
+    },
+    {
+      "modelId": "hp-probook-450-g7",
+      "name": "HP ProBook 450 G7",
+      "brand": "HP",
+      "series": "ProBook",
+      "categoryId": "business-laptops",
+      "formFactor": "Clamshell",
+      "screenInches": 15.6,
+      "typicalCpuGen": "10th Gen",
+      "searchAliases": [],
+      "blurb": "A 15.6-inch ProBook with a bigger screen, a number pad and plenty of space: an SSD for the system plus a 1TB hard drive for files.",
+      "images": [
+        {
+          "id": "hp-probook-450-g7-01",
+          "alt": "HP ProBook 450 G7",
+          "placeholder": {
+            "tint": "#E8E6E1",
+            "glyph": "💻"
+          }
+        }
+      ],
+      "sheetAliases": [
+        "HP | ProBook 450 G7"
+      ]
+    },
+    {
+      "modelId": "hp-probook-640-g5",
+      "name": "HP ProBook 640 G5",
+      "brand": "HP",
+      "series": "ProBook",
+      "categoryId": "business-laptops",
+      "formFactor": "Clamshell",
+      "screenInches": 14,
+      "typicalCpuGen": "8th Gen",
+      "searchAliases": [],
+      "blurb": "A 14-inch HP ProBook for everyday office and school work.",
+      "images": [
+        {
+          "id": "hp-probook-640-g5-01",
+          "alt": "HP ProBook 640 G5",
+          "placeholder": {
+            "tint": "#E8E6E1",
+            "glyph": "💻"
+          }
+        }
+      ],
+      "sheetAliases": [
+        "HP | 640 G5"
+      ]
+    },
+    {
+      "modelId": "hp-probook-645-g4",
+      "name": "HP ProBook 645 G4",
+      "brand": "HP",
+      "series": "ProBook",
+      "categoryId": "business-laptops",
+      "formFactor": "Clamshell",
+      "screenInches": 14,
+      "typicalRyzenSeries": 2000,
+      "searchAliases": [],
+      "blurb": "A 14-inch AMD ProBook with 1GB graphics, a budget pick for office work and light multitasking.",
+      "images": [
+        {
+          "id": "hp-probook-645-g4-01",
+          "alt": "HP ProBook 645 G4",
+          "placeholder": {
+            "tint": "#E8E6E1",
+            "glyph": "💻"
+          }
+        }
+      ],
+      "sheetAliases": [
+        "HP | ProBook 645 G4"
+      ]
+    },
+    {
+      "modelId": "lenovo-thinkpad-t490s",
+      "name": "Lenovo ThinkPad T490s",
+      "brand": "Lenovo",
+      "series": "ThinkPad",
+      "categoryId": "business-laptops",
+      "formFactor": "Clamshell",
+      "screenInches": 14,
+      "typicalCpuGen": "8th Gen",
+      "searchAliases": [
+        "tp"
+      ],
+      "blurb": "A slim 14-inch ThinkPad with the classic ThinkPad keyboard and business-grade build.",
+      "images": [
+        {
+          "id": "lenovo-thinkpad-t490s-01",
+          "alt": "Lenovo ThinkPad T490s",
+          "placeholder": {
+            "tint": "#E8E6E1",
+            "glyph": "💻"
+          }
+        }
+      ],
+      "sheetAliases": [
+        "Lenovo | T490s"
+      ]
+    },
+    {
+      "modelId": "lenovo-thinkpad-x1-carbon-5th-gen",
+      "name": "Lenovo ThinkPad X1 Carbon (5th Gen)",
+      "brand": "Lenovo",
+      "series": "ThinkPad",
+      "categoryId": "business-laptops",
+      "formFactor": "Clamshell",
+      "screenInches": 14,
+      "typicalCpuGen": "7th Gen",
+      "searchAliases": [
+        "tp"
+      ],
+      "blurb": "Lenovo's premium 14-inch ultralight ThinkPad, with a carbon-fibre body and the keyboard ThinkPads are known for.",
+      "images": [
+        {
+          "id": "lenovo-thinkpad-x1-carbon-5th-gen-01",
+          "alt": "Lenovo ThinkPad X1 Carbon (5th Gen)",
+          "placeholder": {
+            "tint": "#E8E6E1",
+            "glyph": "💻"
+          }
+        }
+      ],
+      "sheetAliases": [
+        "Lenovo | X1 Carbon"
+      ]
+    },
+    {
+      "modelId": "lenovo-thinkpad-x13-gen-1",
+      "name": "Lenovo ThinkPad X13 Gen 1",
+      "brand": "Lenovo",
+      "series": "ThinkPad",
+      "categoryId": "business-laptops",
+      "formFactor": "Clamshell",
+      "screenInches": 13.3,
+      "typicalCpuGen": "10th Gen",
+      "searchAliases": [
+        "tp"
+      ],
+      "blurb": "A compact 13.3-inch ThinkPad with a 10th Gen Intel chip, made for working on the move.",
+      "images": [
+        {
+          "id": "lenovo-thinkpad-x13-gen-1-01",
+          "alt": "Lenovo ThinkPad X13 Gen 1",
+          "placeholder": {
+            "tint": "#E8E6E1",
+            "glyph": "💻"
+          }
+        }
+      ],
+      "sheetAliases": [
+        "Lenovo | X13"
+      ]
+    },
+    {
+      "modelId": "lenovo-thinkpad-x260",
+      "name": "Lenovo ThinkPad X260",
+      "brand": "Lenovo",
+      "series": "ThinkPad",
+      "categoryId": "business-laptops",
+      "formFactor": "Clamshell",
+      "screenInches": 12.5,
+      "typicalCpuGen": "6th Gen",
+      "searchAliases": [
+        "tp"
+      ],
+      "blurb": "A small 12.5-inch ThinkPad, light and tough, for students and anyone who carries a laptop all day.",
+      "images": [
+        {
+          "id": "lenovo-thinkpad-x260-01",
+          "alt": "Lenovo ThinkPad X260",
+          "placeholder": {
+            "tint": "#E8E6E1",
+            "glyph": "💻"
+          }
+        }
+      ],
+      "sheetAliases": [
+        "Lenovo | X260"
+      ]
+    },
+    {
+      "modelId": "lenovo-thinkpad-x270",
+      "name": "Lenovo ThinkPad X270",
+      "brand": "Lenovo",
+      "series": "ThinkPad",
+      "categoryId": "business-laptops",
+      "formFactor": "Clamshell",
+      "screenInches": 12.5,
+      "typicalCpuGen": null,
+      "searchAliases": [
+        "tp"
+      ],
+      "blurb": "A small 12.5-inch ThinkPad, light and tough, for students and anyone who carries a laptop all day.",
+      "images": [
+        {
+          "id": "lenovo-thinkpad-x270-01",
+          "alt": "Lenovo ThinkPad X270",
+          "placeholder": {
+            "tint": "#E8E6E1",
+            "glyph": "💻"
+          }
+        }
+      ],
+      "sheetAliases": [
+        "Lenovo | X270"
+      ]
+    },
+    {
+      "modelId": "hp-elite-x2-1012-g1",
+      "name": "HP Elite x2 1012 G1",
+      "brand": "HP",
+      "series": "Elite x2",
+      "categoryId": "2-in-1",
+      "formFactor": "Detachable",
+      "screenInches": 12,
+      "typicalCpuGen": "6th Gen",
+      "searchAliases": [
+        "2in1",
+        "detachable",
+        "tablet"
+      ],
+      "blurb": "A 12-inch Windows tablet with a detachable keyboard, light enough to carry like a notebook.",
+      "images": [
+        {
+          "id": "hp-elite-x2-1012-g1-01",
+          "alt": "HP Elite x2 1012 G1",
+          "placeholder": {
+            "tint": "#E3E8E4",
+            "glyph": "💻"
+          }
+        }
+      ],
+      "sheetAliases": [
+        "HP | X2 Elite 1012 G1"
+      ]
+    },
+    {
+      "modelId": "hp-elitebook-x360-830-g6",
+      "name": "HP EliteBook x360 830 G6",
+      "brand": "HP",
+      "series": "EliteBook",
+      "categoryId": "2-in-1",
+      "formFactor": "Convertible",
+      "screenInches": 13.3,
+      "typicalCpuGen": "8th Gen",
+      "searchAliases": [
+        "eb",
+        "elitebook",
+        "2in1",
+        "flip",
+        "convertible"
+      ],
+      "blurb": "A 13.3-inch EliteBook that folds back into a tablet. Handy for presenting, note-taking and working on the move.",
+      "images": [
+        {
+          "id": "hp-elitebook-x360-830-g6-01",
+          "alt": "HP EliteBook x360 830 G6",
+          "placeholder": {
+            "tint": "#E3E8E4",
+            "glyph": "💻"
+          }
+        }
+      ],
+      "sheetAliases": [
+        "HP | 830 G6 x360"
+      ]
+    },
+    {
+      "modelId": "hp-elitebook-x360-830-g7",
+      "name": "HP EliteBook x360 830 G7",
+      "brand": "HP",
+      "series": "EliteBook",
+      "categoryId": "2-in-1",
+      "formFactor": "Convertible",
+      "screenInches": 13.3,
+      "typicalCpuGen": "10th Gen",
+      "searchAliases": [
+        "eb",
+        "elitebook",
+        "2in1",
+        "flip",
+        "convertible"
+      ],
+      "blurb": "A 13.3-inch EliteBook that folds back into a tablet. Handy for presenting, note-taking and working on the move.",
+      "images": [
+        {
+          "id": "hp-elitebook-x360-830-g7-01",
+          "alt": "HP EliteBook x360 830 G7",
+          "placeholder": {
+            "tint": "#E3E8E4",
+            "glyph": "💻"
+          }
+        }
+      ],
+      "sheetAliases": [
+        "HP | 830 x360 G7"
+      ]
+    },
+    {
+      "modelId": "hp-probook-x360-11-g5",
+      "name": "HP ProBook x360 11 G5",
+      "brand": "HP",
+      "series": "ProBook",
+      "categoryId": "2-in-1",
+      "formFactor": "Convertible",
+      "screenInches": 11.6,
+      "typicalCpuGen": null,
+      "searchAliases": [
+        "2in1",
+        "flip",
+        "convertible"
+      ],
+      "blurb": "A tough 11.6-inch touchscreen convertible built for students. Made for school work, browsing and video calls, not heavy software.",
+      "images": [
+        {
+          "id": "hp-probook-x360-11-g5-01",
+          "alt": "HP ProBook x360 11 G5",
+          "placeholder": {
+            "tint": "#E3E8E4",
+            "glyph": "💻"
+          }
+        }
+      ],
+      "sheetAliases": [
+        "HP | ProBook 11e x360 G5"
+      ]
+    },
+    {
+      "modelId": "lenovo-thinkpad-11e-yoga",
+      "name": "Lenovo ThinkPad 11e Yoga",
+      "brand": "Lenovo",
+      "series": "ThinkPad",
+      "categoryId": "2-in-1",
+      "formFactor": "Convertible",
+      "screenInches": 11.6,
+      "typicalCpuGen": null,
+      "searchAliases": [
+        "tp",
+        "2in1",
+        "flip",
+        "convertible"
+      ],
+      "blurb": "A rugged 11.6-inch convertible from Lenovo's education line, built to survive a school bag.",
+      "images": [
+        {
+          "id": "lenovo-thinkpad-11e-yoga-01",
+          "alt": "Lenovo ThinkPad 11e Yoga",
+          "placeholder": {
+            "tint": "#E3E8E4",
+            "glyph": "💻"
+          }
+        }
+      ],
+      "sheetAliases": [
+        "Lenovo | Yoga 11e x360"
+      ]
+    },
+    {
+      "modelId": "lenovo-thinkpad-x1-yoga",
+      "name": "Lenovo ThinkPad X1 Yoga",
+      "brand": "Lenovo",
+      "series": "ThinkPad",
+      "categoryId": "2-in-1",
+      "formFactor": "Convertible",
+      "screenInches": 14,
+      "typicalCpuGen": null,
+      "searchAliases": [
+        "tp",
+        "2in1",
+        "flip",
+        "convertible"
+      ],
+      "blurb": "Lenovo's premium 14-inch convertible ThinkPad: flips into a tablet, with a bigger screen than most 2-in-1s.",
+      "images": [
+        {
+          "id": "lenovo-thinkpad-x1-yoga-01",
+          "alt": "Lenovo ThinkPad X1 Yoga",
+          "placeholder": {
+            "tint": "#E3E8E4",
+            "glyph": "💻"
+          }
+        }
+      ],
+      "sheetAliases": [
+        "Lenovo | X1 Yoga x360"
+      ]
+    },
+    {
+      "modelId": "lenovo-thinkpad-x13-yoga-gen-1",
+      "name": "Lenovo ThinkPad X13 Yoga Gen 1",
+      "brand": "Lenovo",
+      "series": "ThinkPad",
+      "categoryId": "2-in-1",
+      "formFactor": "Convertible",
+      "screenInches": 13.3,
+      "typicalCpuGen": "10th Gen",
+      "searchAliases": [
+        "tp",
+        "2in1",
+        "flip",
+        "convertible"
+      ],
+      "blurb": "A 13.3-inch convertible ThinkPad that flips into a tablet for notes, signing documents and presenting.",
+      "images": [
+        {
+          "id": "lenovo-thinkpad-x13-yoga-gen-1-01",
+          "alt": "Lenovo ThinkPad X13 Yoga Gen 1",
+          "placeholder": {
+            "tint": "#E3E8E4",
+            "glyph": "💻"
+          }
+        }
+      ],
+      "sheetAliases": [
+        "Lenovo | Yoga X13 x360"
+      ]
+    },
+    {
+      "modelId": "lenovo-thinkpad-x380-yoga",
+      "name": "Lenovo ThinkPad X380 Yoga",
+      "brand": "Lenovo",
+      "series": "ThinkPad",
+      "categoryId": "2-in-1",
+      "formFactor": "Convertible",
+      "screenInches": 13.3,
+      "typicalCpuGen": "8th Gen",
+      "searchAliases": [
+        "tp",
+        "2in1",
+        "flip",
+        "convertible"
+      ],
+      "blurb": "A 13.3-inch convertible ThinkPad that flips into a tablet for notes, signing documents and presenting.",
+      "images": [
+        {
+          "id": "lenovo-thinkpad-x380-yoga-01",
+          "alt": "Lenovo ThinkPad X380 Yoga",
+          "placeholder": {
+            "tint": "#E3E8E4",
+            "glyph": "💻"
+          }
+        }
+      ],
+      "sheetAliases": [
+        "Lenovo | Yoga X380"
+      ]
+    },
+    {
+      "modelId": "lenovo-thinkpad-x390-yoga",
+      "name": "Lenovo ThinkPad X390 Yoga",
+      "brand": "Lenovo",
+      "series": "ThinkPad",
+      "categoryId": "2-in-1",
+      "formFactor": "Convertible",
+      "screenInches": 13.3,
+      "typicalCpuGen": "8th Gen",
+      "searchAliases": [
+        "tp",
+        "2in1",
+        "flip",
+        "convertible"
+      ],
+      "blurb": "A 13.3-inch convertible ThinkPad that flips into a tablet for notes, signing documents and presenting.",
+      "images": [
+        {
+          "id": "lenovo-thinkpad-x390-yoga-01",
+          "alt": "Lenovo ThinkPad X390 Yoga",
+          "placeholder": {
+            "tint": "#E3E8E4",
+            "glyph": "💻"
+          }
+        }
+      ],
+      "sheetAliases": [
+        "Lenovo | Yoga X390",
+        "Lenovo | Yoga X390 x360"
+      ]
+    },
+    {
+      "modelId": "lenovo-thinkpad-yoga-370",
+      "name": "Lenovo ThinkPad Yoga 370",
+      "brand": "Lenovo",
+      "series": "ThinkPad",
+      "categoryId": "2-in-1",
+      "formFactor": "Convertible",
+      "screenInches": 13.3,
+      "typicalCpuGen": "7th Gen",
+      "searchAliases": [
+        "tp",
+        "2in1",
+        "flip",
+        "convertible"
+      ],
+      "blurb": "A 13.3-inch convertible ThinkPad that flips into a tablet for notes, signing documents and presenting.",
+      "images": [
+        {
+          "id": "lenovo-thinkpad-yoga-370-01",
+          "alt": "Lenovo ThinkPad Yoga 370",
+          "placeholder": {
+            "tint": "#E3E8E4",
+            "glyph": "💻"
+          }
+        }
+      ],
+      "sheetAliases": [
+        "Lenovo | Yoga X370 x360"
+      ]
+    },
+    {
+      "modelId": "apple-macbook-pro-13-2012",
+      "name": "Apple MacBook Pro 13\" (2012)",
+      "brand": "Apple",
+      "series": "MacBook Pro",
+      "categoryId": "macbooks",
+      "formFactor": "Clamshell",
+      "screenInches": 13.3,
+      "typicalCpuGen": "3rd Gen",
+      "searchAliases": [
+        "mac",
+        "macbook"
+      ],
+      "blurb": "The 2012 13-inch MacBook Pro: the cheapest way into macOS. It no longer gets new macOS versions, so it suits writing, browsing and light work.",
+      "images": [
+        {
+          "id": "apple-macbook-pro-13-2012-01",
+          "alt": "Apple MacBook Pro 13\" (2012)",
+          "placeholder": {
+            "tint": "#E6E6EA",
+            "glyph": "💻"
+          }
+        }
+      ],
+      "sheetAliases": [
+        "Apple | MacBook Pro (2012)"
+      ]
+    },
+    {
+      "modelId": "apple-macbook-pro-13-2017",
+      "name": "Apple MacBook Pro 13\" (2017)",
+      "brand": "Apple",
+      "series": "MacBook Pro",
+      "categoryId": "macbooks",
+      "formFactor": "Clamshell",
+      "screenInches": 13.3,
+      "typicalCpuGen": "7th Gen",
+      "searchAliases": [
+        "mac",
+        "macbook"
+      ],
+      "blurb": "A 13-inch MacBook Pro with a sharp Retina display, for macOS users, designers and developers.",
+      "images": [
+        {
+          "id": "apple-macbook-pro-13-2017-01",
+          "alt": "Apple MacBook Pro 13\" (2017)",
+          "placeholder": {
+            "tint": "#E6E6EA",
+            "glyph": "💻"
+          }
+        }
+      ],
+      "sheetAliases": [
+        "Apple | MacBook Pro 13\" (2017)"
+      ]
+    },
+    {
+      "modelId": "apple-macbook-pro-13-2018",
+      "name": "Apple MacBook Pro 13\" (2018)",
+      "brand": "Apple",
+      "series": "MacBook Pro",
+      "categoryId": "macbooks",
+      "formFactor": "Clamshell",
+      "screenInches": 13.3,
+      "typicalCpuGen": "8th Gen",
+      "searchAliases": [
+        "mac",
+        "macbook"
+      ],
+      "blurb": "A 13-inch MacBook Pro with a sharp Retina display, for macOS users, designers and developers.",
+      "images": [
+        {
+          "id": "apple-macbook-pro-13-2018-01",
+          "alt": "Apple MacBook Pro 13\" (2018)",
+          "placeholder": {
+            "tint": "#E6E6EA",
+            "glyph": "💻"
+          }
+        }
+      ],
+      "sheetAliases": [
+        "Apple | MacBook Pro (2018)",
+        "Apple | MacBook Pro 13\" (2018)"
+      ],
+      "aliasFlags": {
+        "Apple | MacBook Pro (2018)": {
+          "inferred": [
+            "screen-ambiguous"
+          ]
+        }
+      }
+    },
+    {
+      "modelId": "hp-elitedesk-prodesk-g1-mini",
+      "name": "HP EliteDesk 800 / ProDesk 600 G1 Mini PC",
+      "brand": "HP",
+      "series": "EliteDesk/ProDesk",
+      "categoryId": "mini-pcs",
+      "formFactor": "Mini PC",
+      "screenInches": null,
+      "typicalCpuGen": "4th Gen",
+      "searchAliases": [
+        "desktop",
+        "mini",
+        "pc"
+      ],
+      "blurb": "A compact HP desktop that tucks behind a monitor, for office, cyber café and point-of-sale use.",
+      "images": [
+        {
+          "id": "hp-elitedesk-prodesk-g1-mini-01",
+          "alt": "HP EliteDesk 800 / ProDesk 600 G1 Mini PC",
+          "placeholder": {
+            "tint": "#E4E7EA",
+            "glyph": "🖥️"
+          }
+        }
+      ],
+      "sheetAliases": [
+        "HP | EliteBook 800 / ProDesk 600 G1 Mini PC (Desktop)"
+      ]
+    },
+    {
+      "modelId": "lenovo-thinkcentre-m73-tiny",
+      "name": "Lenovo ThinkCentre M73 Tiny",
+      "brand": "Lenovo",
+      "series": "ThinkCentre",
+      "categoryId": "mini-pcs",
+      "formFactor": "Mini PC",
+      "screenInches": null,
+      "typicalCpuGen": "4th Gen",
+      "searchAliases": [
+        "desktop",
+        "mini",
+        "pc"
+      ],
+      "blurb": "A palm-sized Lenovo desktop for reception desks, cyber cafés and point-of-sale counters. Plug in a monitor, keyboard and mouse.",
+      "images": [
+        {
+          "id": "lenovo-thinkcentre-m73-tiny-01",
+          "alt": "Lenovo ThinkCentre M73 Tiny",
+          "placeholder": {
+            "tint": "#E4E7EA",
+            "glyph": "🖥️"
+          }
+        }
+      ],
+      "sheetAliases": [
+        "Lenovo | ThinkCentre M73 Tiny (Desktop)"
+      ]
+    }
+  ]
+}

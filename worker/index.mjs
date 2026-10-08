@@ -132,7 +132,7 @@ async function createLead(request, env) {
 
 // Seller subdomains: the host serves that store's folder from the assets as its site root.
 // Add a host here and attach it as a Custom Domain on the Worker.
-const STORE_HOSTS = { 'faithnjogu.dukabee.co.ke': '/stores/faith' };
+const STORE_HOSTS = { 'faithnjogu.dukabee.co.ke': '/stores/faith', 'dobatron.dukabee.co.ke': '/stores/dobatron' };
 // The reverse of the above: a visit to dukabee.co.ke/stores/<id>/... redirects to that store's own subdomain
 // instead of also serving the files there. The store's HTML uses root-relative paths (e.g. its logo), which
 // only resolve correctly against ONE root - so it can only really live at one place, not two.
@@ -157,7 +157,18 @@ export default {
         target = new URL(res.headers.get('location'), target);
         res = await env.ASSETS.fetch(new Request(target, { method: request.method, headers: request.headers, redirect: 'manual' }));
       }
-      return res.status === 404 ? new Response('Not found', { status: 404 }) : res;
+      if (res.status === 404) {
+        // v2 storefronts ship their own 404 page; older stores get plain text.
+        const page = await env.ASSETS.fetch(new Request(new URL(`${storeRoot}/404.html`, url)));
+        return page.ok ? new Response(page.body, { status: 404, headers: { 'content-type': 'text/html; charset=utf-8' } }) : new Response('Not found', { status: 404 });
+      }
+      // Filtered shop views are shareable but shouldn't be indexed: /shop?… is noindex, follow (canonical /shop).
+      if (url.pathname.replace(/\/$/, '') === '/shop' && url.search) {
+        const headers = new Headers(res.headers);
+        headers.set('X-Robots-Tag', 'noindex, follow');
+        return new Response(res.body, { status: res.status, headers });
+      }
+      return res;
     }
     // v2 intake preview link: dukabee.co.ke/preview/<id>. Served as the store page itself (not a redirect,
     // so the address bar stays on the private link), with the preview id handed to its client script and
