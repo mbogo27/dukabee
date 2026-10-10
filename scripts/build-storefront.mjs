@@ -32,7 +32,7 @@ export function privacyLeaks(files, rawProducts) {
 
 export async function buildStorefront(id, { outDir = path.join(ROOT, 'dist', 'stores', id), dataDir = path.join(ROOT, 'data', id), log = console.log } = {}) {
   const catalog = new JsonCatalogSource(dataDir);
-  const content = new FileContentSource(path.join(dataDir, 'guides'));
+  const content = new FileContentSource(path.join(dataDir, 'guides'), path.join(dataDir, 'pages'));
   const result = await composeStorefront({ catalog, content, relFile: (f) => path.relative(ROOT, f).replace(/\\/g, '/') });
   for (const w of result.warnings) log(`  ⚠ ${w}`);
   if (result.errors.length) throw new BuildError(`${id}: ${result.errors.length} error(s)\n${result.errors.map((e) => `  ✗ ${e}`).join('\n')}`);

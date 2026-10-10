@@ -48,7 +48,7 @@ export function productCard(p, { model, eager = false, headingLevel = 3, attrs =
   const { title, config } = nameParts(p, model);
   const out = p.stock === 'out';
   return el('article', { class: `sf-card${out ? ' is-out' : ''}`, 'data-slug': p.slug, ...attrs }, [
-    `<a class="sf-card__link" href="${routes.product(p.slug)}">`,
+    `<a class="sf-card__link" href="${esc(p.href || routes.product(p.slug))}">`,
     imageRef(p.images?.[0], { cls: 'sf-card__img', eager, alt: title }),
     `<div class="sf-card__body">`,
     `<span class="sf-card__eyebrow">${esc([attr1(p, 'brand'), attr1(p, 'formFactor') !== 'Clamshell' ? attr1(p, 'formFactor') : null].filter(Boolean).join(' · '))}</span>`,
@@ -58,5 +58,25 @@ export function productCard(p, { model, eager = false, headingLevel = 3, attrs =
     `</div></a>`,
   ]);
 }
+
+/** Model card (a product-tree model, not a single offer): photo, name, configurations and the "from" price. */
+export function modelCard(m, { headingLevel = 3, attrs = {}, note = '' } = {}) {
+  const n = m.available?.length || 0;
+  const from = m.priceRange ? m.priceRange.lo : null;
+  return el('article', { class: `sf-card sf-card--model${n ? '' : ' is-out'}`, 'data-model': m.slug, ...attrs }, [
+    `<a class="sf-card__link" href="${esc(m.path)}">`,
+    imageRef(m.images?.[0], { cls: 'sf-card__img', alt: m.name }),
+    `<div class="sf-card__body">`,
+    `<span class="sf-card__eyebrow">${esc([m.brand?.name || m.brandName, m.series?.shortName].filter(Boolean).join(' · '))}</span>`,
+    `<h${headingLevel} class="sf-card__title">${esc(m.name)}</h${headingLevel}>`,
+    `<span class="sf-card__config">${esc(m.typicalSpecs || '')}</span>`,
+    note ? `<span class="sf-card__note">${esc(note)}</span>` : '',
+    `<span class="sf-card__foot">${from != null ? `<span class="sf-from">${n ? 'from' : 'last listed'}</span>${priceTag(from, { out: !n })}` : ''}<span class="sf-card__count">${n ? `${n} configuration${n === 1 ? '' : 's'}` : 'Ask us to source'}</span></span>`,
+    `</div></a>`,
+  ]);
+}
+
+/** Breadcrumb trail → nav markup. Items without href (current page, pageless levels) are plain text. */
+export const breadcrumbs = (trail) => `<nav class="sf-crumbs" aria-label="Breadcrumb"><ol>${trail.map((c, i) => `<li>${c.href ? `<a href="${esc(c.href)}">${esc(c.label)}</a>` : `<span${i === trail.length - 1 ? ' aria-current="page"' : ''}>${esc(c.label)}</span>`}</li>`).join('')}</ol></nav>`;
 
 export const ksh = formatKsh;

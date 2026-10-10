@@ -162,7 +162,11 @@ if (shop) {
   const cards = new Map($$('.sf-card', grid).map((c) => [c.dataset.slug, c]));
   const filters = $('[data-filters]');
   const searchInputs = [$('#sf-shop-q'), $('#sf-q')].filter(Boolean);
-  let q = C.parseQuery(location.search, keys);
+  // A category page lists one category; a stale ?category= from an old /shop link must not empty it.
+  const readQuery = () => { const parsed = C.parseQuery(location.search, keys); if (data.pageCategory) parsed.category = null; return parsed; };
+  const nouns = data.nouns || noun;
+  const plural = (n) => `${n} ${n === 1 ? nouns.one : nouns.many}`;
+  let q = readQuery();
 
   const robots = () => {
     let m = $('meta[name=robots]');
@@ -274,11 +278,108 @@ if (shop) {
     input.addEventListener('input', () => { clearTimeout(typing); typing = setTimeout(() => commit((s) => { s.q = input.value.trim(); }, false), 120); });
     input.form.addEventListener('submit', (e) => { e.preventDefault(); clearTimeout(typing); commit((s) => { s.q = input.value.trim(); }, true); input.blur(); });
   });
-  window.addEventListener('popstate', () => { q = C.parseQuery(location.search, keys); render(); });
+  window.addEventListener('popstate', () => { q = readQuery(); render(); });
   render();
 }
 
 renderCart();
+
+// ---- model page: the variant (offer) selector shows that offer's price, buttons and specs; ?variant= keeps it ----
+// The URL keeps ?variant= so a shared link opens the same configuration; the canonical stays the model page.
+const variants = $('[data-variants]');
+if (variants) {
+  const panels = $$('[data-variant-panel]');
+  const show = (slug, push) => {
+    if (!panels.some((p) => p.dataset.variantPanel === slug)) return;
+    panels.forEach((p) => { p.hidden = p.dataset.variantPanel !== slug; });
+    const radio = $(`input[value="${CSS.escape(slug)}"]`, variants); if (radio) radio.checked = true;
+    if (push) { const u = new URL(location.href); u.searchParams.set('variant', slug); history.replaceState(null, '', u); }
+  };
+  variants.addEventListener('change', (e) => { if (e.target.name === 'variant') { show(e.target.value, true); track('variant_select', { slug: e.target.value }); } });
+  const wanted = new URLSearchParams(location.search).get('variant');
+  if (wanted) show(wanted, false);
+}
+
+// ---- find-my-laptop quiz: answers map onto the same tags and offer fields as the rest of the site ----
+const quiz = $('[data-quiz]');
+if (quiz) {
+  const data = JSON.parse($('#sf-quiz').textContent);
+  const form = $('[data-quiz-form]', quiz);
+  const out = $('[data-quiz-results]', quiz);
+  const range = (id) => (id === 'any' ? null : C.parseRange(id));
+  const isPower = (m) => m.feature.includes('dedicated-graphics') || m.offers.some((o) => o.ram >= 16 || /i7|Ryzen 7/.test(o.cpu));
+  const isPortable = (m) => m.feature.includes('compact') || (m.screen && m.screen <= 13.3);
+
+  function match(a, relax = 0) {
+    const r = range(a.budget);
+    return data.models.map((m) => {
+      let offers = m.offers.filter((o) => o.available);
+      if (a.touch === 'yes' && relax < 1) offers = offers.filter((o) => o.touch);
+      if (a.touch === 'no' && relax < 1) offers = offers.filter((o) => !o.touch);
+      const inBudget = r ? offers.filter((o) => C.inRange(o.price, r)) : offers;
+      const pool = relax < 3 ? inBudget : offers;
+      if (!pool.length) return null;
+      let score = 0;
+      const why = [];
+      if (m.use.includes(a.use)) { score += 3; why.push(`good for ${data.useLabels[a.use].toLowerCase()}`); }
+      else if (relax < 2) return null;
+      if (a.style === 'portable' && isPortable(m)) { score += 2; why.push(`light and portable${m.screen ? ` (${m.screen}-inch)` : ''}`); }
+      if (a.style === 'power' && isPower(m)) { score += 2; why.push('extra power (16GB RAM, an i7/Ryzen 7 or dedicated graphics)'); }
+      if (a.style === 'portable' && !isPortable(m) && relax < 2) score -= 1;
+      const best = pool.slice().sort((x, y) => (a.style === 'power' ? y.ram - x.ram || x.price - y.price : x.price - y.price))[0];
+      // Prefer machines that stay useful: Windows 11 support (security updates) and at least 8GB of RAM.
+      if (m.feature.includes('windows-11-ready') || m.feature.includes('macos')) score += 1;
+      if (best.ram >= 8) score += 1;
+      if (a.touch === 'yes' && best.touch) why.push('touchscreen');
+      if (r && C.inRange(best.price, r)) why.push(`within your budget at ${C.formatKsh(best.price)}`);
+      return { m, best, score, why };
+    }).filter(Boolean).sort((x, y) => y.score - x.score || x.best.price - y.best.price);
+  }
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const f = new FormData(form);
+    const a = { use: f.get('use'), budget: f.get('budget'), style: f.get('style'), touch: f.get('touch') };
+    const missing = Object.entries(a).filter(([, v]) => !v).map(([k]) => k);
+    if (missing.length) { $(`input[name="${missing[0]}"]`, form).focus(); form.reportValidity(); return; }
+    // Always return something: relax touch, then use case, then budget until there are matches.
+    let relax = 0, found = match(a, 0);
+    while (found.length < 2 && relax < 3) found = match(a, ++relax);
+    const picks = found.slice(0, 3);
+    const guide = data.guides.find((g) => g.tags.includes(a.use));
+    const summary = `${data.useLabels[a.use]}, budget ${a.budget === 'any' ? 'open' : C.rangeLabel(a.budget, [])}, ${a.style === 'either' ? 'no preference on size' : a.style === 'portable' ? 'light and portable' : 'more power'}, touchscreen: ${a.touch === 'either' ? "don't mind" : a.touch}`;
+    const msg = (m) => `Hi Dobatron, Find my laptop suggested the ${m.name}. What I need: ${summary}. Is one available? ${location.origin}${m.href}`;
+    out.replaceChildren();
+    const h = document.createElement('h2');
+    h.textContent = relax ? 'The closest matches we can source' : `Your ${picks.length === 1 ? 'match' : `${picks.length} matches`}`;
+    out.append(h);
+    if (relax) { const p = document.createElement('p'); p.textContent = "Nothing matched every answer exactly, so these are the closest. Tell us what you need on WhatsApp and we'll try to source it."; out.append(p); }
+    for (const { m, best, why } of picks) {
+      const card = document.createElement('article');
+      card.className = 'sf-match';
+      const img = m.image ? Object.assign(document.createElement('img'), { src: m.image, alt: m.name, className: 'sf-img', loading: 'lazy' }) : document.createElement('div');
+      const body = document.createElement('div');
+      const title = document.createElement('h3'); const link = Object.assign(document.createElement('a'), { href: best.href, textContent: m.name }); title.append(link);
+      const cfg = Object.assign(document.createElement('p'), { className: 'sf-mono', textContent: `${best.label} · ${C.formatKsh(best.price)}` });
+      const reason = Object.assign(document.createElement('p'), { className: 'sf-match__why', textContent: why.length ? `Why: ${why.join(', ')}.` : 'The closest fit we can source right now.' });
+      const ctas = Object.assign(document.createElement('div'), { className: 'sf-match__ctas' });
+      ctas.append(Object.assign(document.createElement('a'), { className: 'sf-cta', href: best.href, textContent: 'See this laptop' }));
+      const w = Object.assign(document.createElement('a'), { className: 'sf-cta sf-cta--ghost', href: wa(msg(m)), target: '_blank', rel: 'noopener', textContent: 'Ask on WhatsApp ↗' });
+      w.addEventListener('click', () => track('quiz_whatsapp', { model: m.slug }));
+      ctas.append(w);
+      body.append(title, cfg, reason, ctas);
+      card.append(img, body);
+      out.append(card);
+    }
+    if (guide) { const p = document.createElement('p'); p.append('Want to read before you buy? '); p.append(Object.assign(document.createElement('a'), { href: guide.href, textContent: guide.title })); out.append(p); }
+    const again = Object.assign(document.createElement('button'), { type: 'button', className: 'sf-textlink', textContent: 'Change my answers' });
+    again.addEventListener('click', () => { out.hidden = true; form.hidden = false; form.scrollIntoView({ behavior: 'smooth' }); });
+    out.append(again);
+    form.hidden = true; out.hidden = false; out.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    // Log the answers: they show what buyers want and which models and guides to add.
+    track('quiz_complete', { ...a, relaxed: relax, results: picks.map((p) => p.m.slug).join(',') });
+  });
+}
 
 // ---- product photo gallery: thumbnails scroll the swipeable track; the track's position marks the thumbnail ----
 $$('[data-gallery]').forEach((g) => {

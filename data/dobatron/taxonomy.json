@@ -1,0 +1,338 @@
+{
+  "_note": "Product tree (Site Structure Spec): categories → brands → series → models → offers. Slugs are generated once and frozen; brand, series and model slugs share one namespace per category. A category or series only publishes when it has a model with an available offer. Brand pages publish when the brand has 2+ stocked series in the category.",
+  "metaCategories": [
+    {
+      "slug": "computers",
+      "name": "Computers"
+    }
+  ],
+  "categories": [
+    {
+      "slug": "laptops",
+      "name": "Laptops",
+      "metaCategory": "computers",
+      "status": "published",
+      "nouns": {
+        "one": "laptop",
+        "many": "laptops"
+      },
+      "title": "Grade A refurbished laptops",
+      "intro": "Business laptops from HP, Lenovo, Dell and Apple, sourced through our supplier network and sold Grade A only. Filter by budget, RAM, processor and more, then confirm the exact unit on WhatsApp."
+    },
+    {
+      "slug": "mini-pcs",
+      "name": "Mini PCs",
+      "metaCategory": "computers",
+      "status": "published",
+      "nouns": {
+        "one": "mini PC",
+        "many": "mini PCs"
+      },
+      "title": "Grade A refurbished mini PCs",
+      "intro": "Compact business desktops for reception desks, cyber cafés and point-of-sale counters. Add your own monitor, keyboard and mouse."
+    }
+  ],
+  "brands": [
+    {
+      "slug": "hp",
+      "name": "HP",
+      "category": "laptops",
+      "overview": "HP makes four of the lines we sell: EliteBook (premium business), ProBook (mid-range business), ZBook (mobile workstations with dedicated graphics) and Elite x2 (a detachable tablet). Start with the series that fits your budget."
+    },
+    {
+      "slug": "lenovo",
+      "name": "Lenovo",
+      "category": "laptops"
+    },
+    {
+      "slug": "dell",
+      "name": "Dell",
+      "category": "laptops"
+    },
+    {
+      "slug": "apple",
+      "name": "Apple",
+      "category": "laptops"
+    },
+    {
+      "slug": "hp",
+      "name": "HP",
+      "category": "mini-pcs"
+    },
+    {
+      "slug": "lenovo",
+      "name": "Lenovo",
+      "category": "mini-pcs"
+    }
+  ],
+  "series": [
+    {
+      "slug": "hp-elitebook",
+      "name": "HP EliteBook",
+      "shortName": "EliteBook",
+      "brand": "hp",
+      "category": "laptops",
+      "knownFor": "HP's premium business line: metal build, a good keyboard and easy to service. The 830 is 13.3-inch, the 840 and 845 are 14-inch, a model number ending in 5 (745, 845) means an AMD Ryzen chip, and x360 models fold back into a tablet.",
+      "advice": [
+        "For everyday office work the 840 G6 and 830 G6 are the value picks: 8th Gen chips that run Windows 11, for less than the G7 and G8.",
+        "If you keep many apps and tabs open, choose a 16GB configuration or the AMD 845 G8.",
+        "For presenting, signing documents or taking notes, the x360 830 models flip into a tablet.",
+        "The 840 G3 and G4 are the cheapest way into an EliteBook, but their 6th and 7th Gen chips can't officially run Windows 11."
+      ],
+      "faq": [
+        {
+          "q": "What does the G number on an EliteBook mean?",
+          "a": "It is the generation. On the 830 and 840: G3 has a 6th Gen Intel chip, G4 7th Gen, G5 and G6 8th Gen, G7 10th Gen and G8 11th Gen. A higher G is newer and faster."
+        },
+        {
+          "q": "What's the difference between the EliteBook 840 and 845?",
+          "a": "They share the same 14-inch design. The 840 uses an Intel processor; the 845 (like the 745) uses an AMD Ryzen processor, which is strong at multitasking."
+        }
+      ]
+    },
+    {
+      "slug": "hp-probook",
+      "name": "HP ProBook",
+      "shortName": "ProBook",
+      "brand": "hp",
+      "category": "laptops",
+      "knownFor": "HP's mid-range business line: the same practical design as the EliteBook at a lower price. The 450 is the big-screen 15.6-inch option with a number pad, and the x360 11 is a tough convertible made for school.",
+      "advice": [
+        "The 440 G8 has the newest chip in the range (11th Gen) at a mid-range price.",
+        "The 450 G7 suits anyone who wants a bigger screen and plenty of file space: an SSD plus a 1TB hard drive, and 2GB graphics.",
+        "The x360 11 G5 is for school work, browsing and video calls, not heavy software."
+      ],
+      "faq": [
+        {
+          "q": "ProBook or EliteBook: which should I buy?",
+          "a": "EliteBook is HP's premium line, with better materials and screens. ProBook is the mid-range line. For the same money a ProBook is usually a newer generation, so compare the processor generation, not just the name."
+        },
+        {
+          "q": "Which ProBook has the biggest screen?",
+          "a": "The ProBook 450 G7, with a 15.6-inch screen and a number pad."
+        }
+      ]
+    },
+    {
+      "slug": "hp-zbook",
+      "name": "HP ZBook",
+      "shortName": "ZBook",
+      "brand": "hp",
+      "category": "laptops",
+      "knownFor": "HP's mobile workstations: slim 14-inch laptops with dedicated NVIDIA graphics for CAD, design and video editing.",
+      "advice": [
+        "The Firefly 14 G8 is the most powerful laptop we list: 11th Gen i7, 32GB of RAM and 4GB graphics.",
+        "The Firefly 14 G6 is the lower-cost way into dedicated graphics, with a touchscreen."
+      ],
+      "faq": [
+        {
+          "q": "Do I need a workstation?",
+          "a": "Only if your software leans on the graphics card: CAD, 3D, design or video editing. For Office, browsing and video calls an EliteBook costs less and does the job."
+        }
+      ]
+    },
+    {
+      "slug": "hp-elite-x2",
+      "name": "HP Elite x2",
+      "shortName": "Elite x2",
+      "brand": "hp",
+      "category": "laptops",
+      "knownFor": "A 12-inch Windows tablet with a detachable keyboard, light enough to carry like a notebook.",
+      "advice": [
+        "Choose the 8GB / 256GB unit for everyday use.",
+        "The 4GB unit comes with a pen; it suits note-taking and light use rather than heavy multitasking."
+      ],
+      "faq": [
+        {
+          "q": "Is the Elite x2 a tablet or a laptop?",
+          "a": "Both. It is a Windows tablet; attach the keyboard and it works like a small laptop."
+        }
+      ]
+    },
+    {
+      "slug": "lenovo-thinkpad",
+      "name": "Lenovo ThinkPad",
+      "shortName": "ThinkPad",
+      "brand": "lenovo",
+      "category": "laptops",
+      "knownFor": "Lenovo's business line, known for its keyboards and the red TrackPoint. X models are small (12.5 to 13.3 inch), T models are the mainstream 14-inch line, X1 is the premium flagship, and Yoga models flip over into a tablet.",
+      "advice": [
+        "The X13 Gen 1 is the standout value: a 10th Gen chip and 16GB of RAM.",
+        "The T490s suits power users: i7, 16GB, 512GB and a touchscreen.",
+        "The X260 and X270 are the cheapest, small and tough, but they stay on Windows 10.",
+        "Want a pen and tablet mode? Look at the Yoga models; several come with a stylus."
+      ],
+      "faq": [
+        {
+          "q": "What does \"Yoga\" mean on a ThinkPad?",
+          "a": "The screen folds all the way back, so the laptop works as a tablet for notes, signing documents and presenting."
+        },
+        {
+          "q": "What are the X, T and X1 lines?",
+          "a": "X models are the small, light ThinkPads; T models are the mainstream 14-inch line; X1 is the premium flagship."
+        }
+      ]
+    },
+    {
+      "slug": "dell-latitude",
+      "name": "Dell Latitude",
+      "shortName": "Latitude",
+      "brand": "dell",
+      "category": "laptops",
+      "knownFor": "Dell's business line. The 5000 series is mainstream and the 7000 series premium, and the second digit is roughly the screen size: the 5300 is 13-inch, the 5400 14-inch and the 7280 12-inch.",
+      "advice": [
+        "The Latitude 5300 i5 is one of the cheapest laptops here that runs Windows 11.",
+        "The 5400 adds a 14-inch touchscreen.",
+        "The 7280 is the smallest; its processor generation varies, so check Windows 11 support with us for the exact unit."
+      ],
+      "faq": [
+        {
+          "q": "Which Latitude is best for a student?",
+          "a": "The Latitude 5300: 13-inch, light, and an 8th Gen chip that runs Windows 11."
+        }
+      ]
+    },
+    {
+      "slug": "apple-macbook-pro",
+      "name": "Apple MacBook Pro",
+      "shortName": "MacBook Pro",
+      "brand": "apple",
+      "category": "laptops",
+      "knownFor": "Apple's 13-inch MacBook Pro, for people who need macOS.",
+      "advice": [
+        "The 2018 models get the newest macOS versions of the three.",
+        "The 2017 model is a cheaper way into a Retina-screen MacBook Pro.",
+        "The 2012 model is the cheapest way into macOS, for writing, browsing and light work."
+      ],
+      "faq": [
+        {
+          "q": "Which macOS version can each MacBook Pro run?",
+          "a": "According to Apple, the 13-inch 2012 model's newest supported version is macOS Catalina, and the 13-inch 2018 four-port model supports macOS Sequoia. Ask us for the version installed on the exact unit."
+        }
+      ]
+    },
+    {
+      "slug": "hp-elitedesk-prodesk",
+      "name": "HP EliteDesk & ProDesk Mini",
+      "shortName": "EliteDesk & ProDesk",
+      "brand": "hp",
+      "category": "mini-pcs",
+      "knownFor": "HP's business mini desktops: the EliteDesk 800 and ProDesk 600 G1 Mini share one compact chassis that tucks behind a monitor.",
+      "advice": [
+        "Good for office, cyber café and point-of-sale use. Add your own monitor, keyboard and mouse."
+      ],
+      "faq": [
+        {
+          "q": "Does it run Windows 11?",
+          "a": "Not officially: its 4th Gen Intel chip is below the Windows 11 requirement."
+        }
+      ]
+    },
+    {
+      "slug": "lenovo-thinkcentre",
+      "name": "Lenovo ThinkCentre",
+      "shortName": "ThinkCentre",
+      "brand": "lenovo",
+      "category": "mini-pcs",
+      "knownFor": "Lenovo's palm-sized business desktop, the ThinkCentre M73 Tiny.",
+      "advice": [
+        "Made for reception desks, cyber cafés and point-of-sale counters. Plug in a monitor, keyboard and mouse."
+      ],
+      "faq": [
+        {
+          "q": "Does it run Windows 11?",
+          "a": "Not officially: its 4th Gen Intel chip is below the Windows 11 requirement."
+        }
+      ]
+    }
+  ],
+  "tags": [
+    {
+      "id": "student",
+      "type": "use_case",
+      "label": "Students",
+      "indexable": false
+    },
+    {
+      "id": "business",
+      "type": "use_case",
+      "label": "Office and business",
+      "indexable": false
+    },
+    {
+      "id": "coding",
+      "type": "use_case",
+      "label": "Programming",
+      "indexable": false
+    },
+    {
+      "id": "design",
+      "type": "use_case",
+      "label": "Design and video",
+      "indexable": false
+    },
+    {
+      "id": "touchscreen",
+      "type": "feature",
+      "label": "Touchscreen",
+      "indexable": false
+    },
+    {
+      "id": "2-in-1",
+      "type": "feature",
+      "label": "2-in-1",
+      "indexable": false
+    },
+    {
+      "id": "dedicated-graphics",
+      "type": "feature",
+      "label": "Dedicated graphics",
+      "indexable": false
+    },
+    {
+      "id": "stylus",
+      "type": "feature",
+      "label": "Stylus pen",
+      "indexable": false
+    },
+    {
+      "id": "compact",
+      "type": "feature",
+      "label": "Compact (13.3\" or smaller)",
+      "indexable": false
+    },
+    {
+      "id": "windows-11-ready",
+      "type": "feature",
+      "label": "Windows 11 ready",
+      "indexable": false
+    },
+    {
+      "id": "macos",
+      "type": "feature",
+      "label": "macOS",
+      "indexable": false
+    },
+    {
+      "id": "under-30k",
+      "type": "price_band",
+      "label": "Under KSh 30K",
+      "indexable": false,
+      "range": "0-30000"
+    },
+    {
+      "id": "30-45k",
+      "type": "price_band",
+      "label": "KSh 30K–45K",
+      "indexable": false,
+      "range": "30000-45000"
+    },
+    {
+      "id": "45k-plus",
+      "type": "price_band",
+      "label": "KSh 45K+",
+      "indexable": false,
+      "range": "45000-"
+    }
+  ]
+}

@@ -1,87 +1,79 @@
 # Dobatron spec → repo mapping
 
-Required by `dobatron-store-spec.md` §0.2. Like `docs/v2-mapping.md`, the spec assumes Astro; this repo is Kiwanda
-(plain template-literal HTML, no framework, no dependencies). Dobatron is built as a **store on Duka Bee**: every
-capability it needs is a generic, opt-in Kiwanda module ("storefront v2"), switched on by Dobatron's data. Kladi,
-Jikoni, Rembo and Faith are untouched and still render through the v1 composer (`npm run check` passes).
+Two specs shape this store: `dobatron-store-spec.md` (the original build, §0.2 asks for this file) and
+`Dobatron Site Structure Spec.md` (2026-10-10: product tree, URLs, data model, tags, guides, trust layer, quiz). Like
+`docs/v2-mapping.md`, the first spec assumes Astro; the code is Kiwanda (plain template-literal HTML, no framework, no
+dependencies). Dobatron is a **store on Duka Bee**: every capability is a generic, opt-in Kiwanda module ("storefront
+v2"), switched on by Dobatron's data. Kladi, Jikoni, Rembo and Faith still render through the v1 composer.
 
-## Where things live
+## Site Structure Spec → implementation
 
-| Spec | Repo |
+| Spec | Where |
 |---|---|
-| `scripts/dobatron-import.ts` | `scripts/dobatron-import.mjs` (repo is `.mjs` throughout). Generic parts in `pipeline/supplier-import.mjs`; laptop spec parsing in `pipeline/verticals/laptops.mjs`; `.xlsx` reading with no dependency in `scripts/lib/xlsx.mjs` |
-| `data/dobatron/{source,models,store,products}.json` | Same paths. `store.json` = seed `pricing, store, categories, attributes, priceBuckets, banners, homepage` |
-| `reports/dobatron-import-YYYY-MM-DD.md` | Same path, written per run |
-| `src/content/guides/*.md` (Astro content collection) | `data/dobatron/guides/*.md`, read through `FileContentSource` (`kiwanda/v2/source.mjs`) |
-| `CatalogSource` | `JsonCatalogSource` in `kiwanda/v2/source.mjs`. All storefront reads go through it |
-| remark-directive embeds | `kiwanda/v2/markdown.mjs` (frontmatter, headings, paragraphs, lists, inline marks, `::product/::products/::compare` with line numbers) |
-| `composeHomepage` (v2 Phase 3) | `kiwanda/v2/compose.mjs`: vocabulary, the 3 recipes, tiers, rules 1–7, `{filter}` rail source, labelled tabs, `sort/limit/seeAll`, `filter` banner target, `{count}/{fromPrice}` tokens, `guideTeaser` |
-| Product page (v2 Phase 2) + Dobatron additions | `kiwanda/v2/pages.mjs` (`/p/<slug>`) |
-| Checkout presets (v2 Phase 4) | `checkoutForm` in `kiwanda/v2/sections.mjs` (field library; options follow confirmed policies) + message builder in `kiwanda/runtime/storefront.js` |
-| Island props / client search index | One inline `<script type="application/json" id="sf-index">` on `/shop`: slim entries (`indexEntry` in `kiwanda/v2/catalog.mjs`), no `cost` |
-| Filters, facet counts, search, sort | `kiwanda/v2/catalog.mjs`. Isomorphic: the build and the browser import the same file, so pre-rendered counts and live counts can't drift |
-| Astro build | `scripts/build-storefront.mjs` (also run by `npm run build`) → `dist/stores/dobatron/` |
-| Routes `/`, `/shop`, `/p/[slug]`, `/guides`, `/guides/[slug]` | `index.html`, `shop.html`, `p/<slug>.html`, `guides.html`, `guides/<slug>.html`. Cloudflare's asset layer serves them extensionless; `worker/index.mjs` maps `dobatron.com` → `/stores/dobatron`; `www.dobatron.com` and `dobatron.dukabee.co.ke` 301 to it |
+| Data model: category, brand, series, model, offer, typed tags | `data/dobatron/taxonomy.json` (categories with `metaCategory`, brands per category, series with page copy, tag vocabulary); `models.json` gains `slug`, `category`, `brandSlug`, `seriesSlug`, `status`, `tags`; `products.json` entries are the **offers** |
+| Product tree, publishing rules, namespace | `kiwanda/v2/tree.mjs` `buildTree`: paths, price ranges, price bands, generation and typical specs, related models by shared tags, breadcrumbs. Categories publish only with an available offer; brand pages only with 2+ stocked series; brand/series/model slugs share one namespace per category (a clash fails the build) |
+| Flat URLs `/[category]/[slug]` | `pages.mjs`: `/laptops`, `/laptops/hp` (brand), `/laptops/hp-elitebook` (series), `/laptops/hp-elitebook-840-g6` (model), `/mini-pcs/…`. Files are `laptops.html`, `laptops/<slug>.html`; Cloudflare's asset layer serves them extensionless |
+| Variants have no URL | Offers are chosen on the model page (`[data-variants]`), `?variant=<offer>` preselects one, canonical stays the model |
+| Never reuse or delete a slug; 301s | `redirects.json` (generated): every `/p/<offer>` → `/laptops/<model>?variant=<offer>`, `/shop` → `/laptops`, renamed guides via `redirectFrom`. Served by `worker/index.mjs` (production) and `scripts/preview.mjs` (local) |
+| Model page template | `pages.mjs` model section: photos, dated "price in Kenya" line, variant selector, Grade A, WhatsApp buttons with the model and configuration pre-filled, "Request a video of this machine", buy-with-confidence strip, specs, related guides and models from shared tags, up-link to the series. All offers unavailable → page stays, "Ask us on WhatsApp" + a similar model |
+| Series page template | Summary box (range, Grade A, models, as-of date, known for), models table, one anchored "Model price in Kenya" section per model with 2–3 cards, buying advice, series FAQ (`FAQPage` JSON-LD), related guides, up-link |
+| Breadcrumbs on every page | `tree.crumbs()` + `breadcrumbs()`; meta-category (Computers) and brands without a page show as text; `BreadcrumbList` JSON-LD lists the linked levels |
+| Guides as records | Frontmatter: `type`, `primaryQuery`, `tagsTargeted`, `modelsFeatured`, `lastVerified`, `status`, `redirectFrom`. Product lists are queries: `::models{tags="student" band="0-30000" limit="4"}`. FAQ section → `FAQPage` JSON-LD. Breadcrumbs Home › Guides › guide |
+| Trust pages | `data/dobatron/pages/{about,grade-a,how-it-works}.md` → `/about`, `/grade-a`, `/how-it-works` |
+| Find-my-laptop quiz | `/find-my-laptop` (noindex): 4 questions mapped to `use_case` tags, price bands, compact/power fields and the offer `touch` field; 2–3 matches with a reason, WhatsApp carrying the answers, links to the matching use-case guide, always returns something (relaxes touch → use → budget); logs `quiz_complete` |
+| Condition: Grade A only | `store.condition` and every offer's `condition` attribute; JSON-LD `RefurbishedCondition` |
+| Canonicals, sitemap on .co.ke | `store.domain = "dobatron.co.ke"`; sitemap lists home, categories, brand, series, models, guides, trust pages (not the quiz, filters or legacy URLs) |
+| Filter views not indexed | client-side `noindex, follow` on `?` views, canonical to the category; the worker adds `X-Robots-Tag` on `/laptops?…` |
 
-## Spec §9 core capabilities → implementation
+## Decisions and interpretations (Site Structure Spec)
 
-| Capability | Where |
+- **Mini PCs are their own category** (`/mini-pcs`, meta-category Computers): they are stocked, and they aren't laptops. The old categories (business laptops, 2-in-1, MacBooks, workstations) became series pages and the Type/Series filters.
+- **Slugs are the existing model ids**, frozen. Two keep a year or size because it is part of the model's name, not a changing attribute: `apple-macbook-pro-13-2012/2017/2018`.
+- **Tags** were assigned once from the data (`touchscreen`, `2-in-1`, `dedicated-graphics`, `stylus`, `compact`, `windows-11-ready`, `macos`; `student`, `business`, `coding`, `design` by rule) and are now hand-editable. Unverifiable features (backlit keyboard, USB-C charging, long battery) are **not** tagged. `price_band` is computed from offer prices at build so it can't go stale.
+- **Price ranges** come from offers; the "as of" date is the stock import date (`products.json` `generatedAt`). Market research isn't included yet.
+- **Category listing shows offers** (each configuration), linking to its model with `?variant=`, so filters and counts stay exact.
+- **Budget guide renamed** to `/guides/best-refurbished-laptops-kenya-by-budget` (301 from the ex-UK slug) and reworded for the Grade A positioning; three use-case guides added (students, programming, design). "How we test a laptop" waits for the inspection checklist.
+- **Claims:** "ex-UK" and "In stock" are gone; offers say "Available through our supplier network · confirm on WhatsApp". The build tests enforce this.
+- **Not built yet (spec says later or when justified):** meta-category pages, other brand pages, expanded model sections (price by spec, strengths and weaknesses), comparison guides, curated tag pages.
+
+## Original store spec → implementation
+
+| Spec | Where |
 |---|---|
-| `AttributeDef` schema (filterable/selectable/display/order) + `summary`, `valueSummaries`, `valueHints`, `explainer` | `data/<store>/store.json` → `buildFacets`, spec table, compare table, WhatsApp filter summary |
-| Faceted filters with counts, URL state, mobile sheet | `catalog.mjs` + `/shop` in `pages.mjs` + `storefront.js` (pushState, back/forward, reload) |
-| Client search with aliases, cost-free | `models.json` `searchAliases`; `normalizeSearch` folds "2 in 1", "elite book", "think pad", "mac book" |
-| `modelId` grouping + "Other configurations" | `pages.mjs` (chips show only the attributes that differ) |
-| `inferred` marks + footnote | `pages.mjs` (≈ on spec table and compare table; extra notes via `store.inferredNotes`) |
-| Out-of-stock request mode | importer lifecycle + `pages.mjs` (greyed "Last listed at", Request CTA, `OutOfStock`) + `catalog.pool` (hidden from the default listing, last when filtering) |
-| Homepage composer additions, banner tokens | `compose.mjs` |
-| `bannerFallback: "flat"` | `sections.mjs` (`gradient` still available for other stores) |
-| Guides, embeds, `guideTeaser` | `markdown.mjs`, `pages.mjs`, `compose.mjs` |
-| Pricing rule + private `cost` | `priceFromCost`; `publicProduct` strips it; the build **fails** if a `cost` key or any cost figure appears in output (`privacyLeaks`) |
-| `checkout.closingLine` | `store.json` → message builder |
-| "Store built on Duka Bee" footer credit | `store.poweredBy` → `footer()` |
-| Supplier-sheet importer pattern | `pipeline/supplier-import.mjs` + a vertical module |
+| Importer (`scripts/dobatron-import.ts`) | `scripts/dobatron-import.mjs`; `pipeline/supplier-import.mjs` + `pipeline/verticals/laptops.mjs`; `.xlsx` with no dependency in `scripts/lib/xlsx.mjs` |
+| `CatalogSource` / `ContentSource` | `kiwanda/v2/source.mjs` (`JsonCatalogSource` + `getTaxonomy`, `FileContentSource` for guides and pages) |
+| `composeHomepage` | `kiwanda/v2/compose.mjs`: vocabulary, recipes, tiers, rules 1–7, filter/series banner targets, `{count}/{fromPrice}`, series navigation (`items: "series"`) |
+| Filters, counts, search, sort | `kiwanda/v2/catalog.mjs`, shared by build and browser |
+| Checkout presets | `checkoutForm` in `sections.mjs` + message builder in `runtime/storefront.js` |
+| Private `cost` | stripped by `publicProduct`; the build fails if a `cost` key or figure reaches the output |
 
-## Decisions and interpretations
-
-- **Registry additions** (`models.json`): `typicalCpuGen` (null where a model spans generations: X270, Latitude 7280, 11e Yoga, X1 Yoga, ProBook x360 11 G5), `typicalRyzenSeries` for AMD models (drives Windows 11: 2000 → Check, 3000+ → Yes), `searchAliases`, and `aliasFlags`, which marks the sheet alias `Apple | MacBook Pro (2018)` (no size) as `screen-ambiguous`.
-- **Duplicates:** kept at the higher price. Stated facts beat inferred ones, extras are unioned, and `inferred` is the intersection.
-- **Curated fields survive re-imports:** `featured`, `bestseller` and `createdAt` come from the previous `products.json`. Set `customDescription: true` on a product to keep a hand-written description.
-- **Price inversion:** same model, same CPU family, and ≥ on CPU tier, RAM, storage and touch, better on at least one, yet cheaper. On this sheet that finds exactly the two in §12.
-- **Out of stock:** hidden from the default `/shop` listing and rails; shown (sorted last) once any filter or search is active; the page stays live and in the sitemap.
-- **Rule 4 (≤2 appearances)** is enforced, so the "Business laptops" grid skips the Latitude 5400 (already in Staff picks and the Touchscreen tab) and shows the next cheapest.
-- **`featured` rail source** tops up with other products when fewer than 4 are flagged, so small stores still get a product grid.
-- **Canonical domain:** `dobatron.com` (`store.domain`). Canonicals, sitemap, JSON-LD and `og:image` use it.
-- **Contact:** WhatsApp and calls go to `+254717571951` (`store.whatsapp`, `store.phoneDisplay`). It replaces the spec's 0743 747 496, which is Duka Bee's own number.
-- **Photos:** keyed by model. `python scripts/dobatron-images.py <folder>` converts `<modelId>-01.jpg|png|webp` (any subfolder) to WebP in `data/dobatron/images/` and updates `models.json`. Models without their own photo borrow one per `data/dobatron/image-standins.json`; the product page then says "Photo shows a similar model". The build fails if a model points at a missing image.
-- **`/shop?…` noindex:** the worker sends `X-Robots-Tag: noindex, follow` on filtered views; the page also adds the meta tag client-side. Canonical is `/shop`.
-- **Analytics:** events (`sourcing_request`, `guide_embed_click`, `add_to_cart`, `begin_checkout`, `checkout_preview`, `whatsapp_order`, `ask_click`, `request_click`) go to `window.dataLayer` (and `gtag` if a store adds one). No GA tag on seller stores, per the README.
+Earlier decisions still apply: duplicates kept at the higher price, curated fields (`featured`, `createdAt`, `customDescription`) survive re-imports, price inversions as defined in the import report, out-of-stock offers hidden from default listings, ≤2 appearances per product on the homepage, photos keyed by model with labelled stand-ins (`image-standins.json`).
 
 ## Testing
 
-`npm test` runs 41 tests (`node:test`, no dependencies):
-- `tests/dobatron/`: import snapshot, catalog, `composeHomepage` and build output, covering spec §10.1–10.7.
-- `tests/browser/`: headless Chrome/Edge over CDP. Covers 360px overflow, filter state across reload and back, live search, the empty state and tabs. Skips when no browser is installed.
-
-**Import fixture:** `laptop_stock_no_markup.xlsx` wasn't in the repo, so `tests/fixtures/dobatron/make-fixture.mjs` rebuilds a stand-in from the spec's catalog. It keeps the same 68 rows, row numbers, aliases and costs, including the low half of each duplicate pair. Drop the real sheet at `data/dobatron/source/laptop_stock_no_markup.xlsx` and the snapshot test uses it instead. If it fails there, the parser needs the sheet's real wording.
-
-Lighthouse 12 (local preview): SEO 100 and Accessibility 100 on `/`, `/shop`, a product page and the guide.
+`npm test` runs 53 tests (`node:test`, no dependencies): import snapshot, catalog engine, homepage composition, build output (URL scheme, redirects, namespace, page templates, breadcrumbs, guides, trust pages, claims, canonicals, sitemap, privacy) and headless-browser checks (360px, filter state across reload/back, legacy redirect → variant, quiz).
 
 ## Deploy
 
-Live on **https://dobatron.com** since 2026-10-08 (worker `dukabee`, version 744bb333).
+Currently live: **https://dobatron.com** (worker `dukabee`, Worker routes `dobatron.com/*` and `www.dobatron.com/*`), still on the pre-restructure version.
 
-- `npm run deploy` builds everything (including `dist/stores/dobatron`) and deploys the `dukabee` worker, which also serves dukabee.co.ke and Faith's store.
-- dobatron.com is attached with **Worker routes** (`dobatron.com/*`, `www.dobatron.com/*` → `dukabee`, zone `dobatron.com`), not Custom Domains. The zone's existing DNS records (an A record to a cPanel host at 185.166.155.186, plus MX/SPF/DKIM/CalDAV records) are left untouched. To undo, delete the two routes in Cloudflare → dobatron.com → Workers Routes.
-- The worker answers `dobatron.com` from `/stores/dobatron`, and 301s `www.dobatron.com` and `dobatron.dukabee.co.ke` to it.
-- **Email:** MX points at `dobatron.com`, whose A record is proxied, so mail to @dobatron.com probably doesn't arrive. That was already the case before this deploy. To use cPanel mail, point MX at an unproxied `mail` A record.
+The restructured build uses **dobatron.co.ke** for canonicals, sitemap and structured data, and **dobatron.co.ke is not on the Cloudflare account yet**. Deploying before it is attached would point search engines at a domain that doesn't answer. To go live:
 
-## Still to confirm (spec §12): where each answer goes
+1. Add the `dobatron.co.ke` zone to Cloudflare (point the domain's nameservers at Cloudflare) and attach `dobatron.co.ke` and `www.dobatron.co.ke` to the `dukabee` worker (Custom Domains, or routes like dobatron.com).
+2. `npm run deploy` in the Duka Bee repo. The worker then serves dobatron.co.ke, 301s `www.dobatron.co.ke`, `dobatron.com`, `www.dobatron.com` and `dobatron.dukabee.co.ke` to it, and answers the legacy URLs in `redirects.json` with 301s.
+3. Check `https://dobatron.co.ke/`, `/laptops`, a model page, a legacy `/p/…` URL and that `dobatron.com` redirects.
+
+**Email:** MX for dobatron.com points at a proxied hostname, so mail there probably doesn't arrive (already the case before Dobatron). Set up mail on dobatron.co.ke with an unproxied mail record.
+
+## Still to confirm
 
 | Item | Change |
 |---|---|
-| Markup % | `pricing.markupPct` in `store.json`, then re-run the importer. The build warns on any guide embed that leaves its band |
-| Duplicate prices | Edit the sheet (or `products.json` price) for the 4 pairs in the report |
-| Policies (delivery, pickup, warranty, returns) | Move items from `store.policiesToConfirm` to `store.policies`; add `checkout.pickupPoints`. With ≥2 policies the trust strip appears automatically |
-| Condition (used vs refurbished) | `store.condition`, `store.itemCondition` (`RefurbishedCondition`) |
-| Domain | Done: `dobatron.com` |
-| Mini PC naming, X390 Yoga twins, inferred specs | `models.json` (name/blurb/aliases) or the sheet |
+| Markup % | `pricing.markupPct` in `store.json`, then re-run the importer |
+| Duplicate prices (4 pairs) | the sheet, or `products.json` |
+| Warranty, returns, delivery, pickup | `store.policies`, `checkout.pickupPoints`, `pages/how-it-works.md` |
+| Grade A criteria and battery threshold | `pages/grade-a.md` (currently lists what is checked, thresholds pending) |
+| Godfrey on About; origin story; response hours | `pages/about.md` |
+| Price-range method (market research) | today's ranges come from offers only |
+| Final tag list (20–40) | `taxonomy.json` `tags` + model `tags` |
+| Lower grades in data? | not stored; only Grade A exists in the data |

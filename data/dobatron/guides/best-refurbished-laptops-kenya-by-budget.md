@@ -1,13 +1,21 @@
 ---
-title: "The best ex-UK laptops in Kenya by budget (2026)"
-description: "Which ex-UK laptop to buy at every budget, how to decode EliteBook, ThinkPad and Latitude model names, and what to check before you pay."
-slug: best-ex-uk-laptops-kenya-by-budget
+title: "The best refurbished laptops in Kenya by budget (2026)"
+description: "Which Grade A refurbished laptop to buy at every budget, how to decode EliteBook, ThinkPad and Latitude model names, and what to check before you pay."
+slug: best-refurbished-laptops-kenya-by-budget
+type: use-case
+primaryQuery: best refurbished laptops in kenya
+tagsTargeted: under-30k, 30-45k, 45k-plus, student, business
+modelsFeatured: dell-latitude-5300, lenovo-thinkpad-x13-gen-1, hp-elitebook-840-g6, lenovo-thinkpad-t490s, hp-zbook-firefly-14-g8
+redirectFrom: best-ex-uk-laptops-kenya-by-budget
 publishedAt: 2026-10-08
-updatedAt: 2026-10-08
+updatedAt: 2026-10-10
+lastVerified: 2026-10-10
 author: Dobatron
 ---
 
-Ex-UK laptops are business machines that spent their first years in British offices before being shipped to Kenya and resold. They were built to survive daily office use, so a good one will outlast a new budget laptop at the same price. The catch is that every listing looks the same: "HP 840 G6 i5 8/256". This guide decodes the names and picks the best value at each budget.
+Short answer: on a tight budget get the Dell Latitude 5300, in the middle the ThinkPad X13 Gen 1 or EliteBook 840 G6, and if you need graphics power the ZBook Firefly 14 G8. Each one runs Windows 11 and is sold Grade A only.
+
+Refurbished business laptops spent their first years in offices, then were inspected and restored. They were built for daily office use, so a good one outlasts a new budget laptop at the same price. The catch is that every listing looks the same: "HP 840 G6 i5 8/256". This guide decodes the names and picks the best value at each budget. For full price ranges per model, see the series pages: [EliteBook](/laptops/hp-elitebook), [ThinkPad](/laptops/lenovo-thinkpad), [Latitude](/laptops/dell-latitude) and [MacBook Pro](/laptops/apple-macbook-pro).
 
 ## First, decode the model name
 
@@ -39,7 +47,7 @@ This is where most buyers should look. The Dell Latitude 5400 gives you a 14-inc
 
 ## KSh 35,000 to 45,000: EliteBook 840 territory
 
-The EliteBook 840 is what most people mean when they say "ex-UK laptop". Here are three generations with the same i5, 8GB RAM, 256GB storage and touchscreen, so the only difference is the processor generation:
+The EliteBook 840 is the laptop most people picture when they think of a refurbished business laptop. Here are three generations with the same i5, 8GB RAM, 256GB storage and touchscreen, so the only difference is the processor generation:
 
 ::compare{slugs="hp-elitebook-840-g6-i5-8gb-256gb-touch,hp-elitebook-840-g7-i5-8gb-256gb-touch,hp-elitebook-840-g8-i5-8gb-256gb-touch"}
 
@@ -72,6 +80,16 @@ Whoever you buy from, check these on the actual unit:
 - **Ports and charger.** Test every USB port, the charging port and HDMI if you need it. Make sure the charger is the right wattage.
 - **Wi-Fi, webcam, mic and speakers.** One quick video call tests all four.
 
-When you order from Dobatron, ask us on WhatsApp for photos and the battery report of the exact unit before you pay.
+When you order from Dobatron, ask us on WhatsApp for photos, a video and the battery report of the exact unit before you pay. See [how buying from us works](/how-it-works).
 
-Not sure which one fits? [Send us your budget and what you'll use it for on WhatsApp](https://wa.me/254717571951?text=Hi%20Dobatron%2C%20help%20me%20pick%20a%20laptop.%20Budget%3A%20%20Use%3A%20).
+## FAQ
+
+### Is a refurbished laptop as good as a new one?
+
+A Grade A business laptop is built to a higher standard than most new budget laptops, so it often lasts longer. What matters is the condition of the exact unit, which is why we only sell Grade A and confirm each unit with you before you pay.
+
+### Which budget gets the best value?
+
+The middle band, where a 10th Gen ThinkPad X13 with 16GB or an 8th Gen EliteBook 840 G6 costs far less than a comparable new laptop. See the [ThinkPad](/laptops/lenovo-thinkpad) and [EliteBook](/laptops/hp-elitebook) pages for current price ranges.
+
+Not sure which one fits? Try [Find my laptop](/find-my-laptop), or [send us your budget and what you'll use it for on WhatsApp](https://wa.me/254717571951?text=Hi%20Dobatron%2C%20help%20me%20pick%20a%20laptop.%20Budget%3A%20%20Use%3A%20).

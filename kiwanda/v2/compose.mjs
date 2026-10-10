@@ -70,21 +70,27 @@ export function composeHomepage(store, catalog, report = {}) {
 
   // ---- resolvers ----
   const categoryProducts = (id) => inStock.filter((p) => p.categoryId === id);
-  const shopHref = (q) => { const s = serializeQuery(q, attrKeys); return `/shop${s ? `?${s}` : ''}`; };
+  // Where a listing link goes: the store can route it (e.g. /laptops?…); the default is /shop?….
+  const shopHref = (q) => {
+    if (catalog.listingHref) return catalog.listingHref(q, attrKeys);
+    const s = serializeQuery(q, attrKeys);
+    return `/shop${s ? `?${s}` : ''}`;
+  };
+  const allHref = (sort) => shopHref({ ...parseQuery({}, attrKeys), sort: sort || 'recommended' });
   const offerLive = (p) => p.compareAtPrice > p.price && p.offerEndsAt && new Date(p.offerEndsAt) > now;
 
   function resolveSource(src) {
     // Featured tops up with the rest of the catalog when a small store has flagged fewer than a rail's worth.
     if (src === 'featured') {
       const picks = sortProducts(inStock.filter((p) => p.featured));
-      return { products: picks.length >= RAIL_MIN ? picks : [...picks, ...sortProducts(inStock.filter((p) => !p.featured))], href: '/shop' };
+      return { products: picks.length >= RAIL_MIN ? picks : [...picks, ...sortProducts(inStock.filter((p) => !p.featured))], href: allHref() };
     }
-    if (src === 'bestseller') return { products: sortProducts(inStock.filter((p) => p.bestseller)), href: '/shop' };
-    if (src === 'onOffer') return { products: inStock.filter(offerLive), href: '/shop' };
+    if (src === 'bestseller') return { products: sortProducts(inStock.filter((p) => p.bestseller)), href: allHref() };
+    if (src === 'onOffer') return { products: inStock.filter(offerLive), href: allHref() };
     if (src === 'new') {
       const recent = inStock.filter((p) => now - new Date(p.createdAt) <= 30 * 864e5);
       const list = sortProducts(recent.length >= RAIL_MIN ? recent : inStock, 'newest');
-      return { products: recent.length >= RAIL_MIN ? list : list.slice(0, 8), href: '/shop?sort=newest' };
+      return { products: recent.length >= RAIL_MIN ? list : list.slice(0, 8), href: allHref('newest') };
     }
     if (src && typeof src === 'object' && 'category' in src) {
       const q = { ...parseQuery({ category: src.category }, attrKeys), sort: src.sort || 'recommended' };
@@ -95,14 +101,15 @@ export function composeHomepage(store, catalog, report = {}) {
       if (src.sort) q.sort = src.sort;
       return { products: results(inStock, q, ctx), href: shopHref(q) };
     }
-    return { products: [], href: '/shop' };
+    return { products: [], href: allHref() };
   }
 
   function resolveTarget(t) {
     if (!t) return null;
     if (t.type === 'url') return { href: t.href, products: [] };
-    if (t.type === 'product') { const p = inStock.find((x) => x.id === t.id || x.slug === t.id); return p ? { href: `/p/${p.slug}`, products: [p] } : null; }
-    if (t.type === 'offer') { const ps = inStock.filter(offerLive); return ps.length ? { href: '/shop', products: ps } : null; }
+    if (t.type === 'product') { const p = inStock.find((x) => x.id === t.id || x.slug === t.id); return p ? { href: p.href || `/p/${p.slug}`, products: [p] } : null; }
+    if (t.type === 'series') { const ps = inStock.filter((p) => p.seriesSlug === t.id); return ps.length >= TARGET_MIN ? { href: catalog.seriesHref ? catalog.seriesHref(t.id) : shopHref(parseQuery({}, attrKeys)), products: ps } : null; }
+    if (t.type === 'offer') { const ps = inStock.filter(offerLive); return ps.length ? { href: allHref(), products: ps } : null; }
     if (t.type === 'category') { const ps = categoryProducts(t.id); return ps.length >= TARGET_MIN ? { href: shopHref(parseQuery({ category: t.id }, attrKeys)), products: ps } : null; }
     if (t.type === 'filter') {
       const q = parseQuery(t.query || {}, attrKeys);
@@ -168,7 +175,10 @@ export function composeHomepage(store, catalog, report = {}) {
         return ok.length >= BANNERS_NEEDED[s.variant] ? { banners: ok } : null;
       }
       case 'categoryNav': {
-        const cats = (catalog.categories || []).map((c) => ({ ...c, count: categoryProducts(c.id).length, href: shopHref(parseQuery({ category: c.id }, attrKeys)) })).filter((c) => c.count >= 1);
+        // `items: "series"` navigates the product tree's series pages instead of category filters.
+        const cats = s.items === 'series'
+          ? (catalog.series || []).map((x) => ({ ...x, count: inStock.filter((p) => p.seriesSlug === x.id).length })).filter((c) => c.count >= 1)
+          : (catalog.categories || []).map((c) => ({ ...c, count: categoryProducts(c.id).length, href: shopHref(parseQuery({ category: c.id }, attrKeys)) })).filter((c) => c.count >= 1);
         return cats.length >= 3 ? { categories: cats } : null;
       }
       case 'productRail': {

@@ -10,13 +10,14 @@ const wrapSection = (type, variant, inner, extra = '') => `<section class="sf-se
 // ---- chrome ----
 export const announcement = (text) => `<div class="sf-announce" data-section="announcement"><div class="sf-wrap"><p>${esc(text)}</p></div></div>`;
 
-export function header({ store, current }) {
-  const nav = (href, label, key) => `<a href="${href}"${current === key ? ' aria-current="page"' : ''}>${label}</a>`;
+/** nav: [{ href, label, key }]; the main nav grows with the store's categories (never "laptops only"). */
+export function header({ store, current, nav = [{ href: routes.shop, label: 'Shop', key: 'shop' }, { href: routes.guides, label: 'Guides', key: 'guides' }], search = { action: routes.shop, label: 'products' } }) {
+  const link = (n) => `<a href="${esc(n.href)}"${current === n.key ? ' aria-current="page"' : ''}>${esc(n.label)}</a>`;
   return `<header class="sf-header"><div class="sf-wrap sf-header__inner">
 <a class="sf-logo" href="/" aria-label="${esc(store.name)} home"><span class="sf-logo__tag" aria-hidden="true"></span>${esc(store.name)}</a>
-<nav class="sf-nav" aria-label="Main">${nav(routes.shop, 'Shop', 'shop')}${nav(routes.guides, 'Guides', 'guides')}</nav>
-<form class="sf-search" role="search" action="${routes.shop}" method="get" data-search-form>
-<label class="sf-sr" for="sf-q">Search ${esc(store.nouns?.many || 'products')}</label>
+<nav class="sf-nav" aria-label="Main">${nav.map(link).join('')}</nav>
+<form class="sf-search" role="search" action="${esc(search.action)}" method="get" data-search-form>
+<label class="sf-sr" for="sf-q">Search ${esc(search.label)}</label>
 <input id="sf-q" type="search" name="q" placeholder="Search: 840 G6, ThinkPad, 16GB…" autocomplete="off" enterkeyhint="search">
 <button type="submit" aria-label="Search"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><circle cx="11" cy="11" r="6.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="m16 16 4.5 4.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
 </form>
@@ -24,8 +25,16 @@ export function header({ store, current }) {
 </div></header>`;
 }
 
-export function footer({ store, categories, guides }) {
+/** columns: [{ title, links: [{ href, label }] }]; without it, the legacy Shop/Guides columns render. */
+export function footer({ store, categories, guides, columns }) {
   const tel = `+${store.whatsapp}`;
+  if (columns) {
+    return `<footer class="sf-footer" data-section="footer"><div class="sf-wrap sf-footer__inner">
+<div class="sf-footer__brand"><a class="sf-logo sf-logo--footer" href="/"><span class="sf-logo__tag" aria-hidden="true"></span>${esc(store.name)}</a><p>${esc(store.footerBlurb || '')}</p>
+<ul><li><a href="${waHref(store.whatsapp, `Hi ${store.name}, `)}" target="_blank" rel="noopener">WhatsApp ${esc(store.phoneDisplay)}</a></li><li><a href="tel:${tel}">Call ${esc(store.phoneDisplay)}</a></li></ul></div>
+${columns.map((c) => `<div><h2 class="sf-footer__h">${esc(c.title)}</h2><ul>${c.links.map((l) => `<li><a href="${esc(l.href)}">${esc(l.label)}</a></li>`).join('')}</ul></div>`).join('\n')}
+</div><div class="sf-wrap sf-footer__fine"><p>© ${new Date().getFullYear()} ${esc(store.name)} · Prices in KSh</p>${store.poweredBy ? `<p><a href="${esc(store.poweredBy.href)}">${esc(store.poweredBy.label)}</a></p>` : ''}</div></footer>`;
+  }
   return `<footer class="sf-footer" data-section="footer"><div class="sf-wrap sf-footer__inner">
 <div class="sf-footer__brand"><a class="sf-logo sf-logo--footer" href="/"><span class="sf-logo__tag" aria-hidden="true"></span>${esc(store.name)}</a><p>${esc(store.footerBlurb || '')}</p></div>
 <div><h2 class="sf-footer__h">Contact</h2><ul>
@@ -72,7 +81,7 @@ export function cartDrawer({ store }) {
 <div class="sf-drawer__head"><h2 id="sf-cart-title">Your cart</h2><button type="button" class="sf-close" data-cart-close aria-label="Close cart">×</button></div>
 <div class="sf-drawer__view" data-view="cart">
 <ul class="sf-lines" data-lines></ul>
-<div class="sf-cart-empty" data-cart-empty><p>Your cart is empty.</p><a class="sf-cta sf-cta--ghost" href="/shop">Browse ${esc(store.nouns?.many || 'products')}</a></div>
+<div class="sf-cart-empty" data-cart-empty><p>Your cart is empty.</p><a class="sf-cta sf-cta--ghost" href="${esc(store.browseHref || '/shop')}">Browse ${esc(store.nouns?.many || 'products')}</a></div>
 <div class="sf-drawer__foot" data-cart-foot hidden><p class="sf-total"><span>Total</span><strong data-cart-total>KSh 0</strong></p><button type="button" class="sf-cta sf-cta--block" data-checkout-open>Checkout on WhatsApp</button><p class="sf-fine">You'll confirm availability and condition with a real person on WhatsApp before you pay.</p></div>
 </div>
 <form class="sf-drawer__view sf-checkout" data-view="checkout" data-checkout novalidate hidden>
@@ -112,14 +121,14 @@ function hero(s, ctx) {
   }
   if (s.variant === 'spotlight') {
     const p = s.data.product, m = ctx.models.get(p.modelId), { title, config } = nameParts(p, m);
-    return `<section class="sf-hero sf-hero--spotlight" data-section="hero"><div class="sf-wrap sf-showcase__grid"><a class="sf-showcase__media" href="${routes.product(p.slug)}" tabindex="-1" aria-hidden="true">${imageRef(p.images?.[0], { eager: true, alt: title })}</a><div class="sf-showcase__copy"><h1>${esc(title)}</h1><p class="sf-mono">${esc(configLine(config))}</p>${priceTag(p.price, { size: 'sf-price--lg' })}<a class="sf-cta" href="${routes.product(p.slug)}">See this ${esc(ctx.store.nouns?.one || 'product')} →</a></div></div></section>`;
+    return `<section class="sf-hero sf-hero--spotlight" data-section="hero"><div class="sf-wrap sf-showcase__grid"><a class="sf-showcase__media" href="${esc(p.href || routes.product(p.slug))}" tabindex="-1" aria-hidden="true">${imageRef(p.images?.[0], { eager: true, alt: title })}</a><div class="sf-showcase__copy"><h1>${esc(title)}</h1><p class="sf-mono">${esc(configLine(config))}</p>${priceTag(p.price, { size: 'sf-price--lg' })}<a class="sf-cta" href="${esc(p.href || routes.product(p.slug))}">See this ${esc(ctx.store.nouns?.one || 'product')} →</a></div></div></section>`;
   }
   const b = s.data.banners[0];
   return `<section class="sf-hero sf-hero--banner" data-section="hero"><div class="sf-wrap"><a class="sf-banner sf-banner--${fallback === 'gradient' ? 'gradient' : 'ink'} sf-banner--big" href="${esc(b.href)}"><span class="sf-banner__copy"><h1 class="sf-hero__title">${esc(b.headline)}</h1>${b.sub ? `<span class="sf-banner__sub">${esc(b.sub)}</span>` : ''}<span class="sf-cta sf-cta--accent">${esc(b.cta)} →</span></span></a></div></section>`;
 }
 
 function categoryNav(s) {
-  return wrapSection('categoryNav', s.variant, `${head(s.title || 'Shop by category')}<nav class="sf-catnav" aria-label="${esc(s.title || 'Categories')}">${s.data.categories.map((c) => `<a class="sf-catnav__item" href="${esc(c.href)}"><span class="sf-catnav__circle" style="--tint:${esc(c.image?.placeholder?.tint || '#E8E6E1')}" aria-hidden="true">${esc(c.image?.placeholder?.glyph || c.name[0])}</span><span class="sf-catnav__name">${esc(c.name)}</span><span class="sf-catnav__count">${c.count}</span></a>`).join('')}</nav>`);
+  return wrapSection('categoryNav', s.variant, `${head(s.title || 'Shop by category')}<nav class="sf-catnav" aria-label="${esc(s.title || 'Categories')}">${s.data.categories.map((c) => `<a class="sf-catnav__item" href="${esc(c.href)}"><span class="sf-catnav__circle${c.image?.src ? ' sf-catnav__circle--photo' : ''}" style="--tint:${esc(c.image?.placeholder?.tint || '#E8E6E1')}" aria-hidden="true">${c.image?.src ? imageRef(c.image, { alt: '' }) : esc(c.image?.placeholder?.glyph || c.name[0])}</span><span class="sf-catnav__name">${esc(c.name)}</span><span class="sf-catnav__count">${c.count}</span></a>`).join('')}</nav>`);
 }
 
 const cards = (products, ctx) => products.map((p) => productCard(p, { model: ctx.models.get(p.modelId) })).join('');
@@ -147,12 +156,12 @@ function promoBanner(s, ctx) {
 function productShowcase(s, ctx) {
   const p = s.data.product, m = ctx.models.get(p.modelId), { title, config } = nameParts(p, m);
   return wrapSection('productShowcase', s.variant, `<div class="sf-showcase__grid${s.variant === 'right' ? ' sf-showcase__grid--right' : ''}">
-<a class="sf-showcase__media" href="${routes.product(p.slug)}" tabindex="-1" aria-hidden="true">${imageRef(p.images?.[0], { alt: title })}</a>
-<div class="sf-showcase__copy"><p class="sf-eyebrow">${esc(s.title || 'Top of the range')}</p><h2>${esc(title)}</h2><p class="sf-mono">${esc(configLine(config))}</p><p>${esc(m?.blurb || '')}</p>${priceTag(p.price, { size: 'sf-price--lg' })}<p><a class="sf-cta" href="${routes.product(p.slug)}">See the ${esc(title)} →</a></p></div></div>`);
+<a class="sf-showcase__media" href="${esc(p.href || routes.product(p.slug))}" tabindex="-1" aria-hidden="true">${imageRef(p.images?.[0], { alt: title })}</a>
+<div class="sf-showcase__copy"><p class="sf-eyebrow">${esc(s.title || 'Top of the range')}</p><h2>${esc(title)}</h2><p class="sf-mono">${esc(configLine(config))}</p><p>${esc(m?.blurb || '')}</p>${priceTag(p.price, { size: 'sf-price--lg' })}<p><a class="sf-cta" href="${esc(p.href || routes.product(p.slug))}">See the ${esc(title)} →</a></p></div></div>`);
 }
 
 function guideTeaser(s) {
-  return wrapSection('guideTeaser', s.variant, `${head(s.title || 'Guides', '<a class="sf-textlink" href="/guides">All guides →</a>')}<div class="sf-teasers">${s.data.guides.map((g) => `<article class="sf-teaser"><p class="sf-eyebrow">Buying guide</p><h3><a href="${routes.guide(g.slug)}">${esc(g.title)}</a></h3><p>${esc(g.description || '')}</p><a class="sf-cta sf-cta--ghost" href="${routes.guide(g.slug)}" aria-label="Read the guide: ${esc(g.title)}">Read the guide →</a></article>`).join('')}</div>`);
+  return wrapSection('guideTeaser', s.variant, `${head(s.title || 'Guides', '<a class="sf-textlink" href="/guides">All guides →</a>')}<div class="sf-teasers">${s.data.guides.map((g) => `<article class="sf-teaser"><p class="sf-eyebrow">${esc(g.typeLabel || 'Buying guide')}</p><h3><a href="${routes.guide(g.slug)}">${esc(g.title)}</a></h3><p>${esc(g.description || '')}</p><a class="sf-cta sf-cta--ghost" href="${routes.guide(g.slug)}" aria-label="Read the guide: ${esc(g.title)}">Read the guide →</a></article>`).join('')}</div>`);
 }
 
 const trustStrip = (s) => wrapSection('trustStrip', s.variant, `<ul class="sf-trust">${s.data.items.map((t) => `<li><span aria-hidden="true">✓</span> ${esc(t)}</li>`).join('')}</ul>`);

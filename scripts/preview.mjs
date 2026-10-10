@@ -20,6 +20,15 @@ const resolveIn = (DIST, pathname) => {
 /** Serve a directory as a site root. Returns the http.Server (call .close() when done). */
 export const serve = (root, port) => { const DIST = path.resolve(root); return http.createServer((req, res) => {
   const url = new URL(req.url, 'http://x');
+  // Permanent redirects listed by the build (legacy /p/… and /shop URLs, renamed guides), as the worker serves them.
+  const redirectsFile = path.join(DIST, 'redirects.json');
+  const redirects = fs.existsSync(redirectsFile) ? JSON.parse(fs.readFileSync(redirectsFile, 'utf8')) : {};
+  const to = redirects[url.pathname.replace(/\/$/, '') || '/'];
+  if (to) {
+    const target = to.includes('?') || !url.search ? to : `${to}${url.search}`;
+    res.writeHead(301, { location: target });
+    return res.end();
+  }
   const file = resolveIn(DIST, url.pathname);
   const notFound = path.join(DIST, '404.html');
   if (!file) {

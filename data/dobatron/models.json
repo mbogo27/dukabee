@@ -1,12 +1,29 @@
 {
-  "_note": "Model registry. One entry per model; every configuration (product) of a model shares its images and blurb. sheetAliases are \"Brand | Model\" exactly as written in supplier sheets.",
+  "_note": "Model registry. A model owns its URL (/<category>/<slug>); every configuration (offer) of a model shares its photos, blurb and tags. `slug` is frozen once published. `status`: in_catalog | sourceable | retired (a retired model keeps its page). `tags` are typed (see taxonomy.json) and set on the model, never on an offer; price_band is derived from offer prices at build. `categoryId` is the legacy importer category, kept for the supplier-sheet pipeline. sheetAliases are \"Brand | Model\" exactly as written in supplier sheets.",
   "models": [
     {
       "modelId": "hp-zbook-firefly-14-g6",
+      "slug": "hp-zbook-firefly-14-g6",
       "name": "HP ZBook Firefly 14 G6",
       "brand": "HP",
+      "brandSlug": "hp",
       "series": "ZBook",
+      "seriesSlug": "hp-zbook",
+      "category": "laptops",
       "categoryId": "workstations",
+      "status": "in_catalog",
+      "tags": {
+        "use_case": [
+          "business",
+          "coding",
+          "design"
+        ],
+        "feature": [
+          "touchscreen",
+          "dedicated-graphics",
+          "windows-11-ready"
+        ]
+      },
       "formFactor": "Clamshell",
       "screenInches": 14,
       "typicalCpuGen": "8th Gen",
@@ -46,10 +63,26 @@
     },
     {
       "modelId": "hp-zbook-firefly-14-g8",
+      "slug": "hp-zbook-firefly-14-g8",
       "name": "HP ZBook Firefly 14 G8",
       "brand": "HP",
+      "brandSlug": "hp",
       "series": "ZBook",
+      "seriesSlug": "hp-zbook",
+      "category": "laptops",
       "categoryId": "workstations",
+      "status": "in_catalog",
+      "tags": {
+        "use_case": [
+          "business",
+          "coding",
+          "design"
+        ],
+        "feature": [
+          "dedicated-graphics",
+          "windows-11-ready"
+        ]
+      },
       "formFactor": "Clamshell",
       "screenInches": 14,
       "typicalCpuGen": "11th Gen",
@@ -87,10 +120,26 @@
     },
     {
       "modelId": "dell-latitude-5300",
+      "slug": "dell-latitude-5300",
       "name": "Dell Latitude 5300",
       "brand": "Dell",
+      "brandSlug": "dell",
       "series": "Latitude",
+      "seriesSlug": "dell-latitude",
+      "category": "laptops",
       "categoryId": "business-laptops",
+      "status": "in_catalog",
+      "tags": {
+        "use_case": [
+          "student",
+          "business",
+          "coding"
+        ],
+        "feature": [
+          "compact",
+          "windows-11-ready"
+        ]
+      },
       "formFactor": "Clamshell",
       "screenInches": 13.3,
       "typicalCpuGen": "8th Gen",
@@ -115,10 +164,25 @@
     },
     {
       "modelId": "dell-latitude-5400",
+      "slug": "dell-latitude-5400",
       "name": "Dell Latitude 5400",
       "brand": "Dell",
+      "brandSlug": "dell",
       "series": "Latitude",
+      "seriesSlug": "dell-latitude",
+      "category": "laptops",
       "categoryId": "business-laptops",
+      "status": "in_catalog",
+      "tags": {
+        "use_case": [
+          "student",
+          "business"
+        ],
+        "feature": [
+          "touchscreen",
+          "windows-11-ready"
+        ]
+      },
       "formFactor": "Clamshell",
       "screenInches": 14,
       "typicalCpuGen": "8th Gen",
@@ -143,10 +207,24 @@
     },
     {
       "modelId": "dell-latitude-7280",
+      "slug": "dell-latitude-7280",
       "name": "Dell Latitude 7280",
       "brand": "Dell",
+      "brandSlug": "dell",
       "series": "Latitude",
+      "seriesSlug": "dell-latitude",
+      "category": "laptops",
       "categoryId": "business-laptops",
+      "status": "in_catalog",
+      "tags": {
+        "use_case": [
+          "student",
+          "business"
+        ],
+        "feature": [
+          "compact"
+        ]
+      },
       "formFactor": "Clamshell",
       "screenInches": 12.5,
       "typicalCpuGen": null,
@@ -171,10 +249,27 @@
     },
     {
       "modelId": "hp-elitebook-745-g6",
+      "slug": "hp-elitebook-745-g6",
       "name": "HP EliteBook 745 G6",
       "brand": "HP",
+      "brandSlug": "hp",
       "series": "EliteBook",
+      "seriesSlug": "hp-elitebook",
+      "category": "laptops",
       "categoryId": "business-laptops",
+      "status": "in_catalog",
+      "tags": {
+        "use_case": [
+          "business",
+          "coding",
+          "design"
+        ],
+        "feature": [
+          "touchscreen",
+          "dedicated-graphics",
+          "windows-11-ready"
+        ]
+      },
       "formFactor": "Clamshell",
       "screenInches": 14,
       "typicalRyzenSeries": 3000,
@@ -203,10 +298,26 @@
     },
     {
       "modelId": "hp-elitebook-830-g5",
+      "slug": "hp-elitebook-830-g5",
       "name": "HP EliteBook 830 G5",
       "brand": "HP",
+      "brandSlug": "hp",
       "series": "EliteBook",
+      "seriesSlug": "hp-elitebook",
+      "category": "laptops",
       "categoryId": "business-laptops",
+      "status": "in_catalog",
+      "tags": {
+        "use_case": [
+          "business",
+          "coding"
+        ],
+        "feature": [
+          "touchscreen",
+          "compact",
+          "windows-11-ready"
+        ]
+      },
       "formFactor": "Clamshell",
       "screenInches": 13.3,
       "typicalCpuGen": "8th Gen",
@@ -235,10 +346,26 @@
     },
     {
       "modelId": "hp-elitebook-830-g6",
+      "slug": "hp-elitebook-830-g6",
       "name": "HP EliteBook 830 G6",
       "brand": "HP",
+      "brandSlug": "hp",
       "series": "EliteBook",
+      "seriesSlug": "hp-elitebook",
+      "category": "laptops",
       "categoryId": "business-laptops",
+      "status": "in_catalog",
+      "tags": {
+        "use_case": [
+          "student",
+          "business"
+        ],
+        "feature": [
+          "touchscreen",
+          "compact",
+          "windows-11-ready"
+        ]
+      },
       "formFactor": "Clamshell",
       "screenInches": 13.3,
       "typicalCpuGen": "8th Gen",
@@ -267,10 +394,27 @@
     },
     {
       "modelId": "hp-elitebook-830-g7",
+      "slug": "hp-elitebook-830-g7",
       "name": "HP EliteBook 830 G7",
       "brand": "HP",
+      "brandSlug": "hp",
       "series": "EliteBook",
+      "seriesSlug": "hp-elitebook",
+      "category": "laptops",
       "categoryId": "business-laptops",
+      "status": "in_catalog",
+      "tags": {
+        "use_case": [
+          "student",
+          "business",
+          "coding"
+        ],
+        "feature": [
+          "touchscreen",
+          "compact",
+          "windows-11-ready"
+        ]
+      },
       "formFactor": "Clamshell",
       "screenInches": 13.3,
       "typicalCpuGen": "10th Gen",
@@ -298,10 +442,26 @@
     },
     {
       "modelId": "hp-elitebook-830-g8",
+      "slug": "hp-elitebook-830-g8",
       "name": "HP EliteBook 830 G8",
       "brand": "HP",
+      "brandSlug": "hp",
       "series": "EliteBook",
+      "seriesSlug": "hp-elitebook",
+      "category": "laptops",
       "categoryId": "business-laptops",
+      "status": "in_catalog",
+      "tags": {
+        "use_case": [
+          "business",
+          "coding"
+        ],
+        "feature": [
+          "touchscreen",
+          "compact",
+          "windows-11-ready"
+        ]
+      },
       "formFactor": "Clamshell",
       "screenInches": 13.3,
       "typicalCpuGen": "11th Gen",
@@ -330,10 +490,21 @@
     },
     {
       "modelId": "hp-elitebook-840-g3",
+      "slug": "hp-elitebook-840-g3",
       "name": "HP EliteBook 840 G3",
       "brand": "HP",
+      "brandSlug": "hp",
       "series": "EliteBook",
+      "seriesSlug": "hp-elitebook",
+      "category": "laptops",
       "categoryId": "business-laptops",
+      "status": "in_catalog",
+      "tags": {
+        "use_case": [
+          "business"
+        ],
+        "feature": []
+      },
       "formFactor": "Clamshell",
       "screenInches": 14,
       "typicalCpuGen": "6th Gen",
@@ -341,7 +512,7 @@
         "eb",
         "elitebook"
       ],
-      "blurb": "The 14-inch EliteBook 840 is the classic ex-UK office laptop: solid keyboard, sturdy build and easy to service.",
+      "blurb": "The 14-inch EliteBook 840 is the classic business laptop: solid keyboard, sturdy build and easy to service.",
       "images": [
         {
           "id": "hp-elitebook-840-g3-01",
@@ -361,10 +532,21 @@
     },
     {
       "modelId": "hp-elitebook-840-g4",
+      "slug": "hp-elitebook-840-g4",
       "name": "HP EliteBook 840 G4",
       "brand": "HP",
+      "brandSlug": "hp",
       "series": "EliteBook",
+      "seriesSlug": "hp-elitebook",
+      "category": "laptops",
       "categoryId": "business-laptops",
+      "status": "in_catalog",
+      "tags": {
+        "use_case": [
+          "business"
+        ],
+        "feature": []
+      },
       "formFactor": "Clamshell",
       "screenInches": 14,
       "typicalCpuGen": "7th Gen",
@@ -372,7 +554,7 @@
         "eb",
         "elitebook"
       ],
-      "blurb": "The 14-inch EliteBook 840 is the classic ex-UK office laptop: solid keyboard, sturdy build and easy to service.",
+      "blurb": "The 14-inch EliteBook 840 is the classic business laptop: solid keyboard, sturdy build and easy to service.",
       "images": [
         {
           "id": "hp-elitebook-840-g4-01",
@@ -392,10 +574,25 @@
     },
     {
       "modelId": "hp-elitebook-840-g5",
+      "slug": "hp-elitebook-840-g5",
       "name": "HP EliteBook 840 G5",
       "brand": "HP",
+      "brandSlug": "hp",
       "series": "EliteBook",
+      "seriesSlug": "hp-elitebook",
+      "category": "laptops",
       "categoryId": "business-laptops",
+      "status": "in_catalog",
+      "tags": {
+        "use_case": [
+          "business",
+          "coding"
+        ],
+        "feature": [
+          "touchscreen",
+          "windows-11-ready"
+        ]
+      },
       "formFactor": "Clamshell",
       "screenInches": 14,
       "typicalCpuGen": "8th Gen",
@@ -403,7 +600,7 @@
         "eb",
         "elitebook"
       ],
-      "blurb": "The 14-inch EliteBook 840 is the classic ex-UK office laptop: solid keyboard, sturdy build and easy to service.",
+      "blurb": "The 14-inch EliteBook 840 is the classic business laptop: solid keyboard, sturdy build and easy to service.",
       "images": [
         {
           "id": "hp-elitebook-840-g5-01",
@@ -424,10 +621,25 @@
     },
     {
       "modelId": "hp-elitebook-840-g6",
+      "slug": "hp-elitebook-840-g6",
       "name": "HP EliteBook 840 G6",
       "brand": "HP",
+      "brandSlug": "hp",
       "series": "EliteBook",
+      "seriesSlug": "hp-elitebook",
+      "category": "laptops",
       "categoryId": "business-laptops",
+      "status": "in_catalog",
+      "tags": {
+        "use_case": [
+          "business",
+          "coding"
+        ],
+        "feature": [
+          "touchscreen",
+          "windows-11-ready"
+        ]
+      },
       "formFactor": "Clamshell",
       "screenInches": 14,
       "typicalCpuGen": "8th Gen",
@@ -435,7 +647,7 @@
         "eb",
         "elitebook"
       ],
-      "blurb": "The 14-inch EliteBook 840 is the classic ex-UK office laptop: solid keyboard, sturdy build and easy to service.",
+      "blurb": "The 14-inch EliteBook 840 is the classic business laptop: solid keyboard, sturdy build and easy to service.",
       "images": [
         {
           "id": "hp-elitebook-840-g6-01",
@@ -455,10 +667,24 @@
     },
     {
       "modelId": "hp-elitebook-840-g7",
+      "slug": "hp-elitebook-840-g7",
       "name": "HP EliteBook 840 G7",
       "brand": "HP",
+      "brandSlug": "hp",
       "series": "EliteBook",
+      "seriesSlug": "hp-elitebook",
+      "category": "laptops",
       "categoryId": "business-laptops",
+      "status": "in_catalog",
+      "tags": {
+        "use_case": [
+          "business"
+        ],
+        "feature": [
+          "touchscreen",
+          "windows-11-ready"
+        ]
+      },
       "formFactor": "Clamshell",
       "screenInches": 14,
       "typicalCpuGen": "10th Gen",
@@ -466,7 +692,7 @@
         "eb",
         "elitebook"
       ],
-      "blurb": "The 14-inch EliteBook 840 is the classic ex-UK office laptop: solid keyboard, sturdy build and easy to service.",
+      "blurb": "The 14-inch EliteBook 840 is the classic business laptop: solid keyboard, sturdy build and easy to service.",
       "images": [
         {
           "id": "hp-elitebook-840-g7-01",
@@ -487,10 +713,24 @@
     },
     {
       "modelId": "hp-elitebook-840-g8",
+      "slug": "hp-elitebook-840-g8",
       "name": "HP EliteBook 840 G8",
       "brand": "HP",
+      "brandSlug": "hp",
       "series": "EliteBook",
+      "seriesSlug": "hp-elitebook",
+      "category": "laptops",
       "categoryId": "business-laptops",
+      "status": "in_catalog",
+      "tags": {
+        "use_case": [
+          "business"
+        ],
+        "feature": [
+          "touchscreen",
+          "windows-11-ready"
+        ]
+      },
       "formFactor": "Clamshell",
       "screenInches": 14,
       "typicalCpuGen": "11th Gen",
@@ -498,7 +738,7 @@
         "eb",
         "elitebook"
       ],
-      "blurb": "The 14-inch EliteBook 840 is the classic ex-UK office laptop: solid keyboard, sturdy build and easy to service.",
+      "blurb": "The 14-inch EliteBook 840 is the classic business laptop: solid keyboard, sturdy build and easy to service.",
       "images": [
         {
           "id": "hp-elitebook-840-g8-01",
@@ -519,10 +759,23 @@
     },
     {
       "modelId": "hp-elitebook-845-g7",
+      "slug": "hp-elitebook-845-g7",
       "name": "HP EliteBook 845 G7",
       "brand": "HP",
+      "brandSlug": "hp",
       "series": "EliteBook",
+      "seriesSlug": "hp-elitebook",
+      "category": "laptops",
       "categoryId": "business-laptops",
+      "status": "in_catalog",
+      "tags": {
+        "use_case": [
+          "business"
+        ],
+        "feature": [
+          "windows-11-ready"
+        ]
+      },
       "formFactor": "Clamshell",
       "screenInches": 14,
       "typicalRyzenSeries": 4000,
@@ -551,10 +804,24 @@
     },
     {
       "modelId": "hp-elitebook-845-g8",
+      "slug": "hp-elitebook-845-g8",
       "name": "HP EliteBook 845 G8",
       "brand": "HP",
+      "brandSlug": "hp",
       "series": "EliteBook",
+      "seriesSlug": "hp-elitebook",
+      "category": "laptops",
       "categoryId": "business-laptops",
+      "status": "in_catalog",
+      "tags": {
+        "use_case": [
+          "business",
+          "coding"
+        ],
+        "feature": [
+          "windows-11-ready"
+        ]
+      },
       "formFactor": "Clamshell",
       "screenInches": 14,
       "typicalRyzenSeries": 5000,
@@ -583,10 +850,23 @@
     },
     {
       "modelId": "hp-probook-440-g8",
+      "slug": "hp-probook-440-g8",
       "name": "HP ProBook 440 G8",
       "brand": "HP",
+      "brandSlug": "hp",
       "series": "ProBook",
+      "seriesSlug": "hp-probook",
+      "category": "laptops",
       "categoryId": "business-laptops",
+      "status": "in_catalog",
+      "tags": {
+        "use_case": [
+          "business"
+        ],
+        "feature": [
+          "windows-11-ready"
+        ]
+      },
       "formFactor": "Clamshell",
       "screenInches": 14,
       "typicalCpuGen": "11th Gen",
@@ -612,10 +892,25 @@
     },
     {
       "modelId": "hp-probook-450-g7",
+      "slug": "hp-probook-450-g7",
       "name": "HP ProBook 450 G7",
       "brand": "HP",
+      "brandSlug": "hp",
       "series": "ProBook",
+      "seriesSlug": "hp-probook",
+      "category": "laptops",
       "categoryId": "business-laptops",
+      "status": "in_catalog",
+      "tags": {
+        "use_case": [
+          "business",
+          "design"
+        ],
+        "feature": [
+          "dedicated-graphics",
+          "windows-11-ready"
+        ]
+      },
       "formFactor": "Clamshell",
       "screenInches": 15.6,
       "typicalCpuGen": "10th Gen",
@@ -641,10 +936,23 @@
     },
     {
       "modelId": "hp-probook-640-g5",
+      "slug": "hp-probook-640-g5",
       "name": "HP ProBook 640 G5",
       "brand": "HP",
+      "brandSlug": "hp",
       "series": "ProBook",
+      "seriesSlug": "hp-probook",
+      "category": "laptops",
       "categoryId": "business-laptops",
+      "status": "in_catalog",
+      "tags": {
+        "use_case": [
+          "business"
+        ],
+        "feature": [
+          "windows-11-ready"
+        ]
+      },
       "formFactor": "Clamshell",
       "screenInches": 14,
       "typicalCpuGen": "8th Gen",
@@ -669,10 +977,25 @@
     },
     {
       "modelId": "hp-probook-645-g4",
+      "slug": "hp-probook-645-g4",
       "name": "HP ProBook 645 G4",
       "brand": "HP",
+      "brandSlug": "hp",
       "series": "ProBook",
+      "seriesSlug": "hp-probook",
+      "category": "laptops",
       "categoryId": "business-laptops",
+      "status": "in_catalog",
+      "tags": {
+        "use_case": [
+          "student",
+          "business",
+          "design"
+        ],
+        "feature": [
+          "dedicated-graphics"
+        ]
+      },
       "formFactor": "Clamshell",
       "screenInches": 14,
       "typicalRyzenSeries": 2000,
@@ -697,10 +1020,25 @@
     },
     {
       "modelId": "lenovo-thinkpad-t490s",
+      "slug": "lenovo-thinkpad-t490s",
       "name": "Lenovo ThinkPad T490s",
       "brand": "Lenovo",
+      "brandSlug": "lenovo",
       "series": "ThinkPad",
+      "seriesSlug": "lenovo-thinkpad",
+      "category": "laptops",
       "categoryId": "business-laptops",
+      "status": "in_catalog",
+      "tags": {
+        "use_case": [
+          "business",
+          "coding"
+        ],
+        "feature": [
+          "touchscreen",
+          "windows-11-ready"
+        ]
+      },
       "formFactor": "Clamshell",
       "screenInches": 14,
       "typicalCpuGen": "8th Gen",
@@ -727,10 +1065,22 @@
     },
     {
       "modelId": "lenovo-thinkpad-x1-carbon-5th-gen",
+      "slug": "lenovo-thinkpad-x1-carbon-5th-gen",
       "name": "Lenovo ThinkPad X1 Carbon (5th Gen)",
       "brand": "Lenovo",
+      "brandSlug": "lenovo",
       "series": "ThinkPad",
+      "seriesSlug": "lenovo-thinkpad",
+      "category": "laptops",
       "categoryId": "business-laptops",
+      "status": "in_catalog",
+      "tags": {
+        "use_case": [
+          "student",
+          "business"
+        ],
+        "feature": []
+      },
       "formFactor": "Clamshell",
       "screenInches": 14,
       "typicalCpuGen": "7th Gen",
@@ -757,10 +1107,26 @@
     },
     {
       "modelId": "lenovo-thinkpad-x13-gen-1",
+      "slug": "lenovo-thinkpad-x13-gen-1",
       "name": "Lenovo ThinkPad X13 Gen 1",
       "brand": "Lenovo",
+      "brandSlug": "lenovo",
       "series": "ThinkPad",
+      "seriesSlug": "lenovo-thinkpad",
+      "category": "laptops",
       "categoryId": "business-laptops",
+      "status": "in_catalog",
+      "tags": {
+        "use_case": [
+          "student",
+          "business",
+          "coding"
+        ],
+        "feature": [
+          "compact",
+          "windows-11-ready"
+        ]
+      },
       "formFactor": "Clamshell",
       "screenInches": 13.3,
       "typicalCpuGen": "10th Gen",
@@ -788,10 +1154,24 @@
     },
     {
       "modelId": "lenovo-thinkpad-x260",
+      "slug": "lenovo-thinkpad-x260",
       "name": "Lenovo ThinkPad X260",
       "brand": "Lenovo",
+      "brandSlug": "lenovo",
       "series": "ThinkPad",
+      "seriesSlug": "lenovo-thinkpad",
+      "category": "laptops",
       "categoryId": "business-laptops",
+      "status": "in_catalog",
+      "tags": {
+        "use_case": [
+          "student",
+          "business"
+        ],
+        "feature": [
+          "compact"
+        ]
+      },
       "formFactor": "Clamshell",
       "screenInches": 12.5,
       "typicalCpuGen": "6th Gen",
@@ -818,10 +1198,24 @@
     },
     {
       "modelId": "lenovo-thinkpad-x270",
+      "slug": "lenovo-thinkpad-x270",
       "name": "Lenovo ThinkPad X270",
       "brand": "Lenovo",
+      "brandSlug": "lenovo",
       "series": "ThinkPad",
+      "seriesSlug": "lenovo-thinkpad",
+      "category": "laptops",
       "categoryId": "business-laptops",
+      "status": "in_catalog",
+      "tags": {
+        "use_case": [
+          "student",
+          "business"
+        ],
+        "feature": [
+          "compact"
+        ]
+      },
       "formFactor": "Clamshell",
       "screenInches": 12.5,
       "typicalCpuGen": null,
@@ -848,10 +1242,26 @@
     },
     {
       "modelId": "hp-elite-x2-1012-g1",
+      "slug": "hp-elite-x2-1012-g1",
       "name": "HP Elite x2 1012 G1",
       "brand": "HP",
+      "brandSlug": "hp",
       "series": "Elite x2",
+      "seriesSlug": "hp-elite-x2",
+      "category": "laptops",
       "categoryId": "2-in-1",
+      "status": "in_catalog",
+      "tags": {
+        "use_case": [
+          "student"
+        ],
+        "feature": [
+          "touchscreen",
+          "2-in-1",
+          "stylus",
+          "compact"
+        ]
+      },
       "formFactor": "Detachable",
       "screenInches": 12,
       "typicalCpuGen": "6th Gen",
@@ -881,10 +1291,27 @@
     },
     {
       "modelId": "hp-elitebook-x360-830-g6",
+      "slug": "hp-elitebook-x360-830-g6",
       "name": "HP EliteBook x360 830 G6",
       "brand": "HP",
+      "brandSlug": "hp",
       "series": "EliteBook",
+      "seriesSlug": "hp-elitebook",
+      "category": "laptops",
       "categoryId": "2-in-1",
+      "status": "in_catalog",
+      "tags": {
+        "use_case": [
+          "business",
+          "coding"
+        ],
+        "feature": [
+          "touchscreen",
+          "2-in-1",
+          "compact",
+          "windows-11-ready"
+        ]
+      },
       "formFactor": "Convertible",
       "screenInches": 13.3,
       "typicalCpuGen": "8th Gen",
@@ -916,10 +1343,27 @@
     },
     {
       "modelId": "hp-elitebook-x360-830-g7",
+      "slug": "hp-elitebook-x360-830-g7",
       "name": "HP EliteBook x360 830 G7",
       "brand": "HP",
+      "brandSlug": "hp",
       "series": "EliteBook",
+      "seriesSlug": "hp-elitebook",
+      "category": "laptops",
       "categoryId": "2-in-1",
+      "status": "in_catalog",
+      "tags": {
+        "use_case": [
+          "business",
+          "coding"
+        ],
+        "feature": [
+          "touchscreen",
+          "2-in-1",
+          "compact",
+          "windows-11-ready"
+        ]
+      },
       "formFactor": "Convertible",
       "screenInches": 13.3,
       "typicalCpuGen": "10th Gen",
@@ -951,10 +1395,26 @@
     },
     {
       "modelId": "hp-probook-x360-11-g5",
+      "slug": "hp-probook-x360-11-g5",
       "name": "HP ProBook x360 11 G5",
       "brand": "HP",
+      "brandSlug": "hp",
       "series": "ProBook",
+      "seriesSlug": "hp-probook",
+      "category": "laptops",
       "categoryId": "2-in-1",
+      "status": "in_catalog",
+      "tags": {
+        "use_case": [
+          "student",
+          "business"
+        ],
+        "feature": [
+          "touchscreen",
+          "2-in-1",
+          "compact"
+        ]
+      },
       "formFactor": "Convertible",
       "screenInches": 11.6,
       "typicalCpuGen": null,
@@ -983,10 +1443,27 @@
     },
     {
       "modelId": "lenovo-thinkpad-11e-yoga",
+      "slug": "lenovo-thinkpad-11e-yoga",
       "name": "Lenovo ThinkPad 11e Yoga",
       "brand": "Lenovo",
+      "brandSlug": "lenovo",
       "series": "ThinkPad",
+      "seriesSlug": "lenovo-thinkpad",
+      "category": "laptops",
       "categoryId": "2-in-1",
+      "status": "in_catalog",
+      "tags": {
+        "use_case": [
+          "student",
+          "business"
+        ],
+        "feature": [
+          "touchscreen",
+          "2-in-1",
+          "stylus",
+          "compact"
+        ]
+      },
       "formFactor": "Convertible",
       "screenInches": 11.6,
       "typicalCpuGen": null,
@@ -1016,10 +1493,28 @@
     },
     {
       "modelId": "lenovo-thinkpad-x1-yoga",
+      "slug": "lenovo-thinkpad-x1-yoga",
       "name": "Lenovo ThinkPad X1 Yoga",
       "brand": "Lenovo",
+      "brandSlug": "lenovo",
       "series": "ThinkPad",
+      "seriesSlug": "lenovo-thinkpad",
+      "category": "laptops",
       "categoryId": "2-in-1",
+      "status": "in_catalog",
+      "tags": {
+        "use_case": [
+          "student",
+          "business",
+          "coding"
+        ],
+        "feature": [
+          "touchscreen",
+          "2-in-1",
+          "stylus",
+          "windows-11-ready"
+        ]
+      },
       "formFactor": "Convertible",
       "screenInches": 14,
       "typicalCpuGen": null,
@@ -1049,10 +1544,28 @@
     },
     {
       "modelId": "lenovo-thinkpad-x13-yoga-gen-1",
+      "slug": "lenovo-thinkpad-x13-yoga-gen-1",
       "name": "Lenovo ThinkPad X13 Yoga Gen 1",
       "brand": "Lenovo",
+      "brandSlug": "lenovo",
       "series": "ThinkPad",
+      "seriesSlug": "lenovo-thinkpad",
+      "category": "laptops",
       "categoryId": "2-in-1",
+      "status": "in_catalog",
+      "tags": {
+        "use_case": [
+          "student",
+          "business"
+        ],
+        "feature": [
+          "touchscreen",
+          "2-in-1",
+          "stylus",
+          "compact",
+          "windows-11-ready"
+        ]
+      },
       "formFactor": "Convertible",
       "screenInches": 13.3,
       "typicalCpuGen": "10th Gen",
@@ -1083,10 +1596,27 @@
     },
     {
       "modelId": "lenovo-thinkpad-x380-yoga",
+      "slug": "lenovo-thinkpad-x380-yoga",
       "name": "Lenovo ThinkPad X380 Yoga",
       "brand": "Lenovo",
+      "brandSlug": "lenovo",
       "series": "ThinkPad",
+      "seriesSlug": "lenovo-thinkpad",
+      "category": "laptops",
       "categoryId": "2-in-1",
+      "status": "in_catalog",
+      "tags": {
+        "use_case": [
+          "student",
+          "business"
+        ],
+        "feature": [
+          "touchscreen",
+          "2-in-1",
+          "compact",
+          "windows-11-ready"
+        ]
+      },
       "formFactor": "Convertible",
       "screenInches": 13.3,
       "typicalCpuGen": "8th Gen",
@@ -1117,10 +1647,28 @@
     },
     {
       "modelId": "lenovo-thinkpad-x390-yoga",
+      "slug": "lenovo-thinkpad-x390-yoga",
       "name": "Lenovo ThinkPad X390 Yoga",
       "brand": "Lenovo",
+      "brandSlug": "lenovo",
       "series": "ThinkPad",
+      "seriesSlug": "lenovo-thinkpad",
+      "category": "laptops",
       "categoryId": "2-in-1",
+      "status": "in_catalog",
+      "tags": {
+        "use_case": [
+          "student",
+          "business"
+        ],
+        "feature": [
+          "touchscreen",
+          "2-in-1",
+          "stylus",
+          "compact",
+          "windows-11-ready"
+        ]
+      },
       "formFactor": "Convertible",
       "screenInches": 13.3,
       "typicalCpuGen": "8th Gen",
@@ -1152,10 +1700,27 @@
     },
     {
       "modelId": "lenovo-thinkpad-yoga-370",
+      "slug": "lenovo-thinkpad-yoga-370",
       "name": "Lenovo ThinkPad Yoga 370",
       "brand": "Lenovo",
+      "brandSlug": "lenovo",
       "series": "ThinkPad",
+      "seriesSlug": "lenovo-thinkpad",
+      "category": "laptops",
       "categoryId": "2-in-1",
+      "status": "in_catalog",
+      "tags": {
+        "use_case": [
+          "student",
+          "business"
+        ],
+        "feature": [
+          "touchscreen",
+          "2-in-1",
+          "stylus",
+          "compact"
+        ]
+      },
       "formFactor": "Convertible",
       "screenInches": 13.3,
       "typicalCpuGen": "7th Gen",
@@ -1186,10 +1751,24 @@
     },
     {
       "modelId": "apple-macbook-pro-13-2012",
+      "slug": "apple-macbook-pro-13-2012",
       "name": "Apple MacBook Pro 13\" (2012)",
       "brand": "Apple",
+      "brandSlug": "apple",
       "series": "MacBook Pro",
+      "seriesSlug": "apple-macbook-pro",
+      "category": "laptops",
       "categoryId": "macbooks",
+      "status": "in_catalog",
+      "tags": {
+        "use_case": [
+          "student"
+        ],
+        "feature": [
+          "compact",
+          "macos"
+        ]
+      },
       "formFactor": "Clamshell",
       "screenInches": 13.3,
       "typicalCpuGen": "3rd Gen",
@@ -1217,10 +1796,25 @@
     },
     {
       "modelId": "apple-macbook-pro-13-2017",
+      "slug": "apple-macbook-pro-13-2017",
       "name": "Apple MacBook Pro 13\" (2017)",
       "brand": "Apple",
+      "brandSlug": "apple",
       "series": "MacBook Pro",
+      "seriesSlug": "apple-macbook-pro",
+      "category": "laptops",
       "categoryId": "macbooks",
+      "status": "in_catalog",
+      "tags": {
+        "use_case": [
+          "coding",
+          "design"
+        ],
+        "feature": [
+          "compact",
+          "macos"
+        ]
+      },
       "formFactor": "Clamshell",
       "screenInches": 13.3,
       "typicalCpuGen": "7th Gen",
@@ -1249,10 +1843,25 @@
     },
     {
       "modelId": "apple-macbook-pro-13-2018",
+      "slug": "apple-macbook-pro-13-2018",
       "name": "Apple MacBook Pro 13\" (2018)",
       "brand": "Apple",
+      "brandSlug": "apple",
       "series": "MacBook Pro",
+      "seriesSlug": "apple-macbook-pro",
+      "category": "laptops",
       "categoryId": "macbooks",
+      "status": "in_catalog",
+      "tags": {
+        "use_case": [
+          "coding",
+          "design"
+        ],
+        "feature": [
+          "compact",
+          "macos"
+        ]
+      },
       "formFactor": "Clamshell",
       "screenInches": 13.3,
       "typicalCpuGen": "8th Gen",
@@ -1289,10 +1898,21 @@
     },
     {
       "modelId": "hp-elitedesk-prodesk-g1-mini",
+      "slug": "hp-elitedesk-prodesk-g1-mini",
       "name": "HP EliteDesk 800 / ProDesk 600 G1 Mini PC",
       "brand": "HP",
+      "brandSlug": "hp",
       "series": "EliteDesk/ProDesk",
+      "seriesSlug": "hp-elitedesk-prodesk",
+      "category": "mini-pcs",
       "categoryId": "mini-pcs",
+      "status": "in_catalog",
+      "tags": {
+        "use_case": [
+          "business"
+        ],
+        "feature": []
+      },
       "formFactor": "Mini PC",
       "screenInches": null,
       "typicalCpuGen": "4th Gen",
@@ -1321,10 +1941,21 @@
     },
     {
       "modelId": "lenovo-thinkcentre-m73-tiny",
+      "slug": "lenovo-thinkcentre-m73-tiny",
       "name": "Lenovo ThinkCentre M73 Tiny",
       "brand": "Lenovo",
+      "brandSlug": "lenovo",
       "series": "ThinkCentre",
+      "seriesSlug": "lenovo-thinkcentre",
+      "category": "mini-pcs",
       "categoryId": "mini-pcs",
+      "status": "in_catalog",
+      "tags": {
+        "use_case": [
+          "business"
+        ],
+        "feature": []
+      },
       "formFactor": "Mini PC",
       "screenInches": null,
       "typicalCpuGen": "4th Gen",

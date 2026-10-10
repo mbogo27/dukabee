@@ -13,8 +13,15 @@ import { seed, stockSheet, tempData, tempDir, readJson, DATA } from './helpers.m
 const expected = seed().products;
 // `images` is left out: photos are keyed by model and come from models.json (scripts/dobatron-images.py), so they
 // change as photos are added, independently of the stock sheet. The build test checks every product has one.
+// The seed predates the Site Structure Spec: it says "Ex-UK" where the site now sells Grade A only, and one blurb
+// called the EliteBook 840 "the classic ex-UK office laptop". The importer takes both from store.json/models.json.
+const toCurrent = (p) => ({
+  ...p,
+  description: p.description.replace('the classic ex-UK office laptop', 'the classic business laptop'),
+  attributes: { ...p.attributes, condition: ['Grade A'] },
+});
 const norm = (p, { featured = true } = {}) => {
-  const { inferred, sourceRows, featured: f, images, ...rest } = p;
+  const { inferred, sourceRows, featured: f, images, ...rest } = toCurrent(p);
   return { ...rest, inferred: [...inferred].sort(), sourceRows: [...sourceRows].sort((a, b) => a - b), ...(featured ? { featured: f } : {}) };
 };
 
@@ -43,7 +50,7 @@ test('report lists the 4 merged duplicates (kept at the higher price) and the 2 
   ]);
 });
 
-test('removing a row marks that product out of stock; its page still builds with the Request CTA', async () => {
+test('removing a row marks that offer out of stock; its model page stays live with "Ask us on WhatsApp"', async () => {
   const dir = tempData();
   const { rows } = readXlsx(fs.readFileSync(stockSheet()));
   const dropped = rows.filter((r) => r.row !== 20); // ThinkPad X260
@@ -60,13 +67,16 @@ test('removing a row marks that product out of stock; its page still builds with
 
   const out = tempDir();
   await buildStorefront('dobatron', { dataDir: dir, outDir: out, log: () => {} });
-  const html = fs.readFileSync(path.join(out, 'p/lenovo-thinkpad-x260-i5-8gb-256gb.html'), 'utf8');
-  assert.match(html, /Request this laptop/);
+  // The X260 has a single offer, so the whole model is unavailable: the page stays, purchase is disabled.
+  const html = fs.readFileSync(path.join(out, 'laptops/lenovo-thinkpad-x260.html'), 'utf8');
+  assert.match(html, /Ask us on WhatsApp/);
+  assert.match(html, /See a similar model: /);
   assert.match(html, /Last listed at/);
   assert.match(html, /schema\.org\/OutOfStock/);
   assert.doesNotMatch(html, /data-add="lenovo-thinkpad-x260/);
-  const shop = fs.readFileSync(path.join(out, 'shop.html'), 'utf8');
-  assert.match(shop, /<article class="sf-card is-out" data-slug="lenovo-thinkpad-x260-i5-8gb-256gb" hidden>/, 'hidden from the default shop listing');
+  const listing = fs.readFileSync(path.join(out, 'laptops.html'), 'utf8');
+  assert.match(listing, /<article class="sf-card is-out" data-slug="lenovo-thinkpad-x260-i5-8gb-256gb" hidden>/, 'hidden from the default listing');
+  assert.equal(JSON.parse(fs.readFileSync(path.join(out, 'redirects.json'), 'utf8'))['/p/lenovo-thinkpad-x260-i5-8gb-256gb'], '/laptops/lenovo-thinkpad-x260?variant=lenovo-thinkpad-x260-i5-8gb-256gb');
 
   // Back in the next sheet → back in stock.
   const sheet2 = path.join(dir, 'source', 'laptop_stock_2026-10-22.xlsx');

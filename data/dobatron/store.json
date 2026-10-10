@@ -6,8 +6,8 @@
   "store": {
     "id": "dobatron",
     "name": "Dobatron",
-    "domain": "dobatron.com",
-    "previewDomain": "dobatron.dukabee.co.ke",
+    "domain": "dobatron.co.ke",
+    "previewDomain": "dobatron.com",
     "niche": "electronics",
     "recipe": "marketplace",
     "palette": {
@@ -22,24 +22,24 @@
     "bannerFallback": "flat",
     "whatsapp": "254717571951",
     "phoneDisplay": "0717 571 951",
-    "tagline": "Ex-UK laptops in Kenya",
-    "footerBlurb": "Ex-UK business laptops from HP, Lenovo, Dell and Apple, with the specs that matter up front. Every unit is confirmed with you on WhatsApp before you pay.",
-    "condition": "Ex-UK",
-    "itemCondition": "UsedCondition",
-    "announcement": "Ex-UK laptops · HP · Lenovo · Dell · Apple · Order on WhatsApp 0717 571 951",
+    "tagline": "Grade A refurbished laptops in Kenya",
+    "footerBlurb": "Dobatron is a laptop plug: we source Grade A refurbished laptops through our supplier network and confirm every unit with you on WhatsApp before you pay.",
+    "condition": "Grade A",
+    "itemCondition": "RefurbishedCondition",
+    "announcement": "Grade A refurbished laptops · HP · Lenovo · Dell · Apple · WhatsApp 0717 571 951",
     "policies": [
+      "Grade A only",
+      "Inspect before you pay",
       "M-Pesa accepted"
     ],
     "policiesToConfirm": [
-      "Countrywide delivery",
-      "Delivery in Nairobi",
-      "Pickup point",
-      "Pay on delivery",
-      "Warranty (length?)",
-      "Returns/exchange window"
+      "Warranty (length)",
+      "Returns/exchange window",
+      "Delivery cost and areas",
+      "Pickup point"
     ],
     "poweredBy": {
-      "label": "Store built on Duka Bee",
+      "label": "Built by Duka Bee",
       "href": "https://dukabee.co.ke"
     },
     "checkout": {
@@ -61,29 +61,43 @@
       "orderRefPrefix": "DOB"
     },
     "seo": {
-      "homeTitle": "Dobatron: Ex-UK laptops in Kenya. HP, Lenovo, Dell, Apple",
-      "homeDescription": "Ex-UK EliteBooks, ThinkPads, Latitudes and MacBooks with clear specs. Filter by budget and order on WhatsApp.",
-      "shopTitle": "Shop ex-UK laptops | Dobatron",
-      "shopDescription": "{count} ex-UK laptops. Filter by price, RAM, processor, touchscreen and more.",
+      "homeTitle": "Dobatron: Grade A refurbished laptops in Kenya. HP, Lenovo, Dell, Apple",
+      "homeDescription": "Grade A refurbished EliteBooks, ThinkPads, Latitudes and MacBooks with clear specs and prices. Filter by budget, confirm on WhatsApp, inspect before you pay.",
       "titleSuffix": " | Dobatron"
     },
-    "nouns": {
-      "one": "laptop",
-      "many": "laptops"
-    },
     "emptyState": {
-      "text": "No laptops match that. Remove a filter, or tell us what you need and we'll look for it.",
-      "cta": "Ask us to find one",
-      "message": "Hi Dobatron, I'm looking for a laptop: {summary}. Can you find one?"
+      "text": "No laptops match that. Remove a filter, or tell us what you need and we'll source it.",
+      "cta": "Ask us to source one",
+      "message": "Hi Dobatron, I'm looking for a laptop: {summary}. Can you source one?"
     },
     "messages": {
       "ask": "Hi Dobatron, is \"{name}\" available? Can you send photos and the battery health of this unit? {url}",
-      "request": "Hi Dobatron, I'm looking for \"{name}\" (last listed at {price}). Can you find one? {url}"
+      "video": "Hi Dobatron, can you send me a video of this machine: \"{name}\"? {url}",
+      "request": "Hi Dobatron, I'm looking for \"{name}\" (last listed at {price}). Can you source one? {url}",
+      "model": "Hi Dobatron, I'm interested in the {name}. Which configurations can you get, and at what price? {url}"
     },
     "inferredFootnote": "Typical for this model. We confirm the exact unit's specs on WhatsApp before you pay.",
     "inferredNotes": {
       "screen-ambiguous": "Listed without a screen size: this unit could be the 13-inch or the 15-inch model. We confirm it before you pay."
-    }
+    },
+    "availabilityLine": "Available through our supplier network · confirm on WhatsApp",
+    "defaultCategory": "laptops",
+    "confidence": [
+      {
+        "title": "Grade A only",
+        "text": "Inspected before it is listed. Units that fail are rejected, not sold at a lower grade.",
+        "href": "/grade-a"
+      },
+      {
+        "title": "Inspect, then pay",
+        "text": "Confirm on WhatsApp, inspect the laptop at pickup or delivery, then pay.",
+        "href": "/how-it-works"
+      },
+      {
+        "title": "Ask for a video",
+        "text": "We send photos, a video and the battery health of the exact unit before you commit."
+      }
+    ]
   },
   "categories": [
     {
@@ -398,11 +412,13 @@
       "id": "hero-main",
       "kind": "hero",
       "headline": "Buying a laptop shouldn't take 40 YouTube reviews.",
-      "sub": "Ex-UK laptops from HP, Lenovo, Dell and Apple, with the specs that matter up front. Filter, pick one, order on WhatsApp.",
+      "sub": "Grade A refurbished laptops from HP, Lenovo, Dell and Apple, with the specs that matter up front. Pick one, confirm on WhatsApp, inspect before you pay.",
       "cta": "Shop all laptops",
       "target": {
         "type": "filter",
-        "query": {}
+        "query": {
+          "category": "laptops"
+        }
       },
       "copySide": "left"
     },
@@ -415,20 +431,21 @@
       "target": {
         "type": "filter",
         "query": {
+          "category": "laptops",
           "price": "0-30000"
         }
       },
       "copySide": "left"
     },
     {
-      "id": "promo-2in1",
+      "id": "promo-quiz",
       "kind": "promo",
-      "headline": "Flip it into a tablet",
-      "sub": "2-in-1s from {fromPrice}",
-      "cta": "Shop 2-in-1s",
+      "headline": "Not sure which one?",
+      "sub": "Answer 4 quick questions and get 2 or 3 matches.",
+      "cta": "Find my laptop",
       "target": {
-        "type": "category",
-        "id": "2-in-1"
+        "type": "url",
+        "href": "/find-my-laptop"
       },
       "copySide": "left"
     },
@@ -436,11 +453,11 @@
       "id": "promo-macbooks",
       "kind": "promo",
       "headline": "MacBooks from {fromPrice}",
-      "sub": "Ex-UK MacBook Pros",
-      "cta": "Shop MacBooks",
+      "sub": "Grade A MacBook Pros",
+      "cta": "See the MacBook Pros",
       "target": {
-        "type": "category",
-        "id": "macbooks"
+        "type": "series",
+        "id": "apple-macbook-pro"
       },
       "copySide": "left"
     },
@@ -453,6 +470,7 @@
       "target": {
         "type": "filter",
         "query": {
+          "category": "laptops",
           "graphics": "Dedicated"
         }
       },
@@ -462,13 +480,11 @@
       "id": "promo-thinkpad",
       "kind": "promo",
       "headline": "ThinkPad",
-      "sub": "{count} in stock, from {fromPrice}",
-      "cta": "Shop ThinkPads",
+      "sub": "{count} available, from {fromPrice}",
+      "cta": "See ThinkPads",
       "target": {
-        "type": "filter",
-        "query": {
-          "series": "ThinkPad"
-        }
+        "type": "series",
+        "id": "lenovo-thinkpad"
       },
       "copySide": "left"
     },
@@ -476,13 +492,11 @@
       "id": "promo-elitebook",
       "kind": "promo",
       "headline": "EliteBook",
-      "sub": "{count} in stock, from {fromPrice}",
-      "cta": "Shop EliteBooks",
+      "sub": "{count} available, from {fromPrice}",
+      "cta": "See EliteBooks",
       "target": {
-        "type": "filter",
-        "query": {
-          "series": "EliteBook"
-        }
+        "type": "series",
+        "id": "hp-elitebook"
       },
       "copySide": "left"
     },
@@ -490,13 +504,11 @@
       "id": "promo-latitude",
       "kind": "promo",
       "headline": "Dell Latitude",
-      "sub": "{count} in stock, from {fromPrice}",
-      "cta": "Shop Latitudes",
+      "sub": "{count} available, from {fromPrice}",
+      "cta": "See Latitudes",
       "target": {
-        "type": "filter",
-        "query": {
-          "series": "Latitude"
-        }
+        "type": "series",
+        "id": "dell-latitude"
       },
       "copySide": "left"
     }
@@ -513,24 +525,27 @@
         "bannerIds": [
           "hero-main",
           "promo-under-30",
-          "promo-2in1"
+          "promo-quiz"
         ]
       },
       {
         "type": "categoryNav",
         "variant": "circles",
-        "title": "Shop by type"
+        "title": "Shop by series",
+        "items": "series"
       },
       {
         "type": "productRail",
         "variant": "tabs",
         "title": "Shop by need",
+        "limit": 8,
         "source": {
           "tabs": [
             {
               "label": "Under 30K",
               "source": {
                 "filter": {
+                  "category": "laptops",
                   "price": "0-30000"
                 },
                 "sort": "price-asc"
@@ -540,6 +555,7 @@
               "label": "16GB RAM+",
               "source": {
                 "filter": {
+                  "category": "laptops",
                   "ram": [
                     "16GB",
                     "32GB"
@@ -552,6 +568,7 @@
               "label": "Touchscreen",
               "source": {
                 "filter": {
+                  "category": "laptops",
                   "touch": "Yes"
                 },
                 "sort": "price-asc"
@@ -561,14 +578,14 @@
               "label": "Windows 11 ready",
               "source": {
                 "filter": {
+                  "category": "laptops",
                   "windows11": "Yes"
                 },
                 "sort": "price-asc"
               }
             }
           ]
-        },
-        "limit": 8
+        }
       },
       {
         "type": "promoBanner",
@@ -581,8 +598,8 @@
       {
         "type": "productShowcase",
         "variant": "left",
-        "productId": "hp-zbook-firefly-14-g8-i7-32gb-512gb",
-        "title": "Top of the range"
+        "title": "Top of the range",
+        "productId": "hp-zbook-firefly-14-g8-i7-32gb-512gb"
       },
       {
         "type": "productRail",
@@ -602,9 +619,11 @@
       {
         "type": "productRail",
         "variant": "grid",
-        "title": "Business laptops",
+        "title": "Best value laptops",
         "source": {
-          "category": "business-laptops"
+          "filter": {
+            "category": "laptops"
+          }
         },
         "sort": "price-asc",
         "limit": 8,
@@ -612,7 +631,7 @@
       },
       {
         "type": "guideTeaser",
-        "variant": "card",
+        "variant": "list",
         "title": "Buying guides"
       },
       {
@@ -629,5 +648,6 @@
       "growing": 9,
       "full": 31
     }
-  }
+  },
+  "_legacyCategories": "Former categories (business-laptops, 2-in-1, macbooks, workstations, mini-pcs) are replaced by taxonomy.json: series pages, the Type and Series filters, and the mini-pcs category."
 }

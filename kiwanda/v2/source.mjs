@@ -16,8 +16,12 @@ export class JsonCatalogSource {
     this.dir = dir;
     this.cfg = readJson(path.join(dir, 'store.json'));
     this.models = readJson(path.join(dir, 'models.json')).models;
-    this.products = readJson(path.join(dir, 'products.json')).products;
+    const pd = readJson(path.join(dir, 'products.json'));
+    this.products = pd.products;
+    this.productsMeta = { generatedAt: pd.generatedAt || null, source: pd.source || null };
   }
+  /** When the offers were last imported: the "as of" date for published price ranges. */
+  async getCatalogMeta() { return this.productsMeta; }
   async getStore() { return { ...this.cfg.store, pricing: this.cfg.pricing, sections: this.cfg.homepage?.sections, tiers: this.cfg.homepage?.tiers }; }
   async listProducts({ categoryId, search } = {}) {
     return this.products.filter((p) => (!categoryId || p.categoryId === categoryId) && (!search || p.name.toLowerCase().includes(search.toLowerCase())));
@@ -28,18 +32,39 @@ export class JsonCatalogSource {
   async listModels() { return this.models; }
   async listAttributes() { return (this.cfg.attributes || []).slice().sort((a, b) => a.order - b.order); }
   async listPriceBuckets() { return this.cfg.priceBuckets || []; }
+  /** Product tree + tag vocabulary (taxonomy.json), or null for stores without one. */
+  async getTaxonomy() {
+    const f = path.join(this.dir, 'taxonomy.json');
+    return fs.existsSync(f) ? readJson(f) : null;
+  }
 }
 
-/** Guides as Markdown files with frontmatter in one directory (spec: an Astro content collection). */
+const list = (v) => String(v || '').split(',').map((s) => s.trim()).filter(Boolean);
+const readDocs = (dir) => (fs.existsSync(dir) ? fs.readdirSync(dir).filter((f) => f.endsWith('.md')).sort().map((f) => {
+  const file = path.join(dir, f);
+  const g = parseGuide(fs.readFileSync(file, 'utf8'), file);
+  return { ...g, slug: g.meta.slug || f.replace(/\.md$/, '') };
+}) : []);
+
+/**
+ * Guides as Markdown records with frontmatter (Site Structure Spec: guides are records, not loose posts):
+ * title, description, slug, type (use-case | trust | comparison), primaryQuery, tagsTargeted, modelsFeatured,
+ * publishedAt, updatedAt, lastVerified, author, status (published | draft), redirectFrom (old slugs, 301'd).
+ * Trust pages (/about, /grade-a, /how-it-works) live in a sibling `pages/` folder with the same format.
+ */
 export class FileContentSource {
-  constructor(dir) { this.dir = dir; }
+  constructor(dir, pagesDir) { this.dir = dir; this.pagesDir = pagesDir; }
   async listGuides() {
-    if (!fs.existsSync(this.dir)) return [];
-    return fs.readdirSync(this.dir).filter((f) => f.endsWith('.md')).sort().map((f) => {
-      const file = path.join(this.dir, f);
-      const g = parseGuide(fs.readFileSync(file, 'utf8'), file);
-      return { ...g, slug: g.meta.slug || f.replace(/\.md$/, ''), title: g.meta.title, description: g.meta.description, publishedAt: g.meta.publishedAt, updatedAt: g.meta.updatedAt || g.meta.publishedAt, author: g.meta.author };
-    }).filter((g) => g.meta.draft !== 'true');
+    return readDocs(this.dir).map((g) => ({
+      ...g, title: g.meta.title, description: g.meta.description, type: g.meta.type || 'use-case',
+      primaryQuery: g.meta.primaryQuery, tagsTargeted: list(g.meta.tagsTargeted), modelsFeatured: list(g.meta.modelsFeatured),
+      publishedAt: g.meta.publishedAt, updatedAt: g.meta.updatedAt || g.meta.publishedAt, lastVerified: g.meta.lastVerified || g.meta.updatedAt || g.meta.publishedAt,
+      author: g.meta.author, redirectFrom: list(g.meta.redirectFrom), status: g.meta.status || (g.meta.draft === 'true' ? 'draft' : 'published'),
+    })).filter((g) => g.status === 'published');
   }
   async getGuide(slug) { return (await this.listGuides()).find((g) => g.slug === slug) || null; }
+  async listPages() {
+    return readDocs(this.pagesDir).map((p) => ({ ...p, title: p.meta.title, description: p.meta.description, nav: p.meta.nav, updatedAt: p.meta.updatedAt, status: p.meta.status || 'published' }))
+      .filter((p) => p.status === 'published');
+  }
 }
