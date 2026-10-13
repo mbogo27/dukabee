@@ -135,7 +135,7 @@ async function createLead(request, env) {
 // Dobatron moves to dobatron.co.ke (Site Structure Spec). Flip this to true once dobatron.co.ke is attached to this
 // Worker: from then on .co.ke serves the store and every other Dobatron host 301s to it. Until then dobatron.com
 // keeps serving, so an unrelated deploy can't send Dobatron's visitors to a domain that doesn't answer yet.
-const DOBATRON_CO_KE_LIVE = false;
+const DOBATRON_CO_KE_LIVE = true;
 const DOBATRON_HOST = DOBATRON_CO_KE_LIVE ? 'dobatron.co.ke' : 'dobatron.com';
 const STORE_HOSTS = { 'faithnjogu.dukabee.co.ke': '/stores/faith', [DOBATRON_HOST]: '/stores/dobatron' };
 // Extra hostnames that 301 to a store's canonical host (keeps one URL per page for search engines).

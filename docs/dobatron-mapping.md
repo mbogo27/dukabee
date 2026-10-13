@@ -55,13 +55,12 @@ Earlier decisions still apply: duplicates kept at the higher price, curated fiel
 
 ## Deploy
 
-Currently live: **https://dobatron.com** (worker `dukabee`, Worker routes `dobatron.com/*` and `www.dobatron.com/*`), still on the pre-restructure version.
+Live on **https://dobatron.co.ke** since 2026-10-13 (worker `dukabee`, version 0e5bb9a5, `DOBATRON_CO_KE_LIVE = true` in `worker/index.mjs`).
 
-The restructured build uses **dobatron.co.ke** for canonicals, sitemap and structured data, and **dobatron.co.ke is not on the Cloudflare account yet**. Deploying before it is attached would point search engines at a domain that doesn't answer. To go live:
-
-1. Add the `dobatron.co.ke` zone to Cloudflare (point the domain's nameservers at Cloudflare) and attach `dobatron.co.ke` and `www.dobatron.co.ke` to the `dukabee` worker (Custom Domains, or routes like dobatron.com).
-2. `npm run deploy` in the Duka Bee repo. The worker then serves dobatron.co.ke, 301s `www.dobatron.co.ke`, `dobatron.com`, `www.dobatron.com` and `dobatron.dukabee.co.ke` to it, and answers the legacy URLs in `redirects.json` with 301s.
-3. Check `https://dobatron.co.ke/`, `/laptops`, a model page, a legacy `/p/…` URL and that `dobatron.com` redirects.
+- Zone `dobatron.co.ke` (nameservers `lilith`/`neil.ns.cloudflare.com`): proxied placeholder records `A dobatron.co.ke → 192.0.2.1` and `CNAME www → dobatron.co.ke`, answered by Worker routes `dobatron.co.ke/*` and `www.dobatron.co.ke/*` → `dukabee`.
+- Zone `dobatron.com`: Worker routes `dobatron.com/*` and `www.dobatron.com/*` → `dukabee`, which 301s them to dobatron.co.ke. Its DNS records (cPanel A record, MX/SPF/DKIM/CalDAV) are untouched.
+- The worker serves dobatron.co.ke from `/stores/dobatron`, 301s `www.dobatron.co.ke`, `dobatron.com`, `www.dobatron.com` and `dukabee.co.ke/stores/dobatron/…` to it, answers `redirects.json` (legacy `/p/…`, `/shop`, renamed guides) with 301s, and sends `X-Robots-Tag: noindex, follow` on filtered views.
+- To publish changes: edit here, sync to the Duka Bee repo (same paths), `npm run deploy` there.
 
 **Email:** MX for dobatron.com points at a proxied hostname, so mail there probably doesn't arrive (already the case before Dobatron). Set up mail on dobatron.co.ke with an unproxied mail record.
 
