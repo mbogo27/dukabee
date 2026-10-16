@@ -24,5 +24,5 @@ More detail on [how buying from us works](/how-it-works) and on [what Grade A me
 
 ## Contact
 
-- WhatsApp or call [0717 571 951](https://wa.me/254717571951?text=Hi%20Dobatron%2C%20).
+- WhatsApp or call [0797 809 836](https://wa.me/254797809836?text=Hi%20Dobatron%2C%20).
 - Pickup or delivery: we agree it with you on WhatsApp for each order.

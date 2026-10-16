@@ -75,7 +75,7 @@ test('homepage: sections in order with the trust strip, series navigation, token
   assert.match(html, /href="\/laptops\/lenovo-thinkpad"/);
   assert.match(html, /Built by Duka Bee/);
   assert.equal((html.match(/<h1[\s>]/g) || []).length, 1);
-  assert.equal(ldOf(html).find((x) => x['@type'] === 'Organization').telephone, '+254717571951');
+  assert.equal(ldOf(html).find((x) => x['@type'] === 'Organization').telephone, '+254797809836');
 });
 
 // ---------------- category, brand, series ----------------
@@ -125,7 +125,7 @@ test('model page: one URL per model, variant selector, dated price range, WhatsA
   assert.match(html, /HP EliteBook 840 G6 price in Kenya:<\/strong> <span class="sf-mono">KSh 35,500 – 43,000/);
   assert.match(html, /Condition: <a href="\/grade-a">Grade A<\/a>/);
   assert.match(html, /Available through our supplier network · confirm on WhatsApp/);
-  const ask = decodeURIComponent(html.match(/href="https:\/\/wa\.me\/254717571951\?text=([^"]+)"[^>]*data-track="ask_click"/)[1].replace(/&amp;/g, '&'));
+  const ask = decodeURIComponent(html.match(/href="https:\/\/wa\.me\/254797809836\?text=([^"]+)"[^>]*data-track="ask_click"/)[1].replace(/&amp;/g, '&'));
   assert.equal(ask, 'Hi Dobatron, is "HP EliteBook 840 G6 · Core i5 8th Gen, 8GB/256GB" available? Can you send photos and the battery health of this unit? https://dobatron.co.ke/laptops/hp-elitebook-840-g6?variant=hp-elitebook-840-g6-i5-8gb-256gb');
   assert.match(html, /Request a video of this machine/);
   assert.match(html, /class="sf-confidence"/, 'buy-with-confidence strip');
@@ -255,9 +255,9 @@ test('canonicals, sitemap and robots use dobatron.co.ke; the quiz and filtered v
   for (const f of htmlFiles()) assert.doesNotMatch(fs.readFileSync(f, 'utf8'), /rel="canonical" href="https:\/\/(?!dobatron\.co\.ke)/, f);
 });
 
-test('every WhatsApp link goes to wa.me/254717571951', () => {
+test('every WhatsApp link goes to wa.me/254797809836', () => {
   for (const f of htmlFiles()) {
-    for (const m of fs.readFileSync(f, 'utf8').matchAll(/href="(https:\/\/wa\.me\/[^"]*)"/g)) assert.match(m[1], /^https:\/\/wa\.me\/254717571951(\?text=.+)?$/, `${f}: ${m[1]}`);
+    for (const m of fs.readFileSync(f, 'utf8').matchAll(/href="(https:\/\/wa\.me\/[^"]*)"/g)) assert.match(m[1], /^https:\/\/wa\.me\/254797809836(\?text=.+)?$/, `${f}: ${m[1]}`);
   }
 });
 

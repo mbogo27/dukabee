@@ -92,4 +92,4 @@ A Grade A business laptop is built to a higher standard than most new budget lap
 
 The middle band, where a 10th Gen ThinkPad X13 with 16GB or an 8th Gen EliteBook 840 G6 costs far less than a comparable new laptop. See the [ThinkPad](/laptops/lenovo-thinkpad) and [EliteBook](/laptops/hp-elitebook) pages for current price ranges.
 
-Not sure which one fits? Try [Find my laptop](/find-my-laptop), or [send us your budget and what you'll use it for on WhatsApp](https://wa.me/254717571951?text=Hi%20Dobatron%2C%20help%20me%20pick%20a%20laptop.%20Budget%3A%20%20Use%3A%20).
+Not sure which one fits? Try [Find my laptop](/find-my-laptop), or [send us your budget and what you'll use it for on WhatsApp](https://wa.me/254797809836?text=Hi%20Dobatron%2C%20help%20me%20pick%20a%20laptop.%20Budget%3A%20%20Use%3A%20).
