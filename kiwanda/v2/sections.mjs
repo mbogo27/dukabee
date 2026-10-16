@@ -10,11 +10,19 @@ const wrapSection = (type, variant, inner, extra = '') => `<section class="sf-se
 // ---- chrome ----
 export const announcement = (text) => `<div class="sf-announce" data-section="announcement"><div class="sf-wrap"><p>${esc(text)}</p></div></div>`;
 
+/** The store's logo image (store.brand.logo / logoOnDark), or the text wordmark when a store has none. */
+const logoMark = (store, { dark = false, eager = false } = {}) => {
+  const img = dark ? store.brand?.logoOnDark || store.brand?.logo : store.brand?.logo;
+  return img
+    ? `<img class="sf-logo__img" src="${esc(img.src)}" alt="${esc(img.alt || store.name)}" width="${img.width}" height="${img.height}"${eager ? ' fetchpriority="high"' : ' loading="lazy"'} decoding="async">`
+    : `<span class="sf-logo__tag" aria-hidden="true"></span>${esc(store.name)}`;
+};
+
 /** nav: [{ href, label, key }]; the main nav grows with the store's categories (never "laptops only"). */
 export function header({ store, current, nav = [{ href: routes.shop, label: 'Shop', key: 'shop' }, { href: routes.guides, label: 'Guides', key: 'guides' }], search = { action: routes.shop, label: 'products' } }) {
   const link = (n) => `<a href="${esc(n.href)}"${current === n.key ? ' aria-current="page"' : ''}>${esc(n.label)}</a>`;
   return `<header class="sf-header"><div class="sf-wrap sf-header__inner">
-<a class="sf-logo" href="/" aria-label="${esc(store.name)} home"><span class="sf-logo__tag" aria-hidden="true"></span>${esc(store.name)}</a>
+<a class="sf-logo${store.brand?.logo ? ' sf-logo--image' : ''}" href="/" aria-label="${esc(store.name)} home">${logoMark(store, { eager: true })}</a>
 <nav class="sf-nav" aria-label="Main">${nav.map(link).join('')}</nav>
 <form class="sf-search" role="search" action="${esc(search.action)}" method="get" data-search-form>
 <label class="sf-sr" for="sf-q">Search ${esc(search.label)}</label>
@@ -30,7 +38,7 @@ export function footer({ store, categories, guides, columns }) {
   const tel = `+${store.whatsapp}`;
   if (columns) {
     return `<footer class="sf-footer" data-section="footer"><div class="sf-wrap sf-footer__inner">
-<div class="sf-footer__brand"><a class="sf-logo sf-logo--footer" href="/"><span class="sf-logo__tag" aria-hidden="true"></span>${esc(store.name)}</a><p>${esc(store.footerBlurb || '')}</p>
+<div class="sf-footer__brand"><a class="sf-logo sf-logo--footer${store.brand?.logo ? ' sf-logo--image' : ''}" href="/" aria-label="${esc(store.name)} home">${logoMark(store, { dark: true })}</a><p>${esc(store.footerBlurb || '')}</p>
 <ul><li><a href="${waHref(store.whatsapp, `Hi ${store.name}, `)}" target="_blank" rel="noopener">WhatsApp ${esc(store.phoneDisplay)}</a></li><li><a href="tel:${tel}">Call ${esc(store.phoneDisplay)}</a></li></ul></div>
 ${columns.map((c) => `<div><h2 class="sf-footer__h">${esc(c.title)}</h2><ul>${c.links.map((l) => `<li><a href="${esc(l.href)}">${esc(l.label)}</a></li>`).join('')}</ul></div>`).join('\n')}
 </div><div class="sf-wrap sf-footer__fine"><p>© ${new Date().getFullYear()} ${esc(store.name)} · Prices in KSh</p>${store.poweredBy ? `<p><a href="${esc(store.poweredBy.href)}">${esc(store.poweredBy.label)}</a></p>` : ''}</div></footer>`;

@@ -145,6 +145,10 @@ export async function composeStorefront({ catalog, content, relFile = (f) => f, 
 <div class="sf-gallery__thumbs">${shots.map((img, i) => `<button type="button" data-gallery-to="${i}" aria-label="Show photo ${i + 1} of ${shots.length}"${i ? '' : ' aria-current="true"'}>${imageRef(img, { alt: '' })}</button>`).join('')}</div></div>${note}`;
   };
 
+  // Brand assets (scripts/dobatron-brand.py): favicon set, and the large icon as the default share image and logo.
+  const icons = store.brand?.icons || null;
+  const brandImage = icons?.large ? abs(icons.large) : null;
+
   const shell = ({ kind, current, title, description, canonical, body, top = '', jsonld = [], robots, ogType = 'website', image }) => `<!doctype html>
 <html lang="en-KE">
 <head>
@@ -156,9 +160,12 @@ ${canonical ? `<link rel="canonical" href="${esc(canonical)}">\n` : ''}${robots 
 <meta property="og:site_name" content="${esc(store.name)}">
 <meta property="og:title" content="${esc(title)}">
 <meta property="og:description" content="${esc(description)}">
-${canonical ? `<meta property="og:url" content="${esc(canonical)}">\n` : ''}${image ? `<meta property="og:image" content="${esc(image)}">\n` : ''}<meta name="theme-color" content="${esc(store.palette.primary)}">
+${canonical ? `<meta property="og:url" content="${esc(canonical)}">\n` : ''}${image || brandImage ? `<meta property="og:image" content="${esc(image || brandImage)}">\n` : ''}<meta name="theme-color" content="${esc(store.palette.primary)}">
 <meta name="generator" content="Duka Bee · Kiwanda storefront v2">
-<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+${icons ? `<link rel="icon" href="${icons.ico}" sizes="any">
+<link rel="icon" href="${icons.png32}" type="image/png" sizes="32x32">
+<link rel="icon" href="${icons.png48}" type="image/png" sizes="48x48">
+<link rel="apple-touch-icon" href="${icons.apple}">` : '<link rel="icon" href="/favicon.svg" type="image/svg+xml">'}
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=${encodeURIComponent(store.fonts?.display || 'Space Grotesk').replace(/%20/g, '+')}:wght@400;500;700&family=${encodeURIComponent(store.fonts?.mono || 'JetBrains Mono').replace(/%20/g, '+')}:wght@400;600&display=swap">
 <link rel="stylesheet" href="/assets/storefront.css">
@@ -196,7 +203,7 @@ ${jsonScript('sf-config', { id: store.id, name: store.name, whatsapp: store.what
   page('index.html', shell({
     kind: 'home', current: 'home', title: store.seo.homeTitle, description: store.seo.homeDescription, canonical: `${origin}/`, top: home.top, body: home.main,
     jsonld: [
-      { '@context': 'https://schema.org', '@type': 'Organization', name: store.name, url: `${origin}/`, telephone: `+${store.whatsapp}`, contactPoint: { '@type': 'ContactPoint', telephone: `+${store.whatsapp}`, contactType: 'sales', areaServed: 'KE' } },
+      { '@context': 'https://schema.org', '@type': 'Organization', name: store.name, url: `${origin}/`, ...(brandImage ? { logo: brandImage } : {}), telephone: `+${store.whatsapp}`, contactPoint: { '@type': 'ContactPoint', telephone: `+${store.whatsapp}`, contactType: 'sales', areaServed: 'KE' } },
       { '@context': 'https://schema.org', '@type': 'WebSite', name: store.name, url: `${origin}/`, potentialAction: { '@type': 'SearchAction', target: `${origin}${primary.path}?q={search_term_string}`, 'query-input': 'required name=search_term_string' } },
     ],
   }));
@@ -522,7 +529,7 @@ ${jsonScript('sf-quiz', quizData)}`,
   const lastmod = (d) => (d ? `<lastmod>${String(d).slice(0, 10)}</lastmod>` : '');
   files.push({ path: 'sitemap.xml', content: `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${sitemap.map((u) => `<url><loc>${abs(u.path)}</loc>${lastmod(u.mod)}</url>`).join('\n')}\n</urlset>\n` });
   files.push({ path: 'robots.txt', content: `User-agent: *\nAllow: /\n\nSitemap: ${origin}/sitemap.xml\n` });
-  files.push({ path: 'favicon.svg', content: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="10" fill="${store.palette.accent}"/><text x="32" y="46" font-family="Arial,Helvetica,sans-serif" font-size="40" font-weight="700" text-anchor="middle" fill="${store.palette.primary}">${esc(store.name[0])}</text></svg>\n` });
+  if (!icons) files.push({ path: 'favicon.svg', content: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="10" fill="${store.palette.accent}"/><text x="32" y="46" font-family="Arial,Helvetica,sans-serif" font-size="40" font-weight="700" text-anchor="middle" fill="${store.palette.primary}">${esc(store.name[0])}</text></svg>\n` });
 
   return { files, warnings, errors, homeSections: sections, homeReport, guides, tree, redirects };
 }

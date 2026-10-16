@@ -48,7 +48,16 @@ export async function buildStorefront(id, { outDir = path.join(ROOT, 'dist', 'st
   for (const m of catalog.models) for (const img of m.images || []) {
     if (img.src && !images.some((i) => `/${i.path}` === img.src)) throw new BuildError(`${id}: ${m.modelId} points at ${img.src}, which isn't in data/${id}/images/`);
   }
-  const files = [...result.files, ...assets, ...images];
+  // Logo and favicon set (scripts/dobatron-brand.py writes them into data/<id>/brand/), served at /brand/.
+  const brandDir = path.join(dataDir, 'brand');
+  const brand = fs.existsSync(brandDir) ? fs.readdirSync(brandDir).filter((f) => /\.(png|ico|svg|webp)$/i.test(f)).map((f) => ({ path: `brand/${f}`, content: fs.readFileSync(path.join(brandDir, f)), binary: true })) : [];
+  const ico = brand.find((f) => f.path === 'brand/favicon.ico');
+  if (ico) brand.push({ ...ico, path: 'favicon.ico' }); // browsers ask for /favicon.ico on their own
+  const store = (await catalog.getStore()).brand || {};
+  for (const ref of [store.logo?.src, store.logoOnDark?.src, ...Object.values(store.icons || {})].filter(Boolean)) {
+    if (!brand.some((f) => `/${f.path}` === ref)) throw new BuildError(`${id}: store.brand points at ${ref}, which isn't in data/${id}/brand/ (run scripts/dobatron-brand.py)`);
+  }
+  const files = [...result.files, ...assets, ...images, ...brand];
 
   const leaks = privacyLeaks(files, catalog.products);
   if (leaks.length) throw new BuildError(`${id}: private cost would be published\n${leaks.map((l) => `  ✗ ${l}`).join('\n')}`);

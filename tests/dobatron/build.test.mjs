@@ -266,7 +266,26 @@ test('accessibility basics: placeholders have alt text, contrast pairs pass', as
     for (const m of fs.readFileSync(f, 'utf8').matchAll(/<div class="sf-ph[^"]*" role="img" aria-label="([^"]*)"/g)) assert.ok(m[1].trim(), `${f}: placeholder without alt`);
   }
   const { contrast } = await import('../../pipeline/contrast.mjs');
-  const ink = '#111111', paper = '#F7F5F0', accent = '#FFD60A';
-  assert.ok(contrast(ink, paper) >= 4.5 && contrast(paper, ink) >= 4.5 && contrast(ink, accent) >= 4.5);
+  const { primary: ink, paper, accent } = readJson(path.join(DATA, 'store.json')).store.palette;
+  assert.equal(ink, '#0B2A55');
+  assert.equal(accent, '#FFD60A');
+  assert.ok(contrast(ink, paper) >= 4.5 && contrast(paper, ink) >= 4.5 && contrast(ink, accent) >= 4.5, 'navy on paper, paper on navy, navy on yellow');
+  assert.ok(contrast(accent, ink) >= 4.5, 'yellow headings in the navy footer');
   assert.ok(contrast(accent, paper) < 3, 'yellow on paper fails, which is why yellow is only ever a background');
+});
+
+test('brand: navy theme, logo in the header, light logo in the footer, favicon set on every page', () => {
+  for (const f of htmlFiles()) {
+    const html = fs.readFileSync(f, 'utf8');
+    assert.match(html, /<header class="sf-header">[\s\S]*?<img class="sf-logo__img" src="\/brand\/logo\.png" alt="Dobatron" width="568" height="96"/, f);
+    assert.match(html, /<footer[\s\S]*?<img class="sf-logo__img" src="\/brand\/logo-light\.png"/, f);
+    assert.match(html, /<link rel="icon" href="\/brand\/favicon\.ico" sizes="any">/, f);
+    assert.match(html, /<link rel="apple-touch-icon" href="\/brand\/apple-touch-icon\.png">/, f);
+    assert.match(html, /--ink:#0B2A55;--accent:#FFD60A/, f);
+    assert.match(html, /<meta name="theme-color" content="#0B2A55">/, f);
+  }
+  for (const p of ['brand/logo.png', 'brand/logo-light.png', 'brand/favicon.ico', 'brand/favicon-32.png', 'brand/apple-touch-icon.png', 'brand/icon-512.png', 'favicon.ico']) assert.ok(exists(p), p);
+  assert.ok(!exists('favicon.svg'), 'the generated letter icon is replaced by the real one');
+  assert.equal(ldOf(read('index.html')).find((x) => x['@type'] === 'Organization').logo, `${ORIGIN}/brand/icon-512.png`);
+  assert.match(read('about.html'), /<meta property="og:image" content="https:\/\/dobatron\.co\.ke\/brand\/icon-512\.png">/, 'pages without a product photo share the logo');
 });
