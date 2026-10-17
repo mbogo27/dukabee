@@ -62,6 +62,16 @@ Live on **https://dobatron.co.ke** since 2026-10-13 (worker `dukabee`, version 0
 - The worker serves dobatron.co.ke from `/stores/dobatron`, 301s `www.dobatron.co.ke`, `dobatron.com`, `www.dobatron.com` and `dukabee.co.ke/stores/dobatron/…` to it, answers `redirects.json` (legacy `/p/…`, `/shop`, renamed guides) with 301s, and sends `X-Robots-Tag: noindex, follow` on filtered views.
 - To publish changes: edit here, sync to the Duka Bee repo (same paths), `npm run deploy` there.
 
+### Domain migration (2026-10-17, branch `dobatron-coke-migration`, worker version 78a55536)
+
+- **Search Console:** both properties verified by DNS TXT records in Cloudflare (they survive the redirect); the two `google-site-verification` meta tags are also on every page (`store.seo.verification`). Change of address from dobatron.com to dobatron.co.ke submitted in Search Console.
+- **Redirect source:** `data/dobatron/redirects.csv` (old_path,new_path; 64 old `/p/` offers, `/shop`, the renamed budget guide). Edit it to add or change a redirect; the build adds rows for new offers and renamed guides, rejects chains and dead targets, and publishes `redirects.json` for the worker.
+- **Worker rules** (`worker/index.mjs`, tests in `tests/worker/dobatron-redirects.test.mjs`):
+  - dobatron.com and www.dobatron.com, http or https: one 301 to the final page on `https://dobatron.co.ke`. Order: redirect map, then the same path if it exists, then the nearest existing parent page, then the homepage. Query strings kept. `robots.txt` and `sitemap.xml` on .com 301 to the .co.ke files.
+  - dobatron.co.ke: http → https, `www` → apex, trailing slash dropped, legacy paths mapped, each as a single 301. Unknown paths are real 404s.
+  - No noindex and no robots.txt block on .com, so Google can crawl the redirects.
+- **Keep the redirects and dobatron.com's DNS records for at least a year** (Google's guidance for a change of address is a minimum of 180 days).
+
 **Email:** MX for dobatron.com points at a proxied hostname, so mail there probably doesn't arrive (already the case before Dobatron). Set up mail on dobatron.co.ke with an unproxied mail record.
 
 ## Still to confirm
