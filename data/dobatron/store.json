@@ -63,7 +63,19 @@
     "seo": {
       "homeTitle": "Dobatron: Grade A refurbished laptops in Kenya. HP, Lenovo, Dell, Apple",
       "homeDescription": "Grade A refurbished EliteBooks, ThinkPads, Latitudes and MacBooks with clear specs and prices. Filter by budget, confirm on WhatsApp, inspect before you pay.",
-      "titleSuffix": " | Dobatron"
+      "titleSuffix": " | Dobatron",
+      "verification": [
+        {
+          "name": "google-site-verification",
+          "content": "OEpH6VlN8hvqjKtXwwBzV40JIXsOJdtzFoExhQzfuvA",
+          "comment": "dobatron.com"
+        },
+        {
+          "name": "google-site-verification",
+          "content": "HIzWCbhBgczcAL6O9jkXdt4rqZswg3hNWsYjduXineY",
+          "comment": "dobatron.co.ke"
+        }
+      ]
     },
     "emptyState": {
       "text": "No laptops match that. Remove a filter, or tell us what you need and we'll source it.",

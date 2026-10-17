@@ -162,6 +162,7 @@ ${canonical ? `<link rel="canonical" href="${esc(canonical)}">\n` : ''}${robots 
 <meta property="og:description" content="${esc(description)}">
 ${canonical ? `<meta property="og:url" content="${esc(canonical)}">\n` : ''}${image || brandImage ? `<meta property="og:image" content="${esc(image || brandImage)}">\n` : ''}<meta name="theme-color" content="${esc(store.palette.primary)}">
 <meta name="generator" content="Duka Bee · Kiwanda storefront v2">
+${(store.seo?.verification || []).map((v) => `<meta name="${esc(v.name)}" content="${esc(v.content)}" />${v.comment ? ` <!-- ${esc(v.comment)} -->` : ''}`).join('\n')}
 ${icons ? `<link rel="icon" href="${icons.ico}" sizes="any">
 <link rel="icon" href="${icons.png32}" type="image/png" sizes="32x32">
 <link rel="icon" href="${icons.png48}" type="image/png" sizes="48x48">

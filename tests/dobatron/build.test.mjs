@@ -255,6 +255,21 @@ test('canonicals, sitemap and robots use dobatron.co.ke; the quiz and filtered v
   for (const f of htmlFiles()) assert.doesNotMatch(fs.readFileSync(f, 'utf8'), /rel="canonical" href="https:\/\/(?!dobatron\.co\.ke)/, f);
 });
 
+test('migration: Search Console tags on every page, no dobatron.com in the build except their comment, redirects.csv drives redirects.json', () => {
+  for (const f of htmlFiles()) {
+    const html = fs.readFileSync(f, 'utf8');
+    assert.match(html, /<meta name="google-site-verification" content="OEpH6VlN8hvqjKtXwwBzV40JIXsOJdtzFoExhQzfuvA" \/> <!-- dobatron\.com -->/, f);
+    assert.match(html, /<meta name="google-site-verification" content="HIzWCbhBgczcAL6O9jkXdt4rqZswg3hNWsYjduXineY" \/> <!-- dobatron\.co\.ke -->/, f);
+    assert.doesNotMatch(html.replace('<!-- dobatron.com -->', ''), /dobatron\.com/, `${f}: stray dobatron.com`);
+  }
+  for (const f of walk(out).filter((x) => /\.(xml|txt|json|js|css)$/.test(x))) assert.doesNotMatch(fs.readFileSync(f, 'utf8'), /dobatron\.com/, f);
+  const csv = fs.readFileSync(path.join(DATA, 'redirects.csv'), 'utf8').trim().split(/\r?\n/);
+  assert.equal(csv[0], 'old_path,new_path');
+  const fromCsv = Object.fromEntries(csv.slice(1).map((l) => l.split(',')));
+  assert.deepEqual(fromCsv, JSON.parse(read('redirects.json')));
+  assert.equal(Object.keys(fromCsv).filter((k) => k.startsWith('/p/')).length, products.length, 'every old /p/ URL');
+});
+
 test('every WhatsApp link goes to wa.me/254797809836', () => {
   for (const f of htmlFiles()) {
     for (const m of fs.readFileSync(f, 'utf8').matchAll(/href="(https:\/\/wa\.me\/[^"]*)"/g)) assert.match(m[1], /^https:\/\/wa\.me\/254797809836(\?text=.+)?$/, `${f}: ${m[1]}`);
