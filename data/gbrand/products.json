@@ -1,0 +1,492 @@
+[
+  {
+    "id": "gb-01",
+    "sku": "GB-01",
+    "slug": "arsenal-green-leaf",
+    "name": "Arsenal Green Leaf Special",
+    "category": "jerseys",
+    "club": "arsenal",
+    "clubName": "Arsenal",
+    "kitType": "Special",
+    "price": 1499,
+    "compareAtPrice": null,
+    "currency": "KES",
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "printable": true,
+    "badge": "new",
+    "featured": true,
+    "sortNewest": 14,
+    "description": "Deep green leaf-print body with white sleeves, green shoulder stripes and a buttoned grandad collar.",
+    "images": {
+      "card": "/assets/products/arsenal-green-leaf.webp",
+      "thumb": "/assets/products/arsenal-green-leaf-thumb.webp",
+      "original": "/assets/products/arsenal-green-leaf-original.jpg"
+    },
+    "tags": [
+      "arsenal",
+      "special"
+    ],
+    "inStock": true
+  },
+  {
+    "id": "gb-02",
+    "sku": "GB-02",
+    "slug": "man-city-black-bee",
+    "name": "Man City Black Bee Third",
+    "category": "jerseys",
+    "club": "man-city",
+    "clubName": "Man City",
+    "kitType": "Third",
+    "price": 1499,
+    "compareAtPrice": null,
+    "currency": "KES",
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "printable": true,
+    "badge": "new",
+    "featured": false,
+    "sortNewest": 13,
+    "description": "Black with a tonal worker-bee print and yellow collar, cuffs and side panels.",
+    "images": {
+      "card": "/assets/products/man-city-black-bee.webp",
+      "thumb": "/assets/products/man-city-black-bee-thumb.webp",
+      "original": "/assets/products/man-city-black-bee-original.jpg"
+    },
+    "tags": [
+      "man city",
+      "third"
+    ],
+    "inStock": true
+  },
+  {
+    "id": "gb-03",
+    "sku": "GB-03",
+    "slug": "liverpool-white-retro",
+    "name": "Liverpool White Retro",
+    "category": "jerseys",
+    "club": "liverpool",
+    "clubName": "Liverpool",
+    "kitType": "Retro",
+    "price": 1499,
+    "compareAtPrice": null,
+    "currency": "KES",
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "printable": true,
+    "badge": "new",
+    "featured": false,
+    "sortNewest": 12,
+    "description": "Clean white retro cut with red-and-grey stripes on the V-neck, shoulders and cuffs.",
+    "images": {
+      "card": "/assets/products/liverpool-white-retro.webp",
+      "thumb": "/assets/products/liverpool-white-retro-thumb.webp",
+      "original": "/assets/products/liverpool-white-retro-original.jpg"
+    },
+    "tags": [
+      "liverpool",
+      "retro"
+    ],
+    "inStock": true
+  },
+  {
+    "id": "gb-04",
+    "sku": "GB-04",
+    "slug": "chelsea-black-laurel",
+    "name": "Chelsea Black Laurel Edition",
+    "category": "jerseys",
+    "club": "chelsea",
+    "clubName": "Chelsea",
+    "kitType": "Special",
+    "price": 1499,
+    "compareAtPrice": null,
+    "currency": "KES",
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "printable": true,
+    "badge": "new",
+    "featured": false,
+    "sortNewest": 11,
+    "description": "Black textured body with gold laurel-pattern collar and cuffs and gold side piping.",
+    "images": {
+      "card": "/assets/products/chelsea-black-laurel.webp",
+      "thumb": "/assets/products/chelsea-black-laurel-thumb.webp",
+      "original": "/assets/products/chelsea-black-laurel-original.jpg"
+    },
+    "tags": [
+      "chelsea",
+      "special"
+    ],
+    "inStock": true
+  },
+  {
+    "id": "gb-05",
+    "sku": "GB-05",
+    "slug": "barcelona-home",
+    "name": "Barcelona Home Stripes",
+    "category": "jerseys",
+    "club": "barcelona",
+    "clubName": "Barcelona",
+    "kitType": "Home",
+    "price": 1499,
+    "compareAtPrice": null,
+    "currency": "KES",
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "printable": true,
+    "badge": null,
+    "featured": false,
+    "sortNewest": 10,
+    "description": "Blue and garnet stripes with a ribbed V-neck and red-trimmed sleeves. The classic Barça look.",
+    "images": {
+      "card": "/assets/products/barcelona-home.webp",
+      "thumb": "/assets/products/barcelona-home-thumb.webp",
+      "original": "/assets/products/barcelona-home-original.jpg"
+    },
+    "tags": [
+      "barcelona",
+      "home"
+    ],
+    "inStock": true
+  },
+  {
+    "id": "gb-06",
+    "sku": "GB-06",
+    "slug": "real-madrid-home",
+    "name": "Real Madrid White Home",
+    "category": "jerseys",
+    "club": "real-madrid",
+    "clubName": "Real Madrid",
+    "kitType": "Home",
+    "price": 1499,
+    "compareAtPrice": null,
+    "currency": "KES",
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "printable": true,
+    "badge": null,
+    "featured": false,
+    "sortNewest": 9,
+    "description": "Crisp white with a navy V-neck and cuffs and pink-red shoulder stripes.",
+    "images": {
+      "card": "/assets/products/real-madrid-home.webp",
+      "thumb": "/assets/products/real-madrid-home-thumb.webp",
+      "original": "/assets/products/real-madrid-home-original.jpg"
+    },
+    "tags": [
+      "real madrid",
+      "home"
+    ],
+    "inStock": true
+  },
+  {
+    "id": "gb-07",
+    "sku": "GB-07",
+    "slug": "aston-villa-claret-home",
+    "name": "Aston Villa Claret Home",
+    "category": "jerseys",
+    "club": "aston-villa",
+    "clubName": "Aston Villa",
+    "kitType": "Home",
+    "price": 1499,
+    "compareAtPrice": null,
+    "currency": "KES",
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "printable": true,
+    "badge": null,
+    "featured": false,
+    "sortNewest": 8,
+    "description": "Claret body with a sky-blue polo collar, shoulder stripes and cuffs.",
+    "images": {
+      "card": "/assets/products/aston-villa-claret-home.webp",
+      "thumb": "/assets/products/aston-villa-claret-home-thumb.webp",
+      "original": "/assets/products/aston-villa-claret-home-original.jpg"
+    },
+    "tags": [
+      "aston villa",
+      "home"
+    ],
+    "inStock": true
+  },
+  {
+    "id": "gb-08",
+    "sku": "GB-08",
+    "slug": "arsenal-yellow-away",
+    "name": "Arsenal Yellow Away",
+    "category": "jerseys",
+    "club": "arsenal",
+    "clubName": "Arsenal",
+    "kitType": "Away",
+    "price": 1499,
+    "compareAtPrice": null,
+    "currency": "KES",
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "printable": true,
+    "badge": null,
+    "featured": false,
+    "sortNewest": 7,
+    "description": "Pale yellow with a tonal pattern, navy shoulder stripes and navy-and-red ribbed trims.",
+    "images": {
+      "card": "/assets/products/arsenal-yellow-away.webp",
+      "thumb": "/assets/products/arsenal-yellow-away-thumb.webp",
+      "original": "/assets/products/arsenal-yellow-away-original.jpg"
+    },
+    "tags": [
+      "arsenal",
+      "away"
+    ],
+    "inStock": true
+  },
+  {
+    "id": "gb-09",
+    "sku": "GB-09",
+    "slug": "man-city-sky-home",
+    "name": "Man City Sky Blue Home",
+    "category": "jerseys",
+    "club": "man-city",
+    "clubName": "Man City",
+    "kitType": "Home",
+    "price": 1499,
+    "compareAtPrice": null,
+    "currency": "KES",
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "printable": true,
+    "badge": null,
+    "featured": false,
+    "sortNewest": 6,
+    "description": "Sky blue fading to pale blue at the hem, finished with a white crew neck and cuffs.",
+    "images": {
+      "card": "/assets/products/man-city-sky-home.webp",
+      "thumb": "/assets/products/man-city-sky-home-thumb.webp",
+      "original": "/assets/products/man-city-sky-home-original.jpg"
+    },
+    "tags": [
+      "man city",
+      "home"
+    ],
+    "inStock": true
+  },
+  {
+    "id": "gb-10",
+    "sku": "GB-10",
+    "slug": "liverpool-red-home",
+    "name": "Liverpool Red Home",
+    "category": "jerseys",
+    "club": "liverpool",
+    "clubName": "Liverpool",
+    "kitType": "Home",
+    "price": 1499,
+    "compareAtPrice": null,
+    "currency": "KES",
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "printable": true,
+    "badge": null,
+    "featured": false,
+    "sortNewest": 5,
+    "description": "Red with a white scattered-line print, white shoulder stripes and ribbed cuffs.",
+    "images": {
+      "card": "/assets/products/liverpool-red-home.webp",
+      "thumb": "/assets/products/liverpool-red-home-thumb.webp",
+      "original": "/assets/products/liverpool-red-home-original.jpg"
+    },
+    "tags": [
+      "liverpool",
+      "home"
+    ],
+    "inStock": true
+  },
+  {
+    "id": "gb-11",
+    "sku": "GB-11",
+    "slug": "man-united-cream-away",
+    "name": "Man United Cream Away",
+    "category": "jerseys",
+    "club": "man-united",
+    "clubName": "Man United",
+    "kitType": "Away",
+    "price": 1499,
+    "compareAtPrice": null,
+    "currency": "KES",
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "printable": true,
+    "badge": null,
+    "featured": false,
+    "sortNewest": 4,
+    "description": "Cream base with a tonal rose print, black shoulder stripes and red-and-black trims.",
+    "images": {
+      "card": "/assets/products/man-united-cream-away.webp",
+      "thumb": "/assets/products/man-united-cream-away-thumb.webp",
+      "original": "/assets/products/man-united-cream-away-original.jpg"
+    },
+    "tags": [
+      "man united",
+      "away"
+    ],
+    "inStock": true
+  },
+  {
+    "id": "gb-12",
+    "sku": "GB-12",
+    "slug": "arsenal-navy-retro",
+    "name": "Arsenal Navy Retro",
+    "category": "jerseys",
+    "club": "arsenal",
+    "clubName": "Arsenal",
+    "kitType": "Retro",
+    "price": 1499,
+    "compareAtPrice": null,
+    "currency": "KES",
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "printable": true,
+    "badge": null,
+    "featured": false,
+    "sortNewest": 3,
+    "description": "Navy pattern with yellow shoulder stripes and a red-and-yellow ribbed collar and cuffs.",
+    "images": {
+      "card": "/assets/products/arsenal-navy-retro.webp",
+      "thumb": "/assets/products/arsenal-navy-retro-thumb.webp",
+      "original": "/assets/products/arsenal-navy-retro-original.jpg"
+    },
+    "tags": [
+      "arsenal",
+      "retro"
+    ],
+    "inStock": true
+  },
+  {
+    "id": "gb-13",
+    "sku": "GB-13",
+    "slug": "man-city-white-away",
+    "name": "Man City White Away",
+    "category": "jerseys",
+    "club": "man-city",
+    "clubName": "Man City",
+    "kitType": "Away",
+    "price": 1499,
+    "compareAtPrice": null,
+    "currency": "KES",
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "printable": true,
+    "badge": null,
+    "featured": false,
+    "sortNewest": 2,
+    "description": "White with a blue gradient centre stripe and blue side panels.",
+    "images": {
+      "card": "/assets/products/man-city-white-away.webp",
+      "thumb": "/assets/products/man-city-white-away-thumb.webp",
+      "original": "/assets/products/man-city-white-away-original.jpg"
+    },
+    "tags": [
+      "man city",
+      "away"
+    ],
+    "inStock": true
+  },
+  {
+    "id": "gb-14",
+    "sku": "GB-14",
+    "slug": "chelsea-black-gold",
+    "name": "Chelsea Black & Gold Special",
+    "category": "jerseys",
+    "club": "chelsea",
+    "clubName": "Chelsea",
+    "kitType": "Special",
+    "price": 1499,
+    "compareAtPrice": null,
+    "currency": "KES",
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "printable": true,
+    "badge": null,
+    "featured": false,
+    "sortNewest": 1,
+    "description": "All-black body with gold piping down the sides and a patterned gold collar and cuffs.",
+    "images": {
+      "card": "/assets/products/chelsea-black-gold.webp",
+      "thumb": "/assets/products/chelsea-black-gold-thumb.webp",
+      "original": "/assets/products/chelsea-black-gold-original.jpg"
+    },
+    "tags": [
+      "chelsea",
+      "special"
+    ],
+    "inStock": true
+  }
+]

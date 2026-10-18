@@ -68,6 +68,11 @@ for (const id of ['dobatron']) {
   console.log(`  ✓ store ${id}: ${r.files.filter((f) => f.path.endsWith('.html')).length} pages${r.warnings.length ? `, ${r.warnings.length} warning(s)` : ''}`);
 }
 
+// GBRAND (apparel): data/gbrand/ + stores/gbrand/ -> dist/stores/gbrand-preview/, served at dukabee.co.ke/preview/<id> (worker/index.mjs).
+import { buildGbrand } from './build-gbrand.mjs';
+const gb = await buildGbrand({ outDir: path.join(DIST, 'stores', 'gbrand-preview'), preview: true });
+console.log(`  ✓ store gbrand preview at ${gb.base}/: ${gb.pages} pages (${gb.products} kits, ${gb.posts} posts)`);
+
 // Short cache on HTML/modules so redeploys show up immediately; images can cache longer.
 fs.writeFileSync(path.join(DIST, '_headers'), `/*
   X-Content-Type-Options: nosniff

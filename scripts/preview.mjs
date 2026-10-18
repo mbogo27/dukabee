@@ -18,8 +18,10 @@ const resolveIn = (DIST, pathname) => {
 };
 
 /** Serve a directory as a site root. Returns the http.Server (call .close() when done). */
-export const serve = (root, port) => { const DIST = path.resolve(root); return http.createServer((req, res) => {
+export const serve = (root, port, BASE = '') => { const DIST = path.resolve(root); return http.createServer((req, res) => {
   const url = new URL(req.url, 'http://x');
+  // --base /preview/<id>: serve the store under its preview path, as the worker does on dukabee.co.ke.
+  if (BASE) { if (url.pathname === BASE || url.pathname.startsWith(`${BASE}/`)) url.pathname = url.pathname.slice(BASE.length) || '/'; else { res.writeHead(404); return res.end('Not found'); } }
   // Permanent redirects listed by the build (legacy /p/… and /shop URLs, renamed guides), as the worker serves them.
   const redirectsFile = path.join(DIST, 'redirects.json');
   const redirects = fs.existsSync(redirectsFile) ? JSON.parse(fs.readFileSync(redirectsFile, 'utf8')) : {};
@@ -43,6 +45,7 @@ if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.me
   const args = process.argv.slice(2);
   const store = args.includes('--store') ? args[args.indexOf('--store') + 1] : null;
   const PORT = Number(process.env.PORT) || 8788;
-  serve(path.resolve('dist', ...(store ? ['stores', store] : [])), PORT);
-  console.log(`dist${store ? `/stores/${store}` : ''} preview → http://localhost:${PORT}`);
+  const base = args.includes('--base') ? args[args.indexOf('--base') + 1] : '';
+  serve(path.resolve('dist', ...(store ? ['stores', store] : [])), PORT, base);
+  console.log(`dist${store ? `/stores/${store}` : ''} preview → http://localhost:${PORT}${base}/`);
 }

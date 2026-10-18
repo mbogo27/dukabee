@@ -1,0 +1,74 @@
+[
+  {
+    "slug": "arsenal",
+    "name": "Arsenal",
+    "colors": [
+      "#db0007",
+      "#ffffff"
+    ],
+    "crest": "/assets/clubs/arsenal.svg"
+  },
+  {
+    "slug": "man-city",
+    "name": "Man City",
+    "colors": [
+      "#6cabdd",
+      "#1c2c5b"
+    ],
+    "crest": "/assets/clubs/man-city.svg"
+  },
+  {
+    "slug": "liverpool",
+    "name": "Liverpool",
+    "colors": [
+      "#c8102e",
+      "#ffffff"
+    ],
+    "crest": "/assets/clubs/liverpool.svg"
+  },
+  {
+    "slug": "chelsea",
+    "name": "Chelsea",
+    "colors": [
+      "#034694",
+      "#dba111"
+    ],
+    "crest": "/assets/clubs/chelsea.svg"
+  },
+  {
+    "slug": "barcelona",
+    "name": "Barcelona",
+    "colors": [
+      "#a50044",
+      "#004d98"
+    ],
+    "crest": "/assets/clubs/barcelona.svg"
+  },
+  {
+    "slug": "real-madrid",
+    "name": "Real Madrid",
+    "colors": [
+      "#ffffff",
+      "#febe10"
+    ],
+    "crest": "/assets/clubs/real-madrid.svg"
+  },
+  {
+    "slug": "man-united",
+    "name": "Man United",
+    "colors": [
+      "#da291c",
+      "#111111"
+    ],
+    "crest": "/assets/clubs/man-united.svg"
+  },
+  {
+    "slug": "aston-villa",
+    "name": "Aston Villa",
+    "colors": [
+      "#670e36",
+      "#95bfe5"
+    ],
+    "crest": "/assets/clubs/aston-villa.svg"
+  }
+]

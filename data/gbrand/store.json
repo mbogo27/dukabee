@@ -1,0 +1,358 @@
+{
+  "$comment": "GBRAND StoreSpec v1. Single source of truth for the store. Values marked in SPEC.md section 11 as TO CONFIRM are placeholders.",
+  "store": {
+    "name": "GBRAND",
+    "legalName": "GBRAND",
+    "tagline": "Wear your legacy",
+    "description": "Club jerseys, apparel and accessories delivered across Kenya. Order on WhatsApp, pay with M-Pesa.",
+    "niche": "apparel-sport",
+    "currency": "KES",
+    "locale": "en-KE",
+    "timezone": "Africa/Nairobi",
+    "domain": "TO CONFIRM (e.g. gbrand.co.ke)",
+    "builtWith": "Duka Bee"
+  },
+  "contact": {
+    "whatsapp": "254794790575",
+    "phoneDisplay": "0794 790 575",
+    "hours": "Mon–Sat, 8am–8pm",
+    "location": null,
+    "social": {
+      "instagram": null,
+      "tiktok": null,
+      "facebook": null
+    },
+    "whatsappChannel": null
+  },
+  "brand": {
+    "logo": "/assets/brand/logo.png",
+    "logoOnDark": "/assets/brand/logo-white.png",
+    "logoSource": "/assets/brand/logo-original.jpg",
+    "favicon": null,
+    "device": "kenya-flag-stripe"
+  },
+  "theme": {
+    "preset": "sport",
+    "fonts": {
+      "display": {
+        "family": "Big Shoulders Display",
+        "weights": [
+          600,
+          800,
+          900
+        ],
+        "fallback": "Oswald, 'Arial Narrow', Impact, sans-serif"
+      },
+      "body": {
+        "family": "Archivo",
+        "axes": "wdth 62..125, wght 400..800",
+        "fallback": "'Helvetica Neue', Arial, sans-serif"
+      }
+    },
+    "colors": {
+      "chalk": "#f2f1ec",
+      "paper": "#ffffff",
+      "ink": "#121212",
+      "line": "#dcd9d0",
+      "muted": "#67635b",
+      "red": "#b81f2b",
+      "green": "#0c6b3b"
+    },
+    "radius": 0,
+    "imageAspect": "4/5"
+  },
+  "nav": [
+    {
+      "label": "Shop",
+      "href": "/shop"
+    },
+    {
+      "label": "Our story",
+      "href": "/brand"
+    },
+    {
+      "label": "Magazine",
+      "href": "/magazine"
+    }
+  ],
+  "announcements": [
+    "Delivery across Kenya",
+    "Pay with M-Pesa",
+    "Every kit KSh 1,499",
+    "Any 2 for KSh 2,998",
+    "Name & number printing",
+    "Order on WhatsApp · 0794 790 575"
+  ],
+  "catalog": {
+    "products": "./products.json",
+    "clubs": "./clubs.json",
+    "kitTypes": [
+      "Home",
+      "Away",
+      "Third",
+      "Retro",
+      "Special"
+    ],
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "sizeGuide": {
+      "unit": "cm",
+      "note": "Approximate body measurements. Between two sizes? Pick the bigger one.",
+      "rows": [
+        {
+          "size": "S",
+          "chest": "88–96",
+          "length": 70
+        },
+        {
+          "size": "M",
+          "chest": "96–104",
+          "length": 72
+        },
+        {
+          "size": "L",
+          "chest": "104–112",
+          "length": 74
+        },
+        {
+          "size": "XL",
+          "chest": "112–120",
+          "length": 76
+        },
+        {
+          "size": "XXL",
+          "chest": "120–128",
+          "length": 78
+        }
+      ]
+    },
+    "accessoriesComingSoon": true,
+    "pricing": {
+      "standard": 1499,
+      "note": "Every jersey is KSh 1,499 (confirmed by GBRAND, Oct 2026)."
+    },
+    "clubCrests": "./clubs.json → crest (SVG in /assets/clubs/)"
+  },
+  "offers": {
+    "pairBundle": {
+      "enabled": true,
+      "label": "Any 2 kits for KSh 2,998",
+      "pairPrice": 2998,
+      "appliesTo": "jerseys",
+      "excludesPrintFee": true,
+      "note": "Confirmed by GBRAND. At KSh 1,499 per kit this equals the normal price for two, so no discount line appears in the bag. If pairPrice is ever set below 2 × kit price, the discount logic kicks in automatically."
+    },
+    "print": {
+      "enabled": true,
+      "fee": 500,
+      "nameMaxLength": 12,
+      "nameCharset": "A-Z, space, apostrophe, dot, hyphen",
+      "numberRange": [
+        0,
+        99
+      ]
+    }
+  },
+  "homepage": [
+    {
+      "block": "ticker"
+    },
+    {
+      "block": "hero.kitWall",
+      "props": {
+        "layout": "split",
+        "eyebrow": "Jerseys · Apparel · Accessories",
+        "headline": [
+          "Wear your",
+          "legacy"
+        ],
+        "outlineWord": "legacy",
+        "body": "Club jerseys and everyday apparel, delivered across Kenya. Pick your size, send your order on WhatsApp and pay with M-Pesa.",
+        "primaryCta": {
+          "label": "Shop jerseys",
+          "href": "/shop"
+        },
+        "secondaryCta": {
+          "label": "Order on WhatsApp",
+          "action": "whatsapp.general"
+        },
+        "stats": [
+          "kitCount",
+          "clubCount",
+          {
+            "value": "1,499",
+            "label": "KSh, every kit"
+          }
+        ],
+        "stack": {
+          "source": "newest",
+          "exclude": "spotlight",
+          "count": 3,
+          "tag": "Just dropped"
+        }
+      }
+    },
+    {
+      "block": "categories.clubTiles",
+      "props": {
+        "eyebrow": "Shop by club",
+        "title": "Pick your side",
+        "sort": "byCountDesc",
+        "showCrest": true
+      }
+    },
+    {
+      "block": "products.grid",
+      "props": {
+        "eyebrow": "Fresh on the rail",
+        "title": "New this week",
+        "sort": "newest",
+        "limit": 8
+      }
+    },
+    {
+      "block": "promo.pairBundle",
+      "props": {
+        "title": [
+          "Any 2 kits",
+          "KSh 2,998"
+        ],
+        "body": "Every kit is KSh 1,499. Grab two and mix clubs, sizes and styles.",
+        "images": [
+          "man-city-black-bee",
+          "liverpool-white-retro"
+        ],
+        "cta": {
+          "label": "Build your pair",
+          "href": "/shop"
+        },
+        "eyebrow": "Double up"
+      }
+    },
+    {
+      "block": "product.spotlight",
+      "props": {
+        "tag": "Kit of the week",
+        "product": "arsenal-green-leaf",
+        "inlineSizePicker": true
+      }
+    },
+    {
+      "block": "brand.teaser",
+      "props": {
+        "eyebrow": "Our story",
+        "body": "GBRAND puts the map of Kenya at the heart of everything we sell. Your club, your town, your people. Wear them with pride.",
+        "cta": {
+          "label": "Read our story",
+          "href": "/brand"
+        }
+      }
+    },
+    {
+      "block": "magazine.latest",
+      "props": {
+        "eyebrow": "GBRAND Magazine",
+        "title": "The Legacy",
+        "limit": 3
+      }
+    },
+    {
+      "block": "trust.strip",
+      "props": {
+        "items": [
+          {
+            "icon": "truck",
+            "title": "Delivery",
+            "body": "Nairobi doorstep, Pickup countrywide"
+          },
+          {
+            "icon": "phone",
+            "title": "M-Pesa",
+            "body": "Pay once we confirm your order"
+          },
+          {
+            "icon": "swap",
+            "title": "Size swap",
+            "body": "Wrong size? We'll swap it"
+          },
+          {
+            "icon": "whatsapp",
+            "title": "WhatsApp",
+            "body": "Your bag arrives as one clear message"
+          }
+        ]
+      }
+    },
+    {
+      "block": "join.whatsapp",
+      "props": {
+        "title": "New kits first",
+        "body": "Get drop alerts and restocks on WhatsApp. No spam, just kits.",
+        "button": "Join drop alerts on WhatsApp",
+        "message": "Hi GBRAND, add me to new kit alerts. (Reply STOP anytime to leave.)",
+        "note": "Opens WhatsApp with a message ready to send. Reply STOP any time to leave."
+      }
+    }
+  ],
+  "checkout": {
+    "mode": "whatsapp-precheckout",
+    "fields": [
+      {
+        "id": "name",
+        "label": "Name",
+        "type": "text",
+        "required": false
+      },
+      {
+        "id": "phone",
+        "label": "Phone",
+        "type": "tel",
+        "required": false,
+        "placeholder": "07xx xxx xxx"
+      },
+      {
+        "id": "fulfilment",
+        "label": "Delivery",
+        "type": "pills",
+        "options": [
+          "Delivery in Nairobi",
+          "Pickup",
+          "Courier upcountry"
+        ],
+        "default": "Delivery in Nairobi"
+      },
+      {
+        "id": "location",
+        "label": "Town or estate",
+        "type": "text",
+        "required": false,
+        "placeholder": "e.g. Kasarani, Nakuru town"
+      }
+    ],
+    "deliveryFee": "confirmed-on-whatsapp",
+    "messageTemplate": "Hi GBRAND, I'd like to order:\n{{#lines}}• {{name}} (No.{{no}}) — Size {{size}}{{#print}} — Print: {{printName}} {{printNumber}}{{/print}} ×{{qty}} — {{lineTotal}}\n{{/lines}}\nSubtotal: {{subtotal}}{{#discount}}\nPair deal: −{{discount}}{{/discount}}\nTotal: {{total}} + delivery\n\nName: {{name}}\nPhone: {{phone}}\nDelivery: {{fulfilment}}\nLocation: {{location}}"
+  },
+  "policies": [
+    "Delivery across Kenya",
+    "Pay with M-Pesa after confirmation",
+    "Size swap",
+    "Cash on delivery in Nairobi"
+  ],
+  "seo": {
+    "titleTemplate": "%s · GBRAND",
+    "homeTitle": "GBRAND · Wear Your Legacy",
+    "ogImage": "/assets/products/arsenal-green-leaf.webp"
+  },
+  "layout": {
+    "wrap": {
+      "mobile": "100%",
+      "tablet": "90vw",
+      "desktop": "min(80vw,1360px)"
+    }
+  }
+}

@@ -188,6 +188,35 @@ async function storeTarget(env, storeRoot, url, { fallback }) {
 // only resolve correctly against ONE root - so it can only really live at one place, not two.
 const STORE_PATH_TO_HOST = Object.fromEntries(Object.entries(STORE_HOSTS).map(([host, root]) => [root, host]));
 
+
+// GBRAND client preview: dukabee.co.ke/preview/gbrand-<random>[/path]. The build (scripts/build-gbrand.mjs, PREVIEW) bakes the
+// base path into every URL and writes the link id and creation date to <root>/_preview.json. The folder is never served directly.
+const GBRAND_PREVIEW_ROOT = '/stores/gbrand-preview';
+let gbrandPreviewCfg;
+async function gbrandPreview(request, env, url, match) {
+  if (!gbrandPreviewCfg) {
+    const res = await env.ASSETS.fetch(new Request(new URL(`${GBRAND_PREVIEW_ROOT}/_preview.json`, url)));
+    gbrandPreviewCfg = res.ok ? await res.json() : { id: null };
+  }
+  const cfg = gbrandPreviewCfg;
+  const hdr = { 'x-robots-tag': 'noindex, nofollow', 'cache-control': 'no-store' };
+  if (match[1] !== cfg.id) return new Response('Not found', { status: 404, headers: hdr });
+  if (Date.now() > Date.parse(cfg.created) + cfg.expiresDays * 86400e3) return new Response('This preview has expired.', { status: 410, headers: hdr });
+  if (!match[2]) return Response.redirect(new URL(`/preview/${cfg.id}/${url.search}`, url).toString(), 301);
+  if (match[2] === '/api/orders') return new Response(null, { status: 204, headers: hdr }); // ordering is off in previews
+  let target = new URL(GBRAND_PREVIEW_ROOT + (match[2] === '/' ? '/' : match[2].replace(/\/+$/, '')), url);
+  let res = await env.ASSETS.fetch(new Request(target, { method: request.method, headers: request.headers, redirect: 'manual' }));
+  for (let hops = 0; hops < 3 && res.status >= 300 && res.status < 400 && res.headers.get('location'); hops++) {
+    target = new URL(res.headers.get('location'), target);
+    res = await env.ASSETS.fetch(new Request(target, { method: request.method, headers: request.headers, redirect: 'manual' }));
+  }
+  if (res.status === 404) res = new Response((await env.ASSETS.fetch(new Request(new URL(`${GBRAND_PREVIEW_ROOT}/404.html`, url)))).body, { status: 404, headers: { 'content-type': 'text/html; charset=utf-8' } });
+  const out = new Response(res.body, res);
+  out.headers.set('x-robots-tag', 'noindex, nofollow');
+  if ((out.headers.get('content-type') || '').includes('text/html')) out.headers.set('cache-control', 'no-store');
+  return out;
+}
+
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
@@ -199,6 +228,9 @@ export default {
       const to = root ? await storeTarget(env, root, url, { fallback: true }) : url.pathname + url.search;
       return Response.redirect(new URL(to, `https://${host}`).toString(), 301);
     }
+    const gbMatch = url.pathname.match(/^\/preview\/(gbrand-[a-z0-9]{6,})(\/.*)?$/);
+    if (gbMatch && (request.method === 'GET' || request.method === 'HEAD' || (request.method === 'POST' && gbMatch[2] === '/api/orders'))) return gbrandPreview(request, env, url, gbMatch);
+    if (url.pathname.startsWith(GBRAND_PREVIEW_ROOT)) return new Response('Not found', { status: 404 });
     const storeRedirect =Object.keys(STORE_PATH_TO_HOST).find((root) => url.pathname === root || url.pathname.startsWith(root + '/'));
     if (storeRedirect && !STORE_HOSTS[url.hostname]) {
       const to = new URL(url.pathname.slice(storeRedirect.length) || '/', `https://${STORE_PATH_TO_HOST[storeRedirect]}`);

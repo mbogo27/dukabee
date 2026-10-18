@@ -16,6 +16,8 @@
     "import:dobatron": "node scripts/dobatron-import.mjs",
     "build:dobatron": "node scripts/build-storefront.mjs dobatron",
     "preview:dobatron": "node scripts/build-storefront.mjs dobatron && node scripts/preview.mjs --store dobatron",
+    "build:gbrand": "node scripts/build-gbrand.mjs",
+    "preview:gbrand": "node scripts/build-gbrand.mjs && node scripts/preview.mjs --store gbrand-preview --base /preview/gbrand-k7m2x9qa4f",
     "test": "node --test \"tests/**/*.test.mjs\""
   },
   "engines": {

@@ -1,0 +1,38 @@
+{
+  "$comment": "Copy for the /brand page and the footer. PLACEHOLDER until GBRAND's owner supplies his real story, location and social handles (handoff SPEC section 11, items 4 and 5).",
+  "placeholder": true,
+  "brand": {
+    "title": "Our story",
+    "metaDescription": "GBRAND is a Kenyan apparel brand for people who carry their teams, their towns and their families with them.",
+    "heroHeading": "Wear your legacy",
+    "intro": "GBRAND is a Kenyan apparel brand for people who carry their teams, their towns and their families with them. That's why the map of Kenya sits at the heart of our logo.",
+    "promisesTitle": "Three promises",
+    "promises": [
+      { "title": "Shot in hand", "body": "Every kit on this site is photographed from our own stock. What you see is what arrives." },
+      { "title": "Sizes that fit", "body": "Size guide on every product, and real advice on WhatsApp if you're between two sizes." },
+      { "title": "All of Kenya", "body": "Delivery in Nairobi and to all 47 counties through Pickup and trusted couriers." }
+    ],
+    "stepsTitle": "Four steps",
+    "steps": [
+      { "title": "Pick your kit", "body": "Browse by club, choose your size and add a name and number if you want one." },
+      { "title": "Send your bag", "body": "Your order goes to us on WhatsApp as one clear message. No forms to repeat." },
+      { "title": "Pay with M-Pesa", "body": "We confirm stock and delivery fee, then you pay. Simple and on record." },
+      { "title": "Receive it", "body": "Delivered to your door in Nairobi or to your nearest pickup point upcountry." }
+    ],
+    "contactTitle": "Orders, sizes, bulk team kits"
+  },
+  "footer": {
+    "blurb": "Club jerseys, apparel and accessories. Delivered across Kenya.",
+    "payments": ["M-PESA", "CASH ON DELIVERY"],
+    "previewNote": "Preview build. Print fee and policies shown are placeholders until confirmed by GBRAND."
+  },
+  "shop": {
+    "accessoriesSoon": {
+      "title": "Accessories landing soon",
+      "body": "Caps, scarves and bags. Ask us on WhatsApp what's in stock today.",
+      "cta": "Ask on WhatsApp",
+      "message": "Hi GBRAND, which accessories do you have in stock?"
+    }
+  },
+  "whatsappGeneral": "Hi GBRAND, I'd like to ask about your kits."
+}
