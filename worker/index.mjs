@@ -201,7 +201,7 @@ async function gbrandPreview(request, env, url, match) {
   const cfg = gbrandPreviewCfg;
   const hdr = { 'x-robots-tag': 'noindex, nofollow', 'cache-control': 'no-store' };
   if (match[1] !== cfg.id) return new Response('Not found', { status: 404, headers: hdr });
-  if (Date.now() > Date.parse(cfg.created) + cfg.expiresDays * 86400e3) return new Response('This preview has expired.', { status: 410, headers: hdr });
+  if (Date.now() > Date.parse(cfg.expiresAt)) return new Response('This preview has expired.', { status: 410, headers: hdr });
   if (!match[2]) return Response.redirect(new URL(`/preview/${cfg.id}/${url.search}`, url).toString(), 301);
   if (match[2] === '/api/orders') return new Response(null, { status: 204, headers: hdr }); // ordering is off in previews
   let target = new URL(GBRAND_PREVIEW_ROOT + (match[2] === '/' ? '/' : match[2].replace(/\/+$/, '')), url);

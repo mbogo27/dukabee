@@ -10,6 +10,7 @@ import path from 'node:path';
 import crypto from 'node:crypto';
 import { fileURLToPath } from 'node:url';
 import { parseFrontmatter } from '../kiwanda/v2/markdown.mjs';
+import { CONTACT_WA } from '../launch/config.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const DATA = path.join(ROOT, 'data', 'gbrand');
@@ -106,6 +107,10 @@ export async function buildGbrand({ outDir, preview = true, log = console.log } 
   const D = loadData();
   const PREVIEW = preview;
   const previewCfg = readJson('preview.json');
+  // Duka Bee's own number comes from launch/config.mjs unless preview.json overrides it.
+  const claim = { ...previewCfg.claim };
+  claim.whatsapp ||= CONTACT_WA;
+  claim.phoneDisplay ||= `0${CONTACT_WA.slice(3, 6)} ${CONTACT_WA.slice(6, 9)} ${CONTACT_WA.slice(9)}`;
   // Every root-relative URL in the preview build is prefixed with its base path, so it works under /preview/<id>/.
   const base = PREVIEW ? `/preview/${previewCfg.id}` : '';
   const site = PREVIEW ? PREVIEW_ORIGIN + base : SITE;
@@ -131,7 +136,7 @@ export async function buildGbrand({ outDir, preview = true, log = console.log } 
   const phoneRaw = contact.phoneDisplay.replace(/\s/g, '');
 
   const catalogJs = `window.GB=${JSON.stringify({
-    base, preview: PREVIEW,
+    base, preview: PREVIEW ? { id: previewCfg.id, expiresAt: previewCfg.expiresAt, storeName: store.store.name, claim } : false,
     store: { wa: contact.whatsapp },
     offers,
     sizes,
@@ -198,7 +203,7 @@ ${jsonLd.map((j) => `<script type="application/ld+json">${JSON.stringify(j).repl
 </head>
 <body${bodyClass ? ` class="${bodyClass}"` : ''}>
 <a class="skip" href="#main">Skip to content</a>
-${PREVIEW ? '<div class="ribbon" role="note">Preview of your Duka Bee store · Ordering is off</div>\n' : ''}<div class="ticker" aria-label="Store announcements"><div class="ticker__track">${ticker}${ticker.replace(/<span>/g, '<span aria-hidden="true">')}</div></div>
+${PREVIEW ? '<div class="ribbon" role="note">Preview of your Duka Bee store · Orders are test orders</div>\n' : ''}<div class="ticker" aria-label="Store announcements"><div class="ticker__track">${ticker}${ticker.replace(/<span>/g, '<span aria-hidden="true">')}</div></div>
 <header class="hdr">
   <div class="wrap hdr__row">
     <button class="ico burger" id="openMenu" aria-label="Open menu">${SVG.burger}</button>
@@ -239,6 +244,7 @@ ${footerHtml()}
 </aside>
 <div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-label="Choose a size"></div>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
+${PREVIEW ? '<div class="claimbar" id="claimBar" role="region" aria-label="Claim your store"></div><button class="claimtab" id="claimTab" hidden>Claim</button>' : ''}
 <script src="/catalog.js?v=${assetVer.cat}"></script>
 <script type="module" src="/gbrand.js?v=${assetVer.js}"></script>
 </body>
@@ -395,7 +401,7 @@ ${latest.length ? `<section class="sec wrap">
       </div>` : '<div id="printFields" hidden></div>'}
       <p class="err" id="pdErr" role="alert"></p>
       <div class="buy"><div class="qty"><button type="button" data-pq="-1" aria-label="Less">−</button><span id="pdQ" aria-live="polite">1</span><button type="button" data-pq="1" aria-label="More">+</button></div><button class="btn btn--red" id="pdAdd">Add to bag · <span id="pdTotal">${ksh(p.price)}</span></button></div>
-      ${PREVIEW ? '<span class="btn btn--green" id="pdWa" aria-disabled="true">Ordering opens at launch</span>' : `<a class="btn btn--green" id="pdWa" href="https://wa.me/${contact.whatsapp}" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2z"/></svg>Order this on WhatsApp</a>`}
+      <a class="btn btn--green" id="pdWa" href="https://wa.me/${contact.whatsapp}" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2z"/></svg>${PREVIEW ? 'Send test order on WhatsApp' : 'Order this on WhatsApp'}</a>
       <div class="acc">
         <details id="guideAcc"><summary>Size guide</summary><div class="in"><p>${esc(store.catalog.sizeGuide.note)}</p>${sizeTable()}${hasGuide ? '<p style="margin-top:10px"><a href="/magazine/size-guide" class="ulink">Read the full guide</a></p>' : ''}</div></details>
         <details><summary>Delivery &amp; payment</summary><div class="in"><p>Nairobi: doorstep delivery. Upcountry: Pickup or courier to your town.</p><p>We confirm stock and the delivery fee on WhatsApp, then you pay with M-Pesa.</p></div></details>
@@ -492,7 +498,7 @@ ${more.length ? `<section class="sec"><div class="sec-head"><div><span class="ey
   if (!PREVIEW) put('sitemap.xml', `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.map((u) => `  <url><loc>${SITE}${u === '/' ? '' : u}</loc></url>`).join('\n')}\n</urlset>\n`);
   put('robots.txt', PREVIEW ? 'User-agent: *\nDisallow: /\n' : `User-agent: *\nAllow: /\n\nSitemap: ${SITE}/sitemap.xml\n`);
   put('gbrand.css', rt('gbrand.css'));
-  if (PREVIEW) put('_preview.json', JSON.stringify({ id: previewCfg.id, created: previewCfg.created, expiresDays: previewCfg.expiresDays }));
+  if (PREVIEW) put('_preview.json', JSON.stringify({ id: previewCfg.id, expiresAt: previewCfg.expiresAt }));
   put('gbrand.js', rt('gbrand.js'));
   put('cart-logic.js', rt('cart-logic.js'));
   put('catalog.js', catalogJs);

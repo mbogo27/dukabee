@@ -1,6 +1,12 @@
 {
-  "$comment": "The client preview is served at https://dukabee.co.ke/preview/<id> (worker/index.mjs). The id is the unguessable part of the link; it expires `expiresDays` after `created` (the route then returns 410). Change the id to rotate the link.",
+  "$comment": "Duka Bee platform preview config for GBRAND (not store content). Served at https://dukabee.co.ke/preview/<id>; the worker returns 410 after expiresAt. claim.whatsapp and phoneDisplay default to Duka Bee's number in launch/config.mjs; monthlyKes is TO CONFIRM (null hides the monthly line). Change id to rotate the link.",
   "id": "gbrand-k7m2x9qa4f",
-  "created": "2026-10-18",
-  "expiresDays": 30
+  "expiresAt": "2026-11-17T23:59:00+03:00",
+  "claim": {
+    "activationKes": 10000,
+    "monthlyKes": null,
+    "whatsapp": null,
+    "phoneDisplay": null,
+    "liveUrl": "gbrand.dukabee.co.ke"
+  }
 }

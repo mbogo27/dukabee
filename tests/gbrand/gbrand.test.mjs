@@ -36,6 +36,13 @@ test('markdown: tables, lists, quotes', () => {
   const h = renderMarkdown('## T\n\n| A | B |\n| --- | --- |\n| 1 | 2 |\n\n- **x**\n\n1. y\n\n> q');
   for (const s of ['<h2 id="t">T</h2>', '<table>', '<ul><li><strong>x</strong>', '<ol><li>y', '<blockquote>q']) assert.ok(h.includes(s), s);
 });
+test('live build: no ribbon, claim bar or test wording', async () => {
+  const out = fs.mkdtempSync(path.join(os.tmpdir(), 'gbrand-l-'));
+  await buildGbrand({ outDir: out, preview: false });
+  for (const f of ['index.html', 'product/arsenal-green-leaf.html']) { const h = fs.readFileSync(path.join(out, f), 'utf8'); assert.doesNotMatch(h, /ribbon|claimBar|test order|noindex/i); }
+  assert.match(fs.readFileSync(path.join(out, 'catalog.js'), 'utf8'), /"preview":false/);
+  fs.rmSync(out, { recursive: true, force: true });
+});
 test('build: every route, JSON-LD, no sale or banned words', async () => {
   const out = fs.mkdtempSync(path.join(os.tmpdir(), 'gbrand-'));
   const r = await buildGbrand({ outDir: out, preview: false });
@@ -56,11 +63,12 @@ test('preview build: base path on every URL, ribbon, noindex, ordering off, no s
   for (const f of ['index.html', 'shop.html', 'product/arsenal-green-leaf.html', 'magazine/five-kits.html', '404.html']) {
     const h = fs.readFileSync(path.join(out, f), 'utf8');
     assert.deepEqual([...h.matchAll(/(?:href|src)="(\/[^"]*)"/g)].map((m) => m[1]).filter((u) => !u.startsWith('//') && !u.startsWith(r.base + '/')), [], `${f} has un-prefixed URLs`);
-    assert.match(h, /noindex, nofollow/); assert.match(h, /Ordering is off/);
+    assert.match(h, /noindex, nofollow/); assert.match(h, /Orders are test orders/); assert.match(h, /id="claimBar"/);
   }
   assert.ok(!fs.existsSync(path.join(out, 'sitemap.xml')));
-  assert.match(fs.readFileSync(path.join(out, 'product/arsenal-green-leaf.html'), 'utf8'), /Ordering opens at launch/);
-  assert.match(fs.readFileSync(path.join(out, 'catalog.js'), 'utf8'), /"preview":true/);
+  assert.match(fs.readFileSync(path.join(out, 'product/arsenal-green-leaf.html'), 'utf8'), /Send test order on WhatsApp/);
+  assert.match(fs.readFileSync(path.join(out, 'catalog.js'), 'utf8'), /"whatsapp":"2547\d{8}"/);
+  assert.match(fs.readFileSync(path.join(out, 'catalog.js'), 'utf8'), /"preview":{"id":"gbrand-/);
   fs.rmSync(out, { recursive: true, force: true });
 });
 test('v1.2 home: split hero stack skips the spotlight, join is a wa.me button', async () => {

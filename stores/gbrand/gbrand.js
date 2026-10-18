@@ -7,7 +7,10 @@ const $ = (s, el = document) => el.querySelector(s);
 const $$ = (s, el = document) => [...el.querySelectorAll(s)];
 const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 const BASE = GB.base || '';
-const PREVIEW = !!GB.preview; // preview build: ordering is off
+const PREVIEW = !!GB.preview; // preview build: orders are test orders, plus the claim bar
+const TEST_LINE = '\u{1F9EA} TEST ORDER from your Duka Bee preview, not a real customer.';
+const newRef = () => (PREVIEW ? 'T-' : '') + makeRef();
+const asTest = (m) => (PREVIEW ? `${TEST_LINE}\n${m}` : m);
 const waLink = (t) => `https://wa.me/${GB.store.wa}?text=${encodeURIComponent(t)}`;
 const P = GB.products; // slug -> product
 const pFee = GB.offers.print?.enabled === false ? 0 : GB.offers.print?.fee ?? 0;
@@ -15,6 +18,7 @@ const unitOf = (p, print) => p.price + (print ? pFee : 0);
 
 /* ---------- analytics: one helper so the provider can be swapped ---------- */
 function track(name, params = {}) {
+  if (PREVIEW) params = { preview: GB.preview.id, ...params };
   try { (window.dataLayer = window.dataLayer || []).push({ event: name, ...params }); } catch {}
   if (/^(localhost|127\.)/.test(location.hostname)) console.debug('[track]', name, params);
 }
@@ -46,12 +50,12 @@ function openOverlay(el) {
   if (openEl && openEl !== el) closeAll(false);
   lastFocus = document.activeElement;
   el.classList.add('on'); el.removeAttribute('inert'); scrim.classList.add('on'); openEl = el;
-  document.documentElement.style.overflow = 'hidden';
+  document.documentElement.style.overflow = 'hidden'; document.documentElement.classList.add('ov');
   setTimeout(() => ($('[data-close]', el) || el).focus(), 50);
 }
 function closeAll(restore = true) {
   $$('.drawer,.sheet').forEach((d) => { d.classList.remove('on'); d.setAttribute('inert', ''); });
-  scrim.classList.remove('on'); document.documentElement.style.overflow = '';
+  scrim.classList.remove('on'); document.documentElement.style.overflow = ''; document.documentElement.classList.remove('ov');
   const had = openEl; openEl = null;
   if (had && restore && lastFocus && document.contains(lastFocus)) lastFocus.focus();
 }
@@ -95,7 +99,29 @@ function syncCart() {
   renderCart();
 }
 
-const message = () => orderMessage({ template: GB.checkout.messageTemplate, lines: cart, products: P, offers: GB.offers, customer: order, ref });
+const fField = (id) => GB.checkout.fields.find((f) => f.id === id) || {};
+const needsLocation = () => (fField('location').requiredFor || []).includes(order.fulfilment);
+const customer = () => ({ ...order, location: needsLocation() ? order.location : '' });
+const PHONE_RE = /^(\+?254|0)[17]\d{8}$/;
+/** Name and phone are required; town or estate only for the delivery options that need an address. */
+function checkoutErrors() {
+  const e = {};
+  if (fField('name').required && !order.name.trim()) e.name = 'Enter your name.';
+  if (fField('phone').required && !PHONE_RE.test(order.phone.replace(/[\s-]/g, ''))) e.phone = 'Enter a valid phone number, e.g. 0712 345 678.';
+  if (needsLocation() && !order.location.trim()) e.location = 'Add your town or estate.';
+  return e;
+}
+let tried = false;
+function syncErrors() {
+  const e = checkoutErrors();
+  [['name', 'oName'], ['phone', 'oPhone'], ['location', 'oLoc']].forEach(([k, id]) => {
+    const input = $('#' + id), err = $('#e-' + k); if (!input) return;
+    err.textContent = tried && e[k] ? e[k] : ''; input.setAttribute('aria-invalid', tried && e[k] ? 'true' : 'false');
+  });
+  const btn = $('#sendWa'); if (btn) btn.setAttribute('aria-disabled', Object.keys(e).length ? 'true' : 'false');
+  return e;
+}
+const message = () => asTest(orderMessage({ template: GB.checkout.messageTemplate, lines: cart, products: P, offers: GB.offers, customer: customer(), ref }));
 
 function renderCart() {
   const body = $('#cartBody'), foot = $('#cartFoot');
@@ -118,19 +144,20 @@ function renderCart() {
   // details step
   $('#cartTitle').textContent = 'Your details';
   const f = Object.fromEntries(GB.checkout.fields.map((x) => [x.id, x]));
-  body.innerHTML = `<div class="field"><label for="oName">${f.name.label}</label><input id="oName" value="${esc(order.name)}" autocomplete="name"></div>
-    <div class="field"><label for="oPhone">${f.phone.label}</label><input id="oPhone" type="tel" value="${esc(order.phone)}" placeholder="${esc(f.phone.placeholder || '')}" autocomplete="tel"></div>
+  body.innerHTML = `<div class="field"><label for="oName">${f.name.label}${f.name.required ? ' *' : ''}</label><input id="oName" value="${esc(order.name)}" autocomplete="name" required aria-describedby="e-name"><p class="err" id="e-name" role="alert"></p></div>
+    <div class="field"><label for="oPhone">${f.phone.label}${f.phone.required ? ' *' : ''}</label><input id="oPhone" type="tel" inputmode="tel" value="${esc(order.phone)}" placeholder="${esc(f.phone.placeholder || '')}" autocomplete="tel" required aria-describedby="e-phone"><p class="err" id="e-phone" role="alert"></p></div>
     <div class="field" role="group" aria-labelledby="oDelLbl"><label id="oDelLbl">${f.fulfilment.label}</label><div class="opts">${f.fulfilment.options.map((m) => `<button type="button" class="chip" data-om="${esc(m)}" aria-pressed="${order.fulfilment === m}">${esc(m)}</button>`).join('')}</div></div>
-    <div class="field"><label for="oLoc">${f.location.label}</label><input id="oLoc" value="${esc(order.location)}" placeholder="${esc(f.location.placeholder || '')}"></div>
+    ${needsLocation() ? `<div class="field"><label for="oLoc">${f.location.label} *</label><input id="oLoc" value="${esc(order.location)}" placeholder="${esc(f.location.placeholder || '')}" required aria-describedby="e-location"><p class="err" id="e-location" role="alert"></p></div>` : ''}
     <div class="field"><label id="msgLbl">Message preview</label><div class="msg" id="msg" role="note" aria-labelledby="msgLbl"></div></div>`;
-  foot.innerHTML = `<div class="tot big"><span>Total</span><span>${ksh(t.total)}</span></div>${PREVIEW ? '<span class="btn btn--green" id="sendWa" aria-disabled="true">Ordering opens at launch</span>' : '<a class="btn btn--green" id="sendWa" target="_blank" rel="noopener">Send order on WhatsApp</a>'}<button class="rm" id="back" style="justify-self:center">Back to bag</button>`;
-  ref = ref || makeRef();
-  const upd = () => { const m = message(); $('#msg').textContent = m; if (!PREVIEW) $('#sendWa').href = waLink(m); };
-  [['oName', 'name'], ['oPhone', 'phone'], ['oLoc', 'location']].forEach(([id, k]) => $('#' + id).addEventListener('input', (e) => { order[k] = e.target.value; saveCart(); upd(); }));
-  upd();
+  foot.innerHTML = `<div class="tot big"><span>Total</span><span>${ksh(t.total)}</span></div>${PREVIEW ? `<p class="note">Preview: this sends a test order to ${esc(GB.preview.storeName)}'s WhatsApp so you can see how orders arrive.</p>` : ''}<a class="btn btn--green" id="sendWa" target="_blank" rel="noopener">${PREVIEW ? 'Send test order on WhatsApp' : 'Send order on WhatsApp'}</a><button class="rm" id="back" style="justify-self:center">Back to bag</button>`;
+  ref = ref || newRef();
+  const upd = () => { const m = message(); $('#msg').textContent = m; $('#sendWa').href = waLink(m); };
+  [['oName', 'name'], ['oPhone', 'phone'], ['oLoc', 'location']].forEach(([id, k]) => $('#' + id)?.addEventListener('input', (e) => { order[k] = e.target.value; saveCart(); syncErrors(); upd(); }));
+  upd(); syncErrors();
 }
 
 /** Record the order before WhatsApp opens, so the lead exists even if they never hit send. */
+let awaitingReturn = false;
 function recordOrder(lines, customer, tot, source) {
   const o = {
     ref, createdAt: new Date().toISOString(),
@@ -141,6 +168,7 @@ function recordOrder(lines, customer, tot, source) {
   };
   const refCode = store.get('gb:refCode', 'session'); if (refCode) o.refCode = refCode;
   console.info('[order]', o);
+  if (PREVIEW) { track('preview_test_order', { ref, total: tot.total }); awaitingReturn = true; return; } // test orders are never posted anywhere
   try {
     const body = JSON.stringify(o);
     const queued = navigator.sendBeacon && navigator.sendBeacon('/api/orders', new Blob([body], { type: 'application/json' }));
@@ -161,7 +189,10 @@ document.addEventListener('click', (e) => {
   if (e.target.closest('#toOrder')) { step = 'order'; track('begin_checkout', { value: T().total, currency: 'KES' }); renderCart(); return; }
   if (e.target.closest('#back')) { step = 'bag'; renderCart(); return; }
   const m = e.target.closest('[data-om]'); if (m) { order.fulfilment = m.dataset.om; saveCart(); renderCart(); return; }
-  if (!PREVIEW && e.target.closest('#sendWa')) { recordOrder(cart, order, T(), 'bag'); ref = null; setTimeout(() => { ref = makeRef(); }, 0); return; }
+  if (e.target.closest('#sendWa')) {
+    const errs = syncErrors();
+    if (Object.keys(errs).length) { e.preventDefault(); tried = true; syncErrors(); const first = ['oName', 'oPhone', 'oLoc'].find((id, i) => errs[['name', 'phone', 'location'][i]]); $('#' + first)?.focus(); return; }
+    recordOrder(cart, customer(), T(), 'bag'); ref = null; setTimeout(() => { ref = newRef(); }, 0); return; }
   if (e.target.closest('[data-open-cart]')) { step = 'bag'; renderCart(); openOverlay($('#cart')); track('view_cart', { value: T().total, count: T().count }); }
 });
 
@@ -211,8 +242,8 @@ if (pdRoot) {
     $('#bName').textContent = (pd.name || 'YOUR NAME').toUpperCase(); $('#bNum').textContent = pd.number || '00';
     const pr = printOf();
     const line = `• ${p.name} (No.${p.no}) — Size ${pd.size || '?'}${pr ? ` — Print: ${pr.name || '—'} ${pr.number || '—'}` : ''} ×${pd.qty} — ${ksh(unitOf(p, pd.print) * pd.qty)}`;
-    ref = ref || makeRef();
-    if (!PREVIEW) $('#pdWa').href = waLink(withRef(`Hi GBRAND, I'd like to order:\n${line}\n\nPlease confirm stock and delivery.`, ref));
+    ref = ref || newRef();
+    $('#pdWa').href = waLink(asTest(withRef(`Hi GBRAND, I'd like to order:\n${line}\n\nPlease confirm stock and delivery.`, ref)));
   };
   pdRoot.addEventListener('click', (e) => {
     const s = e.target.closest('[data-psize]');
@@ -220,7 +251,7 @@ if (pdRoot) {
     const q = e.target.closest('[data-pq]'); if (q) { pd.qty = Math.max(1, Math.min(10, pd.qty + +q.dataset.pq)); sync(); return; }
     if (e.target.closest('#toGuide')) { const d = $('#guideAcc'); d.open = true; d.scrollIntoView({ behavior: 'smooth', block: 'center' }); return; }
     if (e.target.closest('#pdAdd')) { const m = check(); if (m) return err(m); err(''); addToBag(slug, pd.size, printOf(), pd.qty); return; }
-    if (!PREVIEW && e.target.closest('#pdWa')) {
+    if (e.target.closest('#pdWa')) {
       const m = check(); if (m) { e.preventDefault(); return err(m); }
       err('');
       const line = { slug, size: pd.size, print: printOf(), qty: pd.qty };
@@ -313,3 +344,78 @@ $('#joinWa')?.addEventListener('click', () => track('join_click', {}));
 // ?hero=center previews the centred hero variant next to the default split one.
 try { if (new URLSearchParams(location.search).get('hero') === 'center') $('.hero')?.classList.add('hero--center'); } catch {}
 syncCart();
+
+/* ---------- preview mode: "That's how orders reach you" + the claim bar and sheet ---------- */
+if (PREVIEW) {
+  const pv = GB.preview, cl = pv.claim, DAY = 864e5;
+  const daysLeft = () => Math.max(0, Math.ceil((Date.parse(pv.expiresAt) - Date.now()) / DAY));
+  const endsText = () => { const d = daysLeft(); return d <= 0 ? 'Preview ends today' : `Preview ends in ${d} day${d === 1 ? '' : 's'}`; };
+  const urgent = () => daysLeft() <= 3;
+  const claimMsg = `Hi Duka Bee, I'd like to claim my store: ${pv.storeName} (preview ${pv.id}). Please send the M-Pesa details.`;
+  const kes = (n) => `KSh ${Number(n).toLocaleString('en-KE')}`;
+  const sheetEl = $('#sheet'), bar = $('#claimBar'), tab = $('#claimTab');
+
+  function showSheet(html, label) { sheetEl.innerHTML = html; sheetEl.setAttribute('aria-label', label); openOverlay(sheetEl); }
+  function claimSheet(from) {
+    track('claim_open', { from });
+    showSheet(`<div class="sheet__top" style="grid-template-columns:1fr auto"><div><b style="font-size:30px">Make it yours</b></div><button class="ico" data-close aria-label="Close">${$('#cart [data-close]').innerHTML}</button></div>
+      <ul class="ticks">
+        <li>Your store live on <b>${esc(cl.liveUrl)}</b> (your own domain later)</li>
+        <li>WhatsApp orders</li><li>M-Pesa</li><li>The admin to edit products and posts</li><li>Setup and support</li>
+      </ul>
+      <div class="claim-price"><b>Activation ${kes(cl.activationKes)}</b>${cl.monthlyKes ? `<span>Then ${kes(cl.monthlyKes)} a month</span>` : ''}</div>
+      <div id="claimPaySlot"><!-- later: "Pay with M-Pesa" (STK push for the activation fee) becomes the primary button here --></div>
+      <a class="btn btn--green" id="claimWa" href="https://wa.me/${cl.whatsapp}?text=${encodeURIComponent(claimMsg)}" target="_blank" rel="noopener">Claim on WhatsApp</a>
+      <a class="btn btn--line" id="claimCall" href="tel:+${cl.whatsapp}">Call us ${esc(cl.phoneDisplay)}</a>
+      <p class="note">Your products, photos and posts carry over. Nothing to redo.</p>`, 'Make it yours');
+  }
+  const thanksSheet = () => showSheet(`<div class="sheet__top" style="grid-template-columns:1fr auto"><div><b style="font-size:30px">That's how orders reach you</b></div><button class="ico" data-close aria-label="Close">${$('#cart [data-close]').innerHTML}</button></div>
+      <ul class="ticks"><li>Order arrives on WhatsApp</li><li>Customer pays with M-Pesa</li><li>You confirm and deliver</li></ul>
+      <button class="btn btn--green" id="thanksClaim">Claim your store</button><button class="rm" data-close style="justify-self:center">Keep exploring</button>`, "That's how orders reach you");
+
+  document.addEventListener('click', (e) => {
+    if (e.target.closest('#thanksClaim')) return claimSheet('test-order');
+    if (e.target.closest('[data-claim]')) return claimSheet(e.target.closest('[data-claim]').dataset.claim);
+    if (e.target.closest('#claimWa')) track('claim_whatsapp', {});
+    if (e.target.closest('#claimCall')) track('claim_call', {});
+  });
+  // Coming back from WhatsApp after a test order.
+  document.addEventListener('visibilitychange', () => {
+    if (document.visibilityState === 'visible' && awaitingReturn) { awaitingReturn = false; setTimeout(thanksSheet, 350); }
+  });
+
+  // The claim bar: after 4 seconds or the first scroll past the hero. Phones keep it above the store's bottom nav.
+  const desktop = () => matchMedia('(min-width:900px)').matches;
+  const KEY = 'gb:claimDismissed';
+  const dismissed = () => store.get(KEY, 'session') === true;
+  let shown = false;
+  const render = () => {
+    bar.innerHTML = desktop()
+      ? `<span class="claimbar__txt"><b>Your ${esc(pv.storeName)} store is ready</b> · <span class="${urgent() ? 'urgent' : ''}">${endsText()}</span></span><button class="btn btn--green" data-claim="bar">Claim your store</button><button class="claimbar__x" id="claimX" aria-label="Dismiss">\u2715</button>`
+      : `<span class="claimbar__txt"><b>Your ${esc(pv.storeName)} store is ready</b><small class="${urgent() ? 'urgent' : ''}">${endsText()}</small></span><button class="btn btn--green" data-claim="bar">Claim your store</button>`;
+  };
+  const place = () => {
+    const mbar = $('.mbar');
+    document.documentElement.style.setProperty('--mbar-h', desktop() || !mbar ? '0px' : `${mbar.offsetHeight}px`);
+  };
+  const showBar = () => {
+    if (shown) return; shown = true; render(); place();
+    bar.classList.add('on'); document.body.classList.add('has-claimbar'); track('claim_bar_view', {});
+  };
+  const dismiss = () => {
+    bar.classList.remove('on'); document.body.classList.remove('has-claimbar'); tab.hidden = false;
+    store.set(KEY, true, 'session'); track('claim_bar_dismiss', {});
+  };
+  document.addEventListener('click', (e) => { if (e.target.closest('#claimX')) dismiss(); });
+  tab.addEventListener('click', () => claimSheet('tab'));
+  addEventListener('resize', () => { if (shown) { render(); place(); } });
+  if (desktop() && dismissed()) { tab.hidden = false; place(); }
+  else {
+    const hero = $('.hero');
+    const past = () => scrollY > (hero ? hero.offsetHeight : 300);
+    const onScroll = () => { if (past()) { removeEventListener('scroll', onScroll); showBar(); } };
+    addEventListener('scroll', onScroll, { passive: true });
+    setTimeout(showBar, 4000);
+  }
+  place();
+}

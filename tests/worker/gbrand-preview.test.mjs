@@ -9,12 +9,12 @@ import { fileURLToPath, pathToFileURL } from 'node:url';
 import { buildGbrand } from '../../scripts/build-gbrand.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..');
-let worker, env, id, created, expires;
+let worker, env, id, expiresAt;
 before(async () => {
   const tmp = fs.mkdtempSync(path.join(os.tmpdir(), 'gbrand-w-'));
   const dist = path.join(tmp, 'stores', 'gbrand-preview');
   await buildGbrand({ outDir: dist, preview: true });
-  ({ id, created, expiresDays: expires } = JSON.parse(fs.readFileSync(path.join(dist, '_preview.json'), 'utf8')));
+  ({ id, expiresAt } = JSON.parse(fs.readFileSync(path.join(dist, '_preview.json'), 'utf8')));
   const shim = path.join(tmp, 'worker.mjs');
   fs.writeFileSync(shim, fs.readFileSync(path.join(ROOT, 'worker/index.mjs'), 'utf8').replace("import { DurableObject } from 'cloudflare:workers';", 'class DurableObject { constructor() {} }').replace("from '../launch/addons.mjs'", `from '${pathToFileURL(path.join(ROOT, 'launch/addons.mjs')).href}'`));
   worker = (await import(pathToFileURL(shim).href)).default;
@@ -38,8 +38,8 @@ test('wrong id and the raw folder are 404; unknown page is the on-brand 404', as
   assert.equal((await get('/stores/gbrand-preview/index.html')).status, 404);
   const r = await get(`/preview/${id}/nope`); assert.equal(r.status, 404); assert.match(await r.text(), /Offside/);
 });
-test('expires after 30 days with a 410', async () => {
+test('expires at expiresAt with a 410', async () => {
   const real = Date.now;
-  Date.now = () => Date.parse(created) + (expires + 1) * 86400e3;
+  Date.now = () => Date.parse(expiresAt) + 60e3;
   try { assert.equal((await get(`/preview/${id}/`)).status, 410); } finally { Date.now = real; }
 });

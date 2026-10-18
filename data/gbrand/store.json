@@ -306,13 +306,13 @@
         "id": "name",
         "label": "Name",
         "type": "text",
-        "required": false
+        "required": true
       },
       {
         "id": "phone",
         "label": "Phone",
         "type": "tel",
-        "required": false,
+        "required": true,
         "placeholder": "07xx xxx xxx"
       },
       {
@@ -331,7 +331,11 @@
         "label": "Town or estate",
         "type": "text",
         "required": false,
-        "placeholder": "e.g. Kasarani, Nakuru town"
+        "placeholder": "e.g. Kasarani, Nakuru town",
+        "requiredFor": [
+          "Delivery in Nairobi",
+          "Courier upcountry"
+        ]
       }
     ],
     "deliveryFee": "confirmed-on-whatsapp",
